@@ -1,0 +1,1361 @@
+{
+  "sources": [
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "file_name": "阿布价格行为学_01-36.pdf",
+      "sha256": "13632b3cf71754743fd3e94973c4852e7472bf51b79c1dc471ba1f205424a828",
+      "byte_size": 233287719,
+      "page_count": 2819,
+      "first_course": 1,
+      "last_course": 36
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "file_name": "阿布价格行为学_37-52.pdf",
+      "sha256": "0ba1bc757b7c5b348a8c24cb065c9ba43449416e21cb58483719bc4fc87a8dd0",
+      "byte_size": 192806481,
+      "page_count": 1397,
+      "first_course": 37,
+      "last_course": 52
+    }
+  ],
+  "lessons": [
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "01",
+      "start_page": 2,
+      "end_page": 31,
+      "start_title": "01"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "02A",
+      "start_page": 32,
+      "end_page": 66,
+      "start_title": "02A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "02B",
+      "start_page": 67,
+      "end_page": 92,
+      "start_title": "02B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "02C",
+      "start_page": 93,
+      "end_page": 121,
+      "start_title": "02C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "02D",
+      "start_page": 122,
+      "end_page": 151,
+      "start_title": "02D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "03A",
+      "start_page": 152,
+      "end_page": 178,
+      "start_title": "03A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "03B",
+      "start_page": 179,
+      "end_page": 203,
+      "start_title": "03B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "03C",
+      "start_page": 204,
+      "end_page": 231,
+      "start_title": "03C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "03D",
+      "start_page": 232,
+      "end_page": 247,
+      "start_title": "03D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "03E",
+      "start_page": 248,
+      "end_page": 266,
+      "start_title": "03E"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "04",
+      "start_page": 267,
+      "end_page": 280,
+      "start_title": "04"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "05",
+      "start_page": 281,
+      "end_page": 316,
+      "start_title": "05"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "06",
+      "start_page": 317,
+      "end_page": 341,
+      "start_title": "06"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "07A",
+      "start_page": 342,
+      "end_page": 375,
+      "start_title": "07A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "07B",
+      "start_page": 376,
+      "end_page": 404,
+      "start_title": "07B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "08A",
+      "start_page": 405,
+      "end_page": 432,
+      "start_title": "08A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "08B",
+      "start_page": 433,
+      "end_page": 454,
+      "start_title": "08B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "08C",
+      "start_page": 455,
+      "end_page": 483,
+      "start_title": "08C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "08D",
+      "start_page": 484,
+      "end_page": 517,
+      "start_title": "08D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "09A",
+      "start_page": 518,
+      "end_page": 548,
+      "start_title": "09A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "09B",
+      "start_page": 549,
+      "end_page": 576,
+      "start_title": "09B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "09C",
+      "start_page": 577,
+      "end_page": 599,
+      "start_title": "09C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "10A",
+      "start_page": 600,
+      "end_page": 625,
+      "start_title": "10A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "10B",
+      "start_page": 626,
+      "end_page": 642,
+      "start_title": "10B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "11A",
+      "start_page": 643,
+      "end_page": 661,
+      "start_title": "11A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "11B",
+      "start_page": 662,
+      "end_page": 683,
+      "start_title": "11B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "11C",
+      "start_page": 684,
+      "end_page": 702,
+      "start_title": "11C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "11D",
+      "start_page": 703,
+      "end_page": 719,
+      "start_title": "11D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "12A",
+      "start_page": 720,
+      "end_page": 748,
+      "start_title": "12A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "12B",
+      "start_page": 749,
+      "end_page": 777,
+      "start_title": "12B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "12C",
+      "start_page": 778,
+      "end_page": 800,
+      "start_title": "12C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "13A",
+      "start_page": 801,
+      "end_page": 830,
+      "start_title": "13A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "13B",
+      "start_page": 831,
+      "end_page": 854,
+      "start_title": "13B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "13C",
+      "start_page": 855,
+      "end_page": 868,
+      "start_title": "13C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "14A",
+      "start_page": 869,
+      "end_page": 895,
+      "start_title": "14A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "14B",
+      "start_page": 896,
+      "end_page": 924,
+      "start_title": "14B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "14C",
+      "start_page": 925,
+      "end_page": 955,
+      "start_title": "14C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "14D",
+      "start_page": 956,
+      "end_page": 984,
+      "start_title": "14D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "14E",
+      "start_page": 985,
+      "end_page": 1013,
+      "start_title": "14E"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "15A",
+      "start_page": 1014,
+      "end_page": 1041,
+      "start_title": "15A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "15B",
+      "start_page": 1042,
+      "end_page": 1071,
+      "start_title": "15B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "15C",
+      "start_page": 1072,
+      "end_page": 1106,
+      "start_title": "15C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "15D",
+      "start_page": 1107,
+      "end_page": 1134,
+      "start_title": "15D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "15E",
+      "start_page": 1135,
+      "end_page": 1150,
+      "start_title": "15E"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "15F",
+      "start_page": 1151,
+      "end_page": 1168,
+      "start_title": "15F"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "15G",
+      "start_page": 1169,
+      "end_page": 1189,
+      "start_title": "15G"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "16A",
+      "start_page": 1190,
+      "end_page": 1227,
+      "start_title": "16A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "16B",
+      "start_page": 1228,
+      "end_page": 1264,
+      "start_title": "16B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "16C",
+      "start_page": 1265,
+      "end_page": 1293,
+      "start_title": "16C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "16D",
+      "start_page": 1294,
+      "end_page": 1327,
+      "start_title": "16D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "16E",
+      "start_page": 1328,
+      "end_page": 1363,
+      "start_title": "16E"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "16F",
+      "start_page": 1364,
+      "end_page": 1392,
+      "start_title": "16F"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "17A",
+      "start_page": 1393,
+      "end_page": 1412,
+      "start_title": "17A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "17B",
+      "start_page": 1413,
+      "end_page": 1440,
+      "start_title": "17B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "18A",
+      "start_page": 1441,
+      "end_page": 1471,
+      "start_title": "18A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "18B",
+      "start_page": 1472,
+      "end_page": 1495,
+      "start_title": "18B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "18C",
+      "start_page": 1496,
+      "end_page": 1535,
+      "start_title": "18C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "18D",
+      "start_page": 1536,
+      "end_page": 1558,
+      "start_title": "18D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "18E",
+      "start_page": 1559,
+      "end_page": 1587,
+      "start_title": "18E"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "18F",
+      "start_page": 1588,
+      "end_page": 1611,
+      "start_title": "18F"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "19A",
+      "start_page": 1612,
+      "end_page": 1641,
+      "start_title": "19A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "19B",
+      "start_page": 1642,
+      "end_page": 1661,
+      "start_title": "19B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "19C",
+      "start_page": 1662,
+      "end_page": 1679,
+      "start_title": "19C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "19D",
+      "start_page": 1680,
+      "end_page": 1700,
+      "start_title": "19D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "19E",
+      "start_page": 1701,
+      "end_page": 1722,
+      "start_title": "19E"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "20A",
+      "start_page": 1723,
+      "end_page": 1745,
+      "start_title": "20A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "20B",
+      "start_page": 1746,
+      "end_page": 1770,
+      "start_title": "20B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "21A",
+      "start_page": 1771,
+      "end_page": 1797,
+      "start_title": "21A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "21B",
+      "start_page": 1798,
+      "end_page": 1819,
+      "start_title": "21B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "21C",
+      "start_page": 1820,
+      "end_page": 1842,
+      "start_title": "21C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "21D",
+      "start_page": 1843,
+      "end_page": 1867,
+      "start_title": "21D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "22A",
+      "start_page": 1868,
+      "end_page": 1891,
+      "start_title": "22A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "22B",
+      "start_page": 1892,
+      "end_page": 1902,
+      "start_title": "22B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "22C",
+      "start_page": 1903,
+      "end_page": 1917,
+      "start_title": "22C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "22D",
+      "start_page": 1918,
+      "end_page": 1943,
+      "start_title": "22D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "23A",
+      "start_page": 1944,
+      "end_page": 1956,
+      "start_title": "23A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "23B",
+      "start_page": 1957,
+      "end_page": 1971,
+      "start_title": "23B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "24A",
+      "start_page": 1972,
+      "end_page": 1988,
+      "start_title": "24A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "24B",
+      "start_page": 1989,
+      "end_page": 2013,
+      "start_title": "24B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "24C",
+      "start_page": 2014,
+      "end_page": 2035,
+      "start_title": "24C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "24D",
+      "start_page": 2036,
+      "end_page": 2062,
+      "start_title": "24D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "24E",
+      "start_page": 2063,
+      "end_page": 2076,
+      "start_title": "24E"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "25A",
+      "start_page": 2077,
+      "end_page": 2100,
+      "start_title": "25A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "25B",
+      "start_page": 2101,
+      "end_page": 2117,
+      "start_title": "25B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "26A",
+      "start_page": 2118,
+      "end_page": 2140,
+      "start_title": "26A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "26B",
+      "start_page": 2141,
+      "end_page": 2157,
+      "start_title": "26B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "27A",
+      "start_page": 2158,
+      "end_page": 2177,
+      "start_title": "27A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "27B",
+      "start_page": 2178,
+      "end_page": 2193,
+      "start_title": "27B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "28",
+      "start_page": 2194,
+      "end_page": 2208,
+      "start_title": "28"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "29A",
+      "start_page": 2209,
+      "end_page": 2227,
+      "start_title": "29A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "29B",
+      "start_page": 2228,
+      "end_page": 2241,
+      "start_title": "29B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "29C",
+      "start_page": 2242,
+      "end_page": 2265,
+      "start_title": "29C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "29D",
+      "start_page": 2266,
+      "end_page": 2282,
+      "start_title": "29D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "29E",
+      "start_page": 2283,
+      "end_page": 2298,
+      "start_title": "29E"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "30A",
+      "start_page": 2299,
+      "end_page": 2320,
+      "start_title": "30A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "30B",
+      "start_page": 2321,
+      "end_page": 2343,
+      "start_title": "30B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "30C",
+      "start_page": 2344,
+      "end_page": 2367,
+      "start_title": "30C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "30D",
+      "start_page": 2368,
+      "end_page": 2392,
+      "start_title": "30D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "30E",
+      "start_page": 2393,
+      "end_page": 2417,
+      "start_title": "30E"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "31A",
+      "start_page": 2418,
+      "end_page": 2434,
+      "start_title": "31A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "31B",
+      "start_page": 2435,
+      "end_page": 2450,
+      "start_title": "31B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "31C",
+      "start_page": 2451,
+      "end_page": 2475,
+      "start_title": "31C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "31D",
+      "start_page": 2476,
+      "end_page": 2499,
+      "start_title": "31D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "32A",
+      "start_page": 2500,
+      "end_page": 2526,
+      "start_title": "32A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "32B",
+      "start_page": 2527,
+      "end_page": 2543,
+      "start_title": "32B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "32C",
+      "start_page": 2544,
+      "end_page": 2562,
+      "start_title": "32C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "33A",
+      "start_page": 2563,
+      "end_page": 2585,
+      "start_title": "33A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "33B",
+      "start_page": 2586,
+      "end_page": 2599,
+      "start_title": "33B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "33C",
+      "start_page": 2600,
+      "end_page": 2620,
+      "start_title": "33C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "33D",
+      "start_page": 2621,
+      "end_page": 2642,
+      "start_title": "33D"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "33E",
+      "start_page": 2643,
+      "end_page": 2656,
+      "start_title": "33E"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "33F",
+      "start_page": 2657,
+      "end_page": 2673,
+      "start_title": "33F"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "33G",
+      "start_page": 2674,
+      "end_page": 2693,
+      "start_title": "33G"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "34A",
+      "start_page": 2694,
+      "end_page": 2711,
+      "start_title": "34A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "34B",
+      "start_page": 2712,
+      "end_page": 2732,
+      "start_title": "34B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "35A",
+      "start_page": 2733,
+      "end_page": 2753,
+      "start_title": "35A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "35B",
+      "start_page": 2754,
+      "end_page": 2767,
+      "start_title": "35B"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "35C",
+      "start_page": 2768,
+      "end_page": 2786,
+      "start_title": "35C"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "36A",
+      "start_page": 2787,
+      "end_page": 2800,
+      "start_title": "36A"
+    },
+    {
+      "source_id": "SRC-COURSE-01-36",
+      "lesson": "36B",
+      "start_page": 2801,
+      "end_page": 2819,
+      "start_title": "36B"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "37A",
+      "start_page": 2,
+      "end_page": 16,
+      "start_title": "37A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "37B",
+      "start_page": 17,
+      "end_page": 46,
+      "start_title": "37B-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "38A",
+      "start_page": 47,
+      "end_page": 62,
+      "start_title": "38A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "38B",
+      "start_page": 63,
+      "end_page": 77,
+      "start_title": "38B-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "38C",
+      "start_page": 78,
+      "end_page": 90,
+      "start_title": "38C-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "38D",
+      "start_page": 91,
+      "end_page": 104,
+      "start_title": "38D-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "39A",
+      "start_page": 105,
+      "end_page": 119,
+      "start_title": "39A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "39B",
+      "start_page": 120,
+      "end_page": 135,
+      "start_title": "39B-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "39C",
+      "start_page": 136,
+      "end_page": 150,
+      "start_title": "39C-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "39D",
+      "start_page": 151,
+      "end_page": 168,
+      "start_title": "39D-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "40A",
+      "start_page": 169,
+      "end_page": 185,
+      "start_title": "40A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "40B",
+      "start_page": 186,
+      "end_page": 204,
+      "start_title": "40B-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "40C",
+      "start_page": 205,
+      "end_page": 219,
+      "start_title": "40C-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "40D",
+      "start_page": 220,
+      "end_page": 236,
+      "start_title": "40D-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "40E",
+      "start_page": 237,
+      "end_page": 258,
+      "start_title": "40E-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "41A",
+      "start_page": 259,
+      "end_page": 283,
+      "start_title": "41A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "41B",
+      "start_page": 284,
+      "end_page": 311,
+      "start_title": "41B-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "41C",
+      "start_page": 312,
+      "end_page": 330,
+      "start_title": "41C-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "41D",
+      "start_page": 331,
+      "end_page": 347,
+      "start_title": "41d-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "42A",
+      "start_page": 348,
+      "end_page": 370,
+      "start_title": "42A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "42B",
+      "start_page": 371,
+      "end_page": 390,
+      "start_title": "42B-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "42C",
+      "start_page": 391,
+      "end_page": 406,
+      "start_title": "42C-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "43A",
+      "start_page": 407,
+      "end_page": 430,
+      "start_title": "43A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "43B",
+      "start_page": 431,
+      "end_page": 443,
+      "start_title": "43B-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "43C",
+      "start_page": 444,
+      "end_page": 466,
+      "start_title": "43C-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "43D",
+      "start_page": 467,
+      "end_page": 491,
+      "start_title": "43D-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "44A",
+      "start_page": 492,
+      "end_page": 517,
+      "start_title": "44A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "44B",
+      "start_page": 518,
+      "end_page": 532,
+      "start_title": "44B-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "44C",
+      "start_page": 533,
+      "end_page": 552,
+      "start_title": "44C-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "44D",
+      "start_page": 553,
+      "end_page": 576,
+      "start_title": "44D-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "45A",
+      "start_page": 577,
+      "end_page": 599,
+      "start_title": "45A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "45B",
+      "start_page": 600,
+      "end_page": 613,
+      "start_title": "45b-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "45C",
+      "start_page": 614,
+      "end_page": 638,
+      "start_title": "45c-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "45D",
+      "start_page": 639,
+      "end_page": 663,
+      "start_title": "45d-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "45E",
+      "start_page": 664,
+      "end_page": 686,
+      "start_title": "45E-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "46A",
+      "start_page": 687,
+      "end_page": 713,
+      "start_title": "46A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "46B",
+      "start_page": 714,
+      "end_page": 732,
+      "start_title": "46B-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "46C",
+      "start_page": 733,
+      "end_page": 748,
+      "start_title": "46C-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "46D",
+      "start_page": 749,
+      "end_page": 773,
+      "start_title": "46D-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "46E",
+      "start_page": 774,
+      "end_page": 796,
+      "start_title": "46E-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "47A",
+      "start_page": 797,
+      "end_page": 816,
+      "start_title": "47A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "47B",
+      "start_page": 817,
+      "end_page": 841,
+      "start_title": "47B-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "47C",
+      "start_page": 842,
+      "end_page": 869,
+      "start_title": "47C-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "47D",
+      "start_page": 870,
+      "end_page": 890,
+      "start_title": "47D-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "48A",
+      "start_page": 891,
+      "end_page": 909,
+      "start_title": "48A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "48B",
+      "start_page": 910,
+      "end_page": 925,
+      "start_title": "48B-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "48C",
+      "start_page": 926,
+      "end_page": 939,
+      "start_title": "48C-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "48D",
+      "start_page": 940,
+      "end_page": 963,
+      "start_title": "48D-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "48E",
+      "start_page": 964,
+      "end_page": 981,
+      "start_title": "48E-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "48F",
+      "start_page": 982,
+      "end_page": 998,
+      "start_title": "48F-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "48G",
+      "start_page": 999,
+      "end_page": 1017,
+      "start_title": "48G-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "48H",
+      "start_page": 1018,
+      "end_page": 1033,
+      "start_title": "48H-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "48I",
+      "start_page": 1034,
+      "end_page": 1045,
+      "start_title": "48I-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "48J",
+      "start_page": 1046,
+      "end_page": 1055,
+      "start_title": "48J-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "48K",
+      "start_page": 1056,
+      "end_page": 1069,
+      "start_title": "48K-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "49A",
+      "start_page": 1070,
+      "end_page": 1091,
+      "start_title": "49A-1"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "49B",
+      "start_page": 1092,
+      "end_page": 1117,
+      "start_title": "49B-1"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "49C",
+      "start_page": 1118,
+      "end_page": 1142,
+      "start_title": "49C-1"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "49D",
+      "start_page": 1143,
+      "end_page": 1165,
+      "start_title": "49D-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "49E",
+      "start_page": 1166,
+      "end_page": 1191,
+      "start_title": "49E-1"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "50A",
+      "start_page": 1192,
+      "end_page": 1210,
+      "start_title": "50A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "50B",
+      "start_page": 1211,
+      "end_page": 1224,
+      "start_title": "50B-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "50C",
+      "start_page": 1225,
+      "end_page": 1244,
+      "start_title": "50C-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "50D",
+      "start_page": 1245,
+      "end_page": 1262,
+      "start_title": "50D-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "50E",
+      "start_page": 1263,
+      "end_page": 1282,
+      "start_title": "50E-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "51A",
+      "start_page": 1283,
+      "end_page": 1297,
+      "start_title": "51A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "51B",
+      "start_page": 1298,
+      "end_page": 1316,
+      "start_title": "51B-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "51C",
+      "start_page": 1317,
+      "end_page": 1334,
+      "start_title": "51C-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "51D",
+      "start_page": 1335,
+      "end_page": 1353,
+      "start_title": "51D-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "52A",
+      "start_page": 1354,
+      "end_page": 1374,
+      "start_title": "52A-0"
+    },
+    {
+      "source_id": "SRC-COURSE-37-52",
+      "lesson": "52B",
+      "start_page": 1375,
+      "end_page": 1397,
+      "start_title": "52B-0"
+    }
+  ]
+}

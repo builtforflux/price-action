@@ -329,11 +329,14 @@ Ten Bars, Two Legs correction。它是反转 swing 的常见时间与路径预�
 | 缩写 | 含义 |
 | --- | --- |
 | `AIL` / `AIS` | Always In Long / Short |
+| `BLSHS` | Buy Low, Sell High, Scalp |
 | `BO` / `BOM` / `BP` / `BT` | Breakout / Breakout Mode / Breakout Pullback / Breakout Test |
 | `BTC` / `STC` | Buy The Close / Sell The Close |
+| `DOM` | Depth of Market |
 | `ET` | Expanding Triangle |
 | `FBO` / `FF` / `FT` | Failed Breakout / Final Flag / Follow-through |
 | `H1`–`H6` / `L1`–`L6` | High / Low counting |
 | `LOM` | Limit Order Market |
 | `MDB` / `MDT` / `MTR` | Micro Double Bottom / Top / Major Trend Reversal |
+| `RR` | Risk / Reward |
 | `TE` / `TBTL` / `TTR` | Trader's Equation / Ten Bars, Two Legs / Tight Trading Range |
