@@ -67,6 +67,8 @@ Repository synthesis 和 Execution baseline 可以合理使用，但必须与 Br
 
 稳定定位格式为 `Source ID + 课程号 + 物理 PDF 页码 + 原始 bookmark`；本仓库的 `p` 均指对应 PDF 的物理页码，不是幻灯片画面里的页码。两份文件各有一页译者前言，不归因于 Brooks。英文课程页是主证据，中文页只作辅助；文字抽取与画面冲突、英文与中文翻译冲突时，以原始英文画面和图中标注为准，并登记冲突而不静默修补来源。
 
+191 个分讲的文本分析、页界和视觉验收状态统一登记在[课程覆盖清单](course/coverage_manifest.md)。PDF outline 可以确认分讲 bookmark 与物理页边界，但不等于页面图形、箭头、订单线或逐帧关系已经完成视觉核验。
+
 这些文件按“用户提供的本地课程材料”登记，不因内容外观直接提升为公开官方来源，也不对其法律来源作仓库无法验证的声明。关键定义还要与上表的官方 glossary、manual、文章及公开 PDF 交叉核对；若两类材料用法不同，保留各自语境。
 
 ## 已知来源冲突
@@ -81,6 +83,8 @@ Repository synthesis 和 Execution baseline 可以合理使用，但必须与 Br
 | `SRC-COURSE-01-36` p1685、p1690、p1695–1696、p1715 | 平仓/开空、limit/stop 的订单角色错译 | 引用时同时标明 open/close、long/short 和 order type |
 | `SRC-COURSE-01-36` p2003、p2026、p2088、p2167 | undershoot、HL/LH、cover short 等方向关系错译 | 结构与方向以英文、图形和相邻页为主 |
 | `SRC-COURSE-01-36` p2090 | 标题写 micro 2–4 bars，正文写 2–5 bars | 两种范围并列保留，不据此建立唯一数量规则 |
+| `SRC-COURSE-01-36` bookmark `18A` / p1440–1441 | bookmark 指向 p1440，但该页画面仍是 17B 结束页；p1441 才是 18A 封面 | 保留原 bookmark 以复现源文件定位，同时把 17B 记至 p1440、18A 从 p1441 开始 |
+| `SRC-COURSE-01-36` bookmark `34A` / p2694–2695 | p2694 已是 34A 的 Review/主题导入页，但 bookmark 指向 p2695 的 34A 封面 | 34A 页范围从 p2694 起；原 bookmark 仍按 p2695 保留，Review 页不作为新增独立论据 |
 | `SRC-COURSE-01-36` p2346–2351、p2362、p2396–2397 | runs/Z-score 与 Trader's Equation 存在算术或阈值冲突 | 不将这些数值直接用于仓位或概率规则 |
 | `SRC-COURSE-01-36` p2470、p2473 | 标题称 60% 胜率后亏损，正文给定算术分别为 +$10、+$40 | 算术关系优先于标题概括；可依赖边界仅为优势较薄且对成本敏感 |
 | `SRC-COURSE-01-36` p2514–2521、p2516 | Bracket 被译成“一篮子订单”；卖出例英文残留把先成交写成 sell | Bracket 按 Bracket/OCO 理解；p2516 的订单方向以图和订单逻辑为准 |
