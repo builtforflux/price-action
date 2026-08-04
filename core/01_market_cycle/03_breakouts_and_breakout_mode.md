@@ -12,13 +12,13 @@ Breakout event 的最低定义只是：当前 K 线高点或低点越过某个�
 
 ## 本仓库的分层口径
 
-“获接受的突破 / accepted breakout”是本仓库为了避免职责混写而使用的状态标签，不是 Brooks 官方 glossary 中一个统一、独立的词条。它把可观察过程分成三层：
+“获接受的突破 / accepted breakout”指价格越过重要边界后，新价格在边界外获得市场接受（accepted）：收盘在边界外、跟进、守住测试等证据表明外部价格被认可。它是本仓库为了避免职责混写而使用的状态标签，不是 Brooks 官方 glossary 中一个统一、独立的词条；它把可观察过程分成三层：
 
 1. `breakout event / attempt`：价格越过重要价位，结果尚未知。
-2. `接受证据累积`：收盘在外、follow-through、旧区域未被快速重新接受，必要时再加突破测试守住。
-3. `breakout phase / spike`：证据已足以形成持续方向控制，成为 trend 的阶段。
+2. `接受证据累积`：事件之后出现收盘在外、follow-through、旧区域未被快速重新接受等证据。升级到本层的最小可观察条件是：事件发生后至少一根完成 K 线收在边界外，且随后出现沿突破方向的跟进，或突破点未被快速收回；事件发生后立即快速回到原区域、没有任何跟进时，证据不足以进入本层。
+3. `breakout phase / spike`：接受证据累积到足以形成持续方向控制，成为 trend 的阶段；“形成方向控制”的可观察判据见[市场周期](00_market_cycle.md#基础层级)。
 
-这套分层是仓库综合 glossary 的 breakout / follow-through 定义和课程逐 K 线判断后的组织方式。引用 Brooks 原话时仍使用具体原术语；“获接受”只表示证据状态，不给交易许可，也不要求先发生回踩。
+这套分层是仓库综合 glossary 的 breakout / follow-through 定义和课程逐 K 线判断后的组织方式。引用 Brooks 原话时仍使用具体原术语；“获接受”只表示证据状态，不给交易许可，也不要求先发生回踩。层级升级是证据状态的持续判断，不是按固定根数或一次性阈值触发的状态机：同一事件可以随新证据被重新评估，不因名称获得永久等级。
 
 最低 breakout event / attempt、接受证据，以及趋势中的 breakout phase（spike）是不同粒度：第一层只要求高低点越过重要价位；第二层要求新价格得到收盘、follow-through 或没有快速收回等证据支持；第三层要求这些证据进一步形成持续方向控制，因此属于 trend 的阶段。可交易 breakout pattern 更强调 trend bar、收盘越过 support/resistance、follow-through 和新价格是否被接受，但仍须结合 Context 才能形成 Setup。回踩守住可以加强判断，却不是 breakout event 发生或接受证据成立的必要步骤。
 

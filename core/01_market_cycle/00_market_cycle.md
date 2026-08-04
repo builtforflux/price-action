@@ -15,7 +15,7 @@ Market cycle 是读图的第一层。它决定顺势、回调、区间交易、�
 1. 基础状态是 trend，还是 trading range？
 2. 如果是 trend，当前主要是已形成方向控制的 breakout phase（spike），还是 channel？
 
-这层判断可以展开成连续谱：`breakout phase / spike -> tight channel -> broad channel -> trading range`。越向右，回调、重叠和双边交易通常越多。这里的 breakout phase 是突破已获得足够接受并形成方向控制后的趋势阶段，不是价格刚越过重要价位的单个 breakout event / attempt；“获接受”是本仓库对中间状态的整理标签。具体结构线索和典型根数见[趋势和通道](01_trends_and_channels.md)，不同突破粒度和命名边界见[突破和突破模式](03_breakouts_and_breakout_mode.md#本仓库的分层口径)。
+这层判断可以展开成连续谱：`breakout phase / spike -> tight channel -> broad channel -> trading range`。谱上的位置按一组可观察维度联合判定：回调深度与持续时间、K 线重叠程度、顺势缺口或近似缺口的有无、逆势方能否获利（双边交易出现的频率）；越向右，回调通常越深、重叠越多、缺口越少、双边获利越常见。这里的 breakout phase 是突破已获得足够接受并形成方向控制后的趋势阶段，不是价格刚越过重要价位的单个 breakout event / attempt；“获接受”是本仓库对中间状态的整理标签。“已形成方向控制”要求接受证据累积到以下事实先后或同时成立：突破后出现连续顺势趋势 K 线，或收盘继续沿突破方向延伸；回调浅且恢复快，不破坏突破点；反方尝试缺乏跟进；突破点或关键区域未被快速收回。这些是逐根累积的持续判断，单一线索不构成方向控制，任一事实随后被反向证据推翻时须重新评估。具体结构线索和典型根数见[趋势和通道](01_trends_and_channels.md)，不同突破粒度和命名边界见[突破和突破模式](03_breakouts_and_breakout_mode.md#本仓库的分层口径)。
 
 ### 状态必须绑定周期和观察窗口
 
