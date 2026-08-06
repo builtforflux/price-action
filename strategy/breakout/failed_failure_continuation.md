@@ -1,6 +1,8 @@
 # 收盘突破被拒绝后再次接受原方向
 
 > **定位：failed-failure continuation 的仓库执行子型**
+>
+> **来源层**：failed failure、breakout pullback 与 second signal 机制来自 Brooks；“边界外收盘—三根内收回—三根内再次边界外收盘”的仓库子型、两个三根窗口、两根订单寿命、结构高度单一投射与全量退出是仓库执行基线。
 
 ## 交易的市场行为
 
