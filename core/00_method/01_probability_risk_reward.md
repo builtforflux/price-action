@@ -14,7 +14,7 @@ Trader's Equation 的核心关系是：
 成功概率 × reward > 失败概率 × risk
 ```
 
-概率、reward 和 risk 必须描述同一笔 entry、protective stop、profit target 和管理方式。佣金、滑点等成本不属于价格行为公式，但会影响真实净结果，执行记录需要另行计算。
+概率、reward 和 risk 必须描述同一笔 entry、protective stop、profit target 和管理方式。佣金、滑点等成本不属于价格行为公式，但会影响真实净结果，交易记录需要另行计算。
 
 本仓库分析时先使用二结果近似；这是为了检查同一方案是否自洽的整理方法，不是 Brooks glossary 中的独立术语。只有部分止盈、scratch 或提前退出明显改变结果时，才需要拆分更多互斥结果；没有可靠样本时，不构造看似精确的完整概率树。
 

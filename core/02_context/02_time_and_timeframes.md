@@ -52,7 +52,7 @@
 
 - **Opening / first swing**：从 session 开始到当天第一段向上或向下 swing 结束的描述性阶段。它的终点常要在走出若干后续价格后才清楚，因此不能在实时中假装存在一个可精确预知的结束 K 线，也不等于下面的内部固定窗口。
 - **Opening Breakout Mode（Opening BOM）**：课程对这个名称也有较宽泛的用法，包括开盘强突破后很快形成早期区间、等待下一次方向选择的情形。为保持可执行和可审计，本仓库把“首根 K 线之后，价格对首根两侧先后进行测试和反转”定义为较成熟的 Opening BOM 子型：它形成早期双向候选区间，边界随早期新高、新低和失败尝试更新，不由固定根数单独定义；尚未突破时采用 trading-range / breakout-mode 逻辑，只有强突破和跟进才切换为顺势。这是仓库的操作性收窄，不是把课程的宽泛用法改写为唯一官方定义。
-- **First-18-bar heuristic**：课程另外观察前 18 根 K 线的高低范围以及其后附近的突破或反转。`18` 是课程针对相应日内图表的近似成熟度提示，不是神奇阈值，也不与 Opening BOM 同义；它只能作为 Reference / Strategy 中经品种和周期验证后的启发式，不能成为本页的通用定义或自动入场条件。
+- **First-18-bar heuristic**：课程另外观察前 18 根 K 线的高低范围以及其后附近的突破或反转。`18` 是课程针对相应日内图表的近似成熟度提示，不是神奇阈值，也不与 Opening BOM 同义；它只能作为 Reference 中经品种和周期验证后的启发式，不能成为本页的通用定义或自动入场条件。
 - **Session opening window（仓库内部口径）**：若研究、回测或策略需要一个固定 opening range，必须在观察前明确根数或时间窗口，并只用当时可见数据计算高低点。它是内部可复现 schema，不宣称等同于 Brooks 的 first swing、Opening BOM 或 first-18 heuristic。
 - **Opening-range breakout**：价格离开当前计划明确声明的 opening-range 边界，首先只构成 breakout event / attempt；必须同时注明边界来源，例如 Opening BOM 的动态边界、first-18-bar range、内部预设窗口，或另一项在观察前显式声明的来源。是否获得接受仍看收盘、跟进、回踩和旧区域是否被重新接受，单次刺穿不够。
 - **Trend from the open**：开盘后很快形成方向，初始极值在随后许多根中保持，且没有真正 pullback；它比普通 trend day 更强调趋势从 session 开始阶段形成。
