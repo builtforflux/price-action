@@ -37,7 +37,7 @@ Entry price 成为 magnet 只说明已有参与者可能关注该区域，不保
 
 ## 与策略目标口径的边界
 
-本页只定义价格行为中的目标区域、magnets、路径障碍和量度关系。仓库策略页怎样从这些概念选定页面基线目标、实际退出价格并冻结计划，统一由[策略手册的价格与净 R 口径](../../strategy/common_rules.md)规定；`core/` 不另写一套执行规则。
+本页定义价格行为中的目标区域、magnets、路径障碍和量度关系。
 
 ## 量度目标
 
@@ -79,7 +79,7 @@ Breakout height（复制当前选定的完整突破段）：Δ = breakout 结束
 
 沿交易方向标出 support/resistance 和 magnets，区分路径障碍与准备获利的 target。明显障碍会影响更远目标的到达概率，但不要求在每个较近价位退出；强 trend 或 strong breakout 可以穿越较小障碍，trading range 或弱 channel 则更常使用近目标。
 
-Trader's Equation 使用当前计划真实采用的退出价格和相应到达概率。不能忽略近端障碍而只选择一个与当前 setup 无关的远端投射，也不能把 measured move 当成保证；具体价格口径回到[策略手册](../../strategy/common_rules.md)。
+Trader's Equation 使用当前计划真实采用的退出价格和相应到达概率。不能忽略近端障碍而只选择一个与当前 setup 无关的远端投射，也不能把 measured move 当成保证。
 
 ## 磁吸目标
 

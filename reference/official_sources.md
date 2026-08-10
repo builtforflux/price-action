@@ -2,7 +2,7 @@
 
 > **状态：Evidence Registry / Non-normative**
 >
-> 本文件登记和锚定 Al Brooks 资料，不直接许可交易动作；[人工策略](../strategy/README.md)的分类和[执行流程](../execution/README.md)均为仓库整理，价格行为结论仍以本台账所列资料为依据。
+> 本文件登记和锚定 Al Brooks 资料；价格行为结论以本台账所列资料为依据。
 
 本文件为可重复引用的官方资料分配稳定 ID。`已核验`只表示链接和来源身份已在该行日期检查，不表示该来源中的全部结论都已逐条确认。
 
@@ -22,11 +22,11 @@ Support forum 中普通用户或版主的回答不能单独覆盖 1–3 级来�
 | Direct support | 来源明确给出同一最低定义、条件、事件或概率交换 |
 | Context support | 来源支持组成机制，但引用者做了条件化、跨页组合或更窄应用 |
 | Repository synthesis | 仓库为消歧、分层、分类或职责分配作的整理，不归因于 Brooks 的固定体系 |
-| Execution baseline | 为一致执行、风险安全和复盘选定的精确参数或流程，不外推为通用市场规律 |
+| Repository baseline | 为一致操作、风险安全和复盘选定的精确参数或流程，不外推为通用市场规律 |
 | Source conflict | 官方公开来源、课程画面、课程文字或翻译之间存在口径冲突，必须并列保留 |
 | Unresolved / unsupported | 证据不足以定案，或找不到支持；不能用相似文本自动补证 |
 
-Repository synthesis 和 Execution baseline 可以合理使用，但必须与 Brooks 明示内容分开。来源冲突须保存各自语境，不能静默选择一份覆盖另一份。
+Repository synthesis 和 Repository baseline 可以合理使用，但必须与 Brooks 明示内容分开。来源冲突须保存各自语境，不能静默选择一份覆盖另一份。
 
 ## 已登记来源
 
@@ -98,7 +98,7 @@ Repository synthesis 和 Execution baseline 可以合理使用，但必须与 Br
 
 ## 来源锚点定位
 
-以下只记录已实际使用的原文位置和可定位含义，方便重复查证。它不直接规定交易动作；核心概念怎样进入人工计划，统一见[核心概念与人工策略地图](strategy_map.md)。
+以下只记录已实际使用的原文位置和可定位含义，方便重复查证。概念定义的权威归属见 [`core/README.md`](../core/README.md#definition-权威注册表)。
 
 | Source ID | 页面位置 | 本仓库可依赖的锚点 |
 | --- | --- | --- |
@@ -160,6 +160,6 @@ Repository synthesis 和 Execution baseline 可以合理使用，但必须与 Br
 ## 使用规则
 
 - 引用时使用 Source ID，并尽量补充页面条目、章节、页码或 slide。
-- “来源可访问”不等于“结论已核对”；登记来源的身份与访问核验见“已登记来源”，可依赖的结论边界见“来源锚点定位”，核心概念进入人工计划的关系见[核心概念与人工策略地图](strategy_map.md)。
+- “来源可访问”不等于“结论已核对”；登记来源的身份与访问核验见“已登记来源”，可依赖的结论边界见“来源锚点定位”，概念定义的权威归属见 [`core/README.md`](../core/README.md#definition-权威注册表)。
 - 直接转述、仓库推导和仓库订单/记录操作必须分开标记。
 - 若官方资料之间存在差异，记录各自语境，不自动用较新的页面覆盖较早资料。
