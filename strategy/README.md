@@ -45,6 +45,7 @@ Breakout mode、climactic move 与 transition evidence 是叠加在基础状态�
 | Application（策略页） | 可检查的策略原型：回答 premise、触发、失效、stop 锚点、目标与管理 |
 | Application（目标构造页） | 目标与结构构造说明，不独立成立入场策略（如 [量度目标构造](breakout/measured_move_breakout.md)） |
 | Application（覆盖层页） | 叠加约束（时段、时间风险），不建立新家族（见 [时段覆盖层](session/README.md)） |
+| Application（决策协议页） | 把策略页已有概念操作化为可观察的选择条件（版本选择、stop/target/管理绑定）；可收紧候选资格，但不得扩大 premise、重定义概念或增加未经授权的概率/订单执行规则（见 [决策协议](protocols/README.md)） |
 
 ## 核验工具
 
@@ -52,6 +53,23 @@ Breakout mode、climactic move 与 transition evidence 是叠加在基础状态�
 | --- | --- |
 | [覆盖矩阵](coverage_matrix.md) | 核验五个已注册家族 × 当前状态与证据词汇不存在未处理组合；行号 R01–R46 + 全局行 G01，21 个实际策略页全部直接链接 |
 | [决策流程图](decision_flow.md) | 覆盖矩阵的视觉投影：opening 检查 → 基础状态 → MTR → 晚段形态 → continuation 分支 → PREMISE_SELECT（STRATEGY/WATCH/NO_TRADE 统一裁决，含 G01 空间裁决）→ 时段/时间校验（按所选候选持有期，R28）→ 唯一叶子 |
+
+## 执行清单（从策略页到 Trade Plan）
+
+策略页是原型：它告诉你「看什么、怎样触发、什么使它失效、stop 与 target 锚在哪类结构」，但**不给你具体价格**；[决策协议](protocols/README.md) 绑定选项选择条件。入场前必须逐项写清下列字段，全部写清前不下单：
+
+| 步骤 | 写什么 | 来自策略页哪一节 |
+| --- | --- | --- |
+| 1. Premise | 一句话：「我在交易什么」（如：强趋势首次浅回调恢复） | 交易命题 |
+| 2. 触发 | 具体订单：具体参照事件或 signal bar 的触发位 + 订单类型（stop entry / limit / 收盘市价） | 触发类别 |
+| 3. 失效清单 | 会使 premise 失效的可观察事实清单（逐条可核对） | 失效 |
+| 4. Active protective stop | 具体价格 + 依据（把 stop 锚点类别落到实际结构价位；signal bar 另一端仅在同时是完整失效边界时可用） | Stop 锚点 |
+| 5. Profit target | 具体价格 + 依据（把目标类别落到实际 magnet / 量度价位；非"等它涨"） | 目标 |
+| 6. 仓位 | 由 entry → active stop 的风险距离与账户风险上限算出；scale-in 则写全部层总风险 | 目标与管理 + 跨情景基线 |
+| 7. 管理 | 入场前选定 scalp 或 swing；写出正常回调容忍、部分退出与 premise 变化退出的分支 | 目标与管理 + 三层退出保护 |
+| 8. Trader's Equation | 用同一组 entry / stop / target 检查二结果近似：p(win) × reward − p(loss) × risk − costs > 0；存在部分退出、scratch 等结果时按 core 拆分更多互斥结果 | 跨情景基线 |
+
+执行时仍遵守：证据不足 → WATCH（等待新数据重新运行）；空间或时间不足 → NO_TRADE。计划版本规则：**承担风险前**，stop / target / management 的实质变化需要新版本；**成交后**按预写管理分支调整并记录状态（不覆盖 original_target），不自动新建整份计划；退出后重新入场必须建立新 Trade Plan（core [从 Setup 到交易计划](../core/06_trade_plan_and_management/00_trade_plan.md)）。
 
 ## 选择链
 

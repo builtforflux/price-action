@@ -17,6 +17,18 @@
 - 空间检查不前置：目标、方向和合理 stop 是候选相关的，`G01` 只在所有可识别候选均无空间时由 PSEL 输出（R02/R22 为其示例行）；尾盘时间不足（R28）也不前置——在 PSEL 之后按所选候选的持有期校验（swing 时间不足 → NO_TRADE；scalp 若仍有足够时间可保留独立计划评估）；
 - `WATCH` 是「等待新证据/重新分类」终端：下一次获得新数据时从入口重新运行；**流程图内部不保留无限回边**（MTR 链重置 R34 也落到 WATCH，不画回边）。
 
+## 执行者四步指引
+
+1. **定位候选并建立各自 entry/stop/target**：按「基础状态 → 结构进度 → 阶段/叠加 → 空间 → 时段」在 [覆盖矩阵](coverage_matrix.md) 找到命中行。**G01（全部候选均无空间）与 R28（尾盘时间）不前置**——没有候选就不知道 target、stop 和持有期：
+   - STRATEGY → 打开该行链接的策略页；
+   - WATCH → 记下所需证据，等待新数据后从本图入口重新运行；
+   - NO_TRADE → 本轮不做；
+2. **PSEL 裁决**：各候选建立自己的 entry/stop/target 后，全部候选无空间才输出 G01；选定单一 premise（选择必须写明主导命题、计划持有方式和该命题比其他候选更直接解释当前风险的理由；两个候选都通过且无法给出不依赖结果的选择理由 → WATCH/NO_TRADE，不允许以「喜欢这个形态」或更漂亮的 R 作为唯一理由）；
+3. **按持有期校验 R28**：根据所选 premise 的持有期检查尾盘剩余时间（swing 时间不足 → NO_TRADE；scalp 若仍有时间可保留独立计划评估）；
+4. **填执行清单**：对选定的策略页与其 [决策协议](protocols/README.md)，按 [策略目录入口](README.md#执行清单从策略页到-trade-plan) 的八步清单写下 premise、触发、失效、active stop、target、仓位、管理与 Trader's Equation；未写清不下单。
+
+执行路径：**STRATEGY 叶子 → 策略页 → 决策协议 → Trade Plan**。
+
 ```mermaid
 flowchart TD
     ENTRY["读图开始（绑定周期与观察窗口，携带持有意图）"] --> OPEN{"opening 覆盖检查（R26/R27/R41/R45/R46）<br/>core：周期与时段 Context"}
