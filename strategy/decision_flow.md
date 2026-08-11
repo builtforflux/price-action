@@ -23,7 +23,7 @@ flowchart TD
 
     OPEN -->|"BOM/压缩方向未决"| S26["STRATEGY：压缩结构双向候选（R26 + Opening BOM 覆盖层 R45）"]
     OPEN -->|"离开 opening-range 边界并获接受"| S41["STRATEGY：开盘区间突破（R41）"]
-    OPEN -->|"开盘即趋势，首次可交易回调"| S46["STRATEGY：开盘趋势（R46，叠加趋势延续家族）"]
+    OPEN -->|"开盘即趋势（R46 覆盖层叠加于 R01/R03，不产生独立候选）"| STAGE{"趋势阶段（R08–R15）<br/>core：趋势和通道"}
     OPEN -->|"初始方向失去接受"| OV2{"底层 premise 可判定？（R27）<br/>core：周期与时段 Context"}
     OV2 -->|"证据不足，必须等待"| W27["WATCH：等待足以判定底层 premise 的新证据（R27）"]
     OV2 -->|"证据足以分类"| BASE
@@ -123,7 +123,6 @@ flowchart TD
     S40 --> PSEL
     S40B --> PSEL
     S41 --> PSEL
-    S46 --> PSEL
     S42 --> PSEL
     S43 --> PSEL
     W05 --> PSEL
@@ -168,7 +167,7 @@ flowchart TD
 - 空间检查不前置：G01 只在所有可识别候选均无空间时命中（R02/R22 示例）；尾盘时间不足（R28）在 PSEL 之后按所选候选的持有期校验，不提前阻止仍有时间完成的 range/minor scalp；
 - MTR 链（R29–R31/R34/R44）与晚段形态（R06/R07/R12/R32/R33/R42/R43）互不依赖：晚段形态不要求先有通道/趋势线破坏，完整链成立时优先按 MTR；
 - R26/R37–R39/R40 的矩阵适用状态在流程中均有对应入口：压缩结构可从 opening（R45 叠加）、EDGE（区间语境）与 STAGE2（趋势语境）进入；double flag/MAG/wedge pullback 在 spike 与 tight channel 均有分支；failed-failure 在 spike 与区间 EDGE 均有分支；
-- 开盘场景完整覆盖：Opening BOM（R26/R45）、Opening Reversal（R27）、开盘区间突破（R41）、开盘趋势（R46）各有独立分支；
+- 开盘场景完整覆盖：Opening BOM（R26/R45）、Opening Reversal（R27）、开盘区间突破（R41）各有独立分支；开盘趋势（R46）为覆盖行，叠加于 R01/R03 对应页，不产生独立候选；
 - `WATCH` 终端允许带"所需证据清单"回到入口，但流程图中不画回边——重新运行是下一次读图，不是同一轮内的循环。
 
 ## 相关来源

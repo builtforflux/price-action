@@ -63,7 +63,7 @@
 | R32 | trend 后期 | — | wedge 三推 + 合格逆势触发（完整 MTR 链未成立） | 足够 | — | STRATEGY：[反转/三推楔形反转](reversal/wedge_reversal.md)（逆势修正 scalp；完整链成立时优先按 MTR 处理） | [逆势修正 Scalp](../core/05_setups/05_minor_reversal_scalp.md) | [楔形](../core/04_patterns/03_wedges.md) | 24、27 | 42、49 |
 | R33 | trend 晚段 | — | final flag 顺势失败 + 合格逆势触发（完整 MTR 链未成立） | 足够 | — | STRATEGY：[反转/最终旗形反转](reversal/final_flag_reversal.md)（result evidence 后；TBTL 仅预写 runner） | [逆势修正 Scalp](../core/05_setups/05_minor_reversal_scalp.md) | [最终旗形](../core/04_patterns/05_final_flags.md) | 23、40E | 48J、49 |
 | R34 | trend | — | 旧极值被重新接受并获跟进 | — | — | WATCH：MTR 证据链重置，等待新结构破坏 | [主要趋势反转](../core/05_setups/04_major_trend_reversal.md) | [市场周期](../core/01_market_cycle/00_market_cycle.md) | 22、38 | 49 |
-| R35 | 任意 | 模糊状态 | 状态不清（trend/range 不分） | — | — | WATCH：按 core fallback 保守归类，等待新证据 | — | [市场周期](../core/01_market_cycle/00_market_cycle.md) | 12、37 | 49 |
+| R35 | 任意 | 模糊状态 | 状态不清（trend/range 不分；含区间形成中/未成熟） | — | — | WATCH：按 core fallback 保守归类，等待新证据；区间形成足够压缩后可转入 R26 | — | [市场周期](../core/01_market_cycle/00_market_cycle.md) | 12、37 | 49 |
 | R36 | spike | — | 首根足够强的 breakout bar 收盘时，尚无独立 follow-through | 足够 | — | STRATEGY：[突破/收盘跟随（早期版）](breakout/buy_sell_the_close.md)（按早期版概率与方程重算；已过首根收盘后才确认未快速收回的，按当前 entry 重建计划，不能继承早期收盘价） | [突破延续 Setup](../core/05_setups/02_breakout_continuation.md) | [突破和突破模式](../core/01_market_cycle/03_breakouts_and_breakout_mode.md) | 15、18 | 47、49 |
 | R37 | spike / tight | — | 回调两次测试近似低位/高位（double bottom/top flag，含 micro） | 足够 | — | STRATEGY：[趋势/双测试旗形](trend/double_flag_continuation.md) | [趋势延续 Setup](../core/05_setups/01_trend_continuation.md) | [双顶、双底和旗形变体](../core/04_patterns/04_double_tops_bottoms.md) | 09、21D、25 | 49 |
 | R38 | spike / tight | — | 强趋势首次深回调穿过均线，或长期未触均线后首次触及 | 足够 | — | STRATEGY：[趋势/均线缺口回调](trend/moving_average_gap_bar.md) | [趋势延续 Setup](../core/05_setups/01_trend_continuation.md) | [缺口](../core/04_patterns/07_gaps.md#术语边界) | 11、14 | 43、49 |
@@ -74,7 +74,7 @@
 | R43 | trend 后期 | — | ET 五腿以上 + 第四/五腿反向压力，反向 breakout + follow-through 确认 | 足够 | — | STRATEGY：[反转/扩张三角形 MTR 候选](reversal/expanding_triangle_mtr.md)（确认后交易） | [主要趋势反转](../core/05_setups/04_major_trend_reversal.md) | [Triangles、ii、ioi 和 oo](../core/04_patterns/06_triangles_ii_ioi_oo.md) | 26B、47 | 42、49 |
 | R44 | trend | transition | 通道破坏 → 旧极值测试失败，尚无反向触发 | — | — | WATCH：等待反向触发或强反向 breakout（MTR 早期版候选） | [主要趋势反转](../core/05_setups/04_major_trend_reversal.md) | [市场周期](../core/01_market_cycle/00_market_cycle.md) | 21–22 | 38–39、49 |
 | R45 | 任意 | BOM | 方向未决 | — | opening | STRATEGY：[压缩结构双向候选](breakout/compression_breakout_mode.md)（R26）+ [Opening BOM 覆盖层](session/opening_bom.md)（R45 叠加，仅增加开盘约束，不改变双向候选逻辑） | [突破延续 Setup](../core/05_setups/02_breakout_continuation.md) | [周期与时段 Context](../core/02_context/02_time_and_timeframes.md) | 48D | 48I–48K、49 |
-| R46 | 任意 | — | 开盘后快速形成方向，初始极值保持，首次可交易回调 | 足够 | opening | STRATEGY：[开盘趋势](session/trend_from_open.md)（覆盖层叠加于趋势延续家族：第一次小回调 / 收盘跟随） | [趋势延续 Setup](../core/05_setups/01_trend_continuation.md) | [周期与时段 Context](../core/02_context/02_time_and_timeframes.md) | 48A–48C | 48I–48K、49 |
+| R46 | 任意 | — | 开盘后快速形成方向，初始极值保持，首次可交易回调 | 足够 | opening | 覆盖行（不产生独立候选）：STRATEGY 取趋势延续对应页（R01 首次小回调 / R03 收盘跟随，依回调或收盘证据）+ [开盘趋势](session/trend_from_open.md)（R46 叠加，仅增加开盘约束，不参与 PSEL 候选） | [趋势延续 Setup](../core/05_setups/01_trend_continuation.md) | [周期与时段 Context](../core/02_context/02_time_and_timeframes.md) | 48A–48C | 48I–48K、49 |
 
 ## 状态检查点/管理提示行（不产生独立叶子）
 
@@ -102,6 +102,7 @@
 | 紧通道 ~20 根寿命线索（18C） | [高潮和状态转换](../core/01_market_cycle/04_climax_and_transition.md)、[趋势 README](trend/README.md) | R09 |
 | 晚段微型通道 70% TBTL（42B） | [高潮和状态转换](../core/01_market_cycle/04_climax_and_transition.md) | R11 |
 | Pain Trade（行为模型） | [跨情景基线](../README.md#跨情景基线)（接受与失败证据行） | R05、R40 |
+| 强趋势中的顺势限价卖出（专家入场变体，reference-only 边界） | [风险与心理纪律](../core/06_trade_plan_and_management/03_risk_psychology.md)（小仓宽 stop 早期参与）；课程 49A p1080、49D | R01、R03 |
 
 ## 完整性声明
 
