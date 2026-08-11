@@ -45,3 +45,4 @@ Stop 锚点类别：完整 breakout leg 外。
 - [突破延续 Setup](../../core/05_setups/02_breakout_continuation.md)
 - [风险与心理纪律](../../core/06_trade_plan_and_management/03_risk_psychology.md)
 - [概率、风险和回报](../../core/00_method/01_probability_risk_reward.md)
+- [BTC/STC 决策协议](../protocols/buy_sell_the_close.md)（版本选择与参数绑定）
