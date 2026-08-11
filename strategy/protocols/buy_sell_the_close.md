@@ -1,6 +1,6 @@
 # 策略决策协议：BTC/STC（收盘跟随）
 
-> **状态：Strategy / Application（Decision Protocol）（试点草稿，待审）**
+> **状态：Strategy / Application（Decision Protocol）（文本审阅通过，待回放验收）**
 >
 > **适用范围**：只处理顺势收盘附近的直接参与；已形成回踩后转入 [突破回踩](../breakout/breakout_pullback_test.md) 的决策协议，不继续使用本卡。
 
@@ -53,10 +53,12 @@
 
 - **没有可行 swing 计划**（结构不清楚，或近端障碍使 swing 方程不成立），但近端 magnet 的 scalp 方程成立 → **Scalp**；
 - **有可行 swing 计划，且近端 magnet 不构成实质路径障碍** → **Swing**；
-- **Scalp 与 Swing 两个子计划各自方程成立；近端 magnet 会影响但不会否定远端到达；数量、target、管理已预先拆分** → **预写分仓**；
+- **Scalp 与 Swing 两个子计划各自方程成立；近端 magnet 构成实质路径障碍并显著降低远端到达概率，但尚未使 swing 方程转负；数量、target、管理已预先拆分** → **预写分仓**；
 - 其余 → WATCH / NO_TRADE。
 
 关键判据是「**有没有可行 swing 计划**」，不是「图上有没有 swing 结构」——swing 结构存在但方程被近端障碍否定时，可行 scalp 不应被排除。
+
+三条互斥（不重叠）：Swing 方程不可行而 Scalp 可行 → Scalp；Swing 方程可行且近端 magnet 不构成实质障碍 → Swing；两子计划均可行且近端 magnet 构成实质障碍但未使 swing 方程转负 → 预写分仓。
 
 选定管理版本后，entry、target、仓位与退出规则全部绑定该版本：
 
@@ -75,6 +77,8 @@
   2. 在预先声明的管理周期上出现足以否定原接受结构的强反向突破与跟进；
   3. 同一管理周期的 Always In 明确翻转，并且该翻转否定原突破延续 premise。
   触发后：**全部依赖 BTC premise 的仓位主动退出**；结构 protective stop 在仓位归零前继续有效。后续管理条目只引用本定义，不重复条件。
+
+  第 2、3 条的图形边界在回放中校准（不设机械参数），至少区分：强反向突破 + 跟进 → 退出；强反向 K 线但无跟进 → 不退出；正常 pullback 进入 channel → 不退出。
 - **Active exit 预写**：
   - 属正常波动的反向收盘：普通回踩、单根反向 K 线——不触发退出；
   - 要求主动退出的情形：即上方 **Premise invalidation** 任一条件成立——在结构 stop 前主动退出，此处不重复定义；
