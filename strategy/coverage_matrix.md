@@ -62,7 +62,7 @@
 | R31 | trend | transition | 通道破坏 → 旧极值测试失败 → 强反向 breakout + follow-through | 足够 | — | STRATEGY：[反转/MTR 确认版](reversal/mtr_early_and_confirmed.md)（约 60%；缺少旧极值测试时按突破延续或反转候选处理，不命名完整 MTR） | [主要趋势反转](../core/05_setups/04_major_trend_reversal.md) | [市场周期](../core/01_market_cycle/00_market_cycle.md) | 21–22、38–39 | 49 |
 | R32 | trend 后期 | — | wedge 三推 + 合格逆势触发（完整 MTR 链未成立） | 足够 | — | STRATEGY：[反转/三推楔形反转](reversal/wedge_reversal.md)（逆势修正 scalp；完整链成立时优先按 MTR 处理） | [逆势修正 Scalp](../core/05_setups/05_minor_reversal_scalp.md) | [楔形](../core/04_patterns/03_wedges.md) | 24、27 | 42、49 |
 | R33 | trend 晚段 | — | final flag 顺势失败 + 合格逆势触发（完整 MTR 链未成立） | 足够 | — | STRATEGY：[反转/最终旗形反转](reversal/final_flag_reversal.md)（result evidence 后；TBTL 仅预写 runner） | [逆势修正 Scalp](../core/05_setups/05_minor_reversal_scalp.md) | [最终旗形](../core/04_patterns/05_final_flags.md) | 23、40E | 48J、49 |
-| R34 | trend | — | 旧极值被重新接受并获跟进 | — | — | WATCH：MTR 证据链重置，等待新结构破坏 | [主要趋势反转](../core/05_setups/04_major_trend_reversal.md) | [市场周期](../core/01_market_cycle/00_market_cycle.md) | 22、38 | 49 |
+| R34 | trend | — | 旧极值被重新接受并获跟进，或新持续紧密趋势腿重新建立控制（约 20 根为案例线索，非阈值） | — | — | WATCH：MTR 证据链重置，等待新结构破坏 | [主要趋势反转](../core/05_setups/04_major_trend_reversal.md) | [市场周期](../core/01_market_cycle/00_market_cycle.md) | 22、38 | 49 |
 | R35 | 任意 | 模糊状态 | 状态不清（trend/range 不分；含区间形成中/未成熟） | — | — | WATCH：按 core fallback 保守归类，等待新证据；区间形成足够压缩后可转入 R26 | — | [市场周期](../core/01_market_cycle/00_market_cycle.md) | 12、37 | 49 |
 | R36 | spike | — | 首根足够强的 breakout bar 收盘时，尚无独立 follow-through | 足够 | — | STRATEGY：[突破/收盘跟随（早期版）](breakout/buy_sell_the_close.md)（按早期版概率与方程重算；已过首根收盘后才确认未快速收回的，按当前 entry 重建计划，不能继承早期收盘价） | [突破延续 Setup](../core/05_setups/02_breakout_continuation.md) | [突破和突破模式](../core/01_market_cycle/03_breakouts_and_breakout_mode.md) | 15、18 | 47、49 |
 | R37 | spike / tight | — | 回调两次测试近似低位/高位（double bottom/top flag，含 micro） | 足够 | — | STRATEGY：[趋势/双测试旗形](trend/double_flag_continuation.md) | [趋势延续 Setup](../core/05_setups/01_trend_continuation.md) | [双顶、双底和旗形变体](../core/04_patterns/04_double_tops_bottoms.md) | 09、21D、25 | 49 |
@@ -102,7 +102,9 @@
 | 紧通道 ~20 根寿命线索（18C） | [高潮和状态转换](../core/01_market_cycle/04_climax_and_transition.md)、[趋势 README](trend/README.md) | R09 |
 | 晚段微型通道 70% TBTL（42B） | [高潮和状态转换](../core/01_market_cycle/04_climax_and_transition.md) | R11 |
 | Pain Trade（行为模型） | [跨情景基线](../README.md#跨情景基线)（接受与失败证据行） | R05、R40 |
-| 强趋势中的顺势限价卖出（专家入场变体，reference-only 边界） | [风险与心理纪律](../core/06_trade_plan_and_management/03_risk_psychology.md)（小仓宽 stop 早期参与）；课程 49A p1080、49D | R01、R03 |
+| 专家限价卖出（强空头控制中的高位限价，非多数交易者默认方式） | [风险与心理纪律](../core/06_trade_plan_and_management/03_risk_psychology.md)（小仓宽 stop 早期参与）；课程 49A p1080 | R01、R03 |
+| 限价空头加仓（弱多头反弹/交易区间腿语境，非强趋势） | [加仓与减仓](../core/06_trade_plan_and_management/02_scaling_in_out.md)（预设 scale-in 层数、全部层总风险与最外侧 stop）；课程 49D p1145–1148 | R16、R17 |
+| 小仓宽 stop 分批卖出（强卖压背景，专家变体） | [风险与心理纪律](../core/06_trade_plan_and_management/03_risk_psychology.md)、[加仓与减仓](../core/06_trade_plan_and_management/02_scaling_in_out.md)；课程 38C p84 | R30、R31 |
 
 ## 完整性声明
 
