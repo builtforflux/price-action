@@ -105,6 +105,11 @@
 | 专家限价卖出（强空头控制中的高位限价，非多数交易者默认方式） | [风险与心理纪律](../core/06_trade_plan_and_management/03_risk_psychology.md)（小仓宽 stop 早期参与）；课程 49A p1080 | R01、R03 |
 | 限价空头加仓（弱多头反弹/交易区间腿语境，非强趋势） | [加仓与减仓](../core/06_trade_plan_and_management/02_scaling_in_out.md)（预设 scale-in 层数、全部层总风险与最外侧 stop）；课程 49D p1145–1148 | R16、R17 |
 | 小仓宽 stop 分批卖出（强卖压背景，专家变体） | [风险与心理纪律](../core/06_trade_plan_and_management/03_risk_psychology.md)、[加仓与减仓](../core/06_trade_plan_and_management/02_scaling_in_out.md)；课程 38C p84 | R30、R31 |
+| 跨周期检查（低周期紧通道 = 高周期强突破，按突破处理） | [周期与时段 Context](../core/02_context/02_time_and_timeframes.md)（多周期分工）；课程 43A p416–417、44A p502 | R08、R03 |
+| 紧密通道「永不止损卖出/买入」教学规则（紧通道逆势 stop-entry 被排除） | [趋势和通道](../core/01_market_cycle/01_trends_and_channels.md)（误读清单）；课程 43C p448、44C p536 | R08、R12 |
+| 区间日尾盘回测开盘价（opening price 作为 magnet） | [支撑阻力与目标](../core/02_context/01_support_resistance_targets.md)；课程 47D p880–881、48K | R28 |
+| 大幅初始突破失败 → 双向大波动扩展全天为区间 | [市场周期](../core/01_market_cycle/00_market_cycle.md)；课程 48A | R35 |
+| 尾盘确认-价格交换（越晚确认概率越高、价格/止损/时间更差） | [概率、风险和回报](../core/00_method/01_probability_risk_reward.md)（40–60 思维）；课程 48H | R03、R31 |
 
 ## 完整性声明
 
