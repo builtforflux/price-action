@@ -57,7 +57,7 @@
 
 **走查**：Entry expiry 按 6a/6b 分别裁决。
 
-**结果**：6a → 确认版仍可评估；6b → 本卡不可用，转 breakout-pullback ✓
+**结果**：6a → 确认版仍可评估；6b → BTC/STC 不可用，**先 WATCH**；回踩形成独立 trigger 后，才进入 breakout-pullback 重新评估 ✓
 
 ### 7. 管理例：Scalp（[人工边界测试] 41B p288 为相邻场景）
 
