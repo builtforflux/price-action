@@ -1,6 +1,6 @@
 # 策略决策协议：BTC/STC（收盘跟随）
 
-> **状态：Strategy / Application（Decision Protocol）（构造分支走查通过 22/22；价格回放验收待真实图表，见[回放记录](buy_sell_the_close_playback.md)）**
+> **状态：Strategy / Application（Decision Protocol）（构造分支走查通过 30 独立样本/23 组；价格回放验收待真实图表，见[回放记录](buy_sell_the_close_playback.md)）**
 >
 > **适用范围**：只处理顺势收盘附近的直接参与；已形成回踩后转入 [突破回踩](../breakout/breakout_pullback_test.md) 的决策协议，不继续使用本卡。
 
