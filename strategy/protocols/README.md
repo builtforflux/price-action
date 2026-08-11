@@ -58,4 +58,5 @@
 
 | 文件 | 内容 |
 | --- | --- |
-| [BTC/STC 决策协议](buy_sell_the_close.md) | 试点页（草稿待审） |
+| [BTC/STC 决策协议](buy_sell_the_close.md) | 试点页（构造分支走查通过，价格回放验收待真实图表） |
+| [BTC/STC 分支走查与覆盖表](buy_sell_the_close_playback.md) | 22 例构造走查、来源性质标注与条件/分支覆盖表 |
