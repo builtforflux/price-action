@@ -50,7 +50,7 @@ Breakout mode、climactic move 与 transition evidence 是叠加在基础状态�
 
 | 工具 | 用途 |
 | --- | --- |
-| [覆盖矩阵](coverage_matrix.md) | 核验五个已注册家族 × 当前状态与证据词汇不存在未处理组合；行号 R01–R45 + 全局行 G01，21 个实际策略页全部直接链接 |
+| [覆盖矩阵](coverage_matrix.md) | 核验五个已注册家族 × 当前状态与证据词汇不存在未处理组合；行号 R01–R46 + 全局行 G01，21 个实际策略页全部直接链接 |
 | [决策流程图](decision_flow.md) | 覆盖矩阵的视觉投影：opening 检查 → 基础状态 → MTR → 晚段形态 → continuation 分支 → PREMISE_SELECT（STRATEGY/WATCH/NO_TRADE 统一裁决，含 G01 空间裁决）→ 时段/时间校验（按所选候选持有期，R28）→ 唯一叶子 |
 
 ## 选择链
@@ -81,7 +81,7 @@ Trade Plan：entry、active protective stop、target、仓位、management
 | --- | --- | --- |
 | Stop entry / protective stop | [两类 Stop](../core/03_acceptance_and_order_logic/00_stop_entry_vs_protective_stop.md) | 触发用 stop entry，保护用结构 stop，两者用途不同 |
 | 二次信号与陷阱 | [二次入场和陷阱](../core/03_acceptance_and_order_logic/03_second_entries_and_traps.md) | second signal / second-entry opportunity / actual fill 三层分开 |
-| 接受与失败证据 | [接受、失望与失败证据](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md) | follow-through、disappointment、premise 变化、trade failure、trapped in/out |
+| 接受与失败证据 | [接受、失望与失败证据](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md) | follow-through、disappointment、premise 变化、trade failure、trapped in/out、Pain Trade（行为模型，不构成独立入场依据） |
 | 限价单环境 | [限价单市场](../core/03_acceptance_and_order_logic/02_limit_order_market.md) | buy below / sell above 只在对应环境中使用 |
 | Scalp / Swing / TBTL | [Scalp 与 Swing](../core/06_trade_plan_and_management/01_scalp_vs_swing.md) | 入场前定管理方式，不临场切换 |
 | 加仓减仓 | [加仓与减仓](../core/06_trade_plan_and_management/02_scaling_in_out.md) | scale-in 总风险在第一笔 entry 前确定 |
