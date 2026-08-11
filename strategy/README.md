@@ -51,7 +51,7 @@ Breakout mode、climactic move 与 transition evidence 是叠加在基础状态�
 | 工具 | 用途 |
 | --- | --- |
 | [覆盖矩阵](coverage_matrix.md) | 核验五个已注册家族 × 当前状态与证据词汇不存在未处理组合；行号 R01–R45 + 全局行 G01，21 个实际策略页全部直接链接 |
-| [决策流程图](decision_flow.md) | 覆盖矩阵的视觉投影：空间/时间硬门槛 → opening 检查 → 基础状态 → MTR 证据优先 → 晚段形态 → continuation 分支 → PREMISE_SELECT → 时段校验 → 唯一叶子 |
+| [决策流程图](decision_flow.md) | 覆盖矩阵的视觉投影：opening 检查 → 基础状态 → MTR → 晚段形态 → continuation 分支 → PREMISE_SELECT（STRATEGY/WATCH/NO_TRADE 统一裁决，含 G01 空间裁决）→ 时段/时间校验（按所选候选持有期，R28）→ 唯一叶子 |
 
 ## 选择链
 
