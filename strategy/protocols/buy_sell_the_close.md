@@ -111,7 +111,7 @@
 | 管理例 | 正常回调进入 channel → 不退出，按原计划管理；新入场转趋势/pullback 策略 | 待回放 |
 | 失效例 | 旧区域被重新接受并获反向跟进 → premise 失效，主动退出 | 待回放 |
 | 过期例 | 尚未入场已出现回踩 → 本卡不可用，转 breakout-pullback 重新评估 | 待回放 |
-| 管理例：Scalp | 无清楚 swing 结构、只有近端 magnet 支持方程 → Scalp + 最近 magnet target | 待回放 |
+| 管理例：Scalp | 没有可行 swing 计划（结构不清楚或 swing 方程不成立）、近端 magnet 的 scalp 方程成立 → Scalp + 最近 magnet target | 待回放 |
 | 管理例：Swing | 清楚 swing 结构且近端 magnet 不构成实质障碍 → Swing + 结构目标 | 待回放 |
 | 管理例：预写分仓 | 近端 magnet 显著影响远端概率、两套方程均成立且数量已拆分 → 预写分仓 | 待回放 |
 | 管理例：swing 方程被否定 | 有 swing 结构但近端障碍使 swing 方程不成立、scalp 方程成立 → Scalp（不被错误排除） | 待回放 |
