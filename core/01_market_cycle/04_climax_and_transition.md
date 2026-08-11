@@ -19,6 +19,8 @@ Brooks 材料对 climax 有两个观察层次，不能压成一个定义：
 
 趋势晚段五根以上小 K 线组成的微型通道也可能是高潮；课程 42B 的约 `70%` TBTL 与约 `30%` continuation 同样是特定晚段背景，不是 micro channel 的统一定义。
 
+课程 18C 还给出另一项特定寿命启发式：紧通道持续约 20 根后可能进入高潮，随后约 `70%` 出现至少约 20 根、两腿的横向至反向调整。这里的结果主要包括 trading range 和 minor reversal，不表示有 `70%` 概率直接形成 opposite trend；两个“20 根”也只是课程经验尺度，不能在第 20 根机械预测反转。
+
 ## 高潮后的常见结果
 
 高潮式推进之后常见三种路径：
@@ -56,5 +58,5 @@ Final Trend Bar 是事后角色，不是看到“最大 K 线”就能确定的�
 - 用“已经太远”代替控制权判断。
 
 - [`SRC-GLOSSARY`](../../reference/official_sources.md) 与 [`SRC-MTR-2025`](../../reference/official_sources.md)：climax 的严格事后定义及其与反转结构的关系。
-- `SRC-COURSE-01-36`：课程 23A–23B、24D、29A–29E；final flag、连续高潮、TBTL、测量/衰竭缺口和周期重置。
+- `SRC-COURSE-01-36`：课程 18C、23A–23B、24D、29A–29E；紧通道寿命启发式、final flag、连续高潮、TBTL、测量/衰竭缺口和周期重置。
 - `SRC-COURSE-37-52`：课程 40A–40E、42A–42C、48J、49A–49E、52B；Final Trend Bar、失望、minor / major climax、尾段案例和高潮后的修正路径。

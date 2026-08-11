@@ -8,7 +8,7 @@
 
 - 01–52 共 52 个课程主编号；
 - 191 个实际分讲 Markdown；
-- `core/` 七个专题目录下的 31 篇正文；
+- `core/` 七个专题目录下的 32 篇正文；
 - 课程中的定义、镜像、状态转换、规则—案例、数学张力和管理边界。
 
 逐讲证据仍以本目录的编号文件为准；全部分讲入口见[完整课程索引](lesson_index.md)，文本与视觉验收状态见[课程覆盖清单](coverage_manifest.md)，跨讲重复见[重复矩阵](repetition_matrix.md)，数字和规则冲突见[边界与冲突](boundaries_and_conflicts.md)。本文只负责回答三个问题：
@@ -76,13 +76,13 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 | [15A–G](lesson_index.md#course-15) | 系统解释突破与失败 | Breakout attempt、跟进、surprise、第二腿、第二腿陷阱、测量/衰竭 gap | Core Breakouts、Acceptance、Second Entries |
 | [16A–F](lesson_index.md#course-16) | 展开通道的构造和演化 | 动态重画、边界测试、70/30 经验、周期嵌套、通道向区间演化 | Core Trends/Channels、Transition、Context |
 | [17A–B](lesson_index.md#course-17) | 细化紧密通道和微型结构 | 微型通道、小回调趋势、首次反转危险和紧密区间 | Core Trends/Channels、Trading Ranges |
-| [18A–F](lesson_index.md#course-18) | 系统解释交易区间 | 区间连续谱、BLSHS、BOM、限价市场、真空、成功突破和第二腿陷阱 | Core Trading Ranges、LOM、Breakouts |
+| [18A–F](lesson_index.md#course-18) | 系统解释交易区间 | 区间连续谱、BLSHS、BOM、限价市场、真空、成功突破、第二腿陷阱和紧通道高潮寿命启发式 | Core Trading Ranges、LOM、Breakouts、Climax/Transition |
 | [19A–E](lesson_index.md#course-19) | 建立支撑阻力和磁点体系 | 市场状态改变水平作用；多周期磁点、整数位、入场价和 50% 回调 | Core Context、Support/Resistance/Targets |
 | [20A–B](lesson_index.md#course-20) | 定义测量移动 | Leg 1 = Leg 2、区间/突破高度、双向投射和目标选择 | Core Support/Resistance/Targets |
-| [21A–D](lesson_index.md#course-21) | 建立反转总框架 | 次要/主要反转、早入/确认、压力、TBTL 和反转交易方程 | Core MTR、Trader's Equation、Scalp/Swing |
+| [21A–D](lesson_index.md#course-21) | 建立反转总框架 | 次要/主要反转、逆势短线、早入/确认、压力、TBTL 和反转交易方程 | Core MTR、逆势修正 Scalp、Trader's Equation、Scalp/Swing |
 | [22A–D](lesson_index.md#course-22) | 完整展开 MTR | 趋势线破坏、旧极值测试、HL/LH、重新入场和失败后重置 | Core Major Trend Reversal、Acceptance |
-| [23A–B](lesson_index.md#course-23) | 定义 Final Flag | 候选与事后确认、趋势晚段、尺度、BOM 和低概率早入 | Core Final Flags、Climax |
-| [24A–E](lesson_index.md#course-24) | 系统解释 Wedge | 三推、坏楔形、抛物线楔形、75/25 先验和突破后更新 | Core Wedges、Climax、Breakouts |
+| [23A–B](lesson_index.md#course-23) | 定义 Final Flag | 候选与事后确认、趋势晚段、尺度、BOM 和低概率早入 | Core Final Flags、Climax、逆势修正 Scalp |
+| [24A–E](lesson_index.md#course-24) | 系统解释 Wedge | 三推、坏楔形、抛物线楔形、75/25 先验和突破后更新 | Core Wedges、Climax、Breakouts、逆势修正 Scalp |
 | [25A–B](lesson_index.md#course-25) | 解释广义双顶双底 | 双测试、旗形、颈线、支撑阻力复测和失败机制 | Core Double Tops/Bottoms、MTR |
 | [26A–B](lesson_index.md#course-26) | 定义三角形与扩张三角形 | 五腿成熟度、压缩/扩张、旗形与反转职责 | Core Triangles、Breakout Mode |
 | [27A–B](lesson_index.md#course-27) | 将头肩形还原为价格行为 | MTR 骨架、右肩、颈线失败及区间本质 | 不建独立 Core 形态；归 MTR、Double Tests、Trading Range |
@@ -94,8 +94,8 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 | [33A–G](lesson_index.md#course-33) | 系统解释 Stop | 保护止损、结构失效、追踪、宽/窄止损、保本和仓位反推 | Core Stop、Trade Plan、Risk |
 | [34A–B](lesson_index.md#course-34) | 区分初始与实际风险 | Initial risk、事后 Actual Risk、目标替代和样本统计问题 | Core 定义风险四分法；统计冲突留 Reference |
 | [35A–C](lesson_index.md#course-35) | 展开分批建仓数学 | 加权均价、层数、间距、共同止损、最坏总风险和高胜率代价 | Core Scaling In/Out、Trade Plan |
-| [36A–B](lesson_index.md#course-36) | 解释成交后的计划更新 | 利润保护、目标变化、OPM 误区和默认管理 | Core Trade Plan、Acceptance |
-| [37A–B](lesson_index.md#course-37) | 将前 36 讲重新整合 | 状态—交易构造—双周期—40/60—默认目标 | Core 方法主线和全局交叉检查 |
+| [36A–B](lesson_index.md#course-36) | 解释成交后的计划更新 | 利润保护、目标变化、OPM 误区和默认管理 | Core Trade Plan、Acceptance、Risk Psychology |
+| [37A–B](lesson_index.md#course-37) | 将前 36 讲重新整合 | 状态—交易构造—双周期—40/60—默认目标，以及浮盈/已实现利润不能替代新增风险预算 | Core 方法主线、Risk Psychology 和全局交叉检查 |
 | [38A–D](lesson_index.md#course-38) | 顶部 MTR 完整案例 | 卖压、较低高点、确认、再次入场、止盈和止损 | Core MTR；具体案例留在 Reference |
 | [39A–D](lesson_index.md#course-39) | 底部 MTR 镜像案例 | 买压、更高低点、概率交换、追踪止损和开盘案例 | Core MTR；具体案例留在 Reference |
 | [40A–E](lesson_index.md#course-40) | 解释趋势末端追价和失望 | FOMO、Final Trend Bar、Give-up Bar、入场价测试、被套和风格切换 | Core Climax、Acceptance、Risk Psychology |
@@ -121,10 +121,10 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 | `02_context` | 02D、04、10、19–20 → 37 → 45–49 | 位置、压力、Always In、支阻、目标、周期和剩余时间共同改变交易方程 | 猜测真实订单身份；固定开盘/尾盘参数 |
 | `03_acceptance_and_order_logic` | 08–10、15、18 → 32–33 → 40–42、47、52 | 触发后看跟进、收回、失望、失败；区分 stop entry/protective stop；识别二次尝试和陷阱 | 把第二次信号当独立优势；把限价入场当无限摊平 |
 | `04_patterns` | 08–11 → 23–29 → 42 | 形态描述压力和结构，不脱离 Context；候选与事后结果分开 | 为头肩、圆弧等同义标签重复建立交易规则 |
-| `05_setups` | 09、15、18、21–22 → 38–47 | 趋势延续、突破延续、区间 fade、MTR 是四种交易命题原型 | 具体价格、订单寿命、固定时间窗口和完整执行方案 |
+| `05_setups` | 09、15、18、21–22 → 38–47 | 趋势延续、突破延续、区间 fade、MTR、逆势修正 scalp 是交易命题原型 | 具体价格、订单寿命、固定时间窗口和完整执行方案 |
 | `06_trade_plan_and_management` | 30–36 → 50–52 | 同一版本的 entry/stop/target/size/management；scalp/swing；总风险；心理纪律 | 课程内部错误算术、业绩承诺和未经限制的加仓 |
 
-## 五、Core 31 篇正文知识映射
+## 五、Core 32 篇正文知识映射
 
 ### 00_method
 
@@ -138,10 +138,10 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 | Core 页面 | 课程依据 | 权威职责 | 边界与旁路 |
 | --- | --- | --- | --- |
 | [00_market_cycle](../../core/01_market_cycle/00_market_cycle.md) | 12A–C、13A、14、16–18、21A、37、43–49 | 定义 Trend / TR 基础状态、breakout phase—channel 层级、模糊状态 fallback，以及周期绑定的 reversal / minor reversal | 所有状态标签必须绑定观察周期；breakout mode 不作为第三种基础状态 |
-| [01_trends_and_channels](../../core/01_market_cycle/01_trends_and_channels.md) | 11D、14A–E、16A–F、17A–B、41B、43–46、50A | 定义 tight / broad channel、局部与外层结构、首次 pullback 阶段切换、staircase、shrinking stairs 和 trending trading range | 通道标签描述结构连续谱，不单独生成交易动作 |
+| [01_trends_and_channels](../../core/01_market_cycle/01_trends_and_channels.md) | 11D、14A–E、16A–F、17A–B、37B、41B、43–46、50A | 定义 tight / broad channel、局部与外层结构、首次 pullback 阶段切换、staircase、shrinking stairs、trending trading range 和宽通道参与区启发式 | 通道标签和参与区描述结构连续谱，不单独生成交易动作；75/25 只适用于清楚倾斜的通道 |
 | [02_trading_ranges](../../core/01_market_cycle/02_trading_ranges.md) | 12–13、17–19、28、37、42C、47A–D、49 | 定义普通区间、TTR、宽区间、80% 经验、BOM 条件和区间第二腿陷阱 | 50/50 只作为中性或 BOM 条件先验，不是所有区间突破的固定概率 |
 | [03_breakouts_and_breakout_mode](../../core/01_market_cycle/03_breakouts_and_breakout_mode.md) | 15A–G、18B/F、20B、24E、29E、40–42、47、50D | 区分 breakout event、接受、breakout phase、BOM 和 second-leg 倾向，并定义 Buy / Sell The Close 的早期与确认版本 | 首根强突破收盘可形成早期版本；持续收盘与 follow-through 形成确认版本，两者的风险时点不同 |
-| [04_climax_and_transition](../../core/01_market_cycle/04_climax_and_transition.md) | 23、24D、29A–E、40A–E、42A–C、48J、49、52 | 区分进行时与事后 climax，定义 TBTL、首次反转、Final Trend Bar 的事后角色和趋势末端失望 | Climax 和 Final Trend Bar 不直接预测顶部或底部；交易结论仍由后续接受或失败决定 |
+| [04_climax_and_transition](../../core/01_market_cycle/04_climax_and_transition.md) | 18C、23、24D、29A–E、40A–E、42A–C、48J、49、52 | 区分进行时与事后 climax，登记紧通道寿命启发式与 climax 语境中的 TBTL 倾向，并界定首次反转、Final Trend Bar 的事后角色和趋势末端失望 | Climax 和 Final Trend Bar 不直接预测顶部或底部；根数与概率是特定背景经验，交易结论仍由后续接受或失败决定 |
 
 ### 02_context
 
@@ -182,6 +182,7 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 | [02_breakout_continuation](../../core/05_setups/02_breakout_continuation.md) | 15、18、20、24E、29E、31D、40–42、48J、50D | 定义突破延续的预判与确认版本、接受、第二腿和 measured move 条件 | Buy / Sell The Close 可落在预测或确认版本，只表示风险承担时点，不另立 Setup |
 | [03_trading_range_fade](../../core/05_setups/03_trading_range_fade.md) | 15G、18、19、28、37、47、50E | 定义成熟区间边缘、limit / stop 两类 entry、premise 失效和区间目标 | 第二腿陷阱由上游状态页定义 |
 | [04_major_trend_reversal](../../core/05_setups/04_major_trend_reversal.md) | 21–22、27、29、38–39、40E、42 | 定义成熟趋势、结构破坏、旧极值测试、HL / LH、反方控制和 40/60 风险时点 | “约五根强，或约十根普通/较弱”是压力启发式；新结构出现时旧证据需要重置 |
+| [05_minor_reversal_scalp](../../core/05_setups/05_minor_reversal_scalp.md) | 21A、21C、21D、23B、24D–24E | 定义第一次逆势反转的短线命题与升级 MTR 的边界，应用 TBTL 路径预期 | 逆势交易不是与趋势对抗；无结构破坏与失败证据时第一笔逆势交易经常失败 |
 
 ### 06_trade_plan_and_management
 
@@ -190,7 +191,7 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 | [00_trade_plan](../../core/06_trade_plan_and_management/00_trade_plan.md) | 30–36、37、41、51–52 | 定义 entry、stop、target、size、management 的同版本一致性，以及 active stop、catastrophe backup、动态 premise 和三层保护 | 退出后的重新入场属于新计划版本；具体平台机制不属于 Core |
 | [01_scalp_vs_swing](../../core/06_trade_plan_and_management/01_scalp_vs_swing.md) | 13B–C、21D、31A–D、36、50A–E、51C–D | 区分 scalp 与 swing 的概率/RR、成本、TBTL 和管理方式 | 两种交易构造不能成交后随意互换；少数专家的极高胜率描述不是通用准入标准 |
 | [02_scaling_in_out](../../core/06_trade_plan_and_management/02_scaling_in_out.md) | 30B、35A–C、36、43C–44C、45D–46D、47C、51D、52A–B | 定义加权平均 entry、共同 stop 下的完整总风险，以及成本、止损距离与仓位的关系 | 加仓改变整仓价格和敞口，不凭空提高市场方向概率；无限摊平不属于计划内 scaling |
-| [03_risk_psychology](../../core/06_trade_plan_and_management/03_risk_psychology.md) | 06–07、30C、33、40A、50B、51A–D、52A–B | 区分正常统计亏损与规则错误，并定义快速纠错、无关痛痒仓位、希望和保本边界 | 遗传决定论和“所有导师无用”等绝对叙事不进入 Core |
+| [03_risk_psychology](../../core/06_trade_plan_and_management/03_risk_psychology.md) | 06–07、30C、33、36A–B、37B、40A、50B、51A–D、52A–B | 区分正常统计亏损与规则错误，并定义快速纠错、无关痛痒仓位、FOMO 小仓参与边界、OPM / 沉没结果、希望和保本边界 | 浮盈与已实现利润不能替代新增风险预算；遗传决定论和“所有导师无用”等绝对叙事不进入 Core |
 
 ## 六、完整课程中不应进入 Core 的内容
 
