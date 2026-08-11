@@ -12,7 +12,7 @@
 4. 命中 `WATCH` 后，等待新数据从入口重新运行，矩阵内部不保留回边（流程图同样处理）；
 5. 时段覆盖列只叠加约束（候选起点、最晚入场、时间风险），不改变底层叶子类型，除非时间不足使其降为 NO_TRADE；
 6. `R02`、`R22` 是全局行 G01 的具体示例，不单独构成新规则；
-7. 行号格式：R01–R45 为正文行，G01 为全局行；行号在重构时保持稳定，不再使用字母后缀。`R02`、`R22` 是 G01 的示例行（alias_of=G01），不要求 Mermaid 中存在独立节点；程序化 ID 校验应允许别名映射。
+7. 行号格式：R01–R46 为正文行，G01 为全局行；行号在重构时保持稳定，不再使用字母后缀。`R02`、`R22` 是 G01 的示例行（alias_of=G01），不要求 Mermaid 中存在独立节点；程序化 ID 校验应允许别名映射。
 
 ## 叶子枚举
 
@@ -74,6 +74,7 @@
 | R43 | trend 后期 | — | ET 五腿以上 + 第四/五腿反向压力，反向 breakout + follow-through 确认 | 足够 | — | STRATEGY：[反转/扩张三角形 MTR 候选](reversal/expanding_triangle_mtr.md)（确认后交易） | [主要趋势反转](../core/05_setups/04_major_trend_reversal.md) | [Triangles、ii、ioi 和 oo](../core/04_patterns/06_triangles_ii_ioi_oo.md) | 26B、47 | 42、49 |
 | R44 | trend | transition | 通道破坏 → 旧极值测试失败，尚无反向触发 | — | — | WATCH：等待反向触发或强反向 breakout（MTR 早期版候选） | [主要趋势反转](../core/05_setups/04_major_trend_reversal.md) | [市场周期](../core/01_market_cycle/00_market_cycle.md) | 21–22 | 38–39、49 |
 | R45 | 任意 | BOM | 方向未决 | — | opening | STRATEGY：[压缩结构双向候选](breakout/compression_breakout_mode.md)（R26）+ [Opening BOM 覆盖层](session/opening_bom.md)（R45 叠加，仅增加开盘约束，不改变双向候选逻辑） | [突破延续 Setup](../core/05_setups/02_breakout_continuation.md) | [周期与时段 Context](../core/02_context/02_time_and_timeframes.md) | 48D | 48I–48K、49 |
+| R46 | 任意 | — | 开盘后快速形成方向，初始极值保持，首次可交易回调 | 足够 | opening | STRATEGY：[开盘趋势](session/trend_from_open.md)（覆盖层叠加于趋势延续家族：第一次小回调 / 收盘跟随） | [趋势延续 Setup](../core/05_setups/01_trend_continuation.md) | [周期与时段 Context](../core/02_context/02_time_and_timeframes.md) | 48A–48C | 48I–48K、49 |
 
 ## 状态检查点/管理提示行（不产生独立叶子）
 
@@ -87,6 +88,21 @@
 
 核心依据：[高潮和状态转换](../core/01_market_cycle/04_climax_and_transition.md)、[趋势和通道](../core/01_market_cycle/01_trends_and_channels.md)。
 
+### 检查点级概念登记（不产生独立叶子）
+
+以下概念已有策略层落地（README 检查点或策略页内），此处登记保证矩阵可检索，不新增叶子：
+
+| 概念 | 落地位置 | 引用行 |
+| --- | --- | --- |
+| Staircase / shrinking stairs | [趋势 README 状态检查点](trend/README.md) | R01、R08 |
+| Trending trading range | [趋势 README 状态检查点](trend/README.md) | R08、R16 |
+| 50% 回调参考 | [趋势 README 状态检查点](trend/README.md) | R01、R14 |
+| 强区间腿与第二腿陷阱 | [区间 README 回避规则](range/README.md)、[区间内第二次信号](range/edge_second_signal.md) | R18、R19 |
+| Surprise 与惯性 | [突破 README 状态检查点](breakout/README.md) | R03、R36 |
+| 紧通道 ~20 根寿命线索（18C） | [高潮和状态转换](../core/01_market_cycle/04_climax_and_transition.md)、[趋势 README](trend/README.md) | R09 |
+| 晚段微型通道 70% TBTL（42B） | [高潮和状态转换](../core/01_market_cycle/04_climax_and_transition.md) | R11 |
+| Pain Trade（行为模型） | [跨情景基线](../README.md#跨情景基线)（接受与失败证据行） | R05、R40 |
+
 ## 完整性声明
 
 本矩阵只证明两件事：
@@ -95,6 +111,10 @@
 2. 21 个实际策略页全部在矩阵中直接链接（[量度目标构造](breakout/measured_move_breakout.md) 属目标构造页，明确排除；时段覆盖层页作为约束叠加在叶子上，其中 [Opening BOM 覆盖层](session/opening_bom.md) 以 R45 登记）。
 
 它不宣称覆盖所有可能的价格行为交易机会；新增家族或新增证据词汇时，矩阵必须同步扩展。
+
+### 证据输入概念（刻意不入矩阵）
+
+以下概念由 core 定义、策略层按需引用，不作为决策行进入矩阵：K 线几何与角色（[bar types](../core/04_patterns/01_bar_types.md)）、缺口家族术语细节（[gaps](../core/04_patterns/07_gaps.md)，如 body gap、exhaustion gap 的口径差异）、最终日型标签（[周期与时段 Context](../core/02_context/02_time_and_timeframes.md)）、多周期分工（同上）。它们的可交易落点已通过引用它们的策略页与矩阵行覆盖。
 
 ## 与决策流程图的关系
 
