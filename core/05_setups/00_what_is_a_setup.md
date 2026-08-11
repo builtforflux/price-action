@@ -38,9 +38,9 @@ Setup 回答“在什么背景下，准备交易什么价格行为、怎样触�
 
 ## Setup 家族不是穷尽分类
 
-本目录用趋势延续、突破延续、交易区间 fade 和 MTR 比较不同交易命题。这些是组织核心差异的示例家族，不是所有 Setup 的固定清单。
+本目录用趋势延续、突破延续、交易区间 fade、MTR 和逆势修正 scalp 比较不同交易命题。这些是组织核心差异的示例家族，不是所有 Setup 的固定清单。
 
-Second entry 和 trap 描述触发顺序与失败机制，必须服务于某个上层交易命题，因此归入[接受与订单逻辑专题](../03_acceptance_and_order_logic/03_second_entries_and_traps.md)，不与四类 Setup 并列。
+Second entry 和 trap 描述触发顺序与失败机制，必须服务于某个上层交易命题，因此归入[接受与订单逻辑专题](../03_acceptance_and_order_logic/03_second_entries_and_traps.md)，不与其他 Setup 家族并列。
 
 ## 相关来源
 

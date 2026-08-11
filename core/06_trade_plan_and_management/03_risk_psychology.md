@@ -38,11 +38,19 @@
 
 仓库基线是：没有符合原计划的 entry 时，不因 FOMO 新增追单。错过不会扩大账户既有风险；在差位置临时追入却会改变 stop、target 和 Trader's Equation，必须视为一份新计划，而不是原机会的延续。
 
+这不排除在强 breakout 或紧通道中预先设计“小仓、宽结构 stop”的早期参与。Brooks 用这种做法处理理想回调可能不出现的情形；它只有在 entry、完整 stop、目标和小仓位已形成新的正 Trader's Equation 时才成立，不能把焦虑本身当成入场依据。若选择把强趋势交易按 scalp 很快退出，也应事先承认回调可能不给出舒服的重新入场机会；这正是强趋势中常让至少部分仓位按 swing 管理的行为理由之一。
+
 ## 希望、保本和观点依附
 
 希望价格回到 entry、证明最初判断正确，是亏损扩大和无计划加仓的常见原因。Breakeven 是一种可能的价格结果，不是市场欠交易者的退出机会；连续强反向 K 线或原 premise 失效后，继续等待保本只会把价格意见放在风险控制之前。
 
 退出后可以重新入场，因此主动认错不需要被理解成永久放弃行情。外部教育和复盘可以改善知识，但具体持仓中的 stop、退出和数量责任不能外包。这里不需要用遗传决定论或“所有导师都无用”的绝对叙事解释行为，规则只依赖可观察的计划偏离。
+
+### 浮盈不是“别人的钱”
+
+未实现利润已经属于当前账户权益，不是可以忽略风险的免费筹码。已有浮盈不能成为无视强反向证据、扩大仓位、放宽 stop 或容许利润全部回吐的理由；已实现利润也不能自动成为下一笔交易的新增风险预算。每次新增风险仍须按当前 entry、active protective stop、总仓位和 Trader's Equation 独立检查。
+
+交易退出后的已实现损失则是沉没结果，不能通过降低下一笔 Setup 标准、报复性交易或强迫市场“赚回来”重新控制。复盘可以使用它检查规则和样本，但当前交易只由当前可观察事实与计划决定。
 
 ## 过度解释和分析瘫痪
 
@@ -50,4 +58,4 @@
 
 清楚的 setup、price-action stop、target、Trader's Equation 和足够小的仓位，可以减少焦虑、贪婪和希望对临场判断的干扰。
 
-相关来源见 [`reference/official_sources.md`](../../reference/official_sources.md) 中的 `SRC-MANUAL`、`SRC-POSITION-SIZE`、`SRC-RISK-113`、`SRC-COURSE-01-36`（课程 06、07A–07B、30C、33A–33G）与 `SRC-COURSE-37-52`（课程 40A、50B、51A–52B）。
+相关来源见 [`reference/official_sources.md`](../../reference/official_sources.md) 中的 `SRC-MANUAL`、`SRC-POSITION-SIZE`、`SRC-RISK-113`、`SRC-COURSE-01-36`（课程 06、07A–07B、30C、33A–33G、36A–36B）与 `SRC-COURSE-37-52`（课程 37B、40A、50B、51A–52B）。

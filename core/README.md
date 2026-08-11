@@ -33,7 +33,7 @@ Pattern 不是自动信号，Setup 不是完整交易，Trade Plan 也不是入�
 
 ## 完整必读顺序
 
-首次学习只有以下一条完整顺序。进入每个目录时先读该目录的 `README.md`，再按编号读完该目录的全部正文；以下 31 个正文文件全部必读，没有“主线页”与“选读页”之分：
+首次学习只有以下一条完整顺序。进入每个目录时先读该目录的 `README.md`，再按编号读完该目录的全部正文；以下 32 个正文文件全部必读，没有“主线页”与“选读页”之分：
 
 1. [方法论](00_method/README.md)
    1. [方法与读图主线](00_method/00_al_brooks_thesis.md)
@@ -68,6 +68,7 @@ Pattern 不是自动信号，Setup 不是完整交易，Trade Plan 也不是入�
    3. [突破延续 Setup](05_setups/02_breakout_continuation.md)
    4. [交易区间 Fade Setup](05_setups/03_trading_range_fade.md)
    5. [主要趋势反转](05_setups/04_major_trend_reversal.md)
+   6. [逆势修正 Scalp](05_setups/05_minor_reversal_scalp.md)
 7. [交易计划与管理](06_trade_plan_and_management/README.md)
    1. [从 Setup 到交易计划](06_trade_plan_and_management/00_trade_plan.md)
    2. [Scalp 与 Swing](06_trade_plan_and_management/01_scalp_vs_swing.md)
