@@ -18,11 +18,14 @@
 | 策略 | 家族归属 | 直接预期 |
 | --- | --- | --- |
 | [MTR 早期与确认两版本](mtr_early_and_confirmed.md) | MTR 家族（swing） | 反向两腿 + swing |
-| [双顶双底反转](double_top_bottom_reversal.md) | MTR 家族（仅趋势后期语境；区间边缘归 range fade） | neckline 确认后的条件分支 |
 | [扩张三角形 MTR 候选](expanding_triangle_mtr.md) | MTR 家族（候选，确认后交易） | 反向两腿（确认后） |
+| [通用逆势修正 Scalp](minor_reversal_scalp.md) | 逆势修正家族（不属于下列命名子型时的兜底） | 两腿修正或区间 |
+| [双顶双底逆势修正](double_top_bottom_reversal.md) | 逆势修正家族（完整 MTR 链未成立；完整链转 MTR） | neckline 确认后的两腿修正或区间 |
 | [三推楔形反转](wedge_reversal.md) | 逆势修正家族（scalp） | 两腿修正或区间；升级需完整 MTR 链 |
 | [最终旗形反转](final_flag_reversal.md) | 逆势修正家族（scalp） | 两腿修正或区间；升级需完整 MTR 链 |
 | [高潮后修正](climax_correction.md) | 逆势修正家族（scalp） | 两腿修正或区间回归 |
+
+命名子型成立时使用对应专页；重要位置的 reversal / two-bar reversal、micro double、非 wedge 第二信号或普通趋势线破坏后只期待短线修正时，由[通用逆势修正](minor_reversal_scalp.md)承接。双顶/双底只有在完整 MTR 链成立时才作为 MTR 结构证据；不足以构成 MTR 时按 minor scalp。兜底页不能替代完整 MTR，也不能为缺少位置和接受证据的第一根反色 K 线提供许可。
 
 ## 状态检查点（约束，不构成独立策略页）
 

@@ -18,7 +18,7 @@
 | [突破回踩](breakout_pullback_test.md) | 突破获接受后的回调/回测守住旧边界 | 回踩后的重新触发 | 第二腿或量度目标 |
 | [失败再失败](failed_failure_continuation.md) | 首破失败→反向失败→原方向再次突破 | 第二次原方向触发 | 第二腿或量度目标 |
 | [量度目标构造](measured_move_breakout.md) | 目标构造页（非独立策略）：供突破/趋势/反转策略引用 | 随承载它的策略页 | 区间高度 / breakout height / Leg 1 = Leg 2 |
-| [压缩结构突破](compression_breakout_mode.md) | triangle、ii/ioi/oo 等 breakout mode 候选 | 等待市场表态后触发 | 突破方向 + follow-through |
+| [双向突破模式](breakout_mode.md) | 通用 breakout mode；triangle、ii/ioi/oo 等压缩只是子型 | 等待市场表态后触发 | 获得接受的突破方向 + follow-through |
 | [开盘区间突破](opening_range_breakout.md) | 离开明确声明的 opening-range 边界 | 越界事件 + 接受证据 | 开盘量度或延续 |
 
 ## 状态检查点（约束，不构成独立策略页）

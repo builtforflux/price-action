@@ -19,6 +19,7 @@
 
 | 策略 | 针对的回调 / 结构 | 触发类别 | 直接预期 |
 | --- | --- | --- | --- |
+| [普通趋势回调延续](pullback_continuation.md) | 符合趋势延续母命题、但不属于下列命名子型的普通回调（兜底） | 回调后的可观察顺势恢复 | 测试旧极值或继续原趋势 |
 | [第一次小回调](first_small_pullback.md) | 强趋势（spike 或紧通道）建立后的第一次浅回调 | stop entry 越过回调末端顺势 signal bar | 重新测试刚形成的趋势极值 |
 | [第二次恢复信号](second_signal_continuation.md) | 第一次恢复无延伸后的 H2/L2 二次触发 | buy/sell stop 越过第二次 signal bar | 原趋势恢复 |
 | [三推楔形回调](wedge_pullback_continuation.md) | 反趋势回调形成三推，上层趋势完整 | 顺势第一个信号 | 原趋势恢复 |
@@ -26,7 +27,7 @@
 | [均线缺口回调](moving_average_gap_bar.md) | 三类 moving-average gap bar 语境 | stop entry 越过 MAG bar 信号极值 | 测试旧趋势极值 |
 | [宽通道参与区](broad_channel_buy_zone.md) | 宽通道中最近一腿的下部回调区域 | 参与区内的顺势触发 | 测试最近极值或继续原通道 |
 
-覆盖说明：普通成熟趋势回调中的第一次恢复尝试（H1/L1）不单独设页——H1/L1 只是几何计数，不构成独立策略；短浅的首次回调由 [第一次小回调](first_small_pullback.md) 覆盖，多次尝试由 [第二次恢复信号](second_signal_continuation.md) 处理；回调已经区间化则转入 [区间情景](../range/README.md) 或等待重新建立趋势控制，不再由趋势 H2/L2 页处理。
+覆盖说明：命名子型成立时使用对应专页；其余仍完整满足趋势延续母命题的普通回调由[通用兜底](pullback_continuation.md)承接。H1/L1 只是几何计数，不构成独立策略；短浅的首次回调由[第一次小回调](first_small_pullback.md)覆盖，多次尝试由[第二次恢复信号](second_signal_continuation.md)处理。回调已经区间化则转入[区间情景](../range/README.md)或等待重新建立趋势控制，不能使用兜底页绕开状态更新。
 
 ## 状态检查点（约束，不构成独立策略页）
 

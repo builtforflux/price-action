@@ -8,7 +8,7 @@
 
 ## 叠加规则
 
-- 第一次可交易回调后的顺势恢复按 [趋势延续](../trend/README.md) 家族（尤其 [第一次小回调](../trend/first_small_pullback.md)）；
+- 第一次可交易回调后的顺势恢复按 [趋势延续](../trend/README.md) 家族：符合强趋势首次浅回调时使用[第一次小回调](../trend/first_small_pullback.md)，否则仍完整满足趋势延续母命题时使用[普通趋势回调](../trend/pullback_continuation.md)；
 - 开盘强突破的收盘跟随按 [突破延续](../breakout/README.md) 家族（[收盘跟随](../breakout/buy_sell_the_close.md)）；
 - 未出现合格回调时，不因开盘强势机械追价；理想价格不出现时采用"小仓、宽结构 stop"的预设计参与，须满足正 Trader's Equation（见 [风险与心理纪律](../../core/06_trade_plan_and_management/03_risk_psychology.md)）；
 - 开盘趋势中的第一次回调属于趋势延续语境，不重复制造阶段转换。

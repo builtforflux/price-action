@@ -8,6 +8,13 @@
 
 成熟趋势失去控制：反向突破原通道/趋势线 → 原趋势测试旧高或形成 lower high（镜像）→ 测试失败并出现反方触发 → 反向两腿或较大的 trading range。
 
+## 适用情景与路由
+
+- 存在成熟趋势，通道或趋势线已被破坏，且该证据仍有时效；
+- 原趋势对旧极值的测试失败，反方出现可观察触发；
+- 早期版把后续支持作为持仓管理验证；确认版要求强反向 breakout 与 follow-through 已在入场前出现；
+- 缺少结构破坏或旧极值测试失败时，不命名完整 MTR；只形成短线修正时路由到 minor reversal。
+
 ## 两个风险承担时点
 
 | 版本 | 时点 | 典型概率交换 | 代价 |
@@ -24,26 +31,25 @@
 
 两个版本分别使用自己的 entry、active protective stop、target 与 Trader's Equation。
 
-## 情景判定
-
-- 成熟趋势；
-- 通道或趋势线被破坏（证据有时效）；
-- 原趋势对旧极值的测试失败（higher high / lower high / lower low / higher low 只是四种几何结果）；
-- 反方触发并（视版本）获得后续支持：对早期版是入场后的管理验证，对确认版是入场前条件。
-
-## 失效与 Stop 锚点
+## Premise 失效
 
 - 价格重新越过并接受旧趋势极值；
 - 原趋势以强 breakout 和 follow-through 恢复控制（此时 MTR 证据链重置）；
 - 反向腿缺少质量时，更常见结果是 minor reversal、原趋势 flag 或 trading range。
 
-Stop 锚点类别：早期版在旧趋势极值测试或完整反转结构外；确认版可依赖新反向趋势的 major higher low / lower high、回踩结构或完整 breakout 起点。
+## Protective Stop 锚点
 
-## 目标与管理
+早期版在旧趋势极值测试或完整反转结构外；确认版可依赖新反向趋势的 major higher low / lower high、回踩结构或完整 breakout 起点。两个版本不能互借 stop。
 
-成功 MTR 的直接预期是反向两腿和 swing profit，且常先发展成较大的 trading range，而不是立即成为无回调新趋势。TBTL 帮助描述持有时间与腿数，但不是价格目标；实际 target 必须落在均线、前 swing、旧公平区域、区间边界或其他现实 magnet 上。
+## 直接预期与目标
 
-## 语境数字
+成功 MTR 的直接预期是反向两腿，且常先发展成较大的 trading range，而不是立即成为无回调新趋势。实际 target 必须落在均线、前 swing、旧公平区域、区间边界或其他现实 magnet 上。
+
+## 管理边界
+
+本家族按 swing 管理；TBTL 只描述持有时间与腿数，不是价格目标。早期版与确认版必须保持各自 entry、stop、概率和 target；原趋势恢复控制时结束计划并重置证据链。
+
+## 语境数字与先验
 
 - 反向压力启发式：约五根强反向 K 线，或约十根普通/较弱反向 K 线逐步累积；根数既非必要也非充分条件；
 - 课程结果分类：约 60% 的 MTR 最终只形成次要反转，约 40% 形成波段（与入场时点 40/60 分母不同）；

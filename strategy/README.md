@@ -37,6 +37,22 @@ Breakout mode、climactic move 与 transition evidence 是叠加在基础状态�
 
 时段覆盖层加在四类情景之上，只增加候选起点、最晚入场、目标可达性与强制退出约束，不建立新家族，见 [时段覆盖层](session/README.md)。
 
+## 覆盖层级：母命题、通用兜底与命名子型
+
+策略目录不按“一个 Core 术语一页策略”组织，而按会改变 premise、触发、失效或直接预期的交易命题组织。每个家族先保证母命题有通用承接，再用命名子型收紧特定结构：
+
+| 母命题 | 通用承接 | 命名子型 |
+| --- | --- | --- |
+| 趋势延续 | [普通趋势回调延续](trend/pullback_continuation.md) | 第一次小回调、H2/L2、wedge pullback、double flag、MAG、宽通道参与区 |
+| 突破延续 | 已接受且无回踩由 BTC/STC 承接；双向未决由 [Breakout Mode](breakout/breakout_mode.md) 承接 | 突破回踩、failed failure、opening-range breakout |
+| 交易区间 fade | [边缘确认 fade](range/edge_fade_confirmed.md) | limit probe/scale-in、边缘第二信号、失败突破回归 |
+| MTR | [MTR 早期与确认两版本](reversal/mtr_early_and_confirmed.md) | 扩张三角形 MTR 候选；完整链中的双顶/双底作为结构证据，不单独降低 MTR 门槛 |
+| 逆势修正 scalp | [通用逆势修正](reversal/minor_reversal_scalp.md) | 双顶双底反转尝试、wedge、final flag、climax 后修正 |
+
+使用顺序是：先确认母命题成立；若命名子型成立，使用更具体页面及其更具体失效边界；只有母命题完整但没有更准确子型时才使用通用兜底。兜底页不能降低证据要求，也不能绕开状态更新。
+
+K 线角色、Pattern、Context、接受/失败、Trader's Equation、stop、target、scale-in/out 和风险纪律属于证据输入或跨策略约束，不因为没有各自独立策略页就构成覆盖缺口。特别是 scale-in/out 改变同一 premise 的数量与管理，不建立新的入场 premise。
+
 ## 页面类型
 
 | 类型 | 含义 |
@@ -47,12 +63,37 @@ Breakout mode、climactic move 与 transition evidence 是叠加在基础状态�
 | Application（覆盖层页） | 叠加约束（时段、时间风险），不建立新家族（见 [时段覆盖层](session/README.md)） |
 | Application（决策协议页） | 把策略页已有概念操作化为可观察的选择条件（版本选择、stop/target/管理绑定）；可收紧候选资格，但不得扩大 premise、重定义概念或增加未经授权的概率/订单执行规则（见 [决策协议](protocols/README.md)） |
 
+## 实际策略页统一模板
+
+`trend/`、`breakout/`、`range/` 与 `reversal/` 下的实际策略页统一使用以下语义结构。固定章节必须存在并保持顺序；可选章节只在确有策略特有信息时加入，不能替代固定章节。
+
+| 顺序 | 章节 | 职责 | 是否固定 |
+| --- | --- | --- | --- |
+| 1 | 交易命题 | 说明交易什么价格行为、方向与所属 Setup 家族 | 固定 |
+| 2 | 适用情景与路由 | 写明 market cycle、阶段、位置、控制、成立事实，以及何时路由到相邻策略 | 固定 |
+| 3 | 版本或结构子型 | 区分早期/确认版、结构口径、边界来源等，不改变母命题 | 可选，可使用更准确标题 |
+| 4 | 触发类别 | 描述抽象订单角色或可观察触发，不生成具体价格 | 固定 |
+| 5 | Premise 失效 | 只写哪些新事实否定原交易理由；不与普通波动、candidate rejection 或 stop price 混用 | 固定 |
+| 6 | Protective Stop 锚点 | 说明保护单应位于哪类结构外及为何容许正常波动 | 固定 |
+| 7 | 直接预期与目标 | 写 Setup 直接期待的路径、现实 magnet 与允许加入 measured move 的条件 | 固定 |
+| 8 | 管理边界 | 写 scalp/swing、正常回调、部分退出、转策略与数量管理边界 | 固定 |
+| 9 | 语境数字与先验 | 只保留来源与分母清楚、绑定具体事件的经验数字 | 可选 |
+| 10 | 常见误读 | 记录本策略最容易发生的越界和相邻策略混淆 | 固定 |
+| 11 | 相关来源 | 链接 Setup 家族、直接使用的 Definition 页与必要相邻策略 | 固定 |
+
+固定因果顺序为：`Premise → Eligibility / Routing → Trigger → Invalidation → Stop → Expected Path / Target → Management`。其中 Premise 失效不等于 protective stop，直接预期不等于最终 target，target 构造也不等于成交后管理。
+
+维护时人工复核四个情景目录下的实际策略页是否保留固定章节和因果顺序；可选章节只能补充策略特有信息，不能替代 premise、触发、失效、stop、目标或管理。结构一致只是可读性基线，不证明内容正确。
+
 ## 核验工具
 
 | 工具 | 用途 |
 | --- | --- |
-| [覆盖矩阵](coverage_matrix.md) | 核验五个已注册家族 × 当前状态与证据词汇不存在未处理组合；行号 R01–R46 + 全局行 G01，21 个实际策略页全部直接链接 |
-| [决策流程图](decision_flow.md) | 覆盖矩阵的视觉投影：opening 检查 → 基础状态 → MTR → 晚段形态 → continuation 分支 → PREMISE_SELECT（STRATEGY/WATCH/NO_TRADE 统一裁决，含 G01 空间裁决）→ 时段/时间校验（按所选候选持有期，R28）→ 唯一叶子 |
+| [Core → Strategy 思想覆盖表](core_coverage.md) | 登记全部 Core Definition 与 Application，并用 Reference 复核高风险命题边界及其策略层落点 |
+| [覆盖矩阵](coverage_matrix.md) | 核验五个已注册家族 × 当前状态与证据词汇不存在未处理组合；行号 R01–R48 + 全局行 G01，23 个实际策略页全部直接链接 |
+| [决策流程图](decision_flow.md) | 覆盖矩阵的候选收集投影：session 覆盖收集 + 全局 BOM → 基础状态 → trend/range 并行 collectors → 同家族精度消歧 → 按各候选持有期过滤 R28 → PREMISE_SELECT（含硬约束与 G01）→ 唯一叶子 |
+
+维护这些文档时使用以下人工检查顺序：先从 Core 权威页确认命题，再用 Reference 核对来源与边界，然后检查策略页、覆盖矩阵和决策流程是否表达同一语义。主题有链接、章节齐全或 R 编号完整都不自动证明思想覆盖和内容正确。
 
 ## 执行清单（从策略页到 Trade Plan）
 

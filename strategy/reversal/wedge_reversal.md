@@ -8,7 +8,7 @@
 
 趋势或通道后期出现三次推动后，反方尝试反转；按 minor reversal 先处理：逆势 scalp 期待两腿修正或进入 trading range。紧通道中至少三腿或三次 surge 构成的 climactic 加速形态称 parabolic wedge。
 
-## 情景判定
+## 适用情景与路由
 
 - 确有至少三次可区分的推进；仍属于趋势/通道后期，接近重要位置或呈现高潮式推进；
 - 反方获得 signal、micro double、趋势线突破或 follow-through 等候选证据；
@@ -22,7 +22,7 @@
 - 强反向 breakout 可加强 MTR 候选；只有完整 MTR 链（趋势线/通道破坏、旧极值测试失败、反方控制转移）同时成立才转入 MTR 家族；
 - 首次逆势交易经常失败，尤其在趋势仍强、没有结构破坏、没有回探失败时。
 
-## 失效与 Stop 锚点
+## Premise 失效
 
 - 强趋势继续形成第二腿；
 - 三推结构极值被反向接受；
@@ -30,15 +30,19 @@
 
 Premise 失效可在结构 stop 触发前主动退出（强反向动量或 Always In 翻转即可要求退出），不等待触及 stop。
 
-Stop 锚点类别：完整三推结构极值外，或能否定"逆势尝试仍有效"的位置外。
+## Protective Stop 锚点
 
-## 目标与管理
+完整三推结构极值外，或能否定“逆势尝试仍有效”的位置外。
 
-- 直接预期：两腿修正或进入 trading range；TBTL 是条件性的路径/持有预期，不是最低结构或价格目标；默认 scalp 的实际目标仍是附近现实 magnet（均线、前 swing、旧公平区域、区间边缘）；
-- 升级 MTR 只走两条合法路径：入场前预写 runner 分支（scalp 与 MTR runner 分开管理），或原 scalp 退出后按新 MTR 触发建立新 Trade Plan；升级后按 [MTR 早期与确认两版本](mtr_early_and_confirmed.md) 管理；
-- Parabolic wedge 后的第一笔反向运动常只是 minor reversal、两腿修正或 trading range，不能因形态名称直接期待完整反向趋势。
+## 直接预期与目标
 
-## 语境先验
+直接预期是两腿修正或进入 trading range；默认目标是均线、前 swing、旧公平区域或区间边缘等附近现实 magnet。Parabolic wedge 名称不能直接提供完整反向趋势目标。
+
+## 管理边界
+
+默认按 scalp 管理，TBTL 只作条件性路径/持有预期。升级 MTR 只走两条合法路径：入场前预写 runner，或原 scalp 退出后按独立 MTR 触发建立新计划。
+
+## 语境数字与先验
 
 - 紧通道（且没有清楚 MTR 或宽楔形顶/底）第一次逆势反转约 70% 是 minor；
 - "下一次反转约 40% 成为主要反转"分母不明确，不作为概率先验（见 [边界与冲突](../../reference/course/boundaries_and_conflicts.md)）；

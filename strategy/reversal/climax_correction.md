@@ -8,24 +8,26 @@
 
 连续强 K 线、加速、远离均线、缺少回调、趋势通道 overshoot 或异常大波动表示运动可能走得过快过远；高潮式推进后常见三种路径：进入交易区间、形成两腿回调、或原趋势继续。本页交易"高潮后反向修正"的候选：按 minor reversal 逆势 scalp，期待两腿修正或进入 trading range。
 
-## 两种口径
-
-- 课程中的 climactic move / climax bar：进行时描述，提示风险与转换，不是逆势许可；
-- 官方 glossary 的 climax：事后结果（已反向进入 trading range 或 opposite trend），反向出现前只能说"高潮式推进/候选"。
-
-## 情景判定
+## 适用情景与路由
 
 - 高潮式推进（连续强 K、远离均线、通道 overshoot、异常大波动）后出现反向证据：异常强反向 K 线、趋势线突破、旧极值回探失败、连续反向动量使顺势方放弃；
 - 反向运动在重要位置获得暂时支撑或接受；
 - 到两腿修正目标或区间边缘有现实空间；
 - 趋势仍强、没有结构破坏与回探失败时，第一笔逆势交易经常失败。
 
+完整 MTR 链已经成立时路由到 MTR；没有反向接受时只记录高潮风险并继续 WATCH。
+
+## 两种口径
+
+- 课程中的 climactic move / climax bar：进行时描述，提示风险与转换，不是逆势许可；
+- 官方 glossary 的 climax：事后结果（已反向进入 trading range 或 opposite trend），反向出现前只能说"高潮式推进/候选"。
+
 ## 触发类别
 
 - 沿逆势修正方向的 stop entry 触发（逆势多单：buy stop 越过反转尝试 signal bar 高点；逆势空单：sell stop 越过其低点）；
 - 首次尝试缺乏延伸时等待第二信号。
 
-## 失效与 Stop 锚点
+## Premise 失效
 
 - 原趋势继续形成第二腿；
 - 修正结构极值被反向接受；
@@ -33,14 +35,19 @@
 
 Premise 失效可在结构 stop 触发前主动退出（强反向动量或 Always In 翻转即可要求退出），不等待触及 stop。
 
-Stop 锚点类别：修正结构极值外，或原趋势以强 breakout 恢复控制的位置外。
+## Protective Stop 锚点
 
-## 目标与管理
+修正结构极值外，或原趋势以强 breakout 恢复控制的位置外。
 
-- 直接预期：两腿修正或进入 trading range；TBTL 是条件性的路径/持有预期，不是最低结构或价格目标；默认 scalp 的实际目标仍是附近现实 magnet（均线、前 swing、旧公平区域或区间边缘）；
-- 默认按 scalp 管理；升级 MTR 只走两条合法路径：入场前预写 runner 分支，或原 scalp 退出后按新 MTR 触发建立新 Trade Plan，升级后按 [MTR 早期与确认两版本](mtr_early_and_confirmed.md) 管理。
+## 直接预期与目标
 
-## 语境数字（特定晚段背景，不是通用胜率）
+直接预期是两腿修正或进入 trading range；默认目标是均线、前 swing、旧公平区域或区间边缘等附近现实 magnet。TBTL 不是价格目标。
+
+## 管理边界
+
+默认按 scalp 管理；升级 MTR 只走两条合法路径：入场前预写 runner，或原 scalp 退出后按独立 MTR 触发建立新计划。
+
+## 语境数字与先验（特定晚段背景，不是通用胜率）
 
 | 语境 | 先验 |
 | --- | --- |
