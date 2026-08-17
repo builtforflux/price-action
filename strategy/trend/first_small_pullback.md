@@ -8,7 +8,7 @@
 
 强趋势（breakout phase 或 tight channel）刚刚建立，第一次获利了结或反方尝试只形成短而浅的停顿；原趋势随后恢复并重新测试刚形成的趋势极值。
 
-## 情景判定
+## 适用情景与路由
 
 - 前段是已形成方向控制的 breakout phase（spike）或 tight channel；
 - 当前是趋势建立后的第一次可识别回调（bar pullback 或 pause bar 均可开始计数；同根两者同时成立只计一根）；
@@ -22,19 +22,25 @@
 
 回调末端出现方向清晰、收盘较强的顺势 signal bar（core 对 signal bar 不设固定半幅阈值，收盘质量须服从 context），用 stop entry 越过其高点（牛）或低点（熊）。Micro channel 或强 spike 中理想回调可能不出现；若采用"小仓、宽结构 stop"的预设计早期参与，必须满足 [风险与心理纪律](../../core/06_trade_plan_and_management/03_risk_psychology.md) 中正 Trader's Equation 的前提，不能把焦虑当入场依据。
 
-## 失效与 Stop 锚点
+## Premise 失效
 
 - 主要结构被反向有效突破（牛：major higher low 被向下跌破；熊：major lower high 被向上突破）；
 - 回调已变成连续双向重叠的局部交易区间或宽通道；
 - 反向运动获得足以改变 market-cycle 判断的跟进。
 
-Stop 锚点类别：完整回调极值外，或足以否定趋势 premise 的主要摆动点外。Signal bar 另一端只有在同时就是完整 premise 失效边界时才足够作为 stop；合理 stop 更远时应调整仓位或放弃，不能把 stop 塞进正常回调。
+## Protective Stop 锚点
 
-## 目标与管理
+完整回调极值外，或足以否定趋势 premise 的主要摆动点外。Signal bar 另一端只有在同时就是完整 premise 失效边界时才足够；合理 stop 更远时应调整仓位或放弃，不能把 stop 塞进正常回调。
 
-直接预期是测试回调前记录的最近趋势极值；可能按 scalp 管理，趋势仍强且空间足够时支持 swing。Measured move 只有当前走势另有清楚的 breakout leg、旗形高度或 Leg 1 = Leg 2 时才加入。
+## 直接预期与目标
 
-## 语境数字
+直接预期是测试回调前记录的最近趋势极值。Measured move 只有当前走势另有清楚的 breakout leg、旗形高度或 Leg 1 = Leg 2 时才加入。
+
+## 管理边界
+
+可以按 scalp 管理；趋势仍强且空间足够时才支持 swing。Micro channel 或强 spike 中理想回调不出现时，只能使用入场前预写的小仓宽 stop 变体，不能因 FOMO 临场追价。
+
+## 语境数字与先验
 
 - small-pullback 的 1—4 根是课程典型语境（许多强例只有 1—3 根），不是硬阈值，也不构成订单有效期；回调是否仍可等待由结构失效与目标空间决定。
 - 强控制环境中理想价格可能不出现；第一笔逆势交易通常危险。

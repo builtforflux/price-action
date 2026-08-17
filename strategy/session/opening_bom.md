@@ -8,7 +8,7 @@
 
 ## 叠加规则
 
-- 尚未突破时按 trading-range / breakout-mode 逻辑处理：边缘未获接受的测试按 [区间 fade](../range/README.md) 家族，压缩等待按 [压缩结构突破](../breakout/compression_breakout_mode.md)；
+- 尚未突破时按 trading-range / breakout-mode 逻辑处理：边缘未获接受的测试按 [区间 fade](../range/README.md) 家族，双向候选按 [Breakout Mode](../breakout/breakout_mode.md)；
 - 只有强突破和跟进才切换为顺势，按 [突破延续](../breakout/README.md) 家族；
 - 双向候选可以提前挂两套计划，但必须分别计算各自的 entry、stop、target 与 Trader's Equation；
 - 未突破前不预设方向；首次越界只是 breakout attempt。

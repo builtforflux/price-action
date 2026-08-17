@@ -8,7 +8,7 @@
 
 牛趋势中回调两次测试近似低位（double bottom bull flag），或熊趋势中反弹两次测试近似高位（double top bear flag）；第二次测试不能改变原控制，原趋势恢复并获得跟进。
 
-## 情景判定
+## 适用情景与路由
 
 | 当前控制 | Pullback 测试 | 失败事实 | 延续证据 |
 | --- | --- | --- | --- |
@@ -21,16 +21,22 @@
 
 双测试后的恢复触发（例如越过两次测试之间的中间 swing 结构），用 stop entry 执行。小型 double bottom 常可理解为 High 2 bull flag，小型 double top 常可理解为 Low 2 bear flag。
 
-## 失效与 Stop 锚点
+## Premise 失效
 
 - 第二次测试破坏原趋势的主要结构；
 - 双测试之后出现反向跟进，市场转成 trading range 或反向突破。
 
-Stop 锚点类别：两次测试的共同极值外，或足以否定趋势 premise 的结构外。
+## Protective Stop 锚点
 
-## 目标与管理
+两次测试的共同极值外，或足以否定趋势 premise 的结构外。
 
-直接预期是原趋势恢复；可能按 scalp 管理，趋势仍强且空间足够时支持 swing。微型变体（micro double bottom / top）在 spike 内可承担 one-bar flag 功能，在 flag 末端也可成为反向的 reversal setup——名称和语境必须一起读取。
+## 直接预期与目标
+
+直接预期是原趋势恢复并测试旧极值；double flag 名称本身不产生独立量度目标。
+
+## 管理边界
+
+可能按 scalp 管理，趋势仍强且空间足够时支持 swing。微型变体（micro double bottom / top）在 spike 内可承担 one-bar flag 功能；出现在 flag 末端并形成反向证据时路由到反转策略，不能沿用本页管理。
 
 ## 常见误读
 

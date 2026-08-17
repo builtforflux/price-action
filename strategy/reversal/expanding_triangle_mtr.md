@@ -8,7 +8,7 @@
 
 Expanding triangle（ET、喇叭形）由逐步扩大的高低点和交替反转腿构成，多次向两侧扩张后都未建立持续控制；第四或第五腿形成足够反向压力时，构成 major trend reversal 的候选。
 
-## 情景判定
+## 适用情景与路由
 
 ET 形成 MTR 候选需要同时满足：
 
@@ -22,16 +22,22 @@ ET 形成 MTR 候选需要同时满足：
 
 反向 breakout、follow-through 与 acceptance 出现后，候选才升级为控制转移获得确认的版本；尺度与末端反向压力只建立候选，达到根数不自动确认反转。
 
-## 失效
+## Premise 失效
 
 - 第五腿本身成为原方向的强 breakout 并获得跟进，旧 ET 反转假设失效；
 - 全图仍是 tight trading range 时，ET 顶底通常只支持区间内的 minor reversal。
 
-Stop 锚点类别：足以否定 MTR 候选的结构外——通常是第五腿或最近反向压力结构极值外；若第五腿成为原方向强 breakout，候选失效并需退出。
+## Protective Stop 锚点
 
-## 目标与管理
+通常在第五腿或最近反向压力结构极值外，且必须足以否定 MTR 候选。
 
-确认后按反向两腿与 swing 管理；若只是区间内 minor reversal，按区间回归管理。
+## 直接预期与目标
+
+确认后的直接预期是反向两腿；现实 magnet、旧公平区域或区间内部目标优先，ET 名称本身不提供固定投射。
+
+## 管理边界
+
+只有控制转移获得确认后才按 swing 管理；若只是区间内 minor reversal，路由到区间回归或 minor scalp。
 
 ## 常见误读
 
