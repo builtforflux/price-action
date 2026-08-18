@@ -16,6 +16,18 @@
 
 Pullback 是当前运动中的暂停或暂时反向运动，原方向恢复仍是当时有效的基础预期；反向运动获得足够接受并改变 market-cycle 判断后，就不能继续只称为原趋势的 pullback。Leg 是较大结构中一段具有方向的运动，可以属于趋势、通道、交易区间或修正过程，不自动构成独立 trend。
 
+### Two-Leg Tendency 与 Leg Reset
+
+课程常用“市场会尝试做两次”描述方向运动：第一腿足够强并使参与者预期延续时，回调后通常会尝试形成第二腿。它是条件性的路径倾向，不是每段行情都必须完成的两步状态机，也不表示第二腿必然与第一腿等长或突破原极值。
+
+第二腿可以只有一根 K 线、明显弱于第一腿、形成 higher low / lower high，或很快失败；若第二腿本身又形成新的强 breakout 和 follow-through，市场还可能继续出现第三腿或更多腿。`Leg 1 = Leg 2` 只是存在清楚结构时的 measured-move 候选，不能把等距目标回写成第二腿的定义。
+
+腿数必须绑定周期、观察窗口和外层状态。同一段高周期第一腿可以在低周期展开成完整的两腿或多腿；交易区间内部的同向 swing 也不能仅因外观强就自动取得趋势突破后的第二腿预期。若中间已经形成清楚 trading range，通常把区间前的腿结束于区间开始、把区间后的新方向腿从区间结束重新观察；区间内部的小腿仍按区间运动处理。
+
+以下事实支持重置当前腿数：新的强 breakout 获得接受并建立主导控制；原先候选的“第二腿”强度和尺度已经更像新 breakout / leg 1；成熟 trading range 或明显状态转换切断了旧方向结构。重置是工作划分，不会改写历史价格，也不能用事后最漂亮的分段回填早期交易理由。
+
+`Second leg` 描述价格路径，`second signal / second entry` 描述触发尝试和入场次序，两者可以同时出现，但不是同一个概念。第二次入场的完整边界见[二次入场和陷阱](../03_acceptance_and_order_logic/03_second_entries_and_traps.md)。
+
 ### Breakout 首次回调、Staircase 与阶段重置
 
 在选定周期上，强 breakout phase 出现第一个可识别 pullback 时，当前这段突破阶段结束并进入 channel 阶段；这不表示整个 trend 结束，也不妨碍市场随后再次形成新的 breakout phase。该边界用于逐段更新当前阶段，而不是把一天或整段趋势永久贴成同一个标签。
@@ -105,5 +117,5 @@ Pullback 可能逐渐延长、形成反向 channel，并从原趋势中的 flag 
 
 - [`SRC-GLOSSARY`](../../reference/official_sources.md)：trend、channel、tight channel 等最低定义。
 - [`SRC-STRONG-LEGS-2016`](../../reference/official_sources.md)：breakout phase（spike）、紧通道、宽通道与交易区间的连续谱对照。
-- `SRC-COURSE-01-36`：课程 09C、11D、12B–12C、14A–14E、16A–17B、18B–18C、21A；endless pullback、多周期计数、趋势与通道结构、staircase / shrinking stairs、trending trading range 和 minor reversal。
+- `SRC-COURSE-01-36`：课程 09C、11D、12B–12C、14A–14E、15A–15D、16A–17B、18B–18C、20A–20B、21A、24C；two-leg tendency、腿数重置、endless pullback、多周期计数、趋势与通道结构、staircase / shrinking stairs、trending trading range 和 minor reversal。
 - `SRC-COURSE-37-52`：课程 41B、43A–46E、50A；breakout 的首次回调、局部/外层状态、紧密/宽幅通道、首次反转和阶梯阶段转换。

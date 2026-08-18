@@ -126,6 +126,8 @@ Opening / first swing 是开盘第一段方向运动的事后描述，终点常�
 
 Pullback 是原运动中的暂时暂停或反向运动，尚未否定其恢复预期；leg 是较大结构中的一段方向运动，可以属于趋势、通道、交易区间或修正过程。Swing 寻求比 scalp 更大的价格运动，并愿意承受符合 premise 的正常 pullback。
 
+课程常把第一腿足够强之后的再次尝试描述为 two-leg tendency。第二腿可以很弱、很短、不创新极值或继续产生更多腿；它不是保证，也不要求与第一腿等长。新强突破获得接受、候选第二腿升级为新的主导 breakout，或成熟 trading range 切断旧结构时，应在当前周期重新观察腿数。Second leg 描述价格路径，不等于 second signal / second entry。
+
 ### Reversal / Minor Reversal
 
 派生自：[Core Definition：Reversal / Minor Reversal](../core/01_market_cycle/00_market_cycle.md#reversal-与-minor-reversal)。
@@ -148,7 +150,7 @@ Staircase 指回调穿过或覆盖前一突破点，使相邻突破与回调重�
 
 派生自：[Core Definition：Context / Control](../core/02_context/00_context_location_control.md#控制权)。
 
-连续强 K 线、收盘、失败、回调和跟进形成的累积买卖证据；不是对真实订单簿身份或单笔成交动机的断言。
+K 线数量与连续性、相对实体和收盘、影线拒绝、突破/gap/跟进、回调质量和反方能否获利共同形成的累积买卖证据。它必须相对近期价格、market state、位置和周期解释，不设固定分数；一侧 pressure 较多也不自动生成 entry、确认突破或直接建立 opposite trend。它不是对真实订单簿身份或单笔成交动机的断言。
 
 ### Support / Resistance / Magnet
 

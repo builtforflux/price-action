@@ -23,6 +23,23 @@ Context 决定一个形态是有意义的交易结构，还是普通噪声。Con
 
 这些 K 线、收盘、跟进、回调和失败的累积就是 buying / selling pressure。Pressure 先描述一段时间内可观察证据如何堆积；当一侧压力明显强于另一侧时，才支持“当前由谁控制”以及更强的 Always In 判断。它不是对真实订单簿、机构身份或单笔成交动机的猜测。
 
+### Buying / Selling Pressure 的观察语言
+
+Pressure 由一组相对、连续且完全镜像的价格事实描述。下表是非穷尽观察表；多头示例中的方向全部可以镜像为空头：
+
+| 观察维度 | Buying pressure 示例 | 它不能单独证明什么 |
+| --- | --- | --- |
+| 数量与连续性 | 多头 K 线更多、连续多头 K 线增加、空头序列缩短 | K 线数量多不保证突破方向 |
+| 实体与收盘 | 多头实体相对更大或逐渐扩大，收盘更靠近高点；空头实体缩小 | 单根大实体不等于持续控制 |
+| 影线与拒绝 | 下影反复出现，向下尝试被收回 | 影线本身不等于可交易底部 |
+| Breakout / gap / follow-through | 多头突破收在关键位外、保留 gap 或近似 gap，并获得跟进 | 一次越界或 gap 不保证接受 |
+| Pullback 与反方获利 | 回调浅、恢复快，空头难以获得 scalp 或持续路径 | 浅回调不表示任意价格都可追入 |
+| 序列变化 | 多头收盘和实体增强，同时空头 K 线、实体或跟进减弱 | 相对改善不等于 Always In 已翻转 |
+
+这些事实必须相对近期平均 K 线、当前 market state、位置和观察周期解释，不设跨市场固定分数。Trading range 中一侧 pressure 较多，只增加最终突破的方向先验；在反向接受出现前，区间仍然可以继续双边交易。Channel 中逐渐累积的反向 pressure 也常先推动状态进入 trading range，而不是直接建立 opposite trend。
+
+同一根 K 线的“大实体、强收盘、顺势 K 线”可以共同解释 pressure，却不能在 [Two Reasons](../05_setups/00_what_is_a_setup.md#two-reasons-与证据汇合) 中自动算成三个独立理由。Pressure 提供 control 维度的累积证据；实际 Setup 仍须结合 market state、location、trigger、失效与 Trader's Equation。
+
 控制权强时，顺势交易更合理。控制权弱时，应更多关注区间边缘、失败突破和被困交易者。
 
 ### Always In 是强控制判断
@@ -59,4 +76,4 @@ Gap 只有在实质改变位置、接受/拒绝、路径障碍或目标时才进
 
 Context 在重要支撑阻力附近观察价格是加速、停顿、收回还是守住，但不在本页重新定义这些区域。支撑阻力、magnets、路径障碍和目标空间的最低边界见[支撑阻力与目标](01_support_resistance_targets.md)。
 
-相关来源见 [`reference/official_sources.md`](../../reference/official_sources.md) 中的 `SRC-GLOSSARY`、`SRC-MANUAL`、`SRC-STRONG-LEGS-2016`、`SRC-COURSE-01-36`（课程 01 p28–30、02D p124–148、08A–08D p413–509、10A–10B、13A–13C p801–868、18F p1600–1602、19A–19E、21A p1793–1795）与 `SRC-COURSE-37-52`（课程 37A–37B、40A–40C、43A–49E）。
+相关来源见 [`reference/official_sources.md`](../../reference/official_sources.md) 中的 `SRC-GLOSSARY`、`SRC-MANUAL`、`SRC-STRONG-LEGS-2016`、`SRC-COURSE-01-36`（课程 01 p28–30、02D p124–148、08A–08D p413–509、10A–10B、13A–13C p801–868、18F p1600–1602、19A–19E、21A–22D）与 `SRC-COURSE-37-52`（课程 37A–37B、38A–39D、40A–40C、43A–49E）。
