@@ -98,13 +98,13 @@ Pattern 不是自动信号，Setup 不是完整交易，Trade Plan 也不是入�
 | Limit Entry / LOM / Fade / Countertrend | [限价单市场](03_acceptance_and_order_logic/02_limit_order_market.md) | 定义限价成交边界、逆向限价行为环境及 fade / countertrend 区别 |
 | Second Signal / Second Entry / Trap | [二次入场和陷阱](03_acceptance_and_order_logic/03_second_entries_and_traps.md) | 区分课程宽口径机会、chart entry bar、账户 actual fill 和失败压力 |
 | Pattern | [形态只是语言](04_patterns/00_patterns_are_language.md) | 定义形态语言及其与 Setup 的边界 |
-| Bar Types / Bar Roles / Implied Pullback | [K 线类型](04_patterns/01_bar_types.md) | 定义 K 线几何、signal bar、chart entry bar / actual fill bar、actual / implied pullback 及其成立时点 |
+| Bar Types / Bar Roles / Implied Pullback | [K 线类型](04_patterns/01_bar_types.md) | 定义 K 线几何（含 shaved）、signal bar、chart entry bar / actual fill bar、actual / implied pullback 及其成立时点 |
 | H1 / H2 / L1 / L2 | [H1、H2、L1、L2](04_patterns/02_h1_h2_l1_l2.md) | 定义回调中的触发尝试、高阶嵌套计数与新突破后的重置 |
 | Wedge / Parabolic Wedge | [楔形](04_patterns/03_wedges.md) | 定义三推结构及其顺势、逆势和高潮语境 |
 | Double Top / Double Bottom | [双顶、双底和旗形变体](04_patterns/04_double_tops_bottoms.md) | 定义双测试、neckline 确认、量度/失败链、旗形和微型变体 |
 | Final Flag | [最终旗形](04_patterns/05_final_flags.md) | 定义任意趋势腿中的候选 flag、可小至一根，以及事后确认边界 |
 | Triangle / Expanding Triangle / ii / ioi / oo | [Triangles、ii、ioi 和 oo](04_patterns/06_triangles_ii_ioi_oo.md) | 定义普通/扩张三角形、压缩/扩张 K 线结构，以及 ET 的 MTR 候选与确认层级 |
-| Gap Family | [缺口](04_patterns/07_gaps.md) | 定义 session opening、Gap Open Bar、body、micro measuring、measuring 和 exhaustion gap |
+| Gap Family | [缺口](04_patterns/07_gaps.md) | 定义 session opening、Gap Open Bar、body、negative / overlap、micro measuring、measuring 和 exhaustion gap |
 | Setup | [什么是 Setup](05_setups/00_what_is_a_setup.md) | 定义带 context 的 premise、触发、失效和分类边界 |
 | Trade Plan | [从 Setup 到交易计划](06_trade_plan_and_management/00_trade_plan.md) | 定义一笔完整交易必须保持一致的组成部分 |
 | Scalp / Swing / TBTL | [Scalp 与 Swing](06_trade_plan_and_management/01_scalp_vs_swing.md) | 定义管理方式和时间/腿数预期 |

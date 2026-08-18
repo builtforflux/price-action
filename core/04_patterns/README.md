@@ -19,6 +19,6 @@ Pattern 与 Setup 的边界由[形态只是语言](00_patterns_are_language.md)�
 5. [`04_double_tops_bottoms.md`](04_double_tops_bottoms.md)：双顶底、neckline 确认、量度与失败，以及旗形和微型变体。
 6. [`05_final_flags.md`](05_final_flags.md)：任意趋势腿中的 candidate final flag、可小至一根，以及实时候选与事后确认的边界。
 7. [`06_triangles_ii_ioi_oo.md`](06_triangles_ii_ioi_oo.md)：普通与 expanding triangle、ET 的 MTR 候选/确认层级，以及 ii、ioi、oo 等压缩结构。
-8. [`07_gaps.md`](07_gaps.md)：session gap、Gap Open Bar、body、micro measuring、measuring 和 exhaustion gap 的术语边界。
+8. [`07_gaps.md`](07_gaps.md)：session gap、Gap Open Bar、body、negative / overlap、micro measuring、measuring 和 exhaustion gap 的术语边界。
 
 概念总图和权威定义归属见[核心框架](../README.md)。
