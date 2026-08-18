@@ -24,11 +24,11 @@ Core 思想进入策略层只有四种合法角色：
 | [Brooks 方法主线 / Price Action](../core/00_method/00_al_brooks_thesis.md) | 证据输入 | [选择链](README.md#选择链) | 通过价格事实而非外部叙事选择候选；证据按当前周期与状态保持、削弱、失效或重置，不独立成策略 |
 | [Trader's Equation / Probability Language](../core/00_method/01_probability_risk_reward.md) | 管理约束 | [执行清单](README.md#执行清单从策略页到-trade-plan)、覆盖矩阵 PSEL | 所有承担风险决定统一检查 |
 | [Market Cycle / Reversal / Minor Reversal](../core/01_market_cycle/00_market_cycle.md) | 状态约束 + 家族路由 | [趋势](trend/README.md)、[区间](range/README.md)、[反转](reversal/README.md)、[覆盖矩阵](coverage_matrix.md) | 基础状态与 minor/MTR 边界均有路由 |
-| [Trend / Channel / Pullback / Leg](../core/01_market_cycle/01_trends_and_channels.md) | 状态约束 + 趋势母命题 | [普通趋势回调延续](trend/pullback_continuation.md)及趋势子型 | 通用回调由兜底承接，命名结构用专页收紧 |
+| [Trend / Channel / Pullback / Leg](../core/01_market_cycle/01_trends_and_channels.md) | 状态约束 + 趋势母命题 | [普通趋势回调延续](trend/pullback_continuation.md)、突破/反转各页的第二腿预期及趋势子型 | Two-leg tendency 只在上层状态支持时进入直接预期；区间小腿、second entry 和 leg reset 边界不混用，通用回调由兜底承接 |
 | [Trading Range](../core/01_market_cycle/02_trading_ranges.md) | 状态约束 + fade 母命题 | [边缘确认 fade](range/edge_fade_confirmed.md)及区间子型 | 边缘回归、突破成功、中部/TTR 回避均有落点 |
 | [Breakout Event / Test / Mode / BTC-STC](../core/01_market_cycle/03_breakouts_and_breakout_mode.md) | 状态约束 + 突破母命题/子型 | [双向突破模式](breakout/breakout_mode.md)、[BTC/STC](breakout/buy_sell_the_close.md)、[突破回踩](breakout/breakout_pullback_test.md) | 通用 BOM 不再局限于压缩结构 |
 | [Climax / Transition](../core/01_market_cycle/04_climax_and_transition.md) | 状态约束 + minor 子型 | [高潮后修正](reversal/climax_correction.md)、矩阵 WATCH/transition 行 | 高潮式推进本身不提供逆势许可 |
-| [Context / Location / Control / Always In](../core/02_context/00_context_location_control.md) | 证据输入 | [选择链](README.md#选择链)及各策略情景判定 | 所有策略先检查位置、控制与空间 |
+| [Context / Pressure / Location / Control / Always In](../core/02_context/00_context_location_control.md) | 证据输入 | [选择链](README.md#选择链)及各策略情景判定 | 所有策略先检查 pressure、位置、控制与空间；Pressure 不按固定分数生成 entry，同一 K 线特征不重复计票 |
 | [Support / Resistance / Target / Test / Confluence](../core/02_context/01_support_resistance_targets.md) | 证据输入 + 管理约束 | 各页“适用情景”“目标与管理”、[量度目标构造](breakout/measured_move_breakout.md) | Test 需要 reaction / follow-through 才能解释结果；汇合增加位置理由但不独立生成 entry，同源对象不重复计票 |
 | [Timeframe / Session / Opening](../core/02_context/02_time_and_timeframes.md) | 证据输入 + 覆盖层 | [时段覆盖层](session/README.md) | 多周期、opening 与尾盘只改变候选/时间约束 |
 

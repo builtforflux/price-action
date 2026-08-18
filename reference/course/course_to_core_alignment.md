@@ -138,7 +138,7 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 | Core 页面 | 课程依据 | 权威职责 | 边界与旁路 |
 | --- | --- | --- | --- |
 | [00_market_cycle](../../core/01_market_cycle/00_market_cycle.md) | 12A–C、13A、14、16–18、21A、37、43–49 | 定义 Trend / TR 基础状态、breakout phase—channel 层级、模糊状态 fallback，以及周期绑定的 reversal / minor reversal | 所有状态标签必须绑定观察周期；breakout mode 不作为第三种基础状态 |
-| [01_trends_and_channels](../../core/01_market_cycle/01_trends_and_channels.md) | 11D、14A–E、16A–F、17A–B、37B、41B、43–46、50A | 定义 tight / broad channel、局部与外层结构、首次 pullback 阶段切换、staircase、shrinking stairs、trending trading range 和宽通道参与区启发式 | 通道标签和参与区描述结构连续谱，不单独生成交易动作；75/25 只适用于清楚倾斜的通道 |
+| [01_trends_and_channels](../../core/01_market_cycle/01_trends_and_channels.md) | 11D、14A–14E、15A–15D、16A–F、17A–B、20A–B、24C、37B、41B、43–46、50A | 定义 tight / broad channel、局部与外层结构、two-leg tendency 与腿数重置、首次 pullback 阶段切换、staircase、shrinking stairs、trending trading range 和宽通道参与区启发式 | 第二腿是条件性路径倾向，不保证等距、创新极值或停止于两腿；通道标签和参与区不单独生成交易动作，75/25 只适用于清楚倾斜的通道 |
 | [02_trading_ranges](../../core/01_market_cycle/02_trading_ranges.md) | 12–13、17–19、28、37、42C、47A–D、49 | 定义普通区间、TTR、宽区间、80% 经验、BOM 条件和区间第二腿陷阱 | 50/50 只作为中性或 BOM 条件先验，不是所有区间突破的固定概率 |
 | [03_breakouts_and_breakout_mode](../../core/01_market_cycle/03_breakouts_and_breakout_mode.md) | 15A–G、18B/F、20B、24E、29E、40–42、47、50D | 区分 breakout event、接受、breakout phase、BOM 和 second-leg 倾向，并定义 Buy / Sell The Close 的早期与确认版本 | 首根强突破收盘可形成早期版本；持续收盘与 follow-through 形成确认版本，两者的风险时点不同 |
 | [04_climax_and_transition](../../core/01_market_cycle/04_climax_and_transition.md) | 18C、23、24D、29A–E、40A–E、42A–C、48J、49、52 | 区分进行时与事后 climax，登记紧通道寿命启发式与 climax 语境中的 TBTL 倾向，并界定首次反转、Final Trend Bar 的事后角色和趋势末端失望 | Climax 和 Final Trend Bar 不直接预测顶部或底部；根数与概率是特定背景经验，交易结论仍由后续接受或失败决定 |
@@ -147,7 +147,7 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 
 | Core 页面 | 课程依据 | 权威职责 | 边界与旁路 |
 | --- | --- | --- | --- |
-| [00_context_location_control](../../core/02_context/00_context_location_control.md) | 02D、08D、10、13、19、21A、37、40、43–49 | 定义 buying / selling pressure、位置、路径空间和 Always In 控制 | Always In 通常由强反转加跟进切换；强 Context 下单根足够强的反转 K 可立即切换；方向不等于持仓 |
+| [00_context_location_control](../../core/02_context/00_context_location_control.md) | 02D、08D、10、13、19、21A–22D、37–40、43–49 | 定义 buying / selling pressure 的观察维度、位置、路径空间和 Always In 控制 | Pressure 不使用固定分数、不独立生成 entry；Always In 通常由强反转加跟进切换，强 Context 下单根足够强的反转 K 可立即切换；方向不等于持仓 |
 | [01_support_resistance_targets](../../core/02_context/01_support_resistance_targets.md) | 11D、19A–E、20A–B、29、33F、34B、40、42、48、52B；书籍 TR Ch19、Ch26 | 区分 support、resistance、magnet、target 与 test 结果链，并将 Dueling Lines / confluence 限定为位置理由 | Magnet 不是必到结果；触及和汇合本身不直接生成 entry，同源线条不能重复计票 |
 | [02_time_and_timeframes](../../core/02_context/02_time_and_timeframes.md) | 04、09C、12B、16C、19A/C、37A、40–41、45–46、48–49、51D、52A | 定义多周期、session 和剩余时间边界，并区分 first swing、Opening BOM、first-18 heuristic、内部固定 window 与 Opening Reversal | Opening BOM 可作宽泛课程用语；固定窗口和具体参数留在 Reference，不形成通用定义 |
 
