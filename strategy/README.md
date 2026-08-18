@@ -10,11 +10,13 @@
 
 策略层是 **Application 层**：只综合和本地应用 core 已定义的概念，不建立新的最低定义，不生成可直接执行的订单参数。所有概念的完整定义以 core 权威页为准，本目录只保留必要摘要并链接权威页。
 
+Core 的候选结果 `TRADE / WAIT / REJECT` 在策略层分别映射为 `STRATEGY / WATCH / NO_TRADE`：前者表达通用 Setup 资格，后者表达覆盖矩阵和决策流程的具体叶子。名称不同不表示存在两套判断体系。
+
 ## 与 core、reference 的职责边界
 
 | 目录 | 唯一职责 |
 | --- | --- |
-| [core](../core/README.md) | 解释市场为什么这样运动，以及概念之间怎样关联（权威定义所在） |
+| [core](../core/README.md) | 解释怎样描述、判断和更新市场行为，以及概念之间怎样关联（权威定义所在） |
 | [strategy](README.md) | 把核心命题实例化为按情景组织的可检查策略原型 |
 | [reference](../reference/README.md) | 保存派生术语速查、正式来源、课程映射与内容边界 |
 
@@ -102,13 +104,15 @@ K 线角色、Pattern、Context、接受/失败、Trader's Equation、stop、tar
 | 步骤 | 写什么 | 来自策略页哪一节 |
 | --- | --- | --- |
 | 1. Premise | 一句话：「我在交易什么」（如：强趋势首次浅回调恢复） | 交易命题 |
-| 2. 触发 | 具体订单：具体参照事件或 signal bar 的触发位 + 订单类型（stop entry / limit / 收盘市价） | 触发类别 |
-| 3. 失效清单 | 会使 premise 失效的可观察事实清单（逐条可核对） | 失效 |
-| 4. Active protective stop | 具体价格 + 依据（把 stop 锚点类别落到实际结构价位；signal bar 另一端仅在同时是完整失效边界时可用） | Stop 锚点 |
-| 5. Profit target | 具体价格 + 依据（把目标类别落到实际 magnet / 量度价位；非"等它涨"） | 目标 |
-| 6. 仓位 | 由 entry → active stop 的风险距离与账户风险上限算出；scale-in 则写全部层总风险 | 目标与管理 + 跨情景基线 |
-| 7. 管理 | 入场前选定 scalp 或 swing；写出正常回调容忍、部分退出与 premise 变化退出的分支 | 目标与管理 + 三层退出保护 |
-| 8. Trader's Equation | 用同一组 entry / stop / target 检查二结果近似：p(win) × reward − p(loss) × risk − costs > 0；存在部分退出、scratch 等结果时按 core 拆分更多互斥结果 | 跨情景基线 |
+| 2. Supporting reasons | 至少两个相互补充的理由，注明所属维度并排除同义标签重复计票 | 适用情景与路由 + 触发类别 |
+| 3. Opposing evidence / Update | 反方当前最有力事实，以及会增强、削弱或否定本判断的新证据 | 适用情景与路由 + Premise 失效 |
+| 4. 触发 | 具体订单：具体参照事件或 signal bar 的触发位 + 订单类型（stop entry / limit / 收盘市价） | 触发类别 |
+| 5. 失效清单 | 会使 premise 失效的可观察事实清单（逐条可核对） | 失效 |
+| 6. Active protective stop | 具体价格 + 依据（把 stop 锚点类别落到实际结构价位；signal bar 另一端仅在同时是完整失效边界时可用） | Stop 锚点 |
+| 7. Profit target | 具体价格 + 依据（把目标类别落到实际 magnet / 量度价位；非"等它涨"） | 目标 |
+| 8. 仓位 | 由 entry → active stop 的风险距离与账户风险上限算出；scale-in 则写全部层总风险 | 目标与管理 + 跨情景基线 |
+| 9. 管理 | 入场前选定 scalp 或 swing；写出正常回调容忍、部分退出与 premise 变化退出的分支 | 目标与管理 + 三层退出保护 |
+| 10. Trader's Equation | 用同一组 entry / stop / target 检查二结果近似：p(win) × reward − p(loss) × risk − costs > 0；存在部分退出、scratch 等结果时按 core 拆分更多互斥结果 | 跨情景基线 |
 
 执行时仍遵守：证据不足 → WATCH（等待新数据重新运行）；空间或时间不足 → NO_TRADE。计划版本规则：**承担风险前**，stop / target / management 的实质变化需要新版本；**成交后**按预写管理分支调整并记录状态（不覆盖 original_target），不自动新建整份计划；退出后重新入场必须建立新 Trade Plan（core [从 Setup 到交易计划](../core/06_trade_plan_and_management/00_trade_plan.md)）。
 
@@ -125,7 +129,9 @@ Context：位置、控制权、Always In、支撑阻力与目标空间
     ↓
 选定当前主导的命题（当前覆盖的家族之一：趋势延续、突破延续、区间 fade、MTR、逆势修正；可同时多个，core 不排除其他家族）
     ↓
-检查对应策略页的触发类别、失效事实与目标类别
+检查至少两个相互补充的支持理由、反方证据和更新条件
+    ↓
+检查对应策略页的触发类别、失效事实与目标类别；不足则 WATCH / NO_TRADE
     ↓
 Trader's Equation：概率、risk、reward、成本来自同一方案
     ↓
@@ -145,6 +151,8 @@ Trade Plan：entry、active protective stop、target、仓位、management
 | Scalp / Swing / TBTL | [Scalp 与 Swing](../core/06_trade_plan_and_management/01_scalp_vs_swing.md) | 入场前定管理方式，不临场切换 |
 | 加仓减仓 | [加仓与减仓](../core/06_trade_plan_and_management/02_scaling_in_out.md) | scale-in 总风险在第一笔 entry 前确定 |
 | 目标构造 | [支撑阻力与目标](../core/02_context/01_support_resistance_targets.md) | magnet、measured move 的构造与投射起点 |
+| Test / confluence | [支撑阻力与目标](../core/02_context/01_support_resistance_targets.md#test-与-confluence) | 触及后继续看 reaction / follow-through；汇合可增加位置理由，同源对象不重复计票 |
+| Two Reasons / 候选结果 | [什么是 Setup](../core/05_setups/00_what_is_a_setup.md#two-reasons-与证据汇合) | 独立理由不足输出 WATCH；premise 或方程已否定输出 NO_TRADE |
 | 心理与纪律 | [风险与心理纪律](../core/06_trade_plan_and_management/03_risk_psychology.md) | OPM/沉没纪律、FOMO 边界、小仓宽 stop 早期参与的前提 |
 
 ## 相关来源

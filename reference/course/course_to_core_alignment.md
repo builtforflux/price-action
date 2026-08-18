@@ -130,7 +130,7 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 
 | Core 页面 | 课程依据 | 权威职责 | 边界与旁路 |
 | --- | --- | --- | --- |
-| [00_al_brooks_thesis](../../core/00_method/00_al_brooks_thesis.md) | 01–02、06–08、12–13、30、37、49、51–52 | 定义 Price Action 的最低可观察证据边界，并连接状态、Context、Pattern、Setup、Trade Plan、方程和成交后更新 | Volume、DOM 和新闻不独立保证方向；交易判断仍看价格的突破、接受或失败，外部事实与机制留在 Reference |
+| [00_al_brooks_thesis](../../core/00_method/00_al_brooks_thesis.md) | 01–02、06–08、12–13、30、37、49、51–52 | 定义 Price Action 的最低可观察证据边界，并连接状态、Context、Pattern、Setup、Trade Plan、方程和成交后更新；证据生命周期是仓库综合 | Volume、DOM 和新闻不独立保证方向；交易判断仍看价格的突破、接受或失败，外部事实与机制留在 Reference |
 | [01_probability_risk_reward](../../core/00_method/01_probability_risk_reward.md) | 13A、21B、30A–E、31、34A–B、37B、39C、51A–C | 定义 probability、risk、reward、cost 的同方案关系，以及 initial / Actual / account / personal risk 四分法 | Actual Risk 是事后统计量，不能由单笔赢家倒推事前正期望；Z-score、80%/3R 和十亿交易者算例留在 Reference |
 
 ### 01_market_cycle
@@ -148,7 +148,7 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 | Core 页面 | 课程依据 | 权威职责 | 边界与旁路 |
 | --- | --- | --- | --- |
 | [00_context_location_control](../../core/02_context/00_context_location_control.md) | 02D、08D、10、13、19、21A、37、40、43–49 | 定义 buying / selling pressure、位置、路径空间和 Always In 控制 | Always In 通常由强反转加跟进切换；强 Context 下单根足够强的反转 K 可立即切换；方向不等于持仓 |
-| [01_support_resistance_targets](../../core/02_context/01_support_resistance_targets.md) | 11D、19A–E、20A–B、29、33F、34B、40、42、48、52B | 区分 support、resistance、magnet 与 target，并纳入 entry、关键收盘和日周月 OHLC 候选 | Magnet 不是必到结果；水平本身不直接生成 entry |
+| [01_support_resistance_targets](../../core/02_context/01_support_resistance_targets.md) | 11D、19A–E、20A–B、29、33F、34B、40、42、48、52B；书籍 TR Ch19、Ch26 | 区分 support、resistance、magnet、target 与 test 结果链，并将 Dueling Lines / confluence 限定为位置理由 | Magnet 不是必到结果；触及和汇合本身不直接生成 entry，同源线条不能重复计票 |
 | [02_time_and_timeframes](../../core/02_context/02_time_and_timeframes.md) | 04、09C、12B、16C、19A/C、37A、40–41、45–46、48–49、51D、52A | 定义多周期、session 和剩余时间边界，并区分 first swing、Opening BOM、first-18 heuristic、内部固定 window 与 Opening Reversal | Opening BOM 可作宽泛课程用语；固定窗口和具体参数留在 Reference，不形成通用定义 |
 
 ### 03_acceptance_and_order_logic
@@ -164,7 +164,7 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 
 | Core 页面 | 课程依据 | 权威职责 | 边界与旁路 |
 | --- | --- | --- | --- |
-| [00_patterns_are_language](../../core/04_patterns/00_patterns_are_language.md) | 02D、08D、21–29、42 | 定义 Pattern 作为结构语言，并与 Setup 分层 | 头肩形、圆弧顶底等替代标签不因课程有专讲就自动建立独立 Pattern Definition |
+| [00_patterns_are_language](../../core/04_patterns/00_patterns_are_language.md) | 02D、08D、21–29、42 | 定义 Pattern 作为会随新价格演化的结构语言，并与 Setup 分层 | 头肩形、圆弧顶底等替代标签不因课程有专讲就自动建立独立 Pattern Definition；最终标签不能回填早期理由 |
 | [01_bar_types](../../core/04_patterns/01_bar_types.md) | 08A–D、09A、10、15D、40C、52 | 定义 trend / TR / reversal bar、shaved 几何、actual / implied pullback，并区分 signal bar、chart entry bar 和账户 actual fill bar | Shaved 只描述无影线边界，不独立生成 Setup；Signal Bar 保留计划层角色，强弱评价落在图表触发层，账户成交事实单独记录 |
 | [02_h1_h2_l1_l2](../../core/04_patterns/02_h1_h2_l1_l2.md) | 09A–C、14、17、22、24、49B/D、50E | 定义 H1–H6 / L1–L6、局部与全局尺度，以及明确 breakout leg 后的计数重置 | 高阶编号描述尝试次序，不是胜率等级 |
 | [03_wedges](../../core/04_patterns/03_wedges.md) | 24A–E、27、29、42、49 | 定义三推、抛物线楔形和 wedge 在延续、反转与高潮中的职责 | 较少预期方向突破后按突破质量重新评估，不继续机械沿用旧先验；75/25 不是任意 wedge 的固定胜率 |
@@ -177,7 +177,7 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 
 | Core 页面 | 课程依据 | 权威职责 | 边界与旁路 |
 | --- | --- | --- | --- |
-| [00_what_is_a_setup](../../core/05_setups/00_what_is_a_setup.md) | 08D、13、21、30、37、49 | 定义 Setup 与 Pattern、Trade Plan 的边界，以及 Setup 分类的非穷尽性 | Setup 组织交易命题，不替代具体订单和账户执行方案 |
+| [00_what_is_a_setup](../../core/05_setups/00_what_is_a_setup.md) | 08D、13、21、30、37、49；书籍 TR Ch26 | 定义 Setup 与 Pattern、Trade Plan 的边界、Two Reasons 的独立证据口径、TRADE / WAIT / REJECT，以及 Setup 分类的非穷尽性 | 五维理由分类和候选状态是仓库操作化，不是固定评分器；Setup 不替代具体订单和账户执行方案 |
 | [01_trend_continuation](../../core/05_setups/01_trend_continuation.md) | 09、13–14、17、22C、31、41、43–46 | 定义 H2 / L2、wedge flag、double test、MA gap bar、premise 和目标在趋势延续命题中的关系 | 具体字段须保持同一 Trade Plan 版本一致 |
 | [02_breakout_continuation](../../core/05_setups/02_breakout_continuation.md) | 15、18、20、24E、29E、31D、40–42、48J、50D | 定义突破延续的预判与确认版本、接受、第二腿和 measured move 条件 | Buy / Sell The Close 可落在预测或确认版本，只表示风险承担时点，不另立 Setup |
 | [03_trading_range_fade](../../core/05_setups/03_trading_range_fade.md) | 15G、18、19、28、37、47、50E | 定义成熟区间边缘、limit / stop 两类 entry、premise 失效和区间目标 | 第二腿陷阱由上游状态页定义 |
@@ -188,7 +188,7 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 
 | Core 页面 | 课程依据 | 权威职责 | 边界与旁路 |
 | --- | --- | --- | --- |
-| [00_trade_plan](../../core/06_trade_plan_and_management/00_trade_plan.md) | 30–36、37、41、51–52 | 定义 entry、stop、target、size、management 的同版本一致性，以及 active stop、catastrophe backup、动态 premise 和三层保护 | 退出后的重新入场属于新计划版本；具体平台机制不属于 Core |
+| [00_trade_plan](../../core/06_trade_plan_and_management/00_trade_plan.md) | 30–36、37、41、51–52 | 定义 supporting reasons、opposing evidence、update condition、entry、stop、target、size、management 的同版本一致性，以及 active stop、catastrophe backup、动态 premise 和三层保护 | 三个证据字段是仓库审计 schema；退出后的重新入场属于新计划版本，具体平台机制不属于 Core |
 | [01_scalp_vs_swing](../../core/06_trade_plan_and_management/01_scalp_vs_swing.md) | 13B–C、21D、31A–D、36、50A–E、51C–D | 区分 scalp 与 swing 的概率/RR、成本、TBTL 和管理方式 | 两种交易构造不能成交后随意互换；少数专家的极高胜率描述不是通用准入标准 |
 | [02_scaling_in_out](../../core/06_trade_plan_and_management/02_scaling_in_out.md) | 30B、35A–C、36、43C–44C、45D–46D、47C、51D、52A–B | 定义加权平均 entry、共同 stop 下的完整总风险，以及成本、止损距离与仓位的关系 | 加仓改变整仓价格和敞口，不凭空提高市场方向概率；无限摊平不属于计划内 scaling |
 | [03_risk_psychology](../../core/06_trade_plan_and_management/03_risk_psychology.md) | 06–07、30C、33、36A–B、37B、40A、50B、51A–D、52A–B | 区分正常统计亏损与规则错误，并定义快速纠错、无关痛痒仓位、FOMO 小仓参与边界、OPM / 沉没结果、希望和保本边界 | 浮盈与已实现利润不能替代新增风险预算；遗传决定论和“所有导师无用”等绝对叙事不进入 Core |

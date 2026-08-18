@@ -21,7 +21,7 @@
 
 | 目录 | 唯一职责 |
 | --- | --- |
-| [core](core/README.md) | 解释市场为什么这样运动，以及概念之间怎样关联 |
+| [core](core/README.md) | 解释怎样描述、判断和更新市场行为，以及概念之间怎样关联 |
 | [strategy](strategy/README.md) | 把核心 Setup 命题实例化为按情景组织的策略原型，不新建定义、不生成执行参数 |
 | [reference](reference/README.md) | 保存派生术语速查、正式来源、课程与 Core 的知识映射及内容边界 |
 

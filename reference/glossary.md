@@ -32,6 +32,24 @@
 
 Pattern 是对可观察价格行为及其几何或顺序关系的命名。Setup 则把具体 Context、交易 premise、支持证据、方向、可观察触发、失效事实和直接期待的价格运动组合起来；它仍不是完整 Trade Plan。
 
+### Two Reasons / Evidence Convergence
+
+派生自：[Core Definition：Two Reasons 与证据汇合](../core/05_setups/00_what_is_a_setup.md#two-reasons-与证据汇合)。
+
+一项可交易 Setup 至少应能说明两个相互补充的理由；理由可来自 market state、control / pressure、location、structure 或 trigger / response。相同价格事实的同义标签、嵌套计数和重叠形态不能重复计票。两个理由只使候选值得继续评估，不替代 stop、target、成本和 Trader's Equation。五维分类与独立性检查是仓库综合，不是固定评分模型。
+
+### TRADE / WAIT / REJECT
+
+派生自：[Core Definition：候选结果](../core/05_setups/00_what_is_a_setup.md#trade--wait--reject)。
+
+`TRADE` 表示候选具备独立理由、触发和一致 Trade Plan 条件，可以继续进入计划或执行流程；`WAIT` 表示 premise 仍可能成立但缺少必要理由、触发、跟进或清楚方程；`REJECT` 表示 premise 或 Trader's Equation 已被否定。它们是分析结果，不表示 TRADE 已经成交，也不把 WAIT 变成无限期保留候选。
+
+### Evidence Lifecycle
+
+派生自：[Core Definition：证据生命周期与重置](../core/00_method/00_al_brooks_thesis.md#证据生命周期与重置)。
+
+证据只在相关周期、观察窗口和主导状态内支持当前候选，可依次被记录为出现、有效、削弱、失效或重置。新主导 breakout、成熟 trading range、Always In 切换或控制重建后，应从新结构重新建立计数、测试和 Setup 理由；这是仓库的一致判断模型，不是 Brooks 的固定状态机。
+
 ### Trader's Equation / 40–60 Thinking
 
 派生自：[Core Definition：Trader's Equation](../core/00_method/01_probability_risk_reward.md#traders-equation)与 [40–60 思维](../core/00_method/01_probability_risk_reward.md#4060-思维)。
@@ -137,6 +155,12 @@ Staircase 指回调穿过或覆盖前一突破点，使相邻突破与回调重�
 派生自：[Core Definition：Support / Resistance](../core/02_context/01_support_resistance_targets.md#它解决什么问题)与 [Magnet](../core/02_context/01_support_resistance_targets.md#磁吸目标)。
 
 Support 在当前价格下方，是下跌可能停顿或反转的候选区域；resistance 在当前价格上方，是上涨可能停顿或反转的候选区域。同一价格区被穿越后可以交换角色，它们不是保证反转的精确线。Magnet 是可能吸引价格测试的目标区域；吸引不保证到达。
+
+### Test / Confluence / Dueling Lines
+
+派生自：[Core Definition：Test 与 Confluence](../core/02_context/01_support_resistance_targets.md#test-与-confluence)。
+
+Test 只确认价格接近、触及或重新访问已有价格关系；结果仍要继续观察 reaction、follow-through 与 acceptance。多个相对独立的支撑阻力对象在同一区域汇合可以增强 location 理由；Dueling Lines 是其中一种课程语言。汇合不单独生成 Setup，由同一组 swing 或同一价格事实推导的多个名称不能重复计票。
 
 ### Measured Move
 
@@ -263,6 +287,12 @@ Brooks glossary 使用严格 `above` / `below`，而 *10 Best Price Action Tradi
 课程会把 `second entry` 宽泛用于第二次可交易机会；官方 glossary 的严格口径则要求第一次已经形成 entry bar，随后同一逻辑再次触发并形成第二根 entry bar。仓库因此分别记录 second signal、second-entry opportunity / chart entry bar 和账户 second actual fill；图形名称不能证明某个账户实际成交。
 
 ## 形态名称复核
+
+### Pattern Evolution
+
+派生自：[Core Definition：Pattern Evolution](../core/04_patterns/00_patterns_are_language.md#pattern-evolution)。
+
+Pattern 是当前结构的暂时描述，会随新价格扩展、失败或进入更大结构。演化后应按新的 market state、控制、位置和接受证据重建 Setup；最终形态名称不能回填早期当时不可见的理由，也不能与旧标签重复计票。
 
 本节只保留名称容易诱发错误推论时所需的摘要；完整结构、识别线索和交易含义由 [`core/04_patterns/`](../core/04_patterns/README.md) 与 [`core/05_setups/`](../core/05_setups/README.md) 解释。
 

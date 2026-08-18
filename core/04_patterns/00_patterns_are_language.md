@@ -23,6 +23,20 @@ Pattern 是对一组可观察价格行为及其几何或顺序关系的命名，
 
 形态名称本身不生成固定 stop、target 或管理方式。课程若明确给出带事件、分母和 Context 的条件先验，可以在形态页登记并链接概率台账；这种先验仍不等于交易许可，实际概率、风险与管理必须回到具体 Context、Setup 和 Trade Plan。
 
+## Pattern Evolution
+
+Pattern 是对当前可见结构的暂时描述，不是价格一旦获得就永久保持的身份。同一段价格会随新 K 线扩展、失败或进入更大结构，例如：
+
+- H2 可以继续扩展成 wedge；普通 pullback 可以拖长成反向 channel 或 trading range。
+- Double top / bottom 可以成为 MTR 候选，也可以在原趋势恢复后表现为 flag。
+- Failed breakout 可以在原方向重新触发后转成 breakout pullback / failed failure。
+- Broad channel 与 trending trading range 可以是同一段行情的两个观察角度，不构成两份独立证据。
+- Final flag、measuring gap 和 exhaustion gap 在实时只能先记录候选角色，后续结果才决定事后名称。
+
+演化发生后，应按当前 market state、控制、位置、接受证据和目标空间重新建立 Setup；不能继续沿用旧标签的概率，也不能用最终形态回填早期当时不可见的理由。旧结构仍可作为历史 context，但它是否继续有效要服从[证据生命周期与重置](../00_method/00_al_brooks_thesis.md#证据生命周期与重置)。
+
+多个相互重叠的形态名称也不能重复计票。若 H2、micro double bottom 和 second entry 描述同一段两次尝试，它们可以共同解释结构，却不天然提供三个独立理由；理由汇合由[什么是 Setup](../05_setups/00_what_is_a_setup.md#two-reasons-与证据汇合)统一约束。
+
 ## 与 Setup 的边界
 
 孤立 pattern 仍只是语言。交易者把它放回 Context，并用它组织明确的交易 premise 与入场依据时，才进入 Setup 层；最低定义见[什么是 Setup](../05_setups/00_what_is_a_setup.md)。
