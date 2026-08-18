@@ -12,6 +12,12 @@
 
 单根趋势 K 线不等于趋势。趋势需要连续性和跟进。
 
+### Shaved Body / Shaved Bar
+
+`Shaved` 只描述实体与本根极值之间没有影线的几何关系：`shaved top` 表示 high 等于 open 与 close 中较高者，`shaved bottom` 表示 low 等于两者中较低者；两端都成立时可称两端 shaved。牛 K 线收在最高点是 shaved top，熊 K 线收在最低点是 shaved bottom。若行情源或标注系统允许“一跳以内”也算 shaved，必须另行声明容差，不能把近似关系回写成严格相等。
+
+顺方向一端 shaved 可以加强收盘质量描述，另一端 shaved 也可能只表示本根从极值开盘；它仍不是独立 Setup。是否代表持续控制，要继续比较相对实体大小、位置、后续跟进和是否快速收回，不能仅凭无影线推导趋势或入场。
+
 ## Signal Bar
 
 课程与官方 glossary 对 signal bar 的命名时点存在两个层次。课程在计划和等待阶段就把提供入场理由、可用于放置 entry order 的 K 线称为 signal bar，即使交易者最终没有下单、订单没有触发或选择等待更多确认；K 线尚未完成、角色仍在形成时，可以称 prospective signal bar。官方 glossary 使用更严格的事后关系：对实际发生的 stop-entry，entry bar 前用于该 entry 的最后一根才取得 signal-bar 角色。
@@ -58,4 +64,4 @@ Classic two-bar reversal 由相邻两根共同完成控制转移，第二根可�
 
 ## 相关来源
 
-相关来源见[正式来源台账](../../reference/official_sources.md)中的 `SRC-GLOSSARY`、`SRC-COURSE-01-36`（课程 08A–08D、09A、10A–10B）与 `SRC-COURSE-37-52`（课程 40C、52A–52B）。
+相关来源见[正式来源台账](../../reference/official_sources.md)中的 `SRC-GLOSSARY`、`SRC-COURSE-01-36`（课程 08A–08D、09A、10A–10B、15D）与 `SRC-COURSE-37-52`（课程 40C、52A–52B）。

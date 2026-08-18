@@ -224,6 +224,12 @@ Pain Trade 是行为与价格路径模型：许多交易者在错误方向已有
 
 这里只保留容易发生误读的几何和计数摘要；识别和用法见 [`core/04_patterns/`](../core/04_patterns/README.md)。
 
+### Trend Bar / Shaved Bar
+
+派生自：[Core Definition：Trend Bar / Shaved Bar](../core/04_patterns/01_bar_types.md#trend-bar)。
+
+Trend bar 与 trading-range bar 是由相对实体、影线、收盘和 Context 共同判断的连续谱。`Shaved top` 只表示 high 与实体上边界重合，`shaved bottom` 只表示 low 与实体下边界重合；两端均无影线时可称两端 shaved。它是几何与收盘质量描述，不是独立 Setup；近似相等的机械标注必须声明允许的 tick 容差。
+
 ### Inside Bar / Outside Bar
 
 派生自：[Core Definition：Inside / Outside Bar](../core/04_patterns/01_bar_types.md#inside--outside-bar)。
@@ -290,11 +296,11 @@ Wedge 通常表示三次推动或三次尝试，在不同 Context 中可以是�
 
 MTR 在核心框架中是反转 Setup 原型，不是单根 K 线或孤立 Pattern 的同义词。把它作为候选 Setup 时，仍须说明具体 Context、premise、支持证据、反向触发、失效事实和直接期待的价格运动。
 
-### Gap / Body Gap
+### Gap / Body Gap / Negative Gap
 
-派生自：[Core Definition：Gap](../core/04_patterns/07_gaps.md#gap-的最低含义)与 [Body Gap](../core/04_patterns/07_gaps.md#术语边界)。
+派生自：[Core Definition：Gap](../core/04_patterns/07_gaps.md#gap-的最低含义)与 [Body / Negative Gap](../core/04_patterns/07_gaps.md#术语边界)。
 
-Gap 是明确的两个支撑阻力对象之间缺少充分双边交易的价格空间，不限于隔夜跳空或严格无重叠。Body gap 更具体地表示两个参照 K 线的实体不重叠，影线可以重叠。
+Gap 是明确的两个支撑阻力对象之间缺少充分双边交易的价格空间，不限于隔夜跳空或严格无重叠。Body gap 更具体地表示两个参照 K 线的实体不重叠，影线可以重叠。Negative / overlap gap 表示 breakout point 与 pullback 已轻微重叠，按原边界量得负值；它不是反方向 session gap，也不单独确认突破失败或 exhaustion。
 
 ### Gap Open Bar
 

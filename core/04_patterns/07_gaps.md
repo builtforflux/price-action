@@ -18,6 +18,7 @@ Gap 本身不是方向判断或入场许可。它只有在实际改变强度、�
 | Gap Open Bar | 当前 K 线的 open 高于或低于前一根 K 线的 close；两者相等则没有这种开盘缺口 | 每根 K 线开盘即可确认；它可以出现在 session 内任意位置，只描述本根开盘与前收的关系，不预测延续或反转 |
 | Gap reversal | 当前 K 线向 gap 方向越过前一根 K 线至少一跳 | 只能确认初始反向事件，不表示 gap 已回补或反向已被接受 |
 | Body gap | 回测时影线可以重叠，但两个参照 K 线的实体仍不重叠 | 实体关系出现时可确认 |
+| Negative / overlap gap | 原突破点与后续回调发生轻微重叠，因此所比较的两个边界之间已经没有正的开放空间；`negative` 指按原 gap 量法得到负值，不表示出现了方向相反的 session gap | 重叠出现时可确认几何关系；它仍可能保留部分突破压力，但是否继续形成 measured move 或转入 exhaustion / trading range 必须等待后续结果 |
 | Micro measuring gap | 强趋势 K 线前后两根 K 线的完整范围不重叠 | 完整范围关系出现时可确认 |
 | Moving-average gap bar | 整根 K 线没有触及均线 | 当根完成时可确认 |
 | Measuring gap | 最终带来 measured move 的 breakout | 实时只能称 candidate measuring gap，达到结果后才能确认 |
@@ -26,6 +27,8 @@ Gap 本身不是方向判断或入场许可。它只有在实际改变强度、�
 同一个开放空间在趋势建立阶段可能支持 strength，在成熟趋势末端可能只是 potential exhaustion。结果出现前，不能用事后名称替代当时可观察事实。
 
 Gap Open Bar 与 Opening / session gap 不能互换：前者比较相邻 K 线的 open 与 close，日内每根都可能出现；后者只发生在 session 开始，并且必须声明与昨日 close、昨日范围或其他 session 边界中的哪一个比较。Gap Open Bar 也不同于两根完整 K 线不重叠的传统 gap，后者要求当前 low 高于前 high，或当前 high 低于前 low，强度门槛更高。
+
+Negative / overlap gap 也不是传统 gap 的镜像名称。它描述 breakout point 与 pullback 之间已经轻微交叠，字面上没有真正空白；“negative”来自边界距离的符号，而不是行情方向。轻微重叠会削弱开放 gap 的强度证据，却不能单独确认突破失败、exhaustion 或 market-cycle 转换；若后续重新形成强顺势突破和跟进，它仍可能属于继续量度运动的一部分。
 
 ## 怎样使用这些词
 
@@ -40,6 +43,7 @@ Gap 被进入或回补只说明原证据发生变化。没有旧区域重新获�
 ## 常见误读
 
 - 不写参照对象和边界，把所有 gap 都当作同一种 opening gap。
+- 把 negative gap 误译成反方向跳空，或看到轻微重叠就宣布原突破已经失败。
 - 看到 gap up 只做多、gap down 只做空，或把 gap reversal 当成完整反转。
 - 在结果出现前把开放空间追认为 measuring / exhaustion gap，而不标记 candidate、来源口径和实际结果。
 - 把 gap 边界或中点机械设为 stop 或 target。

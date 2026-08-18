@@ -165,13 +165,13 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 | Core 页面 | 课程依据 | 权威职责 | 边界与旁路 |
 | --- | --- | --- | --- |
 | [00_patterns_are_language](../../core/04_patterns/00_patterns_are_language.md) | 02D、08D、21–29、42 | 定义 Pattern 作为结构语言，并与 Setup 分层 | 头肩形、圆弧顶底等替代标签不因课程有专讲就自动建立独立 Pattern Definition |
-| [01_bar_types](../../core/04_patterns/01_bar_types.md) | 08A–D、09A、10、40C、52 | 定义 trend / TR / reversal bar、actual / implied pullback，并区分 signal bar、chart entry bar 和账户 actual fill bar | Signal Bar 保留计划层角色；强弱评价落在图表触发层，账户成交事实单独记录 |
+| [01_bar_types](../../core/04_patterns/01_bar_types.md) | 08A–D、09A、10、15D、40C、52 | 定义 trend / TR / reversal bar、shaved 几何、actual / implied pullback，并区分 signal bar、chart entry bar 和账户 actual fill bar | Shaved 只描述无影线边界，不独立生成 Setup；Signal Bar 保留计划层角色，强弱评价落在图表触发层，账户成交事实单独记录 |
 | [02_h1_h2_l1_l2](../../core/04_patterns/02_h1_h2_l1_l2.md) | 09A–C、14、17、22、24、49B/D、50E | 定义 H1–H6 / L1–L6、局部与全局尺度，以及明确 breakout leg 后的计数重置 | 高阶编号描述尝试次序，不是胜率等级 |
 | [03_wedges](../../core/04_patterns/03_wedges.md) | 24A–E、27、29、42、49 | 定义三推、抛物线楔形和 wedge 在延续、反转与高潮中的职责 | 较少预期方向突破后按突破质量重新评估，不继续机械沿用旧先验；75/25 不是任意 wedge 的固定胜率 |
 | [04_double_tops_bottoms](../../core/04_patterns/04_double_tops_bottoms.md) | 09B、21D、22–25、27–28、38–39 | 定义广义双测试、neckline 确认、形态高度量度、失败反向分支、旗形和微型变体 | 双顶或双底只描述结构，交易命题仍取决于状态、位置和确认 |
 | [05_final_flags](../../core/04_patterns/05_final_flags.md) | 23A–B、29、40E、43C、48J | 定义 Final Flag 候选、最小尺度、晚段语境和事后确认 | “Final” 是事后角色，不是实时确定标签 |
 | [06_triangles_ii_ioi_oo](../../core/04_patterns/06_triangles_ii_ioi_oo.md) | 08C、18B、26A–B、29E、47 | 定义普通与扩张 triangle 的五腿成熟度、相对尺度，以及 expanding triangle 的 MTR 候选条件 | 尺度与末端反向压力建立候选；后续突破、跟进和接受负责确认升级 |
-| [07_gaps](../../core/04_patterns/07_gaps.md) | 10–11、15E、29A–C、34B、42A–B、48F | 区分 session gap、Gap Open Bar、完整 K 线 gap、body / micro / measuring / exhaustion gap | Measuring 与 exhaustion 是候选解释，结果由后续价格行为确认 |
+| [07_gaps](../../core/04_patterns/07_gaps.md) | 10–11、15E、29A–C、34B、42A–B、46A、48F | 区分 session gap、Gap Open Bar、完整 K 线 gap、body / negative-overlap / micro / measuring / exhaustion gap | Negative gap 不是反方向跳空；measuring 与 exhaustion 是候选解释，结果由后续价格行为确认 |
 
 ### 05_setups
 
