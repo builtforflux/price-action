@@ -48,8 +48,8 @@ STRATEGY / WATCH / NO_TRADE
 5. **运行适用收集器**：trend 同时检查 MTR、minor reversal、continuation 与状态检查点；成熟 trading range 同时检查 fade、breakout 与硬回避约束。一个行情可以命中多个收集器。
 6. **同家族精度消歧**：同一母命题下，命名子型完整成立时移除通用兜底；只有没有更具体子型时才保留 R47、R48 等兜底。这个步骤只选“用哪一页描述同一 premise”，不在不同 premise 之间选方向。
 7. **逐候选校验 R28**：每个完整候选先用自己的 entry、stop、target 和持有方式检查剩余时间；拒绝时间不足的 swing，但保留已经独立建立且时间足够的 scalp。
-8. **PSEL 跨 premise 裁决**：先应用候选相关硬约束和 G01，再检查时间合格候选各自的 Trader's Equation；多个不同 premise 均通过时，必须记录明确选择理由。无法给出不依赖结果的选择理由时输出 WATCH / NO_TRADE。
-9. **建立 Trade Plan**：按[策略入口的执行清单](README.md#执行清单从策略页到-trade-plan)实例化具体 entry、active protective stop、target、仓位和管理。
+8. **PSEL 跨 premise 裁决**：先应用候选相关硬约束和 G01，再检查每个候选是否至少有两个相互补充、没有重复计票的理由，并记录当前最有力的 opposing evidence 与 update condition；独立理由或必要触发不足时输出 WATCH，premise 已否定时输出 NO_TRADE。其后再检查时间合格候选各自的 Trader's Equation；多个不同 premise 均通过时，必须记录明确选择理由。无法给出不依赖结果的选择理由时输出 WATCH / NO_TRADE。
+9. **建立 Trade Plan**：按[策略入口的执行清单](README.md#执行清单从策略页到-trade-plan)实例化 supporting reasons、opposing evidence、update condition、具体 entry、active protective stop、target、仓位和管理。
 
 ## 候选收集与裁决图
 
@@ -135,7 +135,7 @@ flowchart TD
     COLLECT["CANDIDATE_SET<br/>合并 STRATEGY_CANDIDATE / WATCH_FLAG / HARD_NO_TRADE / CHECKPOINT<br/>并叠加 R27 / R41 / R45 / R46 session 信息"] --> SPEC["SPECIFICITY_RESOLVE<br/>同一母命题内：命名子型优先<br/>无具体子型才保留 R16 / R47 / R48 等通用承接"]
 
     SPEC --> TIMEF["CANDIDATE_TIME_FILTER：R28<br/>逐候选按自己的持有期、目标距离与剩余 session 时间过滤<br/>一个 swing 失败不删除独立合格 scalp"]
-    TIMEF --> PSEL{"PREMISE_SELECT<br/>跨 premise 裁决"}
+    TIMEF --> PSEL{"PREMISE_SELECT<br/>独立理由 + 反方证据 + 更新条件<br/>跨 premise 裁决"}
     PSEL -->|"候选适用的 R23/R24 硬约束过滤后无剩余"| T_NT
     PSEL -->|"所有可识别候选均无现实空间（G01；R02/R22 为例）"| T_NT
     PSEL -->|"完整候选均被 R28 拒绝，且无独立时间合格候选"| T_NT

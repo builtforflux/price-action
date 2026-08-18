@@ -4,7 +4,7 @@
 >
 > 本文是 Trade Plan schema 的权威定义页，负责规定一笔交易实例必须包含的组成及其一致性；它本身不生成具体策略计划。
 
-本页的固定字段、版本记录和管理分支是仓库为一致操作与复盘建立的综合 schema / 仓库基线，不是 Brooks 官方给出的固定八字段表。字段中的价格行为、风险与管理关系仍分别由相关来源支持。
+本页的固定字段、版本记录和管理分支是仓库为一致操作与复盘建立的综合 schema / 仓库基线，不是 Brooks 官方给出的固定字段表。字段中的价格行为、风险与管理关系仍分别由相关来源支持。
 
 ## Trade Plan 的定义
 
@@ -15,6 +15,9 @@ Trade Plan 是围绕一个 Setup 固化的完整交易方案。它把交易命�
 | 组成 | 必须回答的问题 |
 | --- | --- |
 | Premise | 当前 Setup 押注什么价格行为，哪些 Context 支持它？ |
+| Supporting reasons | 至少两个相互补充的理由是什么，是否存在同义标签重复计票？ |
+| Opposing evidence | 反方当前最有力、且与本计划相关的可观察事实是什么？ |
+| Update condition | 哪个新事实会增强、削弱或否定当前判断？ |
 | Entry | 哪个可观察条件触发订单，预计实际成交怎样处理？ |
 | Invalidation | 哪些新价格事实说明原命题不再成立？ |
 | Active protective stop | 当前实际保护单在哪里，为什么该位置容许正常波动却限制错误判断？ |
@@ -24,6 +27,10 @@ Trade Plan 是围绕一个 Setup 固化的完整交易方案。它把交易命�
 | Trader's Equation | 这组概率、risk、reward 与成本是否值得承担？ |
 
 Invalidation 与 active protective stop 相关但不等同：前者是原 premise 被新证据否定，后者是当前真实在场、用于限制这份计划风险的保护订单。交易者可以在该 stop 触发前，基于可观察的 premise 变化主动退出。
+
+`Opposing evidence` 不要求为了形式对称而编造反向交易，也不等于 premise 已失效；它负责记录当前最可能压缩概率、目标空间或持有时间的事实。`Update condition` 则把“准备应对任何结果”落到可观察条件：哪些新事实只会削弱优势，哪些足以触发 Invalidation，哪些会要求等待而不是入场。若反方事实已经使原方程不成立，候选应回到 Setup 的 WAIT / REJECT，而不是靠较远 stop 继续维持 TRADE 标签。
+
+Supporting reasons 的维度、独立性与候选状态见[什么是 Setup](../05_setups/00_what_is_a_setup.md#two-reasons-与证据汇合)。这三个字段是仓库为审计证据汇合和概率更新增加的 schema，不宣称是 Brooks 给出的固定表格。
 
 若交易架构还使用更远的 `catastrophe backup`，必须把它作为独立可选字段记录，并明确极端情况下从 entry 到该订单的最大损失、相应仓位上限以及何时撤换。它不等于 active protective stop，也不能被用来缩小计划表中的真实最坏风险。所谓 price-action stop 必须落到前述某个明确订单或主动退出规则，不能同时指代两个不同价位。
 

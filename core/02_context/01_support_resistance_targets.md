@@ -35,6 +35,25 @@ Entry price 成为 magnet 只说明已有参与者可能关注该区域，不保
 
 使用 gap 作为目标时，必须先写明比较对象和哪一个边界才算进入或关闭。Gap 被测试可以削弱原方向的强度证据，但“缺口迟早回补”不是目标可达性依据；仍要检查控制权、路径障碍和剩余时间。
 
+## Test 与 Confluence
+
+`Test` 只表示价格接近、触及或重新访问一个已有价格关系；它不自行说明该位置会守住、突破或反转。为避免把“到达位置”提前写成“测试成功”，按以下顺序记录：
+
+```text
+Approach -> Touch / Overshoot -> Reaction -> Follow-through / Acceptance
+```
+
+- **Approach**：价格正在接近候选区域，尚未触及。
+- **Touch / Overshoot**：价格触及或短暂越过区域，只确认 test event 已经发生。
+- **Reaction**：出现停顿、反向 K 线、拒绝或加速，但结果仍可能缺少延续。
+- **Follow-through / Acceptance**：后续价格支持拒绝、守住或在另一侧接受，才让测试结果获得更多确认。
+
+因此，测试均线不自动反转，测试旧高不自动形成可交易双顶，回踩突破点也不自动证明突破成功；到达 measured-move target 同样只说明目标被测试，不能单独授权逆势交易。具体接受、失望和失败边界见[接受、失望与失败证据](../03_acceptance_and_order_logic/01_acceptance_and_failure.md)。
+
+多个相对独立的支撑阻力对象在同一区域交汇，可以形成 `confluence`；Brooks 书中也用 `Dueling Lines` 描述 pullback 同时测试两条重要线或价格关系的情形。例如趋势线与 pullback channel line、均线与旧 swing、突破点与区间边缘在同一区域相遇。汇合可以增强 location 理由，但位置仍须结合 reaction、trigger、follow-through 和目标空间，不能单独生成 Setup。
+
+线条或名称的数量不等于独立理由的数量。两条线若由同一组 swing 推导，或“旧高”“区间上沿”“double-top 区域”只是同一价格事实的不同标签，应视为高度相关证据；只有新增了不同价格关系或观察维度的汇合，才真正增加信息。理由独立性的完整规则见[什么是 Setup](../05_setups/00_what_is_a_setup.md#two-reasons-与证据汇合)。
+
 ## 与策略目标口径的边界
 
 本页定义价格行为中的目标区域、magnets、路径障碍和量度关系。
@@ -95,4 +114,4 @@ Trader's Equation 使用当前计划真实采用的退出价格和相应到达�
 
 入场前需要知道这笔 setup 的 profit target 和管理方式，否则无法判断风险回报。部分止盈需要按仓位比例计算；measured move 是目标候选，不保证到达。
 
-相关来源见 [`reference/official_sources.md`](../../reference/official_sources.md) 中的 `SRC-GLOSSARY`、`SRC-STOP-ORDERS`、`SRC-10-PATTERNS`、`SRC-STRONG-LEGS-2016`、`SRC-BREAKOUTS-2025`、`SRC-LIVE-TR-BO-2021`、`SRC-COURSE-01-36`（课程 11D、18E p1565–1574、19A–19E、20A–20B、29A–29E、33F、34B）与 `SRC-COURSE-37-52`（课程 40A–40B、42A–42B、48A–48K、52B）。
+相关来源见 [`reference/official_sources.md`](../../reference/official_sources.md) 中的 `SRC-GLOSSARY`、`SRC-STOP-ORDERS`、`SRC-10-PATTERNS`、`SRC-STRONG-LEGS-2016`、`SRC-BREAKOUTS-2025`、`SRC-LIVE-TR-BO-2021`、`SRC-BOOK-TR`（Ch19、Ch26）、`SRC-COURSE-01-36`（课程 11D、18E p1565–1574、19A–19E、20A–20B、29A–29E、33F、34B）与 `SRC-COURSE-37-52`（课程 40A–40B、42A–42B、48A–48K、52B）。
