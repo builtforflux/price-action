@@ -26,6 +26,14 @@
 
 好的 signal bar 通常方向清晰、收盘较强、反向影线较少，但必须服从 context。交易区间中部的漂亮 K 线仍可能没有优势。
 
+### Signal Quality × Context
+
+Signal-bar 外观与 Setup 质量不是固定的一一对应。趋势越强，顺势交易越能由已有控制、位置和回调质量补偿一根外观较弱的 signal bar；强 breakout 或紧通道后的首次回调中，doji、反色 K 线或小实体也可能组织合法的顺势触发。这里的“可以较弱”依赖前方强趋势仍有效，不表示弱 K 线本身产生优势。
+
+越逆当前控制方向，signal bar 与周围反向证据越重要。逆势候选通常需要更清楚的 reversal bar、实际累积的反向 pressure、第二信号、趋势线/旧极值测试或 follow-through；紧通道中的漂亮逆势 signal 仍可能只是原趋势 flag。强趋势的顺势弱信号与逆势强信号因此不能用同一外观阶梯机械排序。
+
+Trading range 中部或错误边缘的强 signal bar 也不能修复坏 location。反过来，signal bar 更大、更强虽可改善局部动量确认，却可能扩大合理 stop，或出现在高潮末端并压缩剩余 reward；它不自动改善 Trader's Equation。仓库只记录相对实体、影线、收盘和 Context，不建立跨市场固定 signal-quality 分数。
+
 ## Entry Bar
 
 课程读图中的 entry bar 默认指 `chart entry bar`：既定入场触发条件第一次被价格越过或满足的 K 线。这个角色由图表事实定义，不要求观察者已经挂单或亲自参与。执行复盘则另记 `actual fill bar`：账户真实获得成交的 K 线；它可能与 chart entry bar 相同，也可能因订单、滑点或执行选择而不同。未加限定的记录若可能产生歧义，必须同时写清图表触发与账户成交两层。
@@ -64,4 +72,4 @@ Classic two-bar reversal 由相邻两根共同完成控制转移，第二根可�
 
 ## 相关来源
 
-相关来源见[正式来源台账](../../reference/official_sources.md)中的 `SRC-GLOSSARY`、`SRC-COURSE-01-36`（课程 08A–08D、09A、10A–10B、15D）与 `SRC-COURSE-37-52`（课程 40C、52A–52B）。
+相关来源见[正式来源台账](../../reference/official_sources.md)中的 `SRC-GLOSSARY`、`SRC-COURSE-01-36`（课程 08A–08D、09A、10A–10B、14B、15D、24C）与 `SRC-COURSE-37-52`（课程 38A–39D、40C、52A–52B）。

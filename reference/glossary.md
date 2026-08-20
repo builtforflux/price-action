@@ -102,6 +102,12 @@ Breakout pullback 是突破后的回调；breakout test 更具体地测试原入
 
 Tight channel 推进稳定、回调浅、重叠少，反向交易通常风险较高。Broad channel 方向优势较弱、回调更深、重叠更多，行为逐渐接近倾斜 trading range。
 
+### Overshoot / Undershoot
+
+派生自：[Core Definition：Overshoot / Undershoot](../core/01_market_cycle/01_trends_and_channels.md#overshoot--undershoot-与线条失效)。
+
+Overshoot 是价格短暂越过候选趋势线、通道线或结构边界；undershoot 是尚未触线或到达预期极值便提前反转。轻微越线或未触线都不自动使通道失效，也不单独提供反向 Setup；强突破、边界外收盘、follow-through 或价格持续不再响应旧线，才更支持重画结构。
+
 ### Tight Trading Range / Broad Trading Range
 
 派生自：[Core Definition：Tight Trading Range](../core/01_market_cycle/02_trading_ranges.md#tight-trading-range-和-barbwire)与 [Broad Trading Range](../core/01_market_cycle/02_trading_ranges.md#broad-trading-range)。
@@ -180,11 +186,19 @@ Test 只确认价格接近、触及或重新访问已有价格关系；结果仍
 
 Stop entry 在价格向交易方向越过触发价后入场；buy stop 在当前价上方触发买入，sell stop 在当前价下方触发卖出；protective stop 则用于退出并保护持仓。二者用途不同，实际成交都可能因跳空或滑点偏离触发价。一份计划还须区分当前实际在场的 active protective stop 与另行预算的 catastrophe backup，不能用同一名称指两个价位。
 
+### Trailing Stop / Breakeven Stop
+
+派生自：[Core Definition：Stop 调整与保本](../core/06_trade_plan_and_management/00_trade_plan.md#stop-调整与保本)。
+
+Trailing stop 是随新确认价格结构向降低开放风险方向移动的 active protective stop；任意次要 swing 或固定点数不要求机械追踪，向扩大风险方向移动也不属于 trailing。Breakeven stop 是把保护调整到计划 entry 或整仓加权平均 entry 附近的特殊选择；佣金、滑点、跳空、部分成交和多层仓位意味着实际账户结果仍可能不为零。
+
 ### Limit Entry / Limit Order Market
 
 派生自：[Core Definition：Limit Order Market](../core/03_acceptance_and_order_logic/02_limit_order_market.md#定义)。
 
 Limit entry 只允许在指定价格或更好价格成交，常用于区间或弱通道；更好价格不代表更高胜率，也不保证成交。Limit Order Market 指双边交易者常能通过逆向 limit entry 获利的环境。
+
+价格 touch limit 不证明账户成交，短暂 cross 也不保证全部数量成交；队列、流动性、部分成交、路由和平台回执决定 actual fill。图表触及、订单状态、实际数量与平均成交价必须分开记录，未成交不能反向改写 Setup 或 market state。
 
 ### Invalidation
 
@@ -203,6 +217,8 @@ Limit entry 只允许在指定价格或更好价格成交，常用于区间或�
 派生自：[Core Definition：Signal Bar](../core/04_patterns/01_bar_types.md#signal-bar)与 [Entry Bar](../core/04_patterns/01_bar_types.md#entry-bar)。
 
 课程在计划和等待阶段就把提供入场理由的 K 线称为 signal bar，即使最终没有下单或触发；K 线尚未完成时可称 prospective signal bar。官方 glossary 的严格事后口径则把实际 entry bar 前用于该 entry 的最后一根称为 signal bar。仓库用两层记录消除歧义：`chart entry bar` 是所声明触发价第一次被越过或条件第一次满足的 K 线，不要求观察者真的挂单；`actual fill bar` 是账户真实成交所在的 K 线。图表层的 entry-bar 强弱用于评价触发后的质量，账户层另记是否成交及成交价；两层恰好重合时才可省略限定词。
+
+Signal-bar 外观必须服从 Context：强趋势的顺势回调可以由已有控制补偿较弱 signal，逆势候选则通常需要更强 reversal bar、反向 pressure、第二信号或 follow-through。区间中部的漂亮信号仍可能没有优势；更大的 signal 也可能扩大 stop 或出现在高潮末端，因此不自动改善 Trader's Equation。
 
 ### Fade / Countertrend
 
@@ -355,6 +371,12 @@ Measuring gap 最终支持 measured move。Exhaustion gap 存在来源口径差�
 派生自：[Core Definition：Scalp](../core/06_trade_plan_and_management/01_scalp_vs_swing.md#scalp)与 [Swing](../core/06_trade_plan_and_management/01_scalp_vs_swing.md#swing)。
 
 Scalp 以较小目标快速兑现；目标小于风险时，需要多数交易者难以维持的高胜率。Swing 寻求较大运动，并愿意承受部分正常 pullback；二者必须与 stop、target 和 Trader's Equation 保持一致。
+
+### Minimum Scalp / Scalper's Profit
+
+派生自：[Core Definition：Minimum Scalp 与 Scalper's Profit](../core/06_trade_plan_and_management/01_scalp_vs_swing.md#minimum-scalp-与-scalpers-profit)。
+
+Minimum scalp 是绑定产品、周期、波动和成本假设的最小经济性短线尺度，不能跨市场复制固定 ticks / pips。Scalper's profit 则是结果事件：protective stop 先到之前，价格路径已经提供合理 scalp 利润机会。它不证明账户实际捕获利润，也不自动等于 swing 或其他原计划的完整 success。
 
 ### TBTL
 

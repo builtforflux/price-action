@@ -47,7 +47,15 @@ Protective stop 的订单用途见 [Stop Entry 和 Protective Stop](../03_accept
 
 ## Stop 调整与保本
 
-保本止损可以降低心理压力，但也可能让正常回调提前结束交易，因此不能仅因浮盈出现就机械移到 entry。
+### Trailing Stop
+
+Trailing stop 是随新价格结构逐步向降低开放风险方向移动的 active protective stop。多头只能把它向上调整，空头只能向下调整；对同一受保护数量，只有确认替换订单已经生效后，新价位才成为当前实际保护，不能在撤旧与挂新之间留下无保护空档。若把 stop 向扩大风险方向移动，那是放宽保护或建立新计划版本，不属于 trailing。
+
+可用锚点包括新强 breakout 建立的 major higher low / lower high、完整走势腿或其他仍能容纳当前管理周期正常波动的结构。同一图表可以有紧、宽等多个一致方案；任意次要 swing、每根盈利 K 线或固定点数都不要求机械追踪。调整仍须结合原 Setup、剩余仓位、target 和 premise，不能因为已经盈利就把 stop 塞进正常回调。
+
+### Breakeven Stop
+
+Breakeven stop 是把 active protective stop 调整到计划 entry 或整仓加权平均 entry 附近的特殊管理选择。它可以降低名义价格风险和心理压力，却不保证账户结果真正为零：佣金、滑点、跳空、部分成交和多层仓位都会改变实际结果；scale-in 的 breakeven 还必须使用[加权平均 entry](02_scaling_in_out.md#整仓均价与总风险)，不能机械采用第一笔 entry 或两个价格的中点。
 
 价格到达原计划允许减仓的 target、新 higher low / lower high 或其他 price-action 结构，可能支持向保护方向调整 stop。任何调整仍须服从原 Setup、当前 premise、剩余仓位和管理方式；Stop 放得过近，可能在正常回踩中提前结束本来合理的交易。
 

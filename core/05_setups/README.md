@@ -28,7 +28,7 @@ Second entry 和 trap 是触发顺序与失败机制，不是独立 Setup 家族
 
 ## 文件
 
-1. [`00_what_is_a_setup.md`](00_what_is_a_setup.md)：Setup 的最低定义，以及 Pattern 与 Trade Plan 的边界。
+1. [`00_what_is_a_setup.md`](00_what_is_a_setup.md)：Setup 的最低定义、Two Reasons / evidence convergence、TRADE / WAIT / REJECT，以及 Pattern 与 Trade Plan 的边界。
 2. [`01_trend_continuation.md`](01_trend_continuation.md)：趋势恢复。
 3. [`02_breakout_continuation.md`](02_breakout_continuation.md)：新价格获得接受后的延续，以及 Buy / Sell The Close 在该命题中的应用。
 4. [`03_trading_range_fade.md`](03_trading_range_fade.md)：区间边缘失败后的回归。

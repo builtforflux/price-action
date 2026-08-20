@@ -12,8 +12,8 @@ Pattern 与 Setup 的边界由[形态只是语言](00_patterns_are_language.md)�
 
 ## 文件
 
-1. [`00_patterns_are_language.md`](00_patterns_are_language.md)：Pattern 的职责及其与 Setup 的边界。
-2. [`01_bar_types.md`](01_bar_types.md)：trend bar、signal bar、chart entry bar / actual fill bar、inside/outside bar 等 K 线角色。
+1. [`00_patterns_are_language.md`](00_patterns_are_language.md)：Pattern 的职责、Pattern Evolution、重复标签边界及其与 Setup 的关系。
+2. [`01_bar_types.md`](01_bar_types.md)：trend bar、Signal Quality × Context、chart entry bar / actual fill bar、inside/outside bar 等 K 线角色。
 3. [`02_h1_h2_l1_l2.md`](02_h1_h2_l1_l2.md)：H1/H2/L1/L2、高阶 H/L 的计数、重置和失败含义。
 4. [`03_wedges.md`](03_wedges.md)：wedge 的三推结构及常见语境。
 5. [`04_double_tops_bottoms.md`](04_double_tops_bottoms.md)：双顶底、neckline 确认、量度与失败，以及旗形和微型变体。

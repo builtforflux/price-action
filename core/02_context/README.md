@@ -12,8 +12,8 @@
 
 ## 文件
 
-1. [`00_context_location_control.md`](00_context_location_control.md)：context、location、control 与 Always In 的总体框架。
-2. [`01_support_resistance_targets.md`](01_support_resistance_targets.md)：支撑阻力区域、magnets 和目标构造。
+1. [`00_context_location_control.md`](00_context_location_control.md)：context、location、buying / selling pressure、control 与 Always In 的总体框架。
+2. [`01_support_resistance_targets.md`](01_support_resistance_targets.md)：支撑阻力区域、test / confluence、magnets 和目标构造。
 3. [`02_time_and_timeframes.md`](02_time_and_timeframes.md)：周期、session state、最终日型、开盘对象分层和尾段时间风险。
 
 概念总图和权威定义归属见[核心框架](../README.md)。

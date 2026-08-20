@@ -24,7 +24,7 @@ Core 思想进入策略层只有四种合法角色：
 | [Brooks 方法主线 / Price Action](../core/00_method/00_al_brooks_thesis.md) | 证据输入 | [选择链](README.md#选择链) | 通过价格事实而非外部叙事选择候选；证据按当前周期与状态保持、削弱、失效或重置，不独立成策略 |
 | [Trader's Equation / Probability Language](../core/00_method/01_probability_risk_reward.md) | 管理约束 | [执行清单](README.md#执行清单从策略页到-trade-plan)、覆盖矩阵 PSEL | 所有承担风险决定统一检查 |
 | [Market Cycle / Reversal / Minor Reversal](../core/01_market_cycle/00_market_cycle.md) | 状态约束 + 家族路由 | [趋势](trend/README.md)、[区间](range/README.md)、[反转](reversal/README.md)、[覆盖矩阵](coverage_matrix.md) | 基础状态与 minor/MTR 边界均有路由 |
-| [Trend / Channel / Pullback / Leg](../core/01_market_cycle/01_trends_and_channels.md) | 状态约束 + 趋势母命题 | [普通趋势回调延续](trend/pullback_continuation.md)、突破/反转各页的第二腿预期及趋势子型 | Two-leg tendency 只在上层状态支持时进入直接预期；区间小腿、second entry 和 leg reset 边界不混用，通用回调由兜底承接 |
+| [Trend / Channel / Pullback / Leg](../core/01_market_cycle/01_trends_and_channels.md) | 状态约束 + 趋势母命题 | [普通趋势回调延续](trend/pullback_continuation.md)、突破/反转各页的第二腿预期及趋势子型 | Overshoot / undershoot 不单独失效通道；Two-leg tendency 只在上层状态支持时进入预期，区间小腿、second entry 和 leg reset 不混用 |
 | [Trading Range](../core/01_market_cycle/02_trading_ranges.md) | 状态约束 + fade 母命题 | [边缘确认 fade](range/edge_fade_confirmed.md)及区间子型 | 边缘回归、突破成功、中部/TTR 回避均有落点 |
 | [Breakout Event / Test / Mode / BTC-STC](../core/01_market_cycle/03_breakouts_and_breakout_mode.md) | 状态约束 + 突破母命题/子型 | [双向突破模式](breakout/breakout_mode.md)、[BTC/STC](breakout/buy_sell_the_close.md)、[突破回踩](breakout/breakout_pullback_test.md) | 通用 BOM 不再局限于压缩结构 |
 | [Climax / Transition](../core/01_market_cycle/04_climax_and_transition.md) | 状态约束 + minor 子型 | [高潮后修正](reversal/climax_correction.md)、矩阵 WATCH/transition 行 | 高潮式推进本身不提供逆势许可 |
@@ -38,10 +38,10 @@ Core 思想进入策略层只有四种合法角色：
 | --- | --- | --- | --- |
 | [Stop Entry / Protective Stop](../core/03_acceptance_and_order_logic/00_stop_entry_vs_protective_stop.md) | 管理约束 | [跨情景基线](README.md#跨情景基线全部链接-core不在此重复定义)、各策略触发与 stop 锚点 | 入场触发与持仓保护保持分离 |
 | [Acceptance / Failure](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md) | 证据输入 + premise 更新 | 各策略失效段、[覆盖矩阵](coverage_matrix.md) | Follow-through、重新接受、失望与失败参与候选更新 |
-| [Limit Entry / LOM / Fade / Countertrend](../core/03_acceptance_and_order_logic/02_limit_order_market.md) | 证据输入 + 区间子型 | [限价探针与预设加仓](range/edge_fade_limit_scalein.md)、[宽通道参与区](trend/broad_channel_buy_zone.md) | 限价行为服从上层 premise，不独立建家族 |
+| [Limit Entry / LOM / Fade / Countertrend](../core/03_acceptance_and_order_logic/02_limit_order_market.md) | 证据输入 + 区间子型 | [限价探针与预设加仓](range/edge_fade_limit_scalein.md)、[宽通道参与区](trend/broad_channel_buy_zone.md) | 限价行为服从上层 premise，不独立建家族；touch / cross 与账户 partial / actual fill 分开记录 |
 | [Second Signal / Second Entry / Trap](../core/03_acceptance_and_order_logic/03_second_entries_and_traps.md) | 触发顺序 | [趋势第二次恢复](trend/second_signal_continuation.md)、[区间第二次信号](range/edge_second_signal.md)、[Failed Failure](breakout/failed_failure_continuation.md) | 在不同上层母命题中分别落地 |
 | [Pattern / Pattern Evolution](../core/04_patterns/00_patterns_are_language.md) | 证据输入 | 全部命名子型 | 只描述当前结构，不直接提供许可；演化后按新状态重建候选，最终标签不回填早期理由 |
-| [Bar Types / Bar Roles / Implied Pullback](../core/04_patterns/01_bar_types.md) | 证据输入 | Signal/entry 触发、[普通趋势回调](trend/pullback_continuation.md)、[通用逆势修正](reversal/minor_reversal_scalp.md) | 几何与角色按 Context 消费，不逐 K 线类型建策略 |
+| [Bar Types / Bar Roles / Implied Pullback](../core/04_patterns/01_bar_types.md) | 证据输入 | Signal/entry 触发、[普通趋势回调](trend/pullback_continuation.md)、[通用逆势修正](reversal/minor_reversal_scalp.md) | Signal quality 按 Context 消费：强趋势顺势可容许较弱 signal，逆势要求更强证据；不逐 K 线类型建策略 |
 | [H1 / H2 / L1 / L2](../core/04_patterns/02_h1_h2_l1_l2.md) | 触发语言 + 子型 | [趋势第二次恢复](trend/second_signal_continuation.md)、[区间第二次信号](range/edge_second_signal.md) | H1/L1 本身不是策略；普通合法回调由趋势兜底承接 |
 | [Wedge / Parabolic Wedge](../core/04_patterns/03_wedges.md) | 命名子型 | [楔形回调](trend/wedge_pullback_continuation.md)、[楔形反转](reversal/wedge_reversal.md) | 同一形态的顺势与逆势解释分开 |
 | [Double Top / Double Bottom](../core/04_patterns/04_double_tops_bottoms.md) | 命名子型 | [双测试旗形](trend/double_flag_continuation.md)、[双顶双底逆势修正](reversal/double_top_bottom_reversal.md)、区间边缘策略、完整 MTR 链 | 由外层状态决定延续、fade、minor scalp 或 MTR 结构证据归属；形态名不降低 MTR 门槛 |
@@ -54,8 +54,8 @@ Core 思想进入策略层只有四种合法角色：
 | Core 权威思想 | 策略层角色 | 当前落点 | 覆盖结论 |
 | --- | --- | --- | --- |
 | [Setup / Evidence Convergence / Candidate Decision](../core/05_setups/00_what_is_a_setup.md) | 组织边界 + 候选资格 | [页面类型](README.md#页面类型)、[选择链](README.md#选择链)、23 个实际策略页 | 每个可交易候选至少有两个相互补充的理由；Core TRADE / WAIT / REJECT 分别映射 Strategy STRATEGY / WATCH / NO_TRADE，不生成具体价格 |
-| [Trade Plan](../core/06_trade_plan_and_management/00_trade_plan.md) | 管理 schema | [执行清单](README.md#执行清单从策略页到-trade-plan) | 候选通过后实例化 supporting reasons、opposing evidence、update condition 和订单/管理字段，不新增策略家族 |
-| [Scalp / Swing / TBTL](../core/06_trade_plan_and_management/01_scalp_vs_swing.md) | 管理约束 | 各策略“目标与管理”、时段覆盖层 | 入场前绑定持有方式；TBTL 不作价格目标 |
+| [Trade Plan / Trailing / Breakeven Stop](../core/06_trade_plan_and_management/00_trade_plan.md) | 管理 schema | [执行清单](README.md#执行清单从策略页到-trade-plan) | 候选通过后实例化证据与订单/管理字段；trailing 依新结构降低风险，breakeven 计入成本和整仓均价，不新增策略家族 |
+| [Scalp / Swing / Minimum Scalp / Scalper's Profit / TBTL](../core/06_trade_plan_and_management/01_scalp_vs_swing.md) | 管理约束 + 结果边界 | 各策略“目标与管理”、Acceptance / Failure、时段覆盖层 | 入场前绑定持有方式和市场特定 minimum scalp；scalper's profit 不等于账户实际捕获或完整 target，TBTL 不作价格目标 |
 | [Scaling In / Scaling Out](../core/06_trade_plan_and_management/02_scaling_in_out.md) | 数量与管理约束 | [跨情景基线](README.md#跨情景基线全部链接-core不在此重复定义)、[限价探针与预设加仓](range/edge_fade_limit_scalein.md) | Scale-in/out 不改变上层 premise；趋势盈利加仓等变体在原策略 Trade Plan 中处理，不另立 entry 策略 |
 
 Core 的风险与心理纪律是 `Core / Application`，不在 Definition 注册表中；策略层通过执行清单、仓位约束、FOMO/OPM/沉没纪律与连续亏损后的暂停规则横向继承，不把心理状态改写为入场策略。

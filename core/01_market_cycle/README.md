@@ -13,7 +13,7 @@ Market Cycle 回答“市场现在主要怎样运动”；具体位置与控制�
 ## 文件
 
 1. [`00_market_cycle.md`](00_market_cycle.md)：基础状态、逐层 fallback、reversal / minor reversal、趋势阶段、跨层信息和动态更新。
-2. [`01_trends_and_channels.md`](01_trends_and_channels.md)：趋势中的 breakout phase（spike）、紧/宽通道、staircase、trending trading range 和回调质量。
+2. [`01_trends_and_channels.md`](01_trends_and_channels.md)：趋势中的 breakout phase（spike）、紧/宽通道、overshoot / undershoot、two-leg tendency、腿数重置、staircase、trending trading range 和回调质量。
 3. [`02_trading_ranges.md`](02_trading_ranges.md)：交易区间、紧区间、宽区间及双边行为。
 4. [`03_breakouts_and_breakout_mode.md`](03_breakouts_and_breakout_mode.md)：breakout event / attempt、接受结果、Buy / Sell The Close 的预测/确认版本、breakout phase 与 breakout mode 的粒度边界。
 5. [`04_climax_and_transition.md`](04_climax_and_transition.md)：课程中的高潮式推进、glossary 的事后确认口径及状态转换。

@@ -86,7 +86,7 @@ Pattern 不是自动信号，Setup 不是完整交易，Trade Plan 也不是入�
 | Brooks 方法主线 / Price Action | [方法与读图主线](00_method/00_al_brooks_thesis.md) | 定义 Price Action 的观察对象、volume / DOM / 新闻的证据边界、证据生命周期与重置，并连接市场状态、背景、交易机会和交易数学 |
 | Trader's Equation / Probability Language | [概率、风险和回报](00_method/01_probability_risk_reward.md) | 定义概率、风险、回报属于同一交易方案及 likely / risky 等措辞边界 |
 | Market Cycle / Reversal / Minor Reversal | [市场周期](01_market_cycle/00_market_cycle.md) | 定义 trend / trading range 基础状态、breakout phase / channel 层级、模糊状态 fallback，以及周期绑定的 reversal / minor reversal |
-| Trend / Channel / Pullback / Leg | [趋势和通道](01_market_cycle/01_trends_and_channels.md) | 定义趋势、通道、回调、腿、two-leg tendency、腿数重置、staircase、trending trading range 和连续谱线索 |
+| Trend / Channel / Pullback / Leg | [趋势和通道](01_market_cycle/01_trends_and_channels.md) | 定义趋势、通道、回调、腿、overshoot / undershoot、two-leg tendency、腿数重置、staircase、trending trading range 和连续谱线索 |
 | Trading Range | [交易区间](01_market_cycle/02_trading_ranges.md) | 定义交易区间、紧区间、宽区间和双边行为 |
 | Breakout Event / Test / Mode / Buy-Sell The Close | [突破和突破模式](01_market_cycle/03_breakouts_and_breakout_mode.md) | 定义越界事件、接受/失败、回测、双向候选状态，以及 BTC/STC 的预测/早期与确认版本 |
 | Climax / Transition | [高潮和状态转换](01_market_cycle/04_climax_and_transition.md) | 区分高潮式推进、事后确认的 climax 和状态转换线索 |
@@ -95,10 +95,10 @@ Pattern 不是自动信号，Setup 不是完整交易，Trade Plan 也不是入�
 | Timeframe / Session / Opening | [周期与时段 Context](02_context/02_time_and_timeframes.md) | 定义周期分工、实时 session state，并区分 first swing、课程宽泛 Opening BOM / 仓库成熟子型、课程启发式与内部固定窗口 |
 | Stop Entry / Protective Stop | [两类 Stop](03_acceptance_and_order_logic/00_stop_entry_vs_protective_stop.md) | 定义入场触发与持仓保护的不同用途 |
 | Acceptance / Failure | [接受、失望与失败证据](03_acceptance_and_order_logic/01_acceptance_and_failure.md) | 区分跟进、失望、premise 变化、trade failure、trapped in / trapped out，以及 Pain Trade 行为路径模型 |
-| Limit Entry / LOM / Fade / Countertrend | [限价单市场](03_acceptance_and_order_logic/02_limit_order_market.md) | 定义限价成交边界、逆向限价行为环境及 fade / countertrend 区别 |
+| Limit Entry / LOM / Fade / Countertrend | [限价单市场](03_acceptance_and_order_logic/02_limit_order_market.md) | 定义限价 touch / cross、partial / actual fill 边界、逆向限价行为环境及 fade / countertrend 区别 |
 | Second Signal / Second Entry / Trap | [二次入场和陷阱](03_acceptance_and_order_logic/03_second_entries_and_traps.md) | 区分课程宽口径机会、chart entry bar、账户 actual fill 和失败压力 |
 | Pattern / Pattern Evolution | [形态只是语言](04_patterns/00_patterns_are_language.md) | 定义形态语言、形态演化、重复标签边界及其与 Setup 的关系 |
-| Bar Types / Bar Roles / Implied Pullback | [K 线类型](04_patterns/01_bar_types.md) | 定义 K 线几何（含 shaved）、signal bar、chart entry bar / actual fill bar、actual / implied pullback 及其成立时点 |
+| Bar Types / Bar Roles / Implied Pullback | [K 线类型](04_patterns/01_bar_types.md) | 定义 K 线几何（含 shaved）、Signal Quality × Context、chart entry bar / actual fill bar、actual / implied pullback 及其成立时点 |
 | H1 / H2 / L1 / L2 | [H1、H2、L1、L2](04_patterns/02_h1_h2_l1_l2.md) | 定义回调中的触发尝试、高阶嵌套计数与新突破后的重置 |
 | Wedge / Parabolic Wedge | [楔形](04_patterns/03_wedges.md) | 定义三推结构及其顺势、逆势和高潮语境 |
 | Double Top / Double Bottom | [双顶、双底和旗形变体](04_patterns/04_double_tops_bottoms.md) | 定义双测试、neckline 确认、量度/失败链、旗形和微型变体 |
@@ -106,8 +106,8 @@ Pattern 不是自动信号，Setup 不是完整交易，Trade Plan 也不是入�
 | Triangle / Expanding Triangle / ii / ioi / oo | [Triangles、ii、ioi 和 oo](04_patterns/06_triangles_ii_ioi_oo.md) | 定义普通/扩张三角形、压缩/扩张 K 线结构，以及 ET 的 MTR 候选与确认层级 |
 | Gap Family | [缺口](04_patterns/07_gaps.md) | 定义 session opening、Gap Open Bar、body、negative / overlap、micro measuring、measuring 和 exhaustion gap |
 | Setup / Evidence Convergence / Candidate Decision | [什么是 Setup](05_setups/00_what_is_a_setup.md) | 定义带 context 的 premise、触发、失效、Two Reasons 独立证据边界、TRADE / WAIT / REJECT 和分类边界 |
-| Trade Plan | [从 Setup 到交易计划](06_trade_plan_and_management/00_trade_plan.md) | 定义一笔完整交易必须保持一致的组成部分，以及支持理由、反方证据和更新条件 |
-| Scalp / Swing / TBTL | [Scalp 与 Swing](06_trade_plan_and_management/01_scalp_vs_swing.md) | 定义管理方式和时间/腿数预期 |
+| Trade Plan / Trailing / Breakeven Stop | [从 Setup 到交易计划](06_trade_plan_and_management/00_trade_plan.md) | 定义一笔完整交易必须保持一致的组成部分、支持理由、反方证据、更新条件及 trailing / breakeven 调整边界 |
+| Scalp / Swing / Minimum Scalp / Scalper's Profit / TBTL | [Scalp 与 Swing](06_trade_plan_and_management/01_scalp_vs_swing.md) | 定义管理方式、最小短线尺度、scalper's profit 结果事件和时间/腿数预期 |
 | Scaling In / Scaling Out | [加仓与减仓](06_trade_plan_and_management/02_scaling_in_out.md) | 定义数量变化怎样改变整笔交易的总风险和管理 |
 
 `Core / Application` 页面不进入本注册表，因为它们只能应用上述定义，不能建立新的最低边界。若 Application 页面需要定义新术语，必须先调整其状态与权威归属。
