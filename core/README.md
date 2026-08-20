@@ -33,47 +33,15 @@ Pattern 不是自动信号，Setup 不是完整交易，Trade Plan 也不是入�
 
 ## 完整必读顺序
 
-首次学习只有以下一条完整顺序。进入每个目录时先读该目录的 `README.md`，再按编号读完该目录的全部正文；以下 32 个正文文件全部必读，没有“主线页”与“选读页”之分：
+首次学习只有以下一条目录顺序。进入每个目录时先读该目录的 `README.md`，再按其中登记的编号读完全部正文；各目录 README 唯一负责本目录的文件清单与正文顺序，所有正文全部必读，没有“主线页”与“选读页”之分：
 
 1. [方法论](00_method/README.md)
-   1. [方法与读图主线](00_method/00_al_brooks_thesis.md)
-   2. [概率、风险和回报](00_method/01_probability_risk_reward.md)
 2. [市场周期](01_market_cycle/README.md)
-   1. [市场周期的基础层级](01_market_cycle/00_market_cycle.md)
-   2. [趋势和通道](01_market_cycle/01_trends_and_channels.md)
-   3. [交易区间](01_market_cycle/02_trading_ranges.md)
-   4. [突破和突破模式](01_market_cycle/03_breakouts_and_breakout_mode.md)
-   5. [高潮和状态转换](01_market_cycle/04_climax_and_transition.md)
 3. [Context](02_context/README.md)
-   1. [背景、位置和控制权](02_context/00_context_location_control.md)
-   2. [支撑阻力与目标](02_context/01_support_resistance_targets.md)
-   3. [周期与时段 Context](02_context/02_time_and_timeframes.md)
 4. [接受、失败与订单逻辑](03_acceptance_and_order_logic/README.md)
-   1. [Stop 入场与保护性 Stop](03_acceptance_and_order_logic/00_stop_entry_vs_protective_stop.md)
-   2. [接受、失望与失败证据](03_acceptance_and_order_logic/01_acceptance_and_failure.md)
-   3. [限价单市场](03_acceptance_and_order_logic/02_limit_order_market.md)
-   4. [二次入场和陷阱](03_acceptance_and_order_logic/03_second_entries_and_traps.md)
 5. [形态语言](04_patterns/README.md)
-   1. [形态只是语言](04_patterns/00_patterns_are_language.md)
-   2. [K 线类型](04_patterns/01_bar_types.md)
-   3. [H1、H2、L1、L2](04_patterns/02_h1_h2_l1_l2.md)
-   4. [楔形](04_patterns/03_wedges.md)
-   5. [双顶、双底和旗形变体](04_patterns/04_double_tops_bottoms.md)
-   6. [最终旗形](04_patterns/05_final_flags.md)
-   7. [Triangles、ii、ioi 和 oo](04_patterns/06_triangles_ii_ioi_oo.md)
-   8. [缺口](04_patterns/07_gaps.md)
 6. [交易命题](05_setups/README.md)
-   1. [什么是 Setup](05_setups/00_what_is_a_setup.md)
-   2. [趋势延续 Setup](05_setups/01_trend_continuation.md)
-   3. [突破延续 Setup](05_setups/02_breakout_continuation.md)
-   4. [交易区间 Fade Setup](05_setups/03_trading_range_fade.md)
-   5. [主要趋势反转](05_setups/04_major_trend_reversal.md)
-   6. [逆势修正 Scalp](05_setups/05_minor_reversal_scalp.md)
 7. [交易计划与管理](06_trade_plan_and_management/README.md)
-   1. [从 Setup 到交易计划](06_trade_plan_and_management/00_trade_plan.md)
-   2. [Scalp 与 Swing](06_trade_plan_and_management/01_scalp_vs_swing.md)
-   3. [加仓与减仓](06_trade_plan_and_management/02_scaling_in_out.md)
-   4. [风险与心理纪律](06_trade_plan_and_management/03_risk_psychology.md)
 
 部分概念会在后续目录获得更完整的语言，例如前文使用的 signal bar、follow-through 或 Pattern。首次学习仍按上列顺序继续读完；完成全部内容后，再沿交叉链接复核概念关系，不通过跳页把循环依赖改成选择性阅读。
 

@@ -54,10 +54,6 @@ Approach -> Touch / Overshoot -> Reaction -> Follow-through / Acceptance
 
 线条或名称的数量不等于独立理由的数量。两条线若由同一组 swing 推导，或“旧高”“区间上沿”“double-top 区域”只是同一价格事实的不同标签，应视为高度相关证据；只有新增了不同价格关系或观察维度的汇合，才真正增加信息。理由独立性的完整规则见[什么是 Setup](../05_setups/00_what_is_a_setup.md#two-reasons-与证据汇合)。
 
-## 与策略目标口径的边界
-
-本页定义价格行为中的目标区域、magnets、路径障碍和量度关系。
-
 ## 量度目标
 
 Measured move 用已经形成的结构估算下一段运动可能测试的区域，而不是用固定点数预测未来；没有清晰测量结构时，不需要为交易强行构造投射。
