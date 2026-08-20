@@ -10,6 +10,12 @@ Limit order market 是一种可观察的价格行为环境：双边交易者经�
 
 Limit entry 只允许在指定价格或对交易者更有利的价格成交；它换取的是价格改善，不自动提高成功概率，也不保证能够成交。
 
+### Touch、Cross 与 Actual Fill
+
+图表价格触及 limit price，不证明账户已经成交；即使价格短暂穿过，也不保证全部数量获得成交。队列位置、可用流动性、部分成交、订单路由、市场跳动和平台回执都会影响实际 fill。图表事实与账户事实必须分别记录：价格是否 touch / cross、订单状态、实际成交数量、平均成交价和剩余未成交数量。
+
+未成交或只成交部分数量不会反向改写当时的 Pattern、Setup 或 market state；它只改变实际仓位、账户风险和后续管理。若计划要求保护性 stop 或 bracket 在真实成交后生效，必须按实际 fill 和订单回执核对保护是否存在。具体平台的队列算法、订单托管和 OCO 取消机制留在 Reference，不由 Core 假定统一行为。
+
 它常见于 trading range、宽通道和弱趋势。
 
 课程经常把仍有足够 scalp 空间的 tight trading range 称为 Limit Order Market：stop entry 价格太差，而熟练交易者可在 K 线上方卖、下方买并管理分批风险。这是 TTR 中可交易行为的一种，不表示所有 TTR 都值得交易；范围过小、成本后没有空间时仍应等待。宽区间和弱通道也可以呈现相同双边行为，所以 LOM 是行为环境，不是 trend / trading range 之外的第三种基础状态。
@@ -47,4 +53,4 @@ Limit order market 中，强 K 线突破不一定代表趋势开始。很多突�
 - 只因价格“便宜”或“贵”就入场。
 - 忽略成功突破会让区间 fade 失效。
 
-相关来源见 [`reference/official_sources.md`](../../reference/official_sources.md) 中的 `SRC-TRADING-RANGES`、`SRC-STOP-ORDERS`、`SRC-SCALE-IN-TRENDS`、`SRC-COURSE-01-36`（课程 18D–18E、32B–32C、35A–35C）与 `SRC-COURSE-37-52`（课程 43C–47D、49E、50E、52B）。
+相关来源见 [`reference/official_sources.md`](../../reference/official_sources.md) 中的 `SRC-TRADING-RANGES`、`SRC-STOP-ORDERS`、`SRC-SCALE-IN-TRENDS`、`SRC-COURSE-01-36`（课程 18D–18E、32A–32C、35A–35C）与 `SRC-COURSE-37-52`（课程 43C–47D、49E、50E、52B）。

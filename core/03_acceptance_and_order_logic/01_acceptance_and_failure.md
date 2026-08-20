@@ -26,7 +26,7 @@ Surprise 是明显超出交易者预期的强行为。强 surprise 常使错过�
 
 ## Disappointment、premise 变化和 Trade Failure
 
-这里的 protective stop 是保护实际持仓的退出 stop，scalper's profit 是典型 scalp 目标；它们只界定结果，不提供新的 entry 依据。本节必须结合 [Stop Entry 和 Protective Stop](00_stop_entry_vs_protective_stop.md) 的完整定义理解，不能混用两类 stop。
+这里的 protective stop 是保护实际持仓的退出 stop；`scalper's profit` 是在 stop 先到之前，价格路径已经提供符合当前语境的合理 scalp 利润机会，完整边界见[Minimum Scalp 与 Scalper's Profit](../06_trade_plan_and_management/01_scalp_vs_swing.md#minimum-scalp-与-scalpers-profit)。它们只界定结果，不提供新的 entry 依据。本节必须结合 [Stop Entry 和 Protective Stop](00_stop_entry_vs_protective_stop.md) 的完整定义理解，不能混用两类 stop。
 
 为防止中文“失败”把不同对象混在一起，本仓库单独使用 **trade failure** 表示实际交易的结果；这是术语分工，不是另造一条 Brooks 交易规则。`failed breakout`、`failed H2` 或“旧极值测试失败”描述的是某次价格运动未达到预期，不自动表示某位交易者已经触及 protective stop。使用 failure 时应写清失败的对象。
 

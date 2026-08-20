@@ -48,6 +48,12 @@ Major trend、minor trend、主要腿和局部腿都相对于当前周期与观�
 
 多头趋势线通常连接两个或更多相关 swing lows，趋势通道线位于价格另一侧并组织 swing highs；空头结构镜像。两条线常近似平行，但真实通道可以收敛、扩张、被 undershoot 或 overshoot，也不要求每个极值精确触线。随着新极值、失败越线和更平或更宽的结构出现，应重画候选边界；画线是持续整理价格的工具，不是一次画定的客观屏障。
 
+### Overshoot / Undershoot 与线条失效
+
+`Overshoot` 表示价格短暂越过候选趋势线、通道线或其他结构边界；`undershoot` 表示价格尚未触及候选线或预期极值就提前反转。两者都是 line test 的常见结果，反映线条更适合作为区域和组织工具，而不是必须精确一跳不差的屏障。Undershoot 不是向下穿越，也不泛指任何交易目标未达。
+
+轻微 overshoot 或 undershoot 本身不使原通道失效，也不自动提供反向 Setup。若价格以强 breakout、边界外收盘和 follow-through 持续离开，或后续反复不再对旧线产生反应，才更支持删除、重画或按新结构解释。许多 overshoot / undershoot 要在形态进一步发展后才容易辨认，不能用事后最合适的线条回填实时交易理由。
+
 趋势线或通道线被越过只增加状态转换证据。是否仍是宽化的原趋势、已进入 trading range，或已经形成 opposite trend，要继续比较突破强度、follow-through、主要结构和旧极值测试。Swing 的 active protective stop 也不应只因出现任意次要 HL/LH 就机械收紧；实际止损必须由[Stop 入场与保护性 Stop](../03_acceptance_and_order_logic/00_stop_entry_vs_protective_stop.md)和当前 [Trade Plan](../06_trade_plan_and_management/00_trade_plan.md)共同确定。
 
 ## 趋势中的交易含义
@@ -117,5 +123,5 @@ Pullback 可能逐渐延长、形成反向 channel，并从原趋势中的 flag 
 
 - [`SRC-GLOSSARY`](../../reference/official_sources.md)：trend、channel、tight channel 等最低定义。
 - [`SRC-STRONG-LEGS-2016`](../../reference/official_sources.md)：breakout phase（spike）、紧通道、宽通道与交易区间的连续谱对照。
-- `SRC-COURSE-01-36`：课程 09C、11D、12B–12C、14A–14E、15A–15D、16A–17B、18B–18C、20A–20B、21A、24C；two-leg tendency、腿数重置、endless pullback、多周期计数、趋势与通道结构、staircase / shrinking stairs、trending trading range 和 minor reversal。
+- `SRC-COURSE-01-36`：课程 09C、11D、12B–12C、14A–14E、15A–15D、16A–17B、18B–18C、20A–20B、21A、24B–24C；overshoot / undershoot、two-leg tendency、腿数重置、endless pullback、多周期计数、趋势与通道结构、staircase / shrinking stairs、trending trading range 和 minor reversal。
 - `SRC-COURSE-37-52`：课程 41B、43A–46E、50A；breakout 的首次回调、局部/外层状态、紧密/宽幅通道、首次反转和阶梯阶段转换。

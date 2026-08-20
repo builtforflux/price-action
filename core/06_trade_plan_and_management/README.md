@@ -14,8 +14,8 @@ Setup 原型定义“准备交易哪类价格行为”；Trade Plan schema 定�
 
 ## 文件
 
-1. [`00_trade_plan.md`](00_trade_plan.md)：完整交易计划及其一致性约束。
-2. [`01_scalp_vs_swing.md`](01_scalp_vs_swing.md)：scalp、swing 与 TBTL 的边界。
+1. [`00_trade_plan.md`](00_trade_plan.md)：完整交易计划、证据字段、trailing / breakeven stop 及其一致性约束。
+2. [`01_scalp_vs_swing.md`](01_scalp_vs_swing.md)：scalp、swing、minimum scalp、scalper's profit 与 TBTL 的边界。
 3. [`02_scaling_in_out.md`](02_scaling_in_out.md)：加减仓及其总风险。
 4. [`03_risk_psychology.md`](03_risk_psychology.md)：仓位、连续亏损和行为纪律。
 

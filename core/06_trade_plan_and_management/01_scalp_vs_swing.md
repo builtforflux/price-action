@@ -12,6 +12,14 @@ Scalp 对入场价格、执行质量和管理速度要求更高。它不适合�
 
 小目标经常小于风险，因而需要极高胜率；佣金、点差和滑点又会占据更大的毛利润比例，这对多数交易者并不现实。不能把“小目标更容易到达”误认为 scalp 天然具有正期望，也不能用课程中对少数专家的极高胜率描述作为准入标准。
 
+## Minimum Scalp 与 Scalper's Profit
+
+`Minimum scalp` 是当前产品、交易周期、波动和成本条件下，仍可能具有经济意义的最小短线价格尺度。它必须在研究或计划中声明自己的市场、时段、点差、佣金和滑点假设；E-mini 的 ticks、外汇的 pips、股票点数或某个历史波动环境的经验值不能跨市场、跨时期直接复制。范围不足以覆盖成本和这一最低尺度时，即使方向判断合理，也可能没有可交易 scalp 空间。
+
+`Scalper's profit` 描述一个结果事件：在 protective stop 先到之前，价格路径已经提供至少一段符合当前语境的合理 scalp 利润机会。它与 minimum scalp 有关，但不是同一个概念——前者是价格路径是否曾提供短线利润的结果判断，后者是事前定义的尺度。若实际 Trade Plan 使用了更明确的 scalp target，结果复核应采用该计划 target，不事后改选更小尺度。
+
+价格曾提供 scalper's profit，不证明账户一定捕获了它；actual fill、部分成交、成本和退出执行仍决定真实 P&L。它也不自动等于原计划完整 success：一份 swing 计划可以先提供 scalper's profit，却仍未到达自己的正式 target。Failure、success 和 trapped 状态怎样使用该事件，见[接受、失望与失败证据](../03_acceptance_and_order_logic/01_acceptance_and_failure.md#disappointmentpremise-变化和-trade-failure)。
+
 ## Swing
 
 Swing 追求较大运动，通常适合趋势、强突破或反转成功后的运动。Swing 更依赖目标空间、合理 price-action stop 和承受正常 pullback 的耐心。
@@ -47,4 +55,4 @@ TBTL 应绑定能够清楚包含原形态的最高相关周期。例如同一 we
 
 入场前必须知道自己是在做 scalp 还是 swing。
 
-相关来源见 [`reference/official_sources.md`](../../reference/official_sources.md) 中的 `SRC-GLOSSARY`、`SRC-STOP-ORDERS`、`SRC-RISK-113`、`SRC-ABBREVIATIONS`、`SRC-10-PATTERNS`、`SRC-COURSE-01-36`（课程 13B–13C、21D、31A–31D、36A–36B）与 `SRC-COURSE-37-52`（课程 50A–50E、51A–51D）。
+相关来源见 [`reference/official_sources.md`](../../reference/official_sources.md) 中的 `SRC-GLOSSARY`、`SRC-STOP-ORDERS`、`SRC-RISK-113`、`SRC-ABBREVIATIONS`、`SRC-10-PATTERNS`、`SRC-COURSE-01-36`（课程 13B–13C、21D、31A–31D、34B–36B）与 `SRC-COURSE-37-52`（课程 43A–46D、50A–50E、51A–52A）。
