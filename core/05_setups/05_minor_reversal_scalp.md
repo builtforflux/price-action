@@ -64,5 +64,3 @@ Premise 失效与 protective stop 是两层，不能合并：
 ## 相关来源
 
 相关来源见[正式来源台账](../../reference/official_sources.md)中的 `SRC-COURSE-01-36`（课程 21A p1780–1785、21C p1828、21D p1851–1854、23B p1961、24D p2040 与 24E p2071）与 `SRC-MTR-2025`；课程归约见[课程综合与 Core 对齐](../../reference/course/course_to_core_alignment.md)，概率分母冲突见[边界与冲突](../../reference/course/boundaries_and_conflicts.md)。
-
-状态定义见[市场周期](../01_market_cycle/00_market_cycle.md#reversal-与-minor-reversal)。

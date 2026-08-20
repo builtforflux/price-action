@@ -42,7 +42,7 @@ Follow-through、旧区域重新接受和 trade failure 的结果边界见[接�
 
 Buy The Close / Sell The Close 是强突破阶段在顺势收盘附近承担风险的行为语言，不是只凭单根几何成立的 K 线形态。它既可以是首根足够强的 breakout bar 收盘时、尚无独立 follow-through 的**预测 / 早期版本**，也可以是后续连续强收盘或 follow-through 已支持延续后的**确认版本**。Buy The Close 是多头版本，Sell The Close 是空头镜像；这个名称不表示每根收盘都必须追入，也不是独立 Setup。
 
-无论采用哪一版，都必须只使用承担风险当时可见的证据，重新计算自己的 entry、结构 stop、剩余 target 和 Trader's Equation；确认版不能继承早期版本更好的价格，早期版也不能借用尚未出现的 follow-through 概率。趋势 K 线缩小、影线和重叠增加、反方 K 线出现、关键收盘持续失去跟进，或价格接近重大目标并进入尾段时，应停止机械 Buy / Sell The Close，并重新判断当前阶段是否已转为 channel、trading range 或 climax / transition。具体突破延续命题见[突破延续 Setup](../05_setups/02_breakout_continuation.md#buy--sell-the-close-的应用)。
+无论采用哪一版，都必须只使用承担风险当时可见的证据，重新计算自己的 entry、结构 stop、剩余 target 和 Trader's Equation；确认版不能继承早期版本更好的价格，早期版也不能借用尚未出现的 follow-through 概率。趋势 K 线缩小、影线和重叠增加、反方 K 线出现、关键收盘持续失去跟进，或价格接近重大目标并进入尾段时，应停止机械 Buy / Sell The Close，并重新判断当前阶段是否已转为 channel、trading range 或 climax / transition。具体突破延续命题见[突破延续 Setup 的两种风险承担时点](../05_setups/02_breakout_continuation.md#两种风险承担时点)。
 
 ## Breakout Pullback 与 Breakout Test
 

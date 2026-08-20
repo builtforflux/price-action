@@ -26,13 +26,9 @@ Breakout 的最低定义和强度线索见[突破和突破模式](../01_market_c
 
 两种版本是两份不同 Trade Plan，必须分别使用自己的 entry、stop、概率和 target。
 
+Buy / Sell The Close 可以落在上述任一版本：首根足够强的 breakout bar 收盘附近属于预判 / 早期版本，连续强收盘或 follow-through 出现后的参与属于确认版本。它只是风险承担时点，不另立 Setup；最低行为边界见[突破和突破模式](../01_market_cycle/03_breakouts_and_breakout_mode.md#buy--sell-the-close)。
+
 强反向 breakout 也可能同时完成一个 [MTR](04_major_trend_reversal.md) 的确认。两类标签不互斥：MTR 解释旧趋势怎样失控并完成旧极值测试，本页解释新方向怎样在边界外获得接受并延续；不能因为使用其中一个标签而省略另一段证据。
-
-## Buy / Sell The Close 的应用
-
-Buy / Sell The Close 的最低行为边界由[突破和突破模式](../01_market_cycle/03_breakouts_and_breakout_mode.md#buy--sell-the-close)定义。在本 Setup 中，它可能属于首根强 breakout bar 收盘时的预判 / 早期版本，也可能属于连续强收盘或 follow-through 出现后的确认版本；它只是两种 Trade Plan 可采用的风险承担时点，不是独立 Setup，也不是只凭任意单根收盘成立的自动入场。
-
-使用时仍须按承担风险当时可见的证据，逐次重算自己的 entry、完整结构 stop、剩余 target 和 Trader's Equation。确认版本不能继承早期突破版本更好的价格，预判版本也不能借用尚未出现的 acceptance evidence。突破失去跟进、目标空间不足或当前阶段已经转为 channel、trading range 或 climax / transition 时，本延续命题不再因该名称继续有效。
 
 ## Premise 失效与 Stop 差异
 
