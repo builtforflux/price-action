@@ -47,6 +47,6 @@ Scaling out 是分批减少数量。它会改变剩余仓位的风险、目标�
 - 按预写管理分支，在信号实质弱化或新证据改变 premise 时降低风险。
 - 目标附近减少暴露。
 
-减仓不是为了逃避计划，也不是看到任意弱 K 线就临场修改；它必须来自预写管理分支，或足以实质改变 premise 的新证据，并按既定目标、风险收缩或异常处置降低风险。同质仓位按比例缩小只会同比降低回报和风险，不会改变每单位期望的正负；是否保留、减少或按原 scale-in 计划增加数量，仍由当前 price action、总风险和原 premise 决定。
+减仓不是为了逃避计划，也不是看到任意弱 K 线就临场修改；它必须来自预写管理分支，或足以实质改变 premise 的新证据，并按既定目标、风险收缩或异常处置降低风险。在 entry、stop、target 与执行方式不变，且成本和滑点随数量近似线性变化时，同质仓位按比例缩小会同比降低回报和风险，不改变每单位期望的正负；固定或最低费用、非线性滑点、不同退出价格或路径会改变净期望，必须按实际方案重算。是否保留、减少或按原 scale-in 计划增加数量，仍由当前 price action、总风险和原 premise 决定。
 
 相关来源见 [`reference/official_sources.md`](../../reference/official_sources.md) 中的 `SRC-SCALE-IN-TRENDS`、`SRC-POSITION-SIZE`、`SRC-TRADING-RANGES`、`SRC-STOP-ORDERS`、`SRC-COURSE-01-36`（课程 30B、35A–36B）与 `SRC-COURSE-37-52`（课程 43C–47C、51D、52A–52B）。

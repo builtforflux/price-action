@@ -12,6 +12,8 @@
 2. **Second-entry opportunity / chart entry bar**：第一次 entry opportunity 已在价格上触发并形成 chart entry bar，随后数根内同一逻辑再次触发并形成第二根 chart entry bar。Chart entry bar 由既定触发条件第一次被越过或满足定义，不要求观察者下单或亲自参与第一次交易。
 3. **Second actual fill / actual fill bar**：同一执行账户确实获得第二次成交，并记录真实成交所在的 actual fill bar；这是订单与持仓事实，不能从图形名称推定。
 
+“随后数根内”和“同一逻辑”没有跨市场固定数值。记录或策略必须在观察前声明计数周期、候选有效窗口或结构重置条件，并且只有 direction、premise、Context 与失效边界仍属于同一 Setup 时，才能沿用严格 second-entry 计数。没有这些边界时，只记录第二个 signal 或新的 entry opportunity，不追认为同一 Setup 的第二根 chart entry bar。
+
 引用课程案例时可以保留其较宽的 `second entry` 原词，但仓库分析必须补充当时实际指 second signal、第二次触发机会，还是账户第二次成交。因而图上“数到二”仍不必然代表严格 glossary second entry：
 
 - 第一次 signal 若从未触发，后来形成的是第二个 signal / 第二次机会，不是严格的第二根 chart entry bar。

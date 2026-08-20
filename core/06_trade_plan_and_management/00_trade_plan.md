@@ -19,9 +19,11 @@ Trade Plan 是围绕一个 Setup 固化的完整交易方案。它把交易命�
 | Opposing evidence | 反方当前最有力、且与本计划相关的可观察事实是什么？ |
 | Update condition | 哪个新事实会增强、削弱或否定当前判断？ |
 | Entry | 哪个可观察条件触发订单，预计实际成交怎样处理？ |
+| Execution / order lifecycle | 采用什么订单方向、类型和价格规则；何时生效、过期或取消；部分成交、回执不明和 bracket 激活怎样处理？ |
 | Invalidation | 哪些新价格事实说明原命题不再成立？ |
 | Active protective stop | 当前实际保护单在哪里，为什么该位置容许正常波动却限制错误判断？ |
 | Profit target | 准备在哪个现实区域或价格兑现，依据是什么？ |
+| Outcome criterion | 什么图表或账户事实算 target / stop 先到、部分结果或顺序不明？ |
 | Position size | 按 entry 到 protective stop 的真实风险，可以承担多少数量？ |
 | Management | 按 scalp 还是 swing，怎样处理正常回调、部分退出、时间和新证据？ |
 | Trader's Equation | 这组概率、risk、reward 与成本是否值得承担？ |
@@ -30,14 +32,16 @@ Invalidation 与 active protective stop 相关但不等同：前者是原 premis
 
 `Opposing evidence` 不要求为了形式对称而编造反向交易，也不等于 premise 已失效；它负责记录当前最可能压缩概率、目标空间或持有时间的事实。`Update condition` 则把“准备应对任何结果”落到可观察条件：哪些新事实只会削弱优势，哪些足以触发 Invalidation，哪些会要求等待而不是入场。若反方事实已经使原方程不成立，候选应回到 Setup 的 WAIT / REJECT，而不是靠较远 stop 继续维持 TRADE 标签。
 
+`Execution / order lifecycle` 不在 Core 中假定统一的经纪商行为，但必须让计划能够区分订单意图、图表触发和账户事实。Limit touch / cross、actual fill、partial fill 与保护订单状态的边界见[限价单市场](../03_acceptance_and_order_logic/02_limit_order_market.md#touchcross-与-actual-fill)和[Stop 入场与保护性 Stop](../03_acceptance_and_order_logic/00_stop_entry_vs_protective_stop.md#实际保护与成交边界)。`Outcome criterion` 必须写明 target 是价格还是区域、图表触及是否足够、实际成交数量怎样计入结果，以及路径先后无法观察时怎样标记不确定结果。
+
 Supporting reasons 的维度、独立性与候选状态见[什么是 Setup](../05_setups/00_what_is_a_setup.md#two-reasons-与证据汇合)。这三个字段是仓库为审计证据汇合和概率更新增加的 schema，不宣称是 Brooks 给出的固定表格。
 
 若交易架构还使用更远的 `catastrophe backup`，必须把它作为独立可选字段记录，并明确极端情况下从 entry 到该订单的最大损失、相应仓位上限以及何时撤换。它不等于 active protective stop，也不能被用来缩小计划表中的真实最坏风险。所谓 price-action stop 必须落到前述某个明确订单或主动退出规则，不能同时指代两个不同价位。
 
 ## 一致性约束
 
-- Entry、active protective stop、target、概率和仓位必须来自同一版本，不能拼接不同方案中最有利的输入；若另有 catastrophe backup，也必须计入最坏损失与仓位约束。
-- 在承担风险前，stop、target 或管理的任何改变都表示计划版本已经改变，必须同时重算风险距离、仓位和 Trader's Equation。
+- Entry、execution / order lifecycle、active protective stop、target、outcome criterion、概率和仓位必须来自同一版本，不能拼接不同方案中最有利的输入；若另有 catastrophe backup，也必须计入最坏损失与仓位约束。
+- 在承担风险前，entry / trigger、订单类型或有效期、stop、target、outcome criterion、数量、管理周期或管理方式的任何改变都表示计划版本已经改变，必须同时重算风险距离、仓位和 Trader's Equation。
 - Profit target 使用实际准备交易的价格，不使用与当前 Setup 无关的远端投射来制造理想 reward/risk。
 - `original_target` 是入场时的审计原值，成交后不得因结果而回填、重选 measured-move 端点或伪装成另一版本。新证据可以使目标不再现实，也可以支持按预写分支调整管理；此时另记 `current_management_target` 与 `actual_exit`、时间和证据，不覆盖原值，并重新检查剩余仓位的 Trader's Equation。
 - Scalp 与 swing 对回调、持有时间和目标空间的容忍不同；入场后不能只因盈亏情绪随意切换。

@@ -36,7 +36,7 @@ Surprise 是明显超出交易者预期的强行为。强 surprise 常使错过�
 - **Premise 不再成立**：新的 price action 已经让交易者认为原计划错误，可以在最远 protective stop 触发前退出。
 - **Trade failure**：实际 entry 后，原目标或至少 scalper's profit 尚未实现，protective stop 却先到达。
 
-在同一份二结果计划的事后核对中，**success** 表示原计划目标先于 protective stop 到达；方向短暂走对或只先获得一个并非原目标的 scalper's profit，不自动等于完整目标成功。计划本来包含部分退出、scratch 或主动退出时，应按 Trade Plan 预先写出的互斥结果分别记录，不能事后硬改成二结果。
+在同一份二结果计划的事后核对中，**success** 表示原计划目标先于 protective stop 到达；方向短暂走对或只先获得一个并非原目标的 scalper's profit，不自动等于完整目标成功。这里的“到达”必须使用 Trade Plan 事先声明的 outcome criterion：价格目标应区分图表触及、按既定执行假设可成交和账户实际成交，目标区域应写明以哪个边界算进入，部分退出应写明对应数量。若同一根回放 K 线同时包含 target 和 stop，而更低周期、逐笔路径或订单记录无法确定先后，则结果应记为“顺序不明”，不能事后选择对计划更有利的顺序。计划本来包含部分退出、scratch 或主动退出时，应按 Trade Plan 预先写出的互斥结果分别记录，不能事后硬改成二结果。
 
 Entry disappointment 和 premise 变化描述不同阶段的价格行为，两者都不自动等于 trade failure。正常 swing pullback 不能仅因令人失望就归为 failed entry；`failed entry` 至少要求实际 entry 已经发生，没有成交的候选只能记录为未触发、过期、拒绝或失效。在 protective stop 前提前退出时，分别记录当时 premise 判断和实际价格结果。
 
