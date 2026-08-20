@@ -52,13 +52,13 @@ Premise 失效与 protective stop 是两层，不能合并：
 - 直接预期：两腿修正或进入 trading range；TBTL 是条件性的路径/持有预期，不是最低结构或价格目标（权威定义见[Scalp 与 Swing](../06_trade_plan_and_management/01_scalp_vs_swing.md#tbtl-是时间与腿数预期)）；
 - 默认 scalp 的实际目标仍是附近现实 magnet（均线、前 swing、旧公平区域、区间边缘）；只有预先设计的 runner 分支才引用 TBTL 描述持有时间；
 - 升级 MTR 只走上方两条合法路径，升级后按[主要趋势反转](04_major_trend_reversal.md)管理；
-- 课程对"下一次反转约 40% 成为主要反转"给出经验说法，但分母不明确（21A p1783–1785；21B、21C 已标注口径冲突），见[边界与冲突台账](../../reference/course/boundaries_and_conflicts.md)，不作为概率先验进入本页。
+- 课程对“下一次反转约 40% 成为主要反转”给出经验说法，但分母不明确，因此不作为概率先验进入本页；具体来源和口径冲突见[边界与冲突台账](../../reference/course/boundaries_and_conflicts.md)。
 
 ## 主要误读
 
 - 把 minor 直接当 MTR 交易，或把 MTR 的结果预期套给 minor scalp；
 - 趋势仍强、没有失败证据时无条件逆势；
-- 把 23B 的"look for scalp, but sometimes get a swing profit"当成两族无差别规则（该页已标注可能是复制错误）；
+- 脱离课程上下文，把“look for scalp, but sometimes get a swing profit”当成 minor reversal 与 MTR 的无差别规则；该表述的来源冲突不改变本页的家族边界。
 - 用事后确认的 minor 标签反向制造当时不存在的交易许可。
 
 ## 相关来源

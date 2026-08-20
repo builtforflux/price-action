@@ -8,13 +8,13 @@
 
 ## 职责
 
-本目录定义怎样把 premise、entry、protective stop、profit target、position size 和 management 固化成同一笔交易的通用 schema，并说明成交后怎样按新价格事实更新判断、怎样控制数量风险与行为偏差。
+本目录定义怎样把 premise、entry、订单生命周期、protective stop、profit target、结果判定、position size 和 management 固化成同一笔交易的通用 schema，并说明成交后怎样按新价格事实更新判断、怎样控制数量风险与行为偏差。平台特有的下单、恢复、取消和强平步骤仍由对应账户或平台流程负责。
 
 Setup 原型定义“准备交易哪类价格行为”；Trade Plan schema 定义“一份实例必须用哪套一致的风险与管理字段表达”。
 
 ## 文件
 
-1. [`00_trade_plan.md`](00_trade_plan.md)：完整交易计划、证据字段、trailing / breakeven stop 及其一致性约束。
+1. [`00_trade_plan.md`](00_trade_plan.md)：完整交易计划、证据字段、订单生命周期、结果判定、trailing / breakeven stop 及其一致性约束。
 2. [`01_scalp_vs_swing.md`](01_scalp_vs_swing.md)：scalp、swing、minimum scalp、scalper's profit 与 TBTL 的边界。
 3. [`02_scaling_in_out.md`](02_scaling_in_out.md)：加减仓及其总风险。
 4. [`03_risk_psychology.md`](03_risk_psychology.md)：仓位、连续亏损和行为纪律。

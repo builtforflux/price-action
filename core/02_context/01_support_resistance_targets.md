@@ -29,7 +29,7 @@
 - 相关 gap 的边界、旧价格区域和回补路径。
 - 量度目标。
 
-目标是区域，不是保证。
+目标是区域，不是保证。将区域用于实际 Trade Plan 时，必须另行声明哪个边界算目标到达、图表触及是否足够、是否要求账户成交以及对应退出数量；这些结果口径见[从 Setup 到交易计划](../06_trade_plan_and_management/00_trade_plan.md#trade-plan-的定义)。
 
 Entry price 成为 magnet 只说明已有参与者可能关注该区域，不保证市场一定回测，也不提供统一的“一至三根或二十根”期限。等待回测必须服从 active protective stop、原 premise、成本和剩余时间，不能把保本愿望当作目标可达性证据。
 

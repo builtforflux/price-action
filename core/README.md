@@ -106,7 +106,7 @@ Pattern 不是自动信号，Setup 不是完整交易，Trade Plan 也不是入�
 | Triangle / Expanding Triangle / ii / ioi / oo | [Triangles、ii、ioi 和 oo](04_patterns/06_triangles_ii_ioi_oo.md) | 定义普通/扩张三角形、压缩/扩张 K 线结构，以及 ET 的 MTR 候选与确认层级 |
 | Gap Family | [缺口](04_patterns/07_gaps.md) | 定义 session opening、Gap Open Bar、body、negative / overlap、micro measuring、measuring 和 exhaustion gap |
 | Setup / Evidence Convergence / Candidate Decision | [什么是 Setup](05_setups/00_what_is_a_setup.md) | 定义带 context 的 premise、触发、失效、Two Reasons 独立证据边界、TRADE / WAIT / REJECT 和分类边界 |
-| Trade Plan / Trailing / Breakeven Stop | [从 Setup 到交易计划](06_trade_plan_and_management/00_trade_plan.md) | 定义一笔完整交易必须保持一致的组成部分、支持理由、反方证据、更新条件及 trailing / breakeven 调整边界 |
+| Trade Plan / Execution Lifecycle / Outcome Criterion / Trailing / Breakeven Stop | [从 Setup 到交易计划](06_trade_plan_and_management/00_trade_plan.md) | 定义一笔完整交易必须保持一致的组成部分、订单生命周期、结果判定、支持理由、反方证据、更新条件及 trailing / breakeven 调整边界 |
 | Scalp / Swing / Minimum Scalp / Scalper's Profit / TBTL | [Scalp 与 Swing](06_trade_plan_and_management/01_scalp_vs_swing.md) | 定义管理方式、最小短线尺度、scalper's profit 结果事件和时间/腿数预期 |
 | Scaling In / Scaling Out | [加仓与减仓](06_trade_plan_and_management/02_scaling_in_out.md) | 定义数量变化怎样改变整笔交易的总风险和管理 |
 
@@ -128,7 +128,7 @@ Pattern 不是自动信号，Setup 不是完整交易，Trade Plan 也不是入�
 | [`03_acceptance_and_order_logic/`](03_acceptance_and_order_logic/README.md) | Stop/limit order 用途、触发顺序、接受、失败与 trapped traders | 猜测真实订单簿身份或生成独立 Setup 家族 |
 | [`04_patterns/`](04_patterns/README.md) | Brooks 形态与 K 线语言的最低边界 | 脱离 context 给出交易结论 |
 | [`05_setups/`](05_setups/README.md) | 比较不可直接执行的 Setup 原型、抽象触发类别、特有失效边界和结果预期 | 给出仓库策略的具体订单、价格、根数窗口或完整管理 |
-| [`06_trade_plan_and_management/`](06_trade_plan_and_management/README.md) | 定义 Trade Plan schema、通用管理原则、数量风险和行为纪律 | 实例化某项策略，或重新定义上游形态和市场状态 |
+| [`06_trade_plan_and_management/`](06_trade_plan_and_management/README.md) | 定义 Trade Plan schema、订单生命周期与结果判定的最低字段、通用管理原则、数量风险和行为纪律 | 实例化某项策略，规定平台特有订单流程，或重新定义上游形态和市场状态 |
 
 ## 整体理解要求
 

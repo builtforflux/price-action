@@ -41,6 +41,8 @@ ioi 是 inside-outside-inside 结构。它常表示压缩后波动扩大又收�
 
 oo 是 outside-outside：一根 outside bar 后面紧接一根更大的 outside bar。它通常属于 breakout mode，表示波动扩大和双边冲突；收盘位置和后续跟进比单纯越过高低点更重要。
 
+ioi 和 oo 中的 outside bar 继承 [K 线类型](01_bar_types.md#inside--outside-bar)声明的边界。由于 glossary 与课程对相等高低点的处理不同，标注、回测或规则必须事先注明采用哪一套口径；口径变化可能改变形态是否成立，不能在结果出现后切换定义。
+
 ## 统一观察流程
 
 对 triangle、ii / iii、ioi 和 oo，都按同一顺序记录：压缩或双边状态 → 实际突破方向与强度 → follow-through → 回踩守住或重新进入原压缩区。这个流程避免把形态名、接近 50/50 的先验或第一次越界误当成已经成功的方向选择。
