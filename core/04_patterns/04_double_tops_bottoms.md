@@ -1,8 +1,6 @@
 # 双顶、双底和旗形变体
 
 > **状态：Core / Definition**
->
-> 本文界定核心概念；价格行为结论由本页、相关专题与来源共同支持。
 
 ## Double Top / Double Bottom
 

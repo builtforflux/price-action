@@ -1,8 +1,6 @@
 # Stop 入场与保护性 Stop（Stop Entry / Protective Stop）
 
 > **状态：Core / Definition**
->
-> 本文界定核心概念；价格行为结论由本页、相关专题与来源共同支持。
 
 ## 它解决什么问题
 

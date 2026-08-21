@@ -81,7 +81,7 @@ Breakeven stop 是把 active protective stop 调整到计划 entry 或整仓加�
 
 [接受、失望与失败证据](../03_acceptance_and_order_logic/01_acceptance_and_failure.md)区分正常波动、entry disappointment、premise 变化和 trade failure；[Scalp 与 Swing](01_scalp_vs_swing.md)界定持有方式，[加仓与减仓](02_scaling_in_out.md)界定数量变化。正常 pullback 不自动否定交易；强反向证据必须记录并按已选管理分支解释，不能为迎合结果临场切换分支。
 
-标准策略计划必须在入场前写出可观察的 premise 变化及对应主动退出；结构保护止损和固定目标是订单基线，不表示可以忽略这些变化。若维护者只想隔离 stop / target 的机械结果，必须另立预先声明的 `mechanical_only` 独立研究变体：中途证据仍继续记录，但不临场新增视觉退出；它不得与标准回放、模拟或实盘直接比较。无论采用哪种研究或操作口径，任何计划都不能用“固定管理”忽略回执不明、保护不足、连接异常或真实仓位风险。
+标准策略计划必须在入场前写出可观察的 premise 变化及对应主动退出；结构保护止损和固定目标是订单基线，不表示可以忽略这些变化。任何计划都不能用“固定管理”忽略回执不明、保护不足、连接异常或真实仓位风险。
 
 ## 相关来源
 
