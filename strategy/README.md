@@ -135,7 +135,7 @@ Context：位置、控制权、Always In、支撑阻力与目标空间
     ↓
 Trader's Equation：概率、risk、reward、成本来自同一方案
     ↓
-Trade Plan：entry、active protective stop、target、仓位、management
+Trade Plan：entry、planned / active protective stop lifecycle、target、仓位、management
 ```
 
 模糊状态的逐层 fallback 见 [市场周期](../core/01_market_cycle/00_market_cycle.md)，位置与控制见 [Context](../core/02_context/00_context_location_control.md)，Trader's Equation 见 [概率、风险和回报](../core/00_method/01_probability_risk_reward.md)，完整计划 schema 见 [从 Setup 到交易计划](../core/06_trade_plan_and_management/00_trade_plan.md)。
@@ -146,7 +146,7 @@ Trade Plan：entry、active protective stop、target、仓位、management
 | --- | --- | --- |
 | Stop entry / protective stop | [两类 Stop](../core/03_acceptance_and_order_logic/00_stop_entry_vs_protective_stop.md) | 触发用 stop entry，保护用结构 stop，两者用途不同 |
 | 二次信号与陷阱 | [二次入场和陷阱](../core/03_acceptance_and_order_logic/03_second_entries_and_traps.md) | second signal / second-entry opportunity / actual fill 三层分开 |
-| 接受与失败证据 | [接受、失望与失败证据](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md) | follow-through、disappointment、premise 变化、trade failure、trapped in/out、Pain Trade（行为模型，不构成独立入场依据） |
+| 接受与失败证据 | [接受、失望与失败证据](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md) | follow-through、disappointment、premise 变化、Brooks success / failure 与适用 objective、trapped in/out、Pain Trade（行为模型，不构成独立入场依据） |
 | 限价单环境 | [限价单市场](../core/03_acceptance_and_order_logic/02_limit_order_market.md) | buy below / sell above 只在对应环境中使用 |
 | Scalp / Swing / TBTL | [Scalp 与 Swing](../core/06_trade_plan_and_management/01_scalp_vs_swing.md) | 入场前定管理方式，不临场切换 |
 | 加仓减仓 | [加仓与减仓](../core/06_trade_plan_and_management/02_scaling_in_out.md) | scale-in 总风险在第一笔 entry 前确定 |

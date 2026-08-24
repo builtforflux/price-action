@@ -34,7 +34,7 @@ Breakout event 的最低定义只是：当前 K 线高点或低点越过某个�
 
 没有 follow-through，且也没有按前述观察窗口形成守住或持续留在边界外的证据时，breakout event 仍只是尝试。快速回到原区域时，追随突破者容易被困。即使局部突破已获得接受，也只有当方向控制足以改变主要运动时，才把它提升为 trend 中的 breakout phase（spike）。
 
-Follow-through、旧区域重新接受和 trade failure 的结果边界见[接受、失望与失败证据](../03_acceptance_and_order_logic/01_acceptance_and_failure.md)；把突破组成具体交易命题见[突破延续 Setup](../05_setups/02_breakout_continuation.md)。
+Follow-through、旧区域重新接受，以及具体交易相对于适用 objective 的 success / failure 边界见[接受、失望与失败证据](../03_acceptance_and_order_logic/01_acceptance_and_failure.md)；把突破组成具体交易命题见[突破延续 Setup](../05_setups/02_breakout_continuation.md)。
 
 ## Buy / Sell The Close
 

@@ -62,7 +62,7 @@ Pattern 不是自动信号，Setup 不是完整交易，Trade Plan 也不是入�
 | Support / Resistance / Target / Test / Confluence | [支撑阻力与目标](02_context/01_support_resistance_targets.md) | 定义区域、magnets、路径障碍、test 结果链、Dueling Lines / confluence 和 measured move |
 | Timeframe / Session / Opening | [周期与时段 Context](02_context/02_time_and_timeframes.md) | 定义周期分工、实时 session state，并区分 first swing、课程宽泛 Opening BOM / 仓库成熟子型、课程启发式与内部固定窗口 |
 | Stop Entry / Protective Stop | [两类 Stop](03_acceptance_and_order_logic/00_stop_entry_vs_protective_stop.md) | 定义入场触发与持仓保护的不同用途 |
-| Acceptance / Failure | [接受、失望与失败证据](03_acceptance_and_order_logic/01_acceptance_and_failure.md) | 区分跟进、失望、premise 变化、trade failure、trapped in / trapped out，以及 Pain Trade 行为路径模型 |
+| Acceptance / Failure | [接受、失望与失败证据](03_acceptance_and_order_logic/01_acceptance_and_failure.md) | 区分跟进、失望、premise 变化、Brooks success / failure 及其适用 objective、trapped in / trapped out，以及 Pain Trade 行为路径模型 |
 | Limit Entry / LOM / Fade / Countertrend | [限价单市场](03_acceptance_and_order_logic/02_limit_order_market.md) | 定义限价 touch / cross、partial / actual fill 边界、逆向限价行为环境及 fade / countertrend 区别 |
 | Second Signal / Second Entry / Trap | [二次入场和陷阱](03_acceptance_and_order_logic/03_second_entries_and_traps.md) | 区分课程宽口径机会、chart entry bar、账户 actual fill 和失败压力 |
 | Pattern / Pattern Evolution | [形态只是语言](04_patterns/00_patterns_are_language.md) | 定义形态语言、形态演化、重复标签边界及其与 Setup 的关系 |
@@ -74,7 +74,7 @@ Pattern 不是自动信号，Setup 不是完整交易，Trade Plan 也不是入�
 | Triangle / Expanding Triangle / ii / ioi / oo | [Triangles、ii、ioi 和 oo](04_patterns/06_triangles_ii_ioi_oo.md) | 定义普通/扩张三角形、压缩/扩张 K 线结构，以及 ET 的 MTR 候选与确认层级 |
 | Gap Family | [缺口](04_patterns/07_gaps.md) | 定义 session opening、Gap Open Bar、body、negative / overlap、micro measuring、measuring 和 exhaustion gap |
 | Setup / Evidence Convergence / Candidate Decision | [什么是 Setup](05_setups/00_what_is_a_setup.md) | 定义带 context 的 premise、触发、失效、Two Reasons 独立证据边界、TRADE / WAIT / REJECT 和分类边界 |
-| Trade Plan / Execution Lifecycle / Outcome Criterion / Trailing / Breakeven Stop | [从 Setup 到交易计划](06_trade_plan_and_management/00_trade_plan.md) | 定义一笔完整交易必须保持一致的组成部分、订单生命周期、结果判定、支持理由、反方证据、更新条件及 trailing / breakeven 调整边界 |
+| Trade Plan / Execution Lifecycle / Outcome Criterion / Trailing / Breakeven Stop | [从 Setup 到交易计划](06_trade_plan_and_management/00_trade_plan.md) | 定义一笔完整交易必须保持一致的组成部分、planned / active protective stop 生命周期、结果判定、支持理由、反方证据、更新条件及 trailing / breakeven 调整边界 |
 | Scalp / Swing / Minimum Scalp / Scalper's Profit / TBTL | [Scalp 与 Swing](06_trade_plan_and_management/01_scalp_vs_swing.md) | 定义管理方式、最小短线尺度、scalper's profit 结果事件和时间/腿数预期 |
 | Scaling In / Scaling Out | [加仓与减仓](06_trade_plan_and_management/02_scaling_in_out.md) | 定义数量变化怎样改变整笔交易的总风险和管理 |
 
@@ -111,6 +111,6 @@ Pattern 不是自动信号，Setup 不是完整交易，Trade Plan 也不是入�
 - Pattern 页面描述语言，Setup 页面描述交易命题，Trade Plan 页面描述完整交易，三者不互相代写。
 - 理由必须增加新的信息维度；同一价格事实的同义标签、嵌套计数或重叠形态不能重复计票。
 - 证据只在相关周期、观察窗口和主导状态内有效；控制重建后不得把旧证据永久借给新候选。
-- 实时可观察事实与事后结果名称分开；例如 breakout attempt、candidate measuring gap 和已确认 trade failure 不能混用。
+- 实时可观察事实与事后结果名称分开；例如 breakout attempt、candidate measuring gap 和相对于明确 objective 的 success / failure 不能混用。
 - 概率、根数、腿数和倍数都写明适用语境，不把典型经验改写成跨市场硬规则。
 - 课程内容进入 Core 前先通过[课程综合与 Core 对齐](../reference/course/course_to_core_alignment.md)确定权威落点；同一思想只补到负责其最低边界的页面，不按课程讲次重复铺陈。

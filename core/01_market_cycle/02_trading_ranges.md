@@ -42,7 +42,7 @@ Barbwire 是三根以上大量重叠的 K 线组合，带显著影线且至少�
 
 区间边界被越过时，先把它视为突破尝试。突破事件和质量由[突破和突破模式](03_breakouts_and_breakout_mode.md)定义，触发后的接受证据由[接受、失望与失败证据](../03_acceptance_and_order_logic/01_acceptance_and_failure.md)定义；本页只说明这些结果怎样改变原 trading-range 判断。突破获得接受不要求先回踩，没有回踩本身不构成失败。
 
-如果突破后缺乏跟进并快速回到区间内，突破尝试可能形成 failed breakout，追随者也可能被困。若这一反向尝试又失败，则可能形成 failed failure，并引发更强运动。这里的 failure 描述价格运动，实际 trade failure 的结果边界见[接受、失望与失败证据](../03_acceptance_and_order_logic/01_acceptance_and_failure.md#disappointmentpremise-变化和-trade-failure)。
+如果突破后缺乏跟进并快速回到区间内，突破尝试可能形成 failed breakout，追随者也可能被困。若这一反向尝试又失败，则可能形成 failed failure，并引发更强运动。这里的 failure 描述价格运动；具体交易的 Brooks success / failure 必须另行声明适用 objective，结果边界见[接受、失望与失败证据](../03_acceptance_and_order_logic/01_acceptance_and_failure.md#disappointmentpremise-变化和交易结果)。
 
 获接受的突破怎样升级为趋势阶段见[突破和突破模式](03_breakouts_and_breakout_mode.md)，怎样组成交易命题见[突破延续 Setup](../05_setups/02_breakout_continuation.md)。
 

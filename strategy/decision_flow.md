@@ -49,7 +49,7 @@ STRATEGY / WATCH / NO_TRADE
 6. **同家族精度消歧**：同一母命题下，命名子型完整成立时移除通用兜底；只有没有更具体子型时才保留 R47、R48 等兜底。这个步骤只选“用哪一页描述同一 premise”，不在不同 premise 之间选方向。
 7. **逐候选校验 R28**：每个完整候选先用自己的 entry、stop、target 和持有方式检查剩余时间；拒绝时间不足的 swing，但保留已经独立建立且时间足够的 scalp。
 8. **PSEL 跨 premise 裁决**：先应用候选相关硬约束和 G01，再检查每个候选是否至少有两个相互补充、没有重复计票的理由，并记录当前最有力的 opposing evidence 与 update condition；独立理由或必要触发不足时输出 WATCH，premise 已否定时输出 NO_TRADE。其后再检查时间合格候选各自的 Trader's Equation；多个不同 premise 均通过时，必须记录明确选择理由。无法给出不依赖结果的选择理由时输出 WATCH / NO_TRADE。
-9. **建立 Trade Plan**：按[策略入口的执行清单](README.md#执行清单从策略页到-trade-plan)实例化 supporting reasons、opposing evidence、update condition、具体 entry、active protective stop、target、仓位和管理。
+9. **建立 Trade Plan**：按[策略入口的执行清单](README.md#执行清单从策略页到-trade-plan)实例化 supporting reasons、opposing evidence、update condition、具体 entry、planned protective stop、激活后的 active protective stop 核对、target、仓位和管理。
 
 ## 候选收集与裁决图
 
