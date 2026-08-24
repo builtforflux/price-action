@@ -49,7 +49,7 @@ Trader's Equation 中的 risk 来自 entry 到合理 protective stop 的距离�
 
 | 风险 | 含义 | 能否在入场前确定 |
 | --- | --- | --- |
-| Initial / price risk | 计划 entry 到合理 active protective stop 的结构距离 | 可以，是事前计划输入 |
+| Initial / price risk | 计划 entry 到合理 planned protective stop 的结构距离 | 可以，是事前计划输入；成交并确认保护后才转为 active protective stop |
 | Actual Risk / MAE | 交易结束后回看，价格实际走过的最大不利距离 | 不可以，是事后样本结果 |
 | Account risk | 风险距离乘仓位，再计合约价值、成本、滑点和全部计划加仓 | 可以估算，但实际成交可能扩大它 |
 | Personal risk | 因希望、恐惧、仓位过大、心理止损或破坏规则产生的额外损失 | 只能通过计划、仓位和纪律限制 |

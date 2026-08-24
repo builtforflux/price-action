@@ -64,9 +64,9 @@ Brooks glossary 和课程把 `likely / probably` 约定为至少约 60%，但这
 
 ### Success / Failure
 
-派生自：[Core Definition：Trade Failure](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#disappointmentpremise-变化和-trade-failure)。
+派生自：[Core Definition：交易结果](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#disappointmentpremise-变化和交易结果)。
 
-Success 按当前计划的目标是否先于 protective stop 到达复核；先获得 scalper's profit 或方向短暂走对，不自动等于完整目标成功。Trade failure 要求实际 entry 后，原目标或至少 scalper's profit 尚未实现而 protective stop 先到；弱 entry bar、短暂失望或 premise 提前变化不是同一结果。
+Brooks 的 success 表示交易者 objective 先于 protective stop 到达；failure (a failed move) 表示 protective stop 先于 scalper's profit 或交易者 objective 到达。本仓库复核时同时声明所评价的 objective 和 outcome criterion，以免把不同目标混写；这是仓库的消歧规则。同一路径可能满足图表层 scalp target，却未满足更远的 swing objective；只有对应的预声明 criterion 已满足时，才能记录相对于该 objective 的 success。Scalper's profit 是否曾出现、账户是否实际兑现、premise change 后的主动退出和实际 P&L 分别记录；弱 entry bar、短暂失望或普通 pullback 都不能单独确认 failure。
 
 ## 市场状态、位置与路径
 
@@ -184,7 +184,7 @@ Test 只确认价格接近、触及或重新访问已有价格关系；结果仍
 
 派生自：[Core Definition：Stop Entry](../core/03_acceptance_and_order_logic/00_stop_entry_vs_protective_stop.md#stop-entry)与 [Protective Stop](../core/03_acceptance_and_order_logic/00_stop_entry_vs_protective_stop.md#protective-stop)。
 
-Stop entry 在价格向交易方向越过触发价后入场；buy stop 在当前价上方触发买入，sell stop 在当前价下方触发卖出；protective stop 则用于退出并保护持仓。二者用途不同，实际成交都可能因跳空或滑点偏离触发价。一份计划还须区分当前实际在场的 active protective stop 与另行预算的 catastrophe backup，不能用同一名称指两个价位。
+Stop entry 在价格向交易方向越过触发价后入场；buy stop 在当前价上方触发买入，sell stop 在当前价下方触发卖出；protective stop 则用于退出并保护持仓。二者用途不同，实际成交都可能因跳空或滑点偏离触发价。一份计划还须区分入场前用于风险计算的 planned protective stop、实际成交并确认保护后的 active protective stop，以及另行预算的 catastrophe backup；三者的状态和职责不能用同一名称混写。
 
 ### Trailing Stop / Breakeven Stop
 
@@ -204,7 +204,7 @@ Limit entry 只允许在指定价格或更好价格成交，常用于区间或�
 
 派生自：[Core Definition：Trade Plan](../core/06_trade_plan_and_management/00_trade_plan.md#trade-plan-的定义)。
 
-可观察的价格事实，说明原交易 premise 不再成立；它不等于任意固定金额止损，也不要求等待最远 protective stop 成交。
+可观察的价格事实，说明原交易 premise 不再成立；合理反向结构和足够强的反向动量是两类可能重叠的证据路径。Invalidation 不等于另一张 stop，也不要求等待最远 protective stop 成交。
 
 ### Entry Trigger
 
@@ -234,15 +234,9 @@ Fade 押注当前方向尝试不会获接受，常见于区间边缘的逆向 li
 
 ### Surprise / Entry Disappointment
 
-派生自：[Core Definition：Surprise](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#follow-throughsurprise-和惯性)与 [Entry Disappointment](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#disappointmentpremise-变化和-trade-failure)。
+派生自：[Core Definition：Surprise](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#follow-throughsurprise-和惯性)与 [Entry Disappointment](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#disappointmentpremise-变化和交易结果)。
 
-Surprise 是明显超出交易者预期的强行为，常增加第二腿可能性，但不保证直线延伸。Entry disappointment 只表示入场表现偏弱或暂未离开入场区，不能单独确认 trade failure。
-
-### Failed Entry
-
-派生自：[Core Definition：Trade Failure](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#disappointmentpremise-变化和-trade-failure)。
-
-已经实际触发并成交的 setup 最终成为 failure。没有成交的潜在 setup、普通 pullback 或弱 entry bar 不能单独称为 failed entry。
+Surprise 是明显超出交易者预期的强行为，常增加第二腿可能性，但不保证直线延伸。Entry disappointment 只表示入场表现偏弱或暂未离开入场区，不能单独确认 Brooks failure。
 
 ### Failed Breakout / Failed Failure
 
@@ -254,7 +248,7 @@ Failed breakout 是 breakout attempt 缺乏接受并明确回到原区域；fail
 
 派生自：[Core Definition：Trapped Traders](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#trapped-traders)。
 
-`Trapped in a trade` 指已经实际入场、尚未获得原目标或至少 scalper's profit、当前处于开放亏损，并很可能被迫退出的一方。`Trapped out of a trade` 指因等待更好价格、过早退出或未能保留仓位而被挡在随后行情之外的一方；它没有当前开放亏损，潜在压力来自追价或重新入场。已经从亏损持仓退出者只属于“曾 trapped in 后退出”，不能与 `trapped out` 混写。
+`Trapped in a trade` 指已经实际入场、尚未获得 scalper's profit、当前处于开放亏损，并很可能被迫退出的一方。`Trapped out of a trade` 指因等待更好价格、过早退出或未能保留仓位而被挡在随后行情之外的一方；它没有当前开放亏损，潜在压力来自追价或重新入场。已经从亏损持仓退出者只属于“曾 trapped in 后退出”，不能与 `trapped out` 混写。
 
 ### Pain Trade
 
@@ -336,7 +330,7 @@ Wedge 通常表示三次推动或三次尝试，在不同 Context 中可以是�
 
 派生自：[Core Definition：Triangle](../core/04_patterns/06_triangles_ii_ioi_oo.md#triangle)。
 
-至少五次反转的 trading range，可由“两次 higher low 加一次 lower high”或镜像结构形成，并处于 breakout mode。Expanding triangle 以逐步扩大的高低点形成至少五腿；尺度足够大、未被 tight trading range 支配且末端形成合格反向压力时，可以成为 MTR 候选，随后突破、follow-through 与接受才负责确认或升级。约 50/50 的突破方向和首次突破失败倾向只属于相应 triangle 语境，不能外推到所有 breakout mode。
+来源使用两种成熟度计数：官方 abbreviations 把 `TRI` 写成至少五次反转的 trading range，课程 26A 则写成至少一个方向三推、完整交替结构至少五腿。`Reversal` 与 `leg / push` 不是同一个计数对象，本仓库不设置共同换算阈值。引用或标注时必须声明采用的来源口径：官方口径保留“至少五次反转”，课程口径保留“一侧三推且总体至少五腿”，并写明这些腿位于当前周期还是由更低周期展开。Expanding triangle 以逐步扩大的高低点形成至少五腿；尺度足够大、未被 tight trading range 支配且末端形成合格反向压力时，可以成为 MTR 候选，随后突破、follow-through 与接受才负责确认或升级。约 50/50 的突破方向和首次突破失败倾向只属于相应 triangle 语境，不能外推到所有 breakout mode。
 
 ### Major Trend Reversal / MTR
 

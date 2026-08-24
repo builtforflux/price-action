@@ -156,7 +156,7 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 | Core 页面 | 课程依据 | 权威职责 | 边界与旁路 |
 | --- | --- | --- | --- |
 | [00_stop_entry_vs_protective_stop](../../core/03_acceptance_and_order_logic/00_stop_entry_vs_protective_stop.md) | 08D–09、32A–C、33A–G、41B/D、51B–D、52A | 区分 stop entry 与 protective stop，并定义结构候选、实际在场保护和 mental stop 的边界 | Stop 不保证成交价格；滑点、跳空和平台安全进入真实账户风险 |
-| [01_acceptance_and_failure](../../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md) | 02C、10、15、18、19D、33D、36、40、42、52A–B | 定义 acceptance、disappointment、premise change、trade failure、三层保护和退出后再入 | Pain Trade 是由价格推断的行为与路径模型，不另建 Setup 或 failure 状态 |
+| [01_acceptance_and_failure](../../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md) | 02C、10、15、18、19D、33D、36、40、42、52A–B | 定义 acceptance、disappointment、premise change、三层保护，以及 Brooks success / failure 与适用 objective | Pain Trade 是由价格推断的行为与路径模型，不另建 Setup 或 failure 状态；Trade Plan 的执行字段不反向归给课程 |
 | [02_limit_order_market](../../core/03_acceptance_and_order_logic/02_limit_order_market.md) | 18D–E、32A–C、35、43C–47D、50E、52B | 定义 limit-order logic 在区间与宽通道中的适用条件、touch / cross 与 partial / actual fill、成本、计划内分批和强突破失效 | 图表触及或穿过不保证全部成交，平台队列/OCO 机制留在 Reference；无限摊平不属于该模型 |
 | [03_second_entries_and_traps](../../core/03_acceptance_and_order_logic/03_second_entries_and_traps.md) | 09、15D、18B、21D、24、42C、47C、49C、51B | 定义第二信号对上层命题的继承关系、区间第二腿陷阱，以及 chart entry bar 与账户 actual fill 的分层 | 图形名称只能说明图表触发，不能证明账户已经成交 |
 
@@ -170,7 +170,7 @@ Trade Plan 固定 entry、protective stop、target、仓位和管理方式
 | [03_wedges](../../core/04_patterns/03_wedges.md) | 24A–E、27、29、42、49 | 定义三推、抛物线楔形和 wedge 在延续、反转与高潮中的职责 | 较少预期方向突破后按突破质量重新评估，不继续机械沿用旧先验；75/25 不是任意 wedge 的固定胜率 |
 | [04_double_tops_bottoms](../../core/04_patterns/04_double_tops_bottoms.md) | 09B、21D、22–25、27–28、38–39 | 定义广义双测试、neckline 确认、形态高度量度、失败反向分支、旗形和微型变体 | 双顶或双底只描述结构，交易命题仍取决于状态、位置和确认 |
 | [05_final_flags](../../core/04_patterns/05_final_flags.md) | 23A–B、29、40E、43C、48J | 定义 Final Flag 候选、最小尺度、晚段语境和事后确认 | “Final” 是事后角色，不是实时确定标签 |
-| [06_triangles_ii_ioi_oo](../../core/04_patterns/06_triangles_ii_ioi_oo.md) | 08C、18B、26A–B、29E、47 | 定义普通与扩张 triangle 的五腿成熟度、相对尺度，以及 expanding triangle 的 MTR 候选条件 | 尺度与末端反向压力建立候选；后续突破、跟进和接受负责确认升级 |
+| [06_triangles_ii_ioi_oo](../../core/04_patterns/06_triangles_ii_ioi_oo.md) | 08C、18B、26A–B、29E、47 | 区分普通 triangle 的官方“五次反转”与课程“一侧三推 / 至少五腿”口径，并定义扩张 triangle 的相对尺度和 MTR 候选条件 | 两套计数不建立共同换算阈值，引用时声明来源口径和观察周期；尺度与末端反向压力建立候选，后续突破、跟进和接受负责确认升级 |
 | [07_gaps](../../core/04_patterns/07_gaps.md) | 10–11、15E、29A–C、34B、42A–B、46A、48F | 区分 session gap、Gap Open Bar、完整 K 线 gap、body / negative-overlap / micro / measuring / exhaustion gap | Negative gap 不是反方向跳空；measuring 与 exhaustion 是候选解释，结果由后续价格行为确认 |
 
 ### 05_setups

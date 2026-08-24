@@ -16,7 +16,7 @@ Scalp 对入场价格、执行质量和管理速度要求更高。它不适合�
 
 `Scalper's profit` 描述一个结果事件：在 protective stop 先到之前，价格路径已经提供至少一段符合当前语境的合理 scalp 利润机会。它与 minimum scalp 有关，但不是同一个概念——前者是价格路径是否曾提供短线利润的结果判断，后者是事前定义的尺度。若实际 Trade Plan 使用了更明确的 scalp target，结果复核应采用该计划 target，不事后改选更小尺度。
 
-价格曾提供 scalper's profit，不证明账户一定捕获了它；actual fill、部分成交、成本和退出执行仍决定真实 P&L。它也不自动等于原计划完整 success：一份 swing 计划可以先提供 scalper's profit，却仍未到达自己的正式 target。Failure、success 和 trapped 状态怎样使用该事件，见[接受、失望与失败证据](../03_acceptance_and_order_logic/01_acceptance_and_failure.md#disappointmentpremise-变化和-trade-failure)。
+价格曾提供 scalper's profit，不证明账户一定捕获了它；actual fill、部分成交、成本和退出执行仍决定真实 P&L。它也不自动等于 swing objective 成功：同一路径可能满足图表层 scalp target，却在更远的 swing objective 到达前触及 protective stop。是否还能记为相对于 scalp objective 的 success，取决于 Trade Plan 预先声明的 outcome criterion；要求实际成交时，单有图表机会不够。Brooks success / failure、适用 objective 和 trapped 状态怎样使用该事件，见[接受、失望与失败证据](../03_acceptance_and_order_logic/01_acceptance_and_failure.md#disappointmentpremise-变化和交易结果)。
 
 ## Swing
 

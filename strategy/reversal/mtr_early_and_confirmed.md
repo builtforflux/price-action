@@ -29,7 +29,7 @@
 - **早期版（强反向 breakout 前）**：旧极值测试失败后，反向 signal 的 stop entry——逆势多单 buy stop 越过反向 signal bar 高点，逆势空单 sell stop 越过其低点；或等价的可观察触发（例如趋势线破坏后的回抽触发）。入场前必须已经出现通道/趋势线破坏与旧极值测试失败，只凭"通道破坏"或"旧极值测试失败"中的单项不构成触发。
 - **确认版（强反向 breakout 与 follow-through 后）**：三种可观察触发之一——follow-through bar 或后续连续强收盘附近的顺势参与、回调后的 stop entry（越过回踩 signal bar 极值）、或回踩守住旧边界后的重新触发。首根强反向 breakout 收盘附近的参与属于预测/早期版（BTC/STC 的早期版本，见 [突破和突破模式](../../core/01_market_cycle/03_breakouts_and_breakout_mode.md#buy--sell-the-close)），不配用确认版约 60% 的语境。确认版不能继承早期版更好的价格，早期版也不能借用确认版的 follow-through 概率。
 
-两个版本分别使用自己的 entry、active protective stop、target 与 Trader's Equation。
+两个版本分别使用自己的 entry、planned protective stop、target 与 Trader's Equation；成交后再核对 active protective stop 是否覆盖实际数量。
 
 ## Premise 失效
 

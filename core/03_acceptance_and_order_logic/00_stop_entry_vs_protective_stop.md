@@ -34,13 +34,13 @@ Protective stop 是入场后的保护性止损。它应放在合理的 price-act
 
 Protective stop 不是入场触发。Signal bar 另一端、完整 pullback 或 major swing 都可能是合理 stop，具体取决于 setup 和交易按 scalp 还是 swing 管理。
 
-同一图表在计划阶段有时存在多个合理 price-action stop 候选，例如较近的 signal / pattern stop，或完整 pullback / swing 外的 stop；它们对应不同风险距离、仓位和管理方式。一份实际 Trade Plan 必须从中明确当前在场的 `active protective stop`。若交易架构另设更远的 `catastrophe backup`，仓库把它作为独立字段记录和预算，不能让同一个“protective stop”同时指两个价位；来源在宽泛语境中把 catastrophe stop 也归入 stop 选择时，引用必须保留该语境。
+同一图表在计划阶段有时存在多个合理 price-action stop 候选，例如较近的 signal / pattern stop，或完整 pullback / swing 外的 stop；它们对应不同风险距离、仓位和管理方式。承担风险前，Trade Plan 必须从中明确 `planned protective stop` 的价格或价格规则、预计成交和激活方式，并据此计算仓位；实际 entry 成交且保护订单状态得到确认后，它才成为当前在场的 `active protective stop`。若交易架构另设更远的 `catastrophe backup`，仓库把它作为独立字段记录和预算，不能让同一个“protective stop”同时指两个价位；来源在宽泛语境中把 catastrophe stop 也归入 stop 选择时，引用必须保留该语境。
 
 Price-action stop、经纪商触发价和预计成交价是不同层面：前者来自图表与管理，后两者用于真实订单和风险计算。滑点会改变实际 fill，但不会反向决定图上的合理 stop。
 
 ### 实际保护与成交边界
 
-只在心里记住一个退出价位，不等于持仓已经受到 protective stop 保护。标准 Trade Plan 应有一张实际在场、状态可确认的 active protective stop；若 premise 在它触发前已被强反向证据否定，交易者仍可主动退出。Mental stop 既不能替代在场保护，也不能成为亏损扩大后继续等待的理由。
+只在心里记住一个退出价位，不等于持仓已经受到 protective stop 保护。入场前的标准 Trade Plan 应写明 planned protective stop 及其随真实成交生效的规则；持仓形成后，应有一张实际在场、状态可确认且覆盖实际数量的 active protective stop。若 premise 在它触发前已被强反向证据否定，交易者仍可主动退出。Mental stop 既不能替代计划字段或在场保护，也不能成为亏损扩大后继续等待的理由。
 
 Stop order 限制的是触发机制，不保证最终成交价格。跳空、快速行情、流动性不足、停牌、连接或平台异常都可能使实际 fill 差于 stop price，因此账户风险还要包含合理的滑点和异常边界。订单状态、回执不明和保护不足不会改变图上的 price-action stop，却会改变真实最大损失，必须按平台事实核对。
 

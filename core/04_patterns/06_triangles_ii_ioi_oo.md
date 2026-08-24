@@ -4,7 +4,7 @@
 
 ## Triangle
 
-三角形是 trading range 和 breakout mode 的一种。完整 triangle 至少有五次反转，可表现为“两次 higher low 加一次 lower high”或镜像结构。收敛外观很常见，但任意三点收缩还不足以自动成为完整 triangle。
+三角形是 trading range 和 breakout mode 的一种。来源使用两种成熟度计数：官方 abbreviations 把 `TRI` 写成至少五次反转的 trading range，可表现为“两次 higher low 加一次 lower high”或镜像结构；课程 26A 则要求至少一个方向出现三次推动，完整交替结构至少五腿。`Reversal` 与 `leg / push` 不是同一个计数对象，本仓库不把它们合并成一个换算阈值。引用、标注或制定筛选规则时必须声明采用的来源口径：官方口径保留“至少五次反转”，课程口径保留“一侧三推且总体至少五腿”，并写明这些腿位于当前周期还是由更低周期展开。收敛外观很常见，但任意三点收缩还不足以自动成为完整 triangle。
 
 三角形表达等待，不预测方向。
 
