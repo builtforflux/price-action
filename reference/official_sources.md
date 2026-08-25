@@ -99,11 +99,11 @@ Repository synthesis 和 Repository baseline 可以合理使用，但必须与 B
 
 ## 来源锚点定位
 
-以下只记录已实际使用的原文位置和可定位含义，方便重复查证。概念定义的权威归属见 [`core/README.md`](../core/README.md#definition-权威注册表)。
+以下只记录已实际使用的原文位置和可定位含义，方便重复查证。证据怎样形成运行语义见[价格行为交易系统](../trading_system/README.md)。
 
 | Source ID | 页面位置 | 本仓库可依赖的锚点 |
 | --- | --- | --- |
-| `SRC-BOOK-TR` | Ch19、Ch26 | Ch19 用 Dueling Lines 组织两条重要线或价格关系在 pullback 区域的汇合；Ch26 用两个理由作为交易候选的教学启发。当前只依用户提供的章节精读笔记定位，未核原书精确页码与原文；Core 的五维理由分类、独立性检查、test 四阶段以及 TRADE / WAIT / REJECT 均为 repository synthesis，不能反向归因于书中固定 schema。 |
+| `SRC-BOOK-TR` | Ch19、Ch26 | Ch19 用 Dueling Lines 组织两条重要线或价格关系在 pullback 区域的汇合；Ch26 用两个理由作为交易候选的教学启发。当前只依用户提供的章节精读笔记定位，未核原书精确页码与原文；系统的证据维度、独立性检查、test 阶段以及执行 / 等待 / 不交易均为 repository synthesis，不能反向归因于书中固定 schema。 |
 | `SRC-GLOSSARY` | `risk`、`reward`、`trader's equation`、`likely`、`probably`、`risky`、`trailing a stop`、`scalp`、`swing trade` | Risk 以 entry 到 protective stop 的距离为基础，滑点等可让最终成交损失大于理论距离；Trader's Equation 必须把概率、目标距离和止损距离放在同一问题中；glossary 把 likely / probably 约定为至少 60%，把 risky 定义为方程不清楚、勉强有利或概率不高于约 50%；scalp 若 reward 小于 risk 需要多数交易者难以达到的高胜率，swing trade 通常愿意穿越 pullback，并在约 40–50% 语境寻求至少约 2 倍风险的回报。 |
 | `SRC-STOP-ORDERS` | “Either stop order market or limit order market”、“Need to structure sensible trade”、“Most traders swing trade and scalp” | 新手优先 stop entry；limit entry 主要属于有经验者在区间/弱通道中的交易方式；高概率通常以较差的 reward/risk 交换；低概率区间突破可用区间高度 measured move 补偿；支撑阻力附近常出现部分或全部止盈。 |
 | `SRC-POSITION-SIZE` | “Trade the ‘I don't care’ size”、“Adjust your trading position size” | 仓位受 protective stop 距离和行为承受能力共同约束；stop 更远时要以更小仓位维持可承受结果；成交后评估持仓时也要关注当前价到 stop 的距离。 |
@@ -164,6 +164,6 @@ Repository synthesis 和 Repository baseline 可以合理使用，但必须与 B
 ## 使用规则
 
 - 引用时使用 Source ID，并尽量补充页面条目、章节、页码或 slide。
-- “来源可访问”不等于“结论已核对”；登记来源的身份与访问核验见“已登记来源”，可依赖的结论边界见“来源锚点定位”，概念定义的权威归属见 [`core/README.md`](../core/README.md#definition-权威注册表)。
+- “来源可访问”不等于“结论已核对”；登记来源的身份与访问核验见“已登记来源”，可依赖的结论边界见“来源锚点定位”，运行语义以[价格行为交易系统](../trading_system/README.md)为准。
 - 直接转述、仓库推导和仓库订单/记录操作必须分开标记。
 - 若官方资料之间存在差异，记录各自语境，不自动用较新的页面覆盖较早资料。

@@ -1,35 +1,38 @@
-# Al Brooks 价格行为手册
+# Al Brooks 价格行为交易系统
 
-本仓库把 Al Brooks 价格行为整理成一套用于理解市场行为、核对术语和追溯来源的自然语言手册。它不是自动信号系统、收益证明或针对某个市场的交易建议。
+本仓库把 Al Brooks 价格行为证据融合为一套从市场事实、结构和目标路径运行到交易计划、执行、管理与复盘的完整系统。它不是形态信号清单、预设策略集合、收益证明或针对某个市场的交易建议。
 
-## 三个入口
+## 两个入口
 
-| 你现在要做什么 | 从哪里开始 |
+| 目标 | 入口 |
 | --- | --- |
-| 完整理解市场周期、背景、形态、交易命题和交易原理 | [核心框架](core/README.md) |
-| 从市场事实运行到交易计划、执行、更新与复盘 | [交易总流程](strategy/overall_flow.md)（待讨论规则见[冲突台账](strategy/rules_and_conflicts.md)） |
-| 核对术语、来源以及课程与核心概念的关系 | [参考资料](reference/README.md) |
+| 运行完整交易系统 | [价格行为交易系统](trading_system/README.md)，从[交易系统总流程](trading_system/overall_flow.md)开始 |
+| 核对来源、课程证据、重复和冲突 | [参考资料](reference/README.md) |
 
-## 阅读顺序
+## 权威关系
 
-1. 按[核心框架](core/README.md)的必读顺序理解 Market Cycle、Context、Pattern、Setup、Trade Plan 与 Trader's Equation 之间的关系。
-2. 需要从市场输入运行到交易计划与结果复盘时，使用[交易总流程](strategy/overall_flow.md)；讨论概率、条件覆盖和冲突时，使用[规则与冲突台账](strategy/rules_and_conflicts.md)。
-3. 使用[核心术语表](reference/glossary.md)定位定义，不把术语表当成核心框架的替代品。
-4. 需要核验依据时，回到[正式来源台账](reference/official_sources.md)和[逐讲课程材料](reference/course/README.md)。
-
-## 三个目录各自负责什么
+```text
+Reference 提供证据、来源和冲突
+           ↓
+Trading System 选择、归并和条件化
+           ↓
+结构 → 目标事件 → 结果路径 → 条件概率
+→ Entry / Invalidation / Stop → 交易方程
+→ 执行、管理与复盘
+```
 
 | 目录 | 唯一职责 |
 | --- | --- |
-| [core](core/README.md) | 解释怎样描述、判断和更新市场行为，以及概念之间怎样关联 |
-| [strategy](strategy/README.md) | 保存统一运行闭环、条件规则与冲突台账 |
-| [reference](reference/README.md) | 保存派生术语速查、正式来源、课程与 Core 的知识映射及内容边界 |
+| [trading_system](trading_system/README.md) | 唯一运行权威；定义完整交易语义和闭环 |
+| [reference](reference/README.md) | 保存正式来源、逐讲证据、派生索引、重复与冲突，不直接许可交易 |
 
-同一条规则只在一个权威位置完整说明；其他页面保留必要摘要或本地应用，并链接权威位置。
+## 系统原则
 
-## 使用原则
+- 系统不选择某个预设策略。所有交易由当前结构生成的目标事件、结果路径、条件概率和风险方程产生。
+- Pattern、Market Cycle、Context、H/L、Wedge、Double Test、Flag、MTR 等是流程中的派生描述，不是独立交易路由。
+- Target 是概率和 Entry 之前的上游对象；没有明确目标事件，不匹配概率，也不建立交易。
+- 同一来源事实的多个名称只形成一份证据；不同周期、结构来源或后续反应才可能增加信息。
+- 系统必须能够独立运行；Reference 用于核验，不是临场缺失语义的补丁。
+- 看不清结构边界、目标事件、路径失效或真实风险时，正确输出是等待或不交易。
 
-- 先判断背景和位置，再看形态；孤立的 K 线名称不构成交易理由。
-- 看不清必要事实时，正确动作是等待或放弃。
-
-完整来源见[正式来源台账](reference/official_sources.md)，01–52 的知识职责与 Core 落点见[课程综合与 Core 对齐](reference/course/course_to_core_alignment.md)，数字、规则和来源表述的限制见[边界与冲突](reference/course/boundaries_and_conflicts.md)。
+课程证据怎样进入系统见[01–52 课程与交易系统对齐](reference/course/course_to_system_alignment.md)，数字、数学和来源表述的限制见[边界与冲突](reference/course/boundaries_and_conflicts.md)。
