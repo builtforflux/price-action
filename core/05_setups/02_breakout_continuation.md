@@ -21,12 +21,12 @@ Breakout 的最低定义和强度线索见[突破和突破模式](../01_market_c
 
 ## 两种风险承担时点
 
-- **预判版本**：在 breakout mode 初始 stop entry，或在强 breakout bar 收盘附近进入。确认较少，不能借用后续 acceptance evidence 的概率。
-- **确认版本**：等待 follow-through、回踩守住或 failed failure 后再次触发。确认增加，但 entry 更差、stop 可能更远、剩余目标更近。
+- **突破初始时点**：在 breakout mode 初始 stop entry，或在强 breakout bar 收盘附近进入。证据较少，不能借用尚未出现的 acceptance evidence。
+- **跟随出现后**：等待 follow-through、回踩守住或 failed failure 后再次触发。证据增加，但 entry 更差、stop 可能更远、剩余目标更近。
 
-两种版本是两份不同 Trade Plan，必须分别使用自己的 entry、stop、概率和 target。
+执行者只能用当前决策时点已经观察到的事实建立当前 Trade Plan。若选择等待，后续按新事实重算 entry、stop、概率和 target；不保留更早价格。
 
-Buy / Sell The Close 可以落在上述任一版本：首根足够强的 breakout bar 收盘附近属于预判 / 早期版本，连续强收盘或 follow-through 出现后的参与属于确认版本。它只是风险承担时点，不另立 Setup；最低行为边界见[突破和突破模式](../01_market_cycle/03_breakouts_and_breakout_mode.md#buy--sell-the-close)。
+Buy / Sell The Close 可以发生在上述任一时点：首根足够强的 breakout bar 收盘附近，或连续强收盘 / follow-through 出现后。它只是承担风险的行为，不另立 Setup；最低行为边界见[突破和突破模式](../01_market_cycle/03_breakouts_and_breakout_mode.md#buy--sell-the-close)。
 
 强反向 breakout 也可能同时完成一个 [MTR](04_major_trend_reversal.md) 的确认。两类标签不互斥：MTR 解释旧趋势怎样失控并完成旧极值测试，本页解释新方向怎样在边界外获得接受并延续；不能因为使用其中一个标签而省略另一段证据。
 
@@ -49,7 +49,7 @@ Gap、body gap 和 micro measuring gap 主要提供强度与接受证据，只�
 ## 主要误读
 
 - 把单次越界当成新价格已被接受。
-- 把确认版本的概率套给预判版本的 entry。
+- 把后来出现的跟随证据和概率套给更早的 entry。
 - 忽略完整 breakout leg 所要求的真实 stop 距离。
 - 为凑 reward/risk 跳过前方强障碍。
 - Breakout 失败后机械反手，而不建立新的反向 Setup。

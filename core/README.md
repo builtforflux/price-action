@@ -56,7 +56,7 @@ Pattern 不是自动信号，Setup 不是完整交易，Trade Plan 也不是入�
 | Market Cycle / Reversal / Minor Reversal | [市场周期](01_market_cycle/00_market_cycle.md) | 定义 trend / trading range 基础状态、breakout phase / channel 层级、模糊状态 fallback，以及周期绑定的 reversal / minor reversal |
 | Trend / Channel / Pullback / Leg | [趋势和通道](01_market_cycle/01_trends_and_channels.md) | 定义趋势、通道、回调、腿、overshoot / undershoot、two-leg tendency、腿数重置、staircase、trending trading range 和连续谱线索 |
 | Trading Range | [交易区间](01_market_cycle/02_trading_ranges.md) | 定义交易区间、紧区间、宽区间和双边行为 |
-| Breakout Event / Test / Mode / Buy-Sell The Close | [突破和突破模式](01_market_cycle/03_breakouts_and_breakout_mode.md) | 定义越界事件、接受/失败、回测、双向候选状态，以及 BTC/STC 的预测/早期与确认版本 |
+| Breakout Event / Test / Mode / Buy-Sell The Close | [突破和突破模式](01_market_cycle/03_breakouts_and_breakout_mode.md) | 定义越界事件、接受/失败、回测、双向候选状态，以及 BTC/STC 的不同风险承担时点 |
 | Climax / Transition | [高潮和状态转换](01_market_cycle/04_climax_and_transition.md) | 区分高潮式推进、事后确认的 climax 和状态转换线索 |
 | Context / Pressure / Control | [背景、位置与控制](02_context/00_context_location_control.md) | 定义 location、buying / selling pressure、control、Always In 和路径空间 |
 | Support / Resistance / Target / Test / Confluence | [支撑阻力与目标](02_context/01_support_resistance_targets.md) | 定义区域、magnets、路径障碍、test 结果链、Dueling Lines / confluence 和 measured move |

@@ -22,7 +22,7 @@ Parabolic wedge：紧通道中至少三腿或三次 surge 构成的 climactic we
 
 实时判断时依次检查：是否确有至少三次可区分的推进，是否仍属于 tight channel，是否已经接近重要位置或呈现高潮式推进，以及反方是否终于获得 signal、micro double、趋势线突破或 follow-through。只有三推而没有反向证据，仍可能只是强趋势继续。
 
-Parabolic wedge 后的第一笔反向运动常只是 minor reversal、两腿修正或 trading range。若要把解释升级为 MTR，还需观察通道或趋势线突破、对旧趋势极值的测试，以及反向 signal 和 follow-through；强反向 breakout 是较高概率的确认版本，不是 MTR 的最低必要条件。形态名称本身不提供这种升级。
+Parabolic wedge 后的第一笔反向运动常只是 minor reversal、两腿修正或 trading range。若要把解释升级为 MTR，还需观察通道或趋势线突破、对旧趋势极值的测试，以及反向 signal 和 follow-through；强反向 breakout 会增加反转证据，但不是 MTR 的最低必要条件。形态名称本身不提供这种升级。
 
 ## 突破前先验与突破后更新
 

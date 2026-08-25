@@ -94,7 +94,7 @@ Breakout pullback 是突破后的回调；breakout test 更具体地测试原入
 
 派生自：[Core Definition：Buy / Sell The Close](../core/01_market_cycle/03_breakouts_and_breakout_mode.md#buy--sell-the-close)。
 
-强突破阶段在顺势收盘附近承担风险的行为语言，不是单根 K 线形态或自动入场。它既可以发生在首根足够强的突破 K 线收盘、尚无独立 follow-through 的预测/早期版本，也可以发生在连续强收盘和 follow-through 已支持延续后的确认版本；前者价格较好但证据较少，后者确认较多但价格和剩余空间可能较差。每一次实际参与都必须按当时自己的 entry、结构 stop、target 和 Trader's Equation 重算，不能继承更早版本的价格优势。
+强突破阶段在顺势收盘附近承担风险的行为语言，不是单根 K 线形态或自动入场。它既可以发生在首根足够强的突破 K 线收盘、尚无独立 follow-through 时，也可以发生在连续强收盘和 follow-through 已支持延续后；前者价格较好但证据较少，后者证据较多但价格和剩余空间可能较差。每一次实际参与都必须按当前决策时点的 entry、结构 stop、target 和 Trader's Equation 重算，等待后不能继承更早价格。
 
 ### Tight Channel / Broad Channel
 

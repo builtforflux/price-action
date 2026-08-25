@@ -23,7 +23,7 @@ ET 形成 major trend reversal 候选，需要同时满足：
 - 它不是仅嵌在 tight trading range 中的局部摆动；
 - 第四或第五腿已经形成足够反向压力，而不只是一次短促触碰；课程给出的经验尺度是约五根较强反向 K 线，或约十根普通 / 较弱反向 K 线；
 
-尺度和末端反向压力只建立 MTR **候选**，不是达到根数就自动确认反转。随后出现反向突破、follow-through 与 acceptance，才把候选升级为控制转移获得确认的版本；若第五腿本身成为原方向的强 breakout 并获得跟进，旧 ET 反转假设失效，应从新突破重新判断市场周期。见[主要趋势反转](../05_setups/04_major_trend_reversal.md)和[突破与突破模式](../01_market_cycle/03_breakouts_and_breakout_mode.md)。
+尺度和末端反向压力只建立 MTR **候选**，不是达到根数就自动确认反转。随后出现反向突破、follow-through 与 acceptance，才确认控制已经转移；若第五腿本身成为原方向的强 breakout 并获得跟进，旧 ET 反转假设失效，应从新突破重新判断市场周期。见[主要趋势反转](../05_setups/04_major_trend_reversal.md)和[突破与突破模式](../01_market_cycle/03_breakouts_and_breakout_mode.md)。
 
 ## ii / iii
 
