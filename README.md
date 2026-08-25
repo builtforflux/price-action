@@ -16,9 +16,10 @@ Reference 提供证据、来源和冲突
            ↓
 Trading System 选择、归并和条件化
            ↓
-Market Context + Location + Primary Test
-→ Bull / Bear / Pending Opportunity Set
-→ 条件概率 → Entry / Invalidation / Stop → 交易方程
+Market Read：继承 Context → 更新 Price Map / Price Process → 确认或重构 Context
+→ Long / Short Opportunity：Objective + Activation + Invalidation + Market Probability
+→ Context Permission + Trade Candidate
+→ Trigger / Entry / Stop / Candidate Outcome Probability → 交易方程
 → 执行、持续更新、管理与复盘
 ```
 
@@ -29,10 +30,10 @@ Market Context + Location + Primary Test
 
 ## 系统原则
 
-- 系统不选择某个预设策略。所有方向都经过同一套 Market Context、Location、Current Structural Test、双向路径、条件概率和风险方程。
+- 系统不选择某个预设策略。所有方向都经过同一套 Market Read、Opportunity、Context Permission、Candidate 和风险方程。
 - Pattern、Market Cycle、Context、H/L、Wedge、Double Test、Flag、MTR 等是流程中的派生描述，不是独立交易路由。
-- 每个现实 Primary Test 都考虑 Bull、Bear 与 Pending 结果；系统比较双方当前完整风险交换，不按理由数量或裸概率选择方向。
-- Target 是概率和 Entry 之前的上游对象；没有明确目标事件，不匹配概率，也不建立交易。
+- 系统分别构造现实 Long / Short Opportunity，并允许 correction、continuation 与 reversal 按不同 horizon 顺序成立；不按理由数量或裸概率选择方向。
+- Objective 是 Market Probability 和 Entry 之前的上游对象；没有明确目标事件、Activation 和 Invalidation，不建立 Opportunity 或交易。
 - 同一来源事实的多个名称只形成一份证据；不同周期、结构来源或后续反应才可能增加信息。
 - 系统必须能够独立运行；Reference 用于核验，不是临场缺失语义的补丁。
 - 看不清结构边界、目标事件、路径失效或真实风险时，正确输出是等待或不交易。

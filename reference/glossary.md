@@ -6,7 +6,7 @@
 
 一个术语只回答“正在描述什么”。它不能凭名称提供交易许可。实时顺序始终是：
 
-> 价格事实 → Market Context / Location → Primary Test → 双向 Opportunity Set → Market Path → 条件概率 → Trade Plan → Trader's Equation → 执行 / 等待 / 不交易
+> 价格事实 → Market Read（继承 Context → 更新 Price Map / Price Process → 确认或重构 Context）→ Opportunity Set → Context Permission + Trade Candidates → Trade Plan → 执行 / 等待 / 不交易
 
 ## 一、判断对象
 
@@ -16,7 +16,15 @@
 
 ### Context
 
-当前价格事实之间的关系，包括市场状态、控制与压力、位置、时间、多周期结构和最近测试。Context 不是附加标签，而是决定同一形态在此处意味着延续、反转尝试还是噪声的条件集合。
+当前交易周期中支配目标、正常回调和管理方式的价格组织，包括市场状态、控制、时间和相关外层约束。连续观察时先继承上次确认结果，再由当前 Price Process 保持、削弱、标记 Transition 或重构；首次看图无法确认时允许 `Unclear`。位置由 Price Map 保存，眼前运动由 Price Process 保存。
+
+### Price Map
+
+按当前价格上方、下方和距离组织相关价格区域、来源与汇合。Potential Entry Area、Target、Obstacle 或 Invalidation Reference 是区域相对某条 Opportunity 的角色，不是地图自身属性；Invalidation 本身是可观察的市场条件。
+
+### Price Process
+
+Price Process 用 `From → Now → Role → Change → Testing → Next` 保存价格怎样演化到当前区域，包括当前腿、暂停或局部平衡，以及它承担 continuation、pullback、range leg 还是 reversal attempt 作用。`Change` 依次观察 K 线质量、连续性与 follow-through、gap / overlap、回调质量和反方尝试结果，再汇总 Buying / Selling Pressure 与 Control。它最终压缩成一句双向问题：此前运动怎样变化、哪个区域正在被测试，以及什么新事实表示接受、拒绝、Activation、失败或过期。
 
 ### Pattern
 
@@ -26,25 +34,25 @@
 
 来源材料常用的历史术语。本系统不维护 Setup 家族或 Setup 路由；来源中的 setup 必须被翻译为当前结构、目标事件、触发、失效、概率和方程，才能进入运行流程。
 
-### Current Structural Test
-
-把 Market Context、Location、接近方向、测试次序、Separation、Pressure 和当前接受状态组织成一个可持续更新的市场命题。测试按运行角色分为 Primary、Context 与 Competing；一个 Trade Plan 只绑定当前直接解决的 Primary Test。H2、Double Bottom、Wedge、Flag 或 MTR 组件可以是同一次测试的不同视图，不各自生成概率。
-
 ### Opportunity Set
 
-同一个 Primary Test 下的 Bull、Bear 与 Pending 结果集合。系统分别评价双方目标、后续证据和失效条件，并记录测试怎样可能继续未决；不同目标或 horizon 的概率不要求互补，也不表示必须同时交易。
+当前现实 Long / Short 市场结果的集合。每条 Opportunity 都有 Direction、Role、Objective、Market Outcome Criterion、Horizon、去重后的理由链、Activation、Invalidation、价格区域角色、最强矛盾、Market Probability 和 Expiry；不同目标或 horizon 分开表达，机会也可以按“先修正、后延续”顺序成立。
 
-### Market Path
+### Trade Candidate
 
-从 Primary Test 到一个明确市场目标事件的可更新假设，至少包含来源结构、目标、horizon、所需事实、反方事实、失效条件与当前证据状态。它是 Opportunity Set 中可以被独立评价的一条条件路径。
+在 Context Permission 允许后，于当前判断时点表达某条已 Activation Opportunity 的风险交换，包括 Trigger、Entry、对 Opportunity Invalidation 的引用、Planned Protective Stop、Target、Candidate Outcome Probability、成本、仓位和管理。同一 Opportunity 在 close、follow-through 或回调时点可以生成不同 Candidate，每次都按当前价格重算。
 
 ### Trade Plan
 
-把 Market Path 转成可执行风险对象，明确 entry、invalidation、protective stop、target、outcome criterion、概率、成本、仓位、订单与管理。触发发生后才有完整计划仍然太晚。
+被选 Trade Candidate 的冻结快照，明确 entry、Opportunity invalidation snapshot、protective stop、target、outcome criterion、两种概率、成本、仓位、订单与管理。未被选 Candidate 不保存为并行完整计划。
+
+### Market Probability / Candidate Outcome Probability
+
+Market Probability 描述 Opportunity objective 在当前条件与 horizon 内发生的概率；Candidate Outcome Probability 描述当前 Trigger、Entry、Stop、退出、数量和管理下各交易结果的概率。只有两者评价同一结果事件时才能直接共用。
 
 ### Evidence Convergence / Two Reasons
 
-市场状态、位置、控制、结构与触发等相对独立证据共同支持一条路径。来源中的“two reasons”是最低提醒，不是固定打分；同一价格事实的多个同义标签、嵌套计数或重叠形态不得重复计票。
+市场状态、位置、控制、结构与触发等相对独立证据共同支持一条 Opportunity。来源中的“two reasons”是最低提醒，不是固定打分；同一价格事实的多个同义标签、嵌套计数或重叠形态不得重复计票。
 
 ### Evidence Lifecycle
 
@@ -52,9 +60,9 @@
 
 ### 执行 / 等待 / 不交易
 
-- **执行**：路径、触发、保护、目标和方程同时成立。
-- **等待**：路径仍可能成立，但缺少预先声明的必要事件。
-- **不交易**：路径已失效、风险无法定义、方程无优势或运行约束不允许。
+- **执行**：选中 Candidate，Trade Plan、保护、目标和方程同时成立。
+- **等待**：Market Read 尚未解决、Opportunity 尚未 Activation，或当前没有值得承担的 Candidate，但存在明确下一事实与 Expiry。
+- **不交易**：机会已失效、风险无法定义、方程无优势或运行约束不允许。
 
 这三个结果是当前决策，不是永久评价。详见[交易决策与计划](../trading_system/decision_and_plan.md#十四唯一决策)。
 
@@ -210,11 +218,11 @@ Follow-through 是初始运动后的继续延伸；surprise 是明显超出原�
 - **Limit entry**：只在指定价格或更好价格成交，不保证成交或完整成交。
 - **Market / close entry**：以当下可得价格承担风险，成交确定性较高但价格不确定。
 
-订单类型只决定参与方式，不能修复一条没有优势的 Market Path。
+订单类型只决定参与方式，不能修复一个没有优势的 Trade Candidate。
 
 ### Protective Stop / Invalidation
 
-Protective stop 限制账户损失；invalidation 是证明原路径不再成立的价格事实。两者可以接近但职责不同。计划中的 stop、经纪商已确认的 active stop 与灾难备份也必须分开记录。
+Protective stop 限制账户损失；Structural Invalidation 是证明原 Opportunity 不再成立的价格事实。两者可以接近但职责不同。计划中的 stop、经纪商已确认的 active stop 与灾难备份也必须分开记录。
 
 ### Trailing / Breakeven Stop
 
@@ -232,9 +240,9 @@ Trailing stop 随新确认结构向减少开放风险的方向移动。Breakeven
 
 Success 与 failure 必须绑定预先声明的 outcome criterion：目标先到、stop 先到或 premise 变化主动退出是不同事件。Scalper's profit 只表示价格曾提供合理短线利润机会，不证明账户兑现，也不等于更远 swing 目标成功。
 
-### Pending Outcome / Sequence Unknown
+### Active / Expired / Sequence Unknown
 
-Pending Outcome 表示当前结构测试尚未解决，是实时 Opportunity Set 的一种结果；`SEQUENCE_UNKNOWN` 表示目标与失效在同一可观察区间内发生而先后顺序无法确认，是 Market Path 的闭环结果。两者不能用同一个未决状态代替。
+已经形成的 Opportunity 在目标、失效、过期或取代事件均未发生时保持 `ACTIVE`；horizon 结束而目标与失效均未发生时为 `EXPIRED`；目标与失效在同一可观察区间内发生且顺序无法确认时为 `SEQUENCE_UNKNOWN`。尚未形成 Opportunity 的未决 Market Read 不进入这组状态。三者描述不同结果。
 
 ### Scalp / Swing / TBTL
 
@@ -267,7 +275,7 @@ Fade 押注当前尝试不会获接受；countertrend 明确逆当前控制方�
 ## 运行入口
 
 - 统一循环：[价格行为交易系统总流程](../trading_system/overall_flow.md)
-- 概念关系：[市场结构与结果路径](../trading_system/market_structure_and_paths.md)
+- 概念关系：[Market Read 与 Opportunity](../trading_system/market_read_and_opportunities.md)
 - 交易构造：[交易决策与计划](../trading_system/decision_and_plan.md)
 - 持仓闭环：[执行、持仓与复盘](../trading_system/execution_management_and_review.md)
 - 条件概率：[条件规则台账](../trading_system/conditional_rules_registry.md)
