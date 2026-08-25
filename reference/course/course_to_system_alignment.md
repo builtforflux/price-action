@@ -10,7 +10,7 @@
 正式来源与逐讲证据
 → 重复、递进、分母和冲突核验
 → 交易系统选择、归并、条件化
-→ 市场结构、目标路径、计划、执行和复盘
+→ Market Read、Opportunity、计划、执行和复盘
 ```
 
 本页不把课程中的每项说法自动升级为系统规则。产品规格、平台机制、因果叙事、固定参数和专用指标留在 Reference；数学冲突、分母不清和翻译不确定项进入隔离台账。
@@ -19,7 +19,7 @@
 
 | 证据类型 | 系统处理 |
 | --- | --- |
-| 改变价格事实、活动结构、目标事件或结果路径 | 进入[市场结构与结果路径](../../trading_system/market_structure_and_paths.md) |
+| 改变价格事实、活动结构、目标事件或结果路径 | 进入[Market Read 与 Opportunity](../../trading_system/market_read_and_opportunities.md) |
 | 改变目标概率、Entry、Invalidation、Stop、Reward、仓位或方程 | 进入[交易决策与计划](../../trading_system/decision_and_plan.md) |
 | 改变订单、实际保护、持仓、退出或复盘 | 进入[执行、持仓与复盘](../../trading_system/execution_management_and_review.md) |
 | 条件、目标、周期、horizon 和判断时点完整的概率 | 进入[条件规则台账](../../trading_system/conditional_rules_registry.md) |
@@ -33,12 +33,12 @@
 ```text
 价格和账户事实
 → 分离、重叠、压力与接受
-→ Market Context、Location 与 Primary Test
-→ 扫描 Gap、Pressure、Control、Follow-through 等双向证据
-→ Bull / Bear / Pending 目标事件与 Market Paths
-→ 分别匹配条件概率
-→ 用 Entry / Invalidation / Stop 表达路径
-→ 检查 Reward / Risk / Cost / Time
+→ Market Read：继承 Context → 更新 Price Map / Price Process → 确认或重构 Context
+→ 构造现实 Long / Short Opportunity 与可能顺序
+→ 用 Context Permission 筛选当前允许的风险表达
+→ 只为已 Activation 且当前可表达的机会生成 Trade Candidates
+→ 分开 Market Probability 与 Candidate Outcome Probability
+→ 用当前 Trigger / Entry / Stop / Target 检查 Reward / Risk / Cost / Time
 → 执行、保护、持续更新、管理和复盘
 ```
 

@@ -2,17 +2,17 @@
 
 > **状态：Trading System / Rule Registry**
 
-本页只保存可匹配的条件概率模板、背景、规则替代顺序和隔离项。模板不是可以直接抄入计划的百分比；市场结构、目标生成和 Pattern 关系由[市场结构与结果路径](market_structure_and_paths.md)负责，当前实例化和实时决策由[交易系统总流程](overall_flow.md)与[交易决策与计划](decision_and_plan.md)负责。
+本页只保存可匹配的条件概率模板、背景、规则替代顺序和隔离项。模板不是可以直接抄入计划的百分比；市场结构、目标生成和 Pattern 关系由[Market Read 与 Opportunity](market_read_and_opportunities.md)负责，当前实例化和实时决策由[交易系统总流程](overall_flow.md)与[交易决策与计划](decision_and_plan.md)负责。
 
 规则实例化是内部判断边界，不是 scalp 交易者的逐项填表任务。实盘只需快速确认当前目标、周期、horizon 和条件与所用规则一致，并检查是否已有更具体的新条件替代它。只有 Rule Match 本身成为关键决定依据、需要复盘或参与样本校准时，才保存必要字段。
 
 ## 一、规则模板与当前匹配
 
-台账条目可以使用“旧极值”“当前 Channel”等相对对象保存通用模板。模板只有在当前判断时点完成以下实例化，才能用于 Market Path：
+台账条目可以使用“旧极值”“当前 Channel”等相对对象保存通用模板。模板只有在当前判断时点完成以下实例化，才能成为 Opportunity 的 Market Probability：
 
 ```text
 候选规则模板
-已经成立的 Environment / Price Action Now / Active Test 事件
+已经成立的 Market Read 事实
 当前可观察的目标事件与到达口径
 当前观察周期
 当前时间范围 / horizon
@@ -31,7 +31,7 @@
 | 候选模板 | 保存相对条件、目标关系和近似概率 | 完成当前实例化后才可以 |
 | 可运行匹配 | 当前条件、目标、周期、horizon 和时点完整，且未被更具体规则替代 | 可以 |
 | 条件更新 | 同一目标在新时点出现更具体条件 | 使用新规则替代旧规则 |
-| 背景 | 描述状态频率、语言或长期倾向，不是当前交易结果 | 只进入外层约束或 Environment |
+| 背景 | 描述状态频率、语言或长期倾向，不是当前交易结果 | 只进入 Context |
 | 隔离 | 分母、目标、数学或来源口径不清 | 不可以 |
 
 下列表格除明确标为背景或隔离的条目外，默认都是候选模板，不是已经完成的 Rule Match。
@@ -39,18 +39,18 @@
 ## 三、规则选择顺序
 
 ```text
-基础 `Environment.Regime` 先验
+基础 `Context.Operating State` 先验
 → 更具体的结构条件
-→ 当前测试结果
+→ 当前区域测试结果
 → Breakout / Follow-through / Acceptance 等新事实
 → 当前判断时点的目标先于失败结果估计
 ```
 
 匹配顺序应用于当前已经实例化的规则。只有目标事件、周期和 horizon 相同，更具体条件才替代一般规则。不同目标事件可以同时成立，但不相加、不相乘，也不共同进入一份 Trade Plan。
 
-理由负责更新 Market Path 支持程度；条件规则提供概率。H2、Double Bottom、Second Entry 等同源名称不各自提供概率。
+理由负责更新 Opportunity 支持程度与 Activation；条件规则提供 Market Probability。H2、Double Bottom、Second Entry 等同源名称不各自提供概率。
 
-Primary Test 的向上、向下路径分别匹配各自目标，Pending Outcome 记录测试尚未解决的现实方式。双方目标、horizon 或判断时点不同时，其概率不要求互补，也不能用 `1 - P(向上目标事件)` 自动生成向下路径概率。系统先独立匹配市场路径概率，再由当前 Entry、Stop、Targets、管理和成本形成交易结果估计。
+Long / Short Opportunity 分别匹配各自目标。双方目标、horizon 或判断时点不同时，其概率不要求互补，也不能用 `1 - P(向上目标事件)` 自动生成向下目标概率。系统先独立匹配 Market Probability；Candidate 再根据 Trigger、Entry、Stop、Targets、管理和成本形成 Candidate Outcome Probability 或诚实区间。
 
 ## 四、概率语言与交易数学
 
@@ -64,7 +64,7 @@ Primary Test 的向上、向下路径分别匹配各自目标，Pending Outcome 
 
 基础结构/阶段频率、结构最终演化、突破方向、目标先于 Stop 和账户盈利不是同一概率对象。
 
-条件规则给出的 Market Path 概率只有在计划目标与原目标事件一致时才可进入 Trader's Equation；账户盈利概率还受实际 Entry、Stop、部分退出、执行和成本影响，不能直接从市场目标概率复制。
+条件规则给出的 Market Probability 只有在 Candidate 的结果事件与原目标事件一致时，才可作为 Trader's Equation 的主要输入。更近 Stop、部分退出、主动管理、执行和成本改变结果事件时，必须另行估计 Candidate Outcome Probability，不能直接复制市场目标概率。
 
 ## 五、基础结构与区间
 

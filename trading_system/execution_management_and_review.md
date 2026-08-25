@@ -2,7 +2,7 @@
 
 > **状态：Trading System / Execution Contract**
 
-本页负责把执行决定所依据的原始 Trade Plan 转成实际订单和账户状态，并在成交后继续更新 Active / Primary Test、必要的 Competing Test、所选 Market Path、对手路径和 Pending Outcome。图表事实、订单事实和账户事实必须分开；计划正确不表示订单已生效，图表触发也不表示账户已成交或受到保护。
+本页负责把被选 Candidate 冻结的 Trade Plan 转成实际订单和账户状态，并在成交后继续更新 Market Read、所选 Opportunity 与现实竞争机会。图表事实、订单事实和账户事实必须分开；计划正确不表示订单已生效，图表触发也不表示账户已成交或受到保护。
 
 本页定义的状态必须真实，但不要求交易者在每次状态转换后手工抄写完整对象。订单、回执、成交和仓位优先使用经纪商或平台的可靠记录；人工只快速核对它们是否一致，并在计划/风险改变或异常时补充最小说明。
 
@@ -10,7 +10,7 @@
 
 提交任何新增风险前重新同步：
 
-- 所选 Market Path 仍有效，目标、周期和时间范围未改变；
+- 所选 Opportunity 仍有效，Activation、Invalidation、目标、周期和时间范围未改变；
 - Market / close order 所需的 Entry 前置条件已经发生；或 Trade Plan 明确允许 Stop / Limit 在 Trigger 或成交前预先工作；
 - 以计划订单价格、允许成交范围和当前剩余空间计算的 Planned Stop、Reward、成本和 Trader's Equation 仍成立；
 - Position Size 与当前风险预算、现有仓位和全部计划层一致；
@@ -32,7 +32,7 @@ Trade Plan
 Working Order
 ├─ 回执不明 → 核对账户，不重复下单
 ├─ 被拒绝   → 记录原因，不假定有订单
-├─ 路径失效或过期 → 撤单并确认
+├─ Opportunity 失效或过期 → 撤单并确认
 ├─ 未成交   → 继续等待或按计划取消
 ├─ 部分成交 → 更新实际仓位、剩余数量与保护
 └─ 全部成交 → 更新实际仓位与保护
@@ -40,7 +40,7 @@ Working Order
 
 订单意图、经纪商确认、图表触发和账户成交是不同事实。撤单请求也不等于订单已经取消；在取消状态得到确认前，仍按可能成交的暴露处理。
 
-没有提交订单的“等待图表确认”属于新的市场事件和决策时点，不保留隐藏的可执行计划。已提交的 Stop / Limit order 则属于 Working Order，并在每个相关事件后复核路径、有效期、计划成交范围下的风险和取消条件。
+没有提交订单的“等待图表确认”属于新的市场事件和决策时点，不保留隐藏的可执行计划。已提交的 Stop / Limit order 则属于 Working Order，并在每个相关事件后复核 Opportunity、有效期、计划成交范围下的风险和取消条件。
 
 Execution State 分别保存三个状态面，而不是用一个枚举掩盖并存事实：
 
@@ -72,7 +72,7 @@ Actual fill bar：
 
 Limit price 被 touch 或 cross 不保证成交；Stop order 触发不保证最终成交价。队列、流动性、跳空、停牌、连接和平台异常都可能造成未成交、部分成交或更差 fill。
 
-未成交不会改写当时的 Market Path；它只表示没有实际仓位。部分成交则只按实际数量计算账户风险，剩余订单是否继续工作服从原计划和当前路径。
+未成交不会改写当时的 Opportunity；它只表示没有实际仓位。部分成交则只按实际数量计算账户风险，剩余订单是否继续工作服从原计划和当前 Opportunity。
 
 ## 四、实际保护生命周期
 
@@ -96,62 +96,63 @@ Stop price 是图表上的保护触发依据，不保证最终 fill。真实账�
 
 执行决定时已经保留原始 Trade Plan；首次成交只确认实际仓位对应这份计划。此后保留：
 
-- 入场时的 Market Path、目标事件和 horizon；
-- 当时可见的支持与反方事实；
-- 原条件概率和判断时点；
+- 入场时的 Opportunity、目标事件和 horizon；
+- 当时可见的支持、Activation、Invalidation 与反方事实；
+- 原 Market Probability、Candidate Outcome Probability 和判断时点；
 - 原 Entry、Planned Stop、Targets、数量和管理方式；
 - 原 Outcome Criterion 与 Trader's Equation。
 
-成交后的当前状态与原计划分开维护；只有改变风险、动作或后续复盘的 Delta 才另行保存。不得因最终结果覆盖原始目标、重选 measured-move 端点、借用后来出现的证据，或把另一条 Market Path 改写成原交易理由。
+成交后的当前状态与原计划分开维护；只有改变风险、动作或后续复盘的 Delta 才另行保存。不得因最终结果覆盖原始目标、重选 measured-move 端点、借用后来出现的证据，或把另一条 Opportunity 改写成原交易理由。
 
-## 六、持仓中的路径更新
+## 六、持仓中的 Opportunity 更新
 
-持仓管理仍遵守完整市场认知和结果路径语义。每根计划观察周期 K 线及其他相关事件只做数秒扫描：先判断认知是否实质改变，再决定是否产生动作或记录。
+持仓管理仍遵守完整 Market Read 与 Opportunity 语义。每根计划观察周期 K 线及其他相关事件只做数秒扫描：先判断认知是否实质改变，再决定是否产生动作或记录。
 
 ```text
 新市场事实
-→ 更新 Environment、Location、Price Action Now 与 Active Test
-→ 同时更新所选路径、对手路径和 Pending Outcome
-→ 增强 / 保持 / 削弱 / 失效 / 目标完成 / 新结构替代
+→ 继承当前 Context，更新 Price Map 与 From–Now–Role–Change–Testing–Next 价格过程
+→ 确认原 Context、标记 Transition 或 Reframe
+→ 同时更新所选 Opportunity 和现实竞争机会
+→ 增强 / 保持 / 削弱 / 失效 / 目标完成 / 过期 / 新结构替代
 → 按原计划和当前账户状态采取动作
 ```
 
 认知更新不自动产生交易动作。普通波动、单根反色 K 线或计划周期内正常 pullback 可以使局部证据变化，却不自动要求加仓、减仓、移动 Stop 或退出。
 
-若所选路径、反路径、风险、保护、动作和下一条件均未实质改变，只继续观察，不产生逐 K 线记录。
+若所选 Opportunity、竞争机会、风险、保护、动作和下一条件均未实质改变，只继续观察，不产生逐 K 线记录。
 
-### 路径增强
+### Opportunity 增强
 
 - 按计划持有；
 - 新 breakout、follow-through 或主要结构支持延伸目标时，按预写条件保留 runner；
 - 新的 major higher low / lower high 或完整结构形成后，可以降低开放风险。
 
-路径增强不自动许可加仓。新增数量仍须有当前 Entry、Stop、Target、总风险和正 Trader's Equation。
+Opportunity 增强不自动许可加仓。新增数量仍须通过 Context Permission，并有当前 Trigger、Entry、Stop、Target、总风险和正 Trader's Equation。
 
-### 路径仍成立但减弱
+### Opportunity 仍成立但减弱
 
 - 区分普通 pullback、entry disappointment 和实质 premise 变化；
 - 按预写分支保持、减仓、收缩当前管理目标或停止新增风险；
 - 未重新形成完整正方程前不新增风险；
 - 不因一根普通反向 K 线自动反向；
-- 不以原路径名称否认实际分离关闭、重叠增加或反方接受。
+- 不以原 Opportunity 名称否认实际分离关闭、重叠增加或反方接受。
 
-### 路径失效
+### Opportunity 失效
 
 - 主动退出，不必等待最远 Active Stop；
 - 仓位归零前 Active Stop 继续有效；
-- 取消同一路径下的剩余工作订单和计划加仓；
+- 取消同一 Opportunity 下的剩余工作订单和计划加仓；
 - 记录哪个可观察事实触发 Invalidation。
 
-退出只说明当前风险交换不再成立，不表示原方向永久错误。若原方向后来重新获得接受，必须建立新的 Market Path、Entry、Stop、Target 和方程。
+退出只说明当前风险交换不再成立，不表示原方向永久错误。若原方向后来重新获得接受，必须建立新的 Opportunity、Entry、Stop、Target 和方程。
 
-### 强反路径获得接受
+### 竞争 Opportunity 获得接受
 
 - 先退出原交易；
 - 反方向是否值得承担风险，重新运行完整流程；
 - 原交易者 Stop、旧概率或被困叙述不能直接成为反向交易计划。
 
-对手路径轻微增强只属于所选路径的反方更新；只有它获得足够接受并实质否定所选路径，才触发 Path Invalidation。退出原方向后，反方向仍必须以当前价格经过完整决策门。
+竞争机会轻微增强只属于 `Against` 更新；只有它获得足够接受并实质否定所选 Opportunity，才触发 Structural Invalidation。退出原方向后，反方向仍必须以当前价格经过完整决策门。
 
 ### 目标、Stop 或时间条件发生
 
@@ -165,7 +166,7 @@ Stop price 是图表上的保护触发依据，不保证最终 fill。真实账�
 退出保护只有一张最终在场 Stop，另有两条主动判断路径：
 
 1. **Active Protective Stop**：执行或主动判断失败时限制最坏风险；
-2. **结构 Invalidation**：合理反向结构已经否定原 Market Path；
+2. **结构 Invalidation**：合理反向结构已经否定原 Opportunity；
 3. **强反向动量 Invalidation**：即使尚无漂亮形态，异常强反向 K 线、连续低重叠反向运动或 Always In 明确切换也可能要求退出。
 
 第二、三项可以重叠，都是 Invalidation 证据，不是另外两张 Stop。普通小反向 K 线和所选管理周期的正常 pullback 不自动触发退出。
@@ -178,7 +179,7 @@ Trailing Stop 只能向降低开放风险方向移动：多头向上，空头向
 
 - 新 breakout 建立的 major higher low / lower high；
 - 完整走势腿或回调结构；
-- 原路径仍成立时的其他有效失效边界。
+- 原 Opportunity 仍成立时的其他有效失效边界。
 
 任意次要 swing、每根盈利 K 线或固定点数不要求机械 trailing。
 
@@ -190,13 +191,13 @@ Breakeven Stop 是把 Active Stop 调整到计划 Entry 或整仓加权平均 En
 
 原 Trade Plan 内的所有层必须在第一笔 Entry 前进入最坏总风险。新增层前检查：
 
-- 原 Market Path 仍有效；
+- 原 Opportunity 仍有效；
 - 新层来自原计划中的价格改善区域，或来自成交后预写的新确认；不是因为浮亏本身；
 - 层数、价格规则和数量仍符合原计划；
 - 共同 Stop 与全部实际、剩余层的账户风险仍在上限；
 - 强反向证据、时间或成本尚未使方程失效。
 
-`Price-improvement scale-in` 在预定更好价格增加数量，只改善 Entry 和均价，不提高 Market Path 概率；若该价格只是临场看到浮亏后选择，则不属于原计划。`Confirmation scale-in` 依赖新的顺势证据，但仍增加总数量和回撤暴露。无论哪一种，路径失效、保护异常或总风险不再合规时都取消剩余层，不强制完成计划数量。
+`Price-improvement scale-in` 在预定更好价格增加数量，只改善 Entry 和均价，不提高 Market Probability；若该价格只是临场看到浮亏后选择，则不属于原计划。`Confirmation scale-in` 依赖新的顺势证据，可以更新 Market Probability 或 Candidate Outcome Probability，但仍增加总数量和回撤暴露。无论哪一种，Opportunity 失效、保护异常或总风险不再合规时都取消剩余层，不强制完成计划数量。
 
 每层按其 Entry 到共同或独立 Stop 的距离计算账户风险；同为账户 `1%` 风险的两层不要求数量相同。第二层成交后立即按实际总数量确认 Active Protective Stop 覆盖，并把实际仓位、剩余工作订单、成本与滑点重新计入最坏总风险。
 
@@ -208,10 +209,10 @@ Breakeven Stop 是把 Active Stop 调整到计划 Entry 或整仓加权平均 En
 
 - 已到计划目标；
 - 预写的风险收缩或 runner 分支；
-- 实质路径削弱或 Invalidation；
+- Opportunity 实质削弱或 Invalidation；
 - 账户、时间或异常处置。
 
-减仓后更新实际数量、平均价格、Active Stop 覆盖、剩余目标和开放风险。不能因为仓位变小就保留已经失效的 Market Path。
+减仓后更新实际数量、平均价格、Active Stop 覆盖、剩余目标和开放风险。不能因为仓位变小就保留已经失效的 Opportunity。
 
 ## 十、Scalp / Swing 管理一致性
 
@@ -236,7 +237,7 @@ Runner      → 仅在路径增强和延伸目标启用时继续持有
 
 Failed breakout 或 failed H2 不表示某位交易者已经触及 Stop；价格曾提供目标机会也不表示账户实际成交退出。
 
-没有实际成交的候选只能记录为未触发、未成交、过期、等待、不交易或路径失效，不能记为交易 success / failure。
+没有实际成交的候选只能记录为未触发、未成交、过期、等待、不交易或 Opportunity 失效，不能记为交易 success / failure。
 
 ## 十二、Trapped 与行为路径
 
@@ -254,16 +255,16 @@ Trapped、disappointment 和预期退出压力若由已经记录的 Entry、fail
 
 - 仓位大到使交易者移动 Stop、提前截断赢家或忽略 Invalidation 时，必须降低仓位；
 - FOMO、希望回到 Entry、已有浮盈和已实现盈亏不构成新的价格证据；
-- 沉没亏损不能降低下一条 Market Path 的资格标准；
+- 沉没亏损不能降低下一条 Opportunity 的资格标准；
 - Mental stop 不替代实际保护；
 - 临场改变周期、目标、Scalp / Swing 或计划加仓属于计划变化，必须重新计算或停止执行；
-- 退出后可以重新入场，因此主动承认当前路径失效不等于永久放弃方向。
+- 退出后可以重新入场，因此主动承认当前 Opportunity 失效不等于永久放弃方向。
 
 规则内亏损与规则错误分开：前者是具有合理方程的计划仍然发生失败结果；后者包括坏位置入场、没有保护、移动 Stop、无计划加仓、改变管理周期或拒绝执行 Invalidation。
 
 ## 十四、执行事件的必要记录
 
-记录时点由[总流程](overall_flow.md#七必要记录与闭环)统一规定。执行阶段分开处理三类信息：
+记录时点由[总流程](overall_flow.md#九必要记录)统一规定。执行阶段分开处理三类信息：
 
 | 类型 | 最小处理 |
 | --- | --- |
@@ -292,9 +293,9 @@ Trapped、disappointment 和预期退出压力若由已经记录的 Entry、fail
 Review Record
 
 原始判断
-- Market Path：
+- Opportunity：
 - 原目标事件和 Outcome Criterion：
-- 原条件概率：
+- 原 Market Probability / Candidate Outcome Probability：
 - 原 Trade Plan：
 
 执行
