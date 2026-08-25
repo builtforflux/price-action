@@ -1,382 +1,240 @@
-# Al Brooks 价格行为核心术语
+# 价格行为术语表
 
 > **状态：Reference / Non-normative**
->
-> 本表是从 [`core/README.md` 的 Definition 权威注册表](../core/README.md#definition-权威注册表)派生的复核速查，不直接形成交易计划。每个条目只保留权威页中的必要摘要；权威归属以注册表和条目所链接的 Core Definition 为准，若本表与 Core Definition 冲突，以后者为准。
 
-本表不另立定义，也不能作为核心框架的缩略替代品。完整理解必须覆盖[核心框架的全部组成及其关系](../core/README.md#整体理解要求)。
+本表用于检索来源中的术语，不建立独立交易规则。术语怎样进入实时判断，以 [`trading_system/`](../trading_system/README.md) 为准；页码、来源差异与重复证据见[课程概念索引](course/concept_index.md)和[边界与冲突台账](course/boundaries_and_conflicts.md)。
 
-## 判断与交易数学
+一个术语只回答“正在描述什么”。它不能凭名称提供交易许可。实时顺序始终是：
+
+> 价格事实 → 活动结构 → 结构目标 → Market Path → 条件概率 → Trade Plan → Trader's Equation → 执行 / 等待 / 不交易
+
+## 一、判断对象
 
 ### Price Action
 
-派生自：[Core Definition：方法与读图主线](../core/00_method/00_al_brooks_thesis.md#核心问题)。
-
-价格运动的任何表示都属于 price action，每一次价格变化都是其中一部分。这个广义定义只界定观察对象，不表示每个 tick 或局部标签都具有同等重要性或能独立形成交易优势；信息仍须经过 Context、市场结构与 Trader's Equation 筛选。成交量、DOM 和新闻可以作为外部背景，但不能独立保证方向；可交易证据仍是价格对它们表现出的突破、接受或失败。日程、基础设施和尾部风险仍必须进入 Trade Plan，这一边界不等于“忽略新闻”。
+价格运动及其可观察表示。成交量、DOM、新闻和日程可以形成背景或尾部风险，但方向证据仍来自价格如何测试、突破、接受或拒绝相关区域。
 
 ### Context
 
-派生自：[Core Definition：Context](../core/02_context/00_context_location_control.md#它解决什么问题)。
+当前价格事实之间的关系，包括市场状态、控制与压力、位置、时间、多周期结构和最近测试。Context 不是附加标签，而是决定同一形态在此处意味着延续、反转尝试还是噪声的条件集合。
 
-左侧价格行为、买卖压力、支撑阻力和市场状态对当前 setup 的支持或反对。Context 比孤立的 K 线或形态名称更重要。
+### Pattern
 
-### Market Cycle
+对几何或事件顺序的压缩命名。Pattern 是结构视图，不是交易类别；H2、Double Bottom、Wedge、Flag、Triangle 和 MTR 等名称必须还原为共同的价格事实与结果路径。
 
-派生自：[Core Definition：Market Cycle](../core/01_market_cycle/00_market_cycle.md#基础层级)。
+### Setup
 
-基础状态先分 trend 与 trading range；trend 再观察当前主要是已形成方向控制的 breakout phase（spike）还是 channel，实务上可看成 `breakout phase / spike -> tight channel -> broad channel -> trading range` 的连续谱。Breakout mode、climactic move 与 transition evidence 是可叠加的跨层信息，不与两种基础状态并列。
+来源材料常用的历史术语。本系统不维护 Setup 家族或 Setup 路由；来源中的 setup 必须被翻译为当前结构、目标事件、触发、失效、概率和方程，才能进入运行流程。
 
-### Pattern / Setup
+### Market Path
 
-派生自：[Core Definition：Pattern](../core/04_patterns/00_patterns_are_language.md#pattern-的定义)与 [Core Definition：Setup](../core/05_setups/00_what_is_a_setup.md#setup-的定义)。
+从当前测试到目标或失效的可更新假设，至少包含活动结构、起点事实、目标事件、直接路径、替代路径、失效事实与当前证据状态。它是系统连接读图与交易构造的核心对象。
 
-Pattern 是对可观察价格行为及其几何或顺序关系的命名。Setup 则把具体 Context、交易 premise、支持证据、方向、可观察触发、失效事实和直接期待的价格运动组合起来；它仍不是完整 Trade Plan。
+### Trade Plan
 
-### Two Reasons / Evidence Convergence
+把 Market Path 转成可执行风险对象，明确 entry、invalidation、protective stop、target、outcome criterion、概率、成本、仓位、订单与管理。触发发生后才有完整计划仍然太晚。
 
-派生自：[Core Definition：Two Reasons 与证据汇合](../core/05_setups/00_what_is_a_setup.md#two-reasons-与证据汇合)。
+### Evidence Convergence / Two Reasons
 
-一项可交易 Setup 至少应能说明两个相互补充的理由；理由可来自 market state、control / pressure、location、structure 或 trigger / response。相同价格事实的同义标签、嵌套计数和重叠形态不能重复计票。两个理由只使候选值得继续评估，不替代 stop、target、成本和 Trader's Equation。五维分类与独立性检查是仓库综合，不是固定评分模型。
-
-### TRADE / WAIT / REJECT
-
-派生自：[Core Definition：候选结果](../core/05_setups/00_what_is_a_setup.md#trade--wait--reject)。
-
-`TRADE` 表示候选具备独立理由、触发和一致 Trade Plan 条件，可以继续进入计划或执行流程；`WAIT` 表示 premise 仍可能成立但缺少必要理由、触发、跟进或清楚方程；`REJECT` 表示 premise 或 Trader's Equation 已被否定。它们是分析结果，不表示 TRADE 已经成交，也不把 WAIT 变成无限期保留候选。
+市场状态、位置、控制、结构与触发等相对独立证据共同支持一条路径。来源中的“two reasons”是最低提醒，不是固定打分；同一价格事实的多个同义标签、嵌套计数或重叠形态不得重复计票。
 
 ### Evidence Lifecycle
 
-派生自：[Core Definition：证据生命周期与重置](../core/00_method/00_al_brooks_thesis.md#证据生命周期与重置)。
+证据会出现、增强、减弱、失效或在结构改变后重置。新主导突破、成熟区间、控制切换或更高周期结构接管后，旧计数和旧倾向不能自动继承。
 
-证据只在相关周期、观察窗口和主导状态内支持当前候选，可依次被记录为出现、有效、削弱、失效或重置。新主导 breakout、成熟 trading range、Always In 切换或控制重建后，应从新结构重新建立计数、测试和 Setup 理由；这是仓库的一致判断模型，不是 Brooks 的固定状态机。
+### 执行 / 等待 / 不交易
 
-### Trader's Equation / 40–60 Thinking
+- **执行**：路径、触发、保护、目标和方程同时成立。
+- **等待**：路径仍可能成立，但缺少预先声明的必要事件。
+- **不交易**：路径已失效、风险无法定义、方程无优势或运行约束不允许。
 
-派生自：[Core Definition：Trader's Equation](../core/00_method/01_probability_risk_reward.md#traders-equation)与 [40–60 思维](../core/00_method/01_probability_risk_reward.md#4060-思维)。
+这三个结果是当前决策，不是永久评价。详见[交易决策与计划](../trading_system/decision_and_plan.md#十四唯一决策)。
 
-Trader's Equation 比较成功概率与回报、失败概率与风险，判断交易是否具有正的数学期望；佣金和滑点另行影响净结果。多数普通交易没有压倒性胜率，应同时考虑两个方向，并用风险回报补偿不确定性。
+## 二、市场状态与运动
 
-### Likely / Probably / Risky
+### Market Cycle
 
-派生自：[Core Definition：概率措辞边界](../core/00_method/01_probability_risk_reward.md#概率措辞边界)。
+Trend 与 Trading Range 之间连续演化的观察模型。常见路径为 `breakout phase / spike → tight channel → broad channel → trading range`；Breakout Mode、Climax 与 Transition 是叠加状态，不是第三种基础市场。
 
-Brooks glossary 和课程把 `likely / probably` 约定为至少约 60%，但这只是其教学语言阈值，不是普通英语定义或已校准模型，也不表示确定。Glossary 的 `risky` 指 Trader's Equation 不清楚、勉强有利，或概率不高于约 50%；仓库诊断时再检查具体是概率、合理 stop、现实 reward 还是成本造成。实际判断必须回到同一组 entry、protective stop、target 和管理。
+### Trend / Channel
 
-### Success / Failure
+一侧持续控制并反复恢复原方向。Tight channel 回调浅、重叠少；broad channel 回调深、重叠多，行为逐渐接近倾斜区间。所有上涨宽通道同时可以从更高层看成对先前下跌的 bear flag；哪个视图有用，取决于当前测试与目标。
 
-派生自：[Core Definition：交易结果](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#disappointmentpremise-变化和交易结果)。
+### Trading Range / TTR
 
-Brooks 的 success 表示交易者 objective 先于 protective stop 到达；failure (a failed move) 表示 protective stop 先于 scalper's profit 或交易者 objective 到达。本仓库复核时同时声明所评价的 objective 和 outcome criterion，以免把不同目标混写；这是仓库的消歧规则。同一路径可能满足图表层 scalp target，却未满足更远的 swing objective；只有对应的预声明 criterion 已满足时，才能记录相对于该 objective 的 success。Scalper's profit 是否曾出现、账户是否实际兑现、premise change 后的主动退出和实际 P&L 分别记录；弱 entry bar、短暂失望或普通 pullback 都不能单独确认 failure。
+双边交易反复成功、突破容易失败的区域。Broad range 的边缘可能提供空间，中部通常没有优势；tight trading range（TTR）重叠多、空间小、触发质量差，通常应等待价格建立分离。
 
-## 市场状态、位置与路径
+### Breakout Attempt / Acceptance
 
-以下条目只用于回查市场状态、位置与路径用语；完整关系仍须阅读 [`core/01_market_cycle/`](../core/01_market_cycle/README.md) 和 [`core/02_context/`](../core/02_context/README.md)。
-
-### Breakout
-
-派生自：[Core Definition：Breakout Event / Attempt](../core/01_market_cycle/03_breakouts_and_breakout_mode.md#breakout-event--attempt)。
-
-Breakout event 是当前 K 线高点或低点越过重要旧价位；接受证据未知时先视为 breakout attempt。强收盘、follow-through 和没有快速收回支持新价格逐步获得接受；这些证据进一步形成持续方向控制后，才可称为 trend 中的 breakout phase（spike）。“获接受的突破”是本仓库对证据状态的整理标签，不是官方 glossary 的独立词条。
-
-### Breakout Pullback / Breakout Test
-
-派生自：[Core Definition：Breakout Pullback / Breakout Test](../core/01_market_cycle/03_breakouts_and_breakout_mode.md#breakout-pullback-与-breakout-test)。
-
-Breakout pullback 是突破后的回调；breakout test 更具体地测试原入场价或旧边界附近。测试可能很快发生，也可能延后很多根，不是突破获得接受的必要步骤。
+越过重要边界先只是突破尝试。强收盘、follow-through、分离保持、回测守住与反方失败支持接受；快速回到原区域支持 failed breakout。突破事实、接受程度与方向控制必须分开记录。
 
 ### Breakout Mode
 
-派生自：[Core Definition：Breakout Mode](../core/01_market_cycle/03_breakouts_and_breakout_mode.md#breakout-mode)。
+两个方向的突破都合理、尚不能预设结果的条件状态。它不保证第一次突破成功，也不是独立交易类型；突破后立即转入接受/失败证据链。
 
-任一方向突破都应有获得 follow-through 的可能，不预设方向，也不保证第一次突破获得接受。官方 glossary 称它为一种 setup；仓库的严格 Setup schema 还要求具体 Context、premise、触发和失效，因此先把它作为可叠加的双向候选状态。它不是与 trend / trading range 并列的第三种基础状态，也不是已经发生的 breakout event 或 breakout phase。
+### Breakout Pullback / Test
 
-### Buy / Sell The Close
+突破后的回调称 breakout pullback；重新访问旧边界或原入场区域是更具体的 breakout test。测试可立即或延后发生，不是突破获得接受的必要条件。
 
-派生自：[Core Definition：Buy / Sell The Close](../core/01_market_cycle/03_breakouts_and_breakout_mode.md#buy--sell-the-close)。
+### Buy / Sell the Close
 
-强突破阶段在顺势收盘附近承担风险的行为语言，不是单根 K 线形态或自动入场。它既可以发生在首根足够强的突破 K 线收盘、尚无独立 follow-through 时，也可以发生在连续强收盘和 follow-through 已支持延续后；前者价格较好但证据较少，后者证据较多但价格和剩余空间可能较差。每一次实际参与都必须按当前决策时点的 entry、结构 stop、target 和 Trader's Equation 重算，等待后不能继承更早价格。
-
-### Tight Channel / Broad Channel
-
-派生自：[Core Definition：Trend / Channel](../core/01_market_cycle/01_trends_and_channels.md#定义)。
-
-Tight channel 推进稳定、回调浅、重叠少，反向交易通常风险较高。Broad channel 方向优势较弱、回调更深、重叠更多，行为逐渐接近倾斜 trading range。
-
-### Overshoot / Undershoot
-
-派生自：[Core Definition：Overshoot / Undershoot](../core/01_market_cycle/01_trends_and_channels.md#overshoot--undershoot-与线条失效)。
-
-Overshoot 是价格短暂越过候选趋势线、通道线或结构边界；undershoot 是尚未触线或到达预期极值便提前反转。轻微越线或未触线都不自动使通道失效，也不单独提供反向 Setup；强突破、边界外收盘、follow-through 或价格持续不再响应旧线，才更支持重画结构。
-
-### Tight Trading Range / Broad Trading Range
-
-派生自：[Core Definition：Tight Trading Range](../core/01_market_cycle/02_trading_ranges.md#tight-trading-range-和-barbwire)与 [Broad Trading Range](../core/01_market_cycle/02_trading_ranges.md#broad-trading-range)。
-
-Tight trading range 重叠多、空间小、方向不清，多数经验不足的交易者更适合等待突破。Broad trading range 空间较大，边缘可能有机会，中部通常没有优势。
-
-### Opening / Opening BOM / Opening Reversal
-
-派生自：[Core Definition：开盘概念的分层](../core/02_context/02_time_and_timeframes.md#开盘概念的分层)。
-
-Opening / first swing 是开盘第一段方向运动的事后描述，终点常要等后续价格出现才清楚。课程对 Opening BOM 还有较宽用法，包括强开盘突破后很快进入早段区间；为获得可重复的操作边界，仓库把“首根两侧先后被测试、早期双向候选尚未决断”登记为一个更成熟、可执行的子型，而不是唯一官方定义。课程的 first-18-bar heuristic 与仓库预先定义的固定 opening window 都是另外的观察口径，不能与 Opening BOM 合并。Opening Reversal 只保留 session 早段语境；同样结构在较晚阶段属于普通 reversal 或 MTR。
-
-### Climax
-
-派生自：[Core Definition：Climax / Transition](../core/01_market_cycle/04_climax_and_transition.md#两种并存的用法)。
-
-课程可把当下加速、大实体 breakout bar 或极端微型通道称为 climactic move / climax bar；这描述行为，不保证反转。官方 glossary 的严格 `climax` 词条则要求运动走得过快过远，并且市场已经反向进入 trading range 或相反 trend。本仓库分别写作“高潮式推进/候选”和“已确认的反转或耗竭高潮”，避免把进行时行为直接当成逆势许可。
+在强突破阶段于顺势收盘附近承担风险的行为语言。它不是单根 K 线许可；每个决策时点仍须用实际 entry、结构 stop、剩余 target 和成本重新计算方程。
 
 ### Pullback / Leg / Swing
 
-派生自：[Core Definition：Pullback / Leg](../core/01_market_cycle/01_trends_and_channels.md#pullback-与-leg)与 [Core Definition：Swing](../core/06_trade_plan_and_management/01_scalp_vs_swing.md#swing)。
-
-Pullback 是原运动中的暂时暂停或反向运动，尚未否定其恢复预期；leg 是较大结构中的一段方向运动，可以属于趋势、通道、交易区间或修正过程。Swing 寻求比 scalp 更大的价格运动，并愿意承受符合 premise 的正常 pullback。
-
-课程常把第一腿足够强之后的再次尝试描述为 two-leg tendency。第二腿可以很弱、很短、不创新极值或继续产生更多腿；它不是保证，也不要求与第一腿等长。新强突破获得接受、候选第二腿升级为新的主导 breakout，或成熟 trading range 切断旧结构时，应在当前周期重新观察腿数。Second leg 描述价格路径，不等于 second signal / second entry。
+Pullback 是原运动内尚未否定恢复预期的暂停或反向运动；leg 是较大结构中的一段方向运动；swing 是相对更大的价格路径或持仓目标。第一腿后的第二腿是条件倾向，不保证长度、力度或完成方式。
 
 ### Reversal / Minor Reversal
 
-派生自：[Core Definition：Reversal / Minor Reversal](../core/01_market_cycle/00_market_cycle.md#reversal-与-minor-reversal)。
+Reversal 表示方向或状态开始改变，不表示相反趋势已经建立。第一次逆势尝试通常仍是原趋势的 pullback、flag 或 trading range；minor reversal 尚未形成反方持续控制。
 
-Reversal 是方向或状态向相反路径变化，不等于相反趋势已经建立。Minor reversal 是当前周期中逆既有趋势、但尚未建立相反趋势控制的反转尝试；第一次逆势反转通常先作为原趋势 pullback / flag 或 trading range 处理。所有判断必须说明周期和被反转的原状态；MTR 还须另行满足结构破坏、旧极值测试和反方控制等 Setup 条件。
+### Climax / Transition
+
+加速、大实体或极端微型通道可以是 climax-like 行为，但不保证反转。只有后续进入区间或反向趋势，才能确认原运动已经耗竭或转换。
 
 ### Staircase / Trending Trading Range
 
-派生自：[Core Definition：Staircase](../core/01_market_cycle/01_trends_and_channels.md#breakout-首次回调staircase-与阶段重置)与 [Trending Trading Range](../core/01_market_cycle/01_trends_and_channels.md#trending-trading-range)。
+Staircase 是突破与后续回调持续重叠的阶梯式趋势；trending trading range 是局部区间经短突破迁移到新公平区域。两者都提示趋势强度衰减，但不直接确认反转。
 
-Staircase 指回调穿过或覆盖前一突破点，使相邻突破与回调重叠的阶梯式趋势；shrinking stairs 指后续突破延伸逐级缩小。Trending trading range 则强调“局部区间—短突破—新区间”的公平价格迁移。它们都提示强突破正向通道或区间演化，但本身不确认相反趋势。
+## 三、位置、压力与目标
 
-### Always In
+### Support / Resistance
 
-派生自：[Core Definition：Always In](../core/02_context/00_context_location_control.md#always-in-是强控制判断)。
+价格可能停顿、测试或反转的区域，不是保证反转的精确线。突破后同一区域可以交换角色。
 
-在当前时点，若必须持仓，交易者更可能选择的方向。眼前几根噪声化时，可回看最近一次尚未被推翻的明确突破；通常要有强反转及 follow-through 才切换，但在强 Context 中，一根足够强的反转 K 线也可能立即翻转方向，其他情形仍等待跟进确认。Always In 是控制方向摘要，不表示必须一直持仓，也不替代位置、目标或 Trader's Equation。
+### Magnet / Target
 
-### Buying Pressure / Selling Pressure
-
-派生自：[Core Definition：Context / Control](../core/02_context/00_context_location_control.md#控制权)。
-
-K 线数量与连续性、相对实体和收盘、影线拒绝、突破/gap/跟进、回调质量和反方能否获利共同形成的累积买卖证据。它必须相对近期价格、market state、位置和周期解释，不设固定分数；一侧 pressure 较多也不自动生成 entry、确认突破或直接建立 opposite trend。它不是对真实订单簿身份或单笔成交动机的断言。
-
-### Support / Resistance / Magnet
-
-派生自：[Core Definition：Support / Resistance](../core/02_context/01_support_resistance_targets.md#它解决什么问题)与 [Magnet](../core/02_context/01_support_resistance_targets.md#磁吸目标)。
-
-Support 在当前价格下方，是下跌可能停顿或反转的候选区域；resistance 在当前价格上方，是上涨可能停顿或反转的候选区域。同一价格区被穿越后可以交换角色，它们不是保证反转的精确线。Magnet 是可能吸引价格测试的目标区域；吸引不保证到达。
-
-### Test / Confluence / Dueling Lines
-
-派生自：[Core Definition：Test 与 Confluence](../core/02_context/01_support_resistance_targets.md#test-与-confluence)。
-
-Test 只确认价格接近、触及或重新访问已有价格关系；结果仍要继续观察 reaction、follow-through 与 acceptance。多个相对独立的支撑阻力对象在同一区域汇合可以增强 location 理由；Dueling Lines 是其中一种课程语言。汇合不单独生成 Setup，由同一组 swing 或同一价格事实推导的多个名称不能重复计票。
+Magnet 是可能吸引测试的区域；target 是当前活动结构生成、并由计划选定的结果事件。目标先于概率和 entry：没有明确目标，就无法定义成功事件、现实 reward 或持有时间。
 
 ### Measured Move
 
-派生自：[Core Definition：Measured Move](../core/02_context/01_support_resistance_targets.md#量度目标)。
+依据已形成结构投射的目标区域，如区间高度或 `Leg 1 ≈ Leg 2`。它是候选目标，不是价格承诺。
 
-依据已经形成的结构估算下一段可能测试的区域，例如 Leg 1 = Leg 2 或区间高度投射；它是 target / magnet 候选，不是价格承诺。
+### Test / Reaction
 
-## 订单、触发与结果
+Test 表示价格接近、触及或重新访问参照区域；reaction 是测试后的即时响应。是否获得 acceptance 仍需后续延伸、保持或失败证据。
 
-订单用途与结果证据见 [`core/03_acceptance_and_order_logic/`](../core/03_acceptance_and_order_logic/README.md)。
+### Confluence / Dueling Lines
 
-### Stop Entry / Protective Stop
+相对独立的支撑阻力对象落在同一区域。汇合可以强化 location，但不能独立生成交易；由同一 swing 推出的多个名称只能算一组事实。
 
-派生自：[Core Definition：Stop Entry](../core/03_acceptance_and_order_logic/00_stop_entry_vs_protective_stop.md#stop-entry)与 [Protective Stop](../core/03_acceptance_and_order_logic/00_stop_entry_vs_protective_stop.md#protective-stop)。
+### Overshoot / Undershoot
 
-Stop entry 在价格向交易方向越过触发价后入场；buy stop 在当前价上方触发买入，sell stop 在当前价下方触发卖出；protective stop 则用于退出并保护持仓。二者用途不同，实际成交都可能因跳空或滑点偏离触发价。一份计划还须区分入场前用于风险计算的 planned protective stop、实际成交并确认保护后的 active protective stop，以及另行预算的 catastrophe backup；三者的状态和职责不能用同一名称混写。
+Overshoot 是短暂越过候选线或边界，undershoot 是未到达便提前反转。轻微越线或未触线不自动使结构失效；持续不再响应旧线才支持重画。
 
-### Trailing Stop / Breakeven Stop
+### Pressure / Control / Always In
 
-派生自：[Core Definition：Stop 调整与保本](../core/06_trade_plan_and_management/00_trade_plan.md#stop-调整与保本)。
+Pressure 由 K 线连续性、实体与收盘、影线拒绝、突破、gap、跟进和回调质量累积形成。Control 是一侧能否持续推动并阻止另一侧获利。Always In 是“若必须持仓，更可能选择哪一侧”的控制摘要，不表示必须持仓，也不替代目标和方程。
 
-Trailing stop 是随新确认价格结构向降低开放风险方向移动的 active protective stop；任意次要 swing 或固定点数不要求机械追踪，向扩大风险方向移动也不属于 trailing。Breakeven stop 是把保护调整到计划 entry 或整仓加权平均 entry 附近的特殊选择；佣金、滑点、跳空、部分成交和多层仓位意味着实际账户结果仍可能不为零。
+### Gap / Separation
 
-### Limit Entry / Limit Order Market
+两个相关价格对象之间缺少充分双边交易的空间。传统 gap、body gap、open gap、measuring gap 与 negative/overlap gap 使用不同参照对象；任何机械标注都必须写清参照。Measuring / exhaustion 等结果名称只有后续路径才能确认。
 
-派生自：[Core Definition：Limit Order Market](../core/03_acceptance_and_order_logic/02_limit_order_market.md#定义)。
-
-Limit entry 只允许在指定价格或更好价格成交，常用于区间或弱通道；更好价格不代表更高胜率，也不保证成交。Limit Order Market 指双边交易者常能通过逆向 limit entry 获利的环境。
-
-价格 touch limit 不证明账户成交，短暂 cross 也不保证全部数量成交；队列、流动性、部分成交、路由和平台回执决定 actual fill。图表触及、订单状态、实际数量与平均成交价必须分开记录，未成交不能反向改写 Setup 或 market state。
-
-### Invalidation
-
-派生自：[Core Definition：Trade Plan](../core/06_trade_plan_and_management/00_trade_plan.md#trade-plan-的定义)。
-
-可观察的价格事实，说明原交易 premise 不再成立；合理反向结构和足够强的反向动量是两类可能重叠的证据路径。Invalidation 不等于另一张 stop，也不要求等待最远 protective stop 成交。
-
-### Entry Trigger
-
-派生自：[Core Definition：Setup](../core/05_setups/00_what_is_a_setup.md#setup-的定义)。
-
-使计划入场条件成立的具体价格事件；触发不等于经纪商已接受订单，也不等于已经成交。
-
-### Signal Bar / Entry Bar
-
-派生自：[Core Definition：Signal Bar](../core/04_patterns/01_bar_types.md#signal-bar)与 [Entry Bar](../core/04_patterns/01_bar_types.md#entry-bar)。
-
-课程在计划和等待阶段就把提供入场理由的 K 线称为 signal bar，即使最终没有下单或触发；K 线尚未完成时可称 prospective signal bar。官方 glossary 的严格事后口径则把实际 entry bar 前用于该 entry 的最后一根称为 signal bar。仓库用两层记录消除歧义：`chart entry bar` 是所声明触发价第一次被越过或条件第一次满足的 K 线，不要求观察者真的挂单；`actual fill bar` 是账户真实成交所在的 K 线。图表层的 entry-bar 强弱用于评价触发后的质量，账户层另记是否成交及成交价；两层恰好重合时才可省略限定词。
-
-Signal-bar 外观必须服从 Context：强趋势的顺势回调可以由已有控制补偿较弱 signal，逆势候选则通常需要更强 reversal bar、反向 pressure、第二信号或 follow-through。区间中部的漂亮信号仍可能没有优势；更大的 signal 也可能扩大 stop 或出现在高潮末端，因此不自动改善 Trader's Equation。
-
-### Fade / Countertrend
-
-派生自：[Core Definition：Fade / Countertrend](../core/03_acceptance_and_order_logic/02_limit_order_market.md#fade-与-countertrend)与 [Core Definition：Always In](../core/02_context/00_context_location_control.md#always-in-是强控制判断)。
-
-Fade 押注当前方向尝试不会获接受，常见于区间边缘的逆向 limit-order 行为；countertrend 则明确逆当前 Always In 方向。两者可以重叠，但方向不清的 trading range fade 不必属于 countertrend。
-
-### Follow-through
-
-派生自：[Core Definition：Follow-through](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#follow-throughsurprise-和惯性)。
-
-初始运动之后，后续一根或多根 K 线继续延伸该运动。强收盘、浅回调和反方失败属于更广的 acceptance evidence，不能替代是否出现后续延伸这一检查。
-
-### Surprise / Entry Disappointment
-
-派生自：[Core Definition：Surprise](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#follow-throughsurprise-和惯性)与 [Entry Disappointment](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#disappointmentpremise-变化和交易结果)。
-
-Surprise 是明显超出交易者预期的强行为，常增加第二腿可能性，但不保证直线延伸。Entry disappointment 只表示入场表现偏弱或暂未离开入场区，不能单独确认 Brooks failure。
-
-### Failed Breakout / Failed Failure
-
-派生自：[Core Definition：Breakout Acceptance](../core/01_market_cycle/03_breakouts_and_breakout_mode.md#突破质量)与 [Core Definition：Failed Failure](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#failed-failure运动尝试)。
-
-Failed breakout 是 breakout attempt 缺乏接受并明确回到原区域；failed failure 则是这次失败运动随后也失败，价格恢复原突破方向。两者描述价格运动，不自动等于某笔实际交易已触及 protective stop。
-
-### Trapped In / Trapped Out
-
-派生自：[Core Definition：Trapped Traders](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#trapped-traders)。
-
-`Trapped in a trade` 指已经实际入场、尚未获得 scalper's profit、当前处于开放亏损，并很可能被迫退出的一方。`Trapped out of a trade` 指因等待更好价格、过早退出或未能保留仓位而被挡在随后行情之外的一方；它没有当前开放亏损，潜在压力来自追价或重新入场。已经从亏损持仓退出者只属于“曾 trapped in 后退出”，不能与 `trapped out` 混写。
-
-### Pain Trade
-
-派生自：[Core Definition：Pain Trade](../core/03_acceptance_and_order_logic/01_acceptance_and_failure.md#pain-trade)。
-
-Pain Trade 是行为与价格路径模型：许多交易者在错误方向已有承诺，或因等待预期中的失败而错过一段低预期突破，随后 trapped in / trapped out 的退出、追价或重新入场压力可能让运动继续延伸。它只能从价格反应推断，不表示能看见全部真实订单，也不是新的 Setup 家族或独立 failure 状态；是否继续仍按 acceptance / failure 证据判断。
-
-## K 线与计数边界
-
-这里只保留容易发生误读的几何和计数摘要；识别和用法见 [`core/04_patterns/`](../core/04_patterns/README.md)。
-
-### Trend Bar / Shaved Bar
-
-派生自：[Core Definition：Trend Bar / Shaved Bar](../core/04_patterns/01_bar_types.md#trend-bar)。
-
-Trend bar 与 trading-range bar 是由相对实体、影线、收盘和 Context 共同判断的连续谱。`Shaved top` 只表示 high 与实体上边界重合，`shaved bottom` 只表示 low 与实体下边界重合；两端均无影线时可称两端 shaved。它是几何与收盘质量描述，不是独立 Setup；近似相等的机械标注必须声明允许的 tick 容差。
-
-### Inside Bar / Outside Bar
-
-派生自：[Core Definition：Inside / Outside Bar](../core/04_patterns/01_bar_types.md#inside--outside-bar)。
-
-Inside bar 的高点不高于前高且低点不低于前低。Outside bar 有来源口径差异：glossary 要求至少一端严格越过、另一端相等或越过；课程 08B p450 则允许两端都只相等，即 `high ≥ 前高且 low ≤ 前低`。机械标注时必须注明采用哪套边界。
-
-### Reversal Bar
-
-派生自：[Core Definition：Reversal Bar](../core/04_patterns/01_bar_types.md#reversal-bar--two-bar-reversal)。
-
-Glossary 的简化最低定义是与当前 trend 或 leg 方向相反的 trend bar；课程的操作性 buy / sell reversal bar 还容许反色实体，只要收盘位置满足相应方向要求。反向测试影线和靠近新方向极值的收盘是常见加强项；外观良好仍不表示 Context 支持反转。
-
-### ii / ioi / oo
-
-派生自：[Core Definition：ii](../core/04_patterns/06_triangles_ii_ioi_oo.md#ii--iii)、[ioi](../core/04_patterns/06_triangles_ii_ioi_oo.md#ioi)与 [oo](../core/04_patterns/06_triangles_ii_ioi_oo.md#oo)。
-
-ii 是连续两根 inside bar；ioi 是 inside–outside–inside；oo 是 outside bar 后紧接一根更大的 outside bar。它们常处于 breakout mode，不能只凭形态名预设方向；但压缩并不消除 Context，强趋势或尚未成熟的紧结构仍可保留方向偏置。成熟 triangle 的近 50/50 先验不能外推给所有 ii、ioi 或 oo。
+## 四、结构视图与计数
 
 ### H1 / H2 / L1 / L2
 
-派生自：[Core Definition：H1 / H2 / L1 / L2](../core/04_patterns/02_h1_h2_l1_l2.md#定义)。
+H1/H2 是回调中第一次/第二次向上恢复尝试；L1/L2 是第一次/第二次向下恢复尝试。它们描述事件次序，不是固定胜率。新的主导 breakout leg 建立后重置计数；高编号通常要求先重判区间或控制变化。
 
-H1/H2 对回调中的第一次/第二次向上触发尝试计数；L1/L2 对第一次/第二次向下触发尝试计数。H4–H6 / L4–L6 可记录连续或嵌套的更长反转尝试，但编号越大不等于胜率越高；它首先提示应重判 trading range、endless pullback 或反向趋势。新的明确 breakout leg 建立后，从 H1 / L1 重新开始；区间内缺少跟进的越界不自动重置。
+### Double Top / Double Bottom
 
-Brooks glossary 使用严格 `above` / `below`，而 *10 Best Price Action Trading Patterns* 的图例写作 `at or above` / `at or below`；公开材料对相等高低点的边界并不完全一致，不能让这一差异取代 context 和触发质量。
+对同一区域的两次测试。Double Bottom 与 H2 可以是同一底层事件的不同视图：前者强调位置复测，后者强调恢复尝试次序；不能把它们当作两个独立理由。
 
 ### Second Signal / Second Entry
 
-派生自：[Core Definition：Second Signal / Second Entry](../core/03_acceptance_and_order_logic/03_second_entries_and_traps.md#second-signal-与-second-entry)。
-
-课程会把 `second entry` 宽泛用于第二次可交易机会；官方 glossary 的严格口径则要求第一次已经形成 entry bar，随后同一逻辑再次触发并形成第二根 entry bar。仓库因此分别记录 second signal、second-entry opportunity / chart entry bar 和账户 second actual fill；图形名称不能证明某个账户实际成交。
-
-## 形态名称复核
-
-### Pattern Evolution
-
-派生自：[Core Definition：Pattern Evolution](../core/04_patterns/00_patterns_are_language.md#pattern-evolution)。
-
-Pattern 是当前结构的暂时描述，会随新价格扩展、失败或进入更大结构。演化后应按新的 market state、控制、位置和接受证据重建 Setup；最终形态名称不能回填早期当时不可见的理由，也不能与旧标签重复计票。
-
-本节只保留名称容易诱发错误推论时所需的摘要；完整结构、识别线索和交易含义由 [`core/04_patterns/`](../core/04_patterns/README.md) 与 [`core/05_setups/`](../core/05_setups/README.md) 解释。
-
-### Micro Double Top / Bottom
-
-派生自：[Core Definition：Micro Double Top / Bottom](../core/04_patterns/04_double_tops_bottoms.md#micro-double-top--bottom)。
-
-发生在相邻或近邻 K 线中的极小双顶底。它既可能是趋势中的 one-bar flag，也可能在反向 flag 末端成为 reversal setup，不天然等于反转。
+Second signal 是第二次可观察触发机会；严格的 second entry 还要求第一次已形成 chart entry。账户是否真的成交是另一层事实，不能由图形名称推断。
 
 ### Wedge / Parabolic Wedge
 
-派生自：[Core Definition：Wedge](../core/04_patterns/03_wedges.md#定义)与 [Parabolic Wedge](../core/04_patterns/03_wedges.md#parabolic-wedge-怎么读)。
+Wedge 描述三次推动或三次尝试。它可属于顺势回调、反转过程或普通区间；parabolic wedge 强调 tight channel 中的高潮式多次 surge。三推只形成当前测试，不保证反转或两腿修正。
 
-Wedge 通常表示三次推动或三次尝试，在不同 Context 中可以是顺势回调、反转尝试或没有优势的普通结构。Parabolic wedge 是 tight channel 中至少三腿或三次 surge 构成的 climactic wedge；它不要求每一腿更陡，也不自动导出反转、两腿修正或 MTR。突破前倾向不能跨过结果继续使用：一旦较少预期方向已经突破，必须按突破强度、跟进、接受或失败重新评估。
+### Flag / Final Flag
 
-### Final Flag
+Flag 是对更大运动的逆向或横向修正；因此上涨宽通道在更高层可以是 bear flag，下跌宽通道可以是 bull flag。Final flag 只能实时标为候选，只有后续路径确实终结原趋势腿才能确认。
 
-派生自：[Core Definition：Final Flag](../core/04_patterns/05_final_flags.md#定义)。
+### Triangle / ii / ioi / oo
 
-任何趋势腿——包括交易区间内的小趋势腿——都可能被某个 flag 终结，且 flag 可小至一根。实时只能标记为 candidate final flag；趋势晚段、magnet、高潮和双边交易增加只会提高嫌疑。只有后续结果显示该 flag 终结了原趋势腿，才支持 confirmed final-flag interpretation。
-
-### Triangle
-
-派生自：[Core Definition：Triangle](../core/04_patterns/06_triangles_ii_ioi_oo.md#triangle)。
-
-来源使用两种成熟度计数：官方 abbreviations 把 `TRI` 写成至少五次反转的 trading range，课程 26A 则写成至少一个方向三推、完整交替结构至少五腿。`Reversal` 与 `leg / push` 不是同一个计数对象，本仓库不设置共同换算阈值。引用或标注时必须声明采用的来源口径：官方口径保留“至少五次反转”，课程口径保留“一侧三推且总体至少五腿”，并写明这些腿位于当前周期还是由更低周期展开。Expanding triangle 以逐步扩大的高低点形成至少五腿；尺度足够大、未被 tight trading range 支配且末端形成合格反向压力时，可以成为 MTR 候选，随后突破、follow-through 与接受才负责确认或升级。约 50/50 的突破方向和首次突破失败倾向只属于相应 triangle 语境，不能外推到所有 breakout mode。
+这些结构都可以表达压缩与双向突破候选。来源对 triangle 的“反转次数”与“腿数”口径不同，标注时应声明口径；近 50/50 的倾向只适用于相应成熟结构，不能外推给所有压缩。
 
 ### Major Trend Reversal / MTR
 
-派生自：[Core Application：Major Trend Reversal](../core/05_setups/04_major_trend_reversal.md#交易命题)与 [Core Definition：Setup](../core/05_setups/00_what_is_a_setup.md#setup-的定义)。
+MTR 是过程而非形态许可：原趋势先减弱或发生结构破坏，价格测试旧极值，反方再尝试建立控制。双顶底、wedge、head-and-shoulders 等只是在不同阶段对同一过程的视图。
 
-MTR 在核心框架中是反转 Setup 原型，不是单根 K 线或孤立 Pattern 的同义词。把它作为候选 Setup 时，仍须说明具体 Context、premise、支持证据、反向触发、失效事实和直接期待的价格运动。
+### Micro Double Top / Bottom
 
-### Gap / Body Gap / Negative Gap
+近邻 K 线对同一区域的微型复测。它可能是一根或数根的 flag，也可能参与反转过程；尺度本身不决定方向。
 
-派生自：[Core Definition：Gap](../core/04_patterns/07_gaps.md#gap-的最低含义)与 [Body / Negative Gap](../core/04_patterns/07_gaps.md#术语边界)。
+### Pattern Evolution
 
-Gap 是明确的两个支撑阻力对象之间缺少充分双边交易的价格空间，不限于隔夜跳空或严格无重叠。Body gap 更具体地表示两个参照 K 线的实体不重叠，影线可以重叠。Negative / overlap gap 表示 breakout point 与 pullback 已轻微重叠，按原边界量得负值；它不是反方向 session gap，也不单独确认突破失败或 exhaustion。
+形态名称随新价格扩展、失败或被更大结构吸收。不得用最终形态回填当时不可见的信息；每次结构接管都应重新生成目标与路径。
 
-### Gap Open Bar
+## 五、K 线与触发
 
-派生自：[Core Definition：Gap Open Bar](../core/04_patterns/07_gaps.md#术语边界)。
+### Trend Bar / Trading-range Bar
 
-当前 K 线 open 高于或低于前一根 close；两者相等则没有这种开盘缺口。它可出现在 session 内任意 K 线，只描述相邻 open/close 关系，不预测后续方向。它不同于仅发生在 session 开始且必须声明比较参照的 opening/session gap，也弱于两根完整 K 线范围不重叠的传统 gap。
+由相对实体、影线、收盘位置和 Context 共同判断的连续谱，不是固定尺寸分类。Shaved top/bottom 只描述一端没有明显影线；机械标注须声明 tick 容差。
 
-### Measuring Gap / Exhaustion Gap
+### Inside / Outside Bar
 
-派生自：[Core Definition：Measuring Gap / Exhaustion Gap](../core/04_patterns/07_gaps.md#术语边界)。
+Inside bar 的高点不高于前高且低点不低于前低。Outside bar 在来源中存在严格越界与允许等高等低两种边界，数据标注必须声明所用定义。
 
-Measuring gap 最终支持 measured move。Exhaustion gap 存在来源口径差异：glossary 要求成熟趋势末端至少出现小反转；课程案例也容许只停止顺势压力并转横盘、gap 仍开放的末端结果。两种名称都取决于后续结果，实时只能标 candidate / potential，并注明采用的来源口径。
+### Reversal Bar
 
-## 管理边界
+提供反向响应的 K 线。靠近新方向极值的收盘、测试影线与相对较强实体可以增强质量，但外观不能替代结构、位置和后续跟进。
 
-管理选择见 [`core/06_trade_plan_and_management/`](../core/06_trade_plan_and_management/README.md)。
+### Signal Bar / Chart Entry Bar / Actual Fill Bar
 
-### Scalp / Swing
+Signal bar 提供计划触发所需的局部信息；chart entry bar 是声明条件第一次被满足的 K 线；actual fill bar 是账户真实成交所在 K 线。三者可能重合，也可能不同。
 
-派生自：[Core Definition：Scalp](../core/06_trade_plan_and_management/01_scalp_vs_swing.md#scalp)与 [Swing](../core/06_trade_plan_and_management/01_scalp_vs_swing.md#swing)。
+### Trigger
 
-Scalp 以较小目标快速兑现；目标小于风险时，需要多数交易者难以维持的高胜率。Swing 寻求较大运动，并愿意承受部分正常 pullback；二者必须与 stop、target 和 Trader's Equation 保持一致。
+使预先声明的入场条件成立的价格事件。Trigger 不等于订单已被接受，也不等于账户已经成交。
 
-### Minimum Scalp / Scalper's Profit
+### Follow-through / Surprise / Disappointment
 
-派生自：[Core Definition：Minimum Scalp 与 Scalper's Profit](../core/06_trade_plan_and_management/01_scalp_vs_swing.md#minimum-scalp-与-scalpers-profit)。
+Follow-through 是初始运动后的继续延伸；surprise 是明显超出原预期的强行为，常增加第二腿可能；entry disappointment 只是入场后表现偏弱，不能单独确认路径或交易 failure。
 
-Minimum scalp 是绑定产品、周期、波动和成本假设的最小经济性短线尺度，不能跨市场复制固定 ticks / pips。Scalper's profit 则是结果事件：protective stop 先到之前，价格路径已经提供合理 scalp 利润机会。它不证明账户实际捕获利润，也不自动等于 swing 或其他原计划的完整 success。
+## 六、订单、风险与结果
 
-### TBTL
+### Stop Entry / Limit Entry / Market Entry
 
-派生自：[Core Definition：TBTL](../core/06_trade_plan_and_management/01_scalp_vs_swing.md#tbtl-是时间与腿数预期)。
+- **Stop entry**：价格向交易方向越过触发价后入场。
+- **Limit entry**：只在指定价格或更好价格成交，不保证成交或完整成交。
+- **Market / close entry**：以当下可得价格承担风险，成交确定性较高但价格不确定。
 
-Ten Bars, Two Legs correction。它是反转 swing 的常见时间与路径预期，不是所有 correction 的硬性完成条件，也不是价格目标。
+订单类型只决定参与方式，不能修复一条没有优势的 Market Path。
+
+### Protective Stop / Invalidation
+
+Protective stop 限制账户损失；invalidation 是证明原路径不再成立的价格事实。两者可以接近但职责不同。计划中的 stop、经纪商已确认的 active stop 与灾难备份也必须分开记录。
+
+### Trailing / Breakeven Stop
+
+Trailing stop 随新确认结构向减少开放风险的方向移动。Breakeven stop 是把保护移到计划 entry 或加权平均 entry 附近；佣金、滑点、跳空和部分成交意味着实际结果未必为零。
+
+### Trader's Equation / 40–60 Thinking
+
+以同一组 entry、stop、target 和管理比较成功概率、失败概率、reward、risk、成本与时间占用。多数普通交易没有压倒性胜率；概率优势与回报优势可以互相补偿，但不能混用不同计划的数字。
+
+### Likely / Probably / Risky
+
+来源常把 likely/probably 用作约 60% 或更高的教学语言，而非精确校准模型。Risky 表示概率、合理 stop、现实 reward 或成本使方程不清楚；具体原因必须展开。
+
+### Success / Failure / Scalper's Profit
+
+Success 与 failure 必须绑定预先声明的 outcome criterion：目标先到、stop 先到或 premise 变化主动退出是不同事件。Scalper's profit 只表示价格曾提供合理短线利润机会，不证明账户兑现，也不等于更远 swing 目标成功。
+
+### Scalp / Swing / TBTL
+
+Scalp 追求较小目标，通常需要更高胜率；swing 接受正常 pullback 以换取更大目标。TBTL（Ten Bars, Two Legs）是常见时间与路径预期，不是硬性完成条件或价格目标。
+
+### Trapped In / Trapped Out / Pain Trade
+
+Trapped in 指已持有不利仓位的一方；trapped out 指错过行情、可能被迫追价的一方。Pain trade 是这些退出或追价压力可能延伸运动的行为路径推断，仍须由价格接受/失败证据确认。
+
+### Fade / Countertrend / Limit Order Market
+
+Fade 押注当前尝试不会获接受；countertrend 明确逆当前控制方向；Limit Order Market 表示双边逆向限价参与反复可获利。三者可以重叠但不是同义词。
 
 ## 常用缩写
 
@@ -386,11 +244,18 @@ Ten Bars, Two Legs correction。它是反转 swing 的常见时间与路径预�
 | `BLSHS` | Buy Low, Sell High, Scalp |
 | `BO` / `BOM` / `BP` / `BT` | Breakout / Breakout Mode / Breakout Pullback / Breakout Test |
 | `BTC` / `STC` | Buy The Close / Sell The Close |
-| `DOM` | Depth of Market |
-| `ET` | Expanding Triangle |
+| `ET` / `MTR` | Expanding Triangle / Major Trend Reversal |
 | `FBO` / `FF` / `FT` | Failed Breakout / Final Flag / Follow-through |
 | `H1`–`H6` / `L1`–`L6` | High / Low counting |
 | `LOM` | Limit Order Market |
-| `MDB` / `MDT` / `MTR` | Micro Double Bottom / Top / Major Trend Reversal |
-| `RR` | Risk / Reward |
-| `TE` / `TBTL` / `TTR` | Trader's Equation / Ten Bars, Two Legs / Tight Trading Range |
+| `MDB` / `MDT` | Micro Double Bottom / Top |
+| `RR` / `TE` | Risk / Reward / Trader's Equation |
+| `TBTL` / `TTR` | Ten Bars, Two Legs / Tight Trading Range |
+
+## 运行入口
+
+- 统一循环：[价格行为交易系统总流程](../trading_system/overall_flow.md)
+- 概念关系：[市场结构与结果路径](../trading_system/market_structure_and_paths.md)
+- 交易构造：[交易决策与计划](../trading_system/decision_and_plan.md)
+- 持仓闭环：[执行、持仓与复盘](../trading_system/execution_and_review.md)
+- 条件概率：[条件规则与冲突台账](../trading_system/rules_and_conflicts.md)
