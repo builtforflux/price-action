@@ -6,7 +6,7 @@
 
 一个术语只回答“正在描述什么”。它不能凭名称提供交易许可。实时顺序始终是：
 
-> 价格事实 → 活动结构 → 结构目标 → Market Path → 条件概率 → Trade Plan → Trader's Equation → 执行 / 等待 / 不交易
+> 价格事实 → Market Context / Location → Primary Test → 双向 Opportunity Set → Market Path → 条件概率 → Trade Plan → Trader's Equation → 执行 / 等待 / 不交易
 
 ## 一、判断对象
 
@@ -26,9 +26,17 @@
 
 来源材料常用的历史术语。本系统不维护 Setup 家族或 Setup 路由；来源中的 setup 必须被翻译为当前结构、目标事件、触发、失效、概率和方程，才能进入运行流程。
 
+### Current Structural Test
+
+把 Market Context、Location、接近方向、测试次序、Separation、Pressure 和当前接受状态组织成一个可持续更新的市场命题。测试按运行角色分为 Primary、Context 与 Competing；一个 Trade Plan 只绑定当前直接解决的 Primary Test。H2、Double Bottom、Wedge、Flag 或 MTR 组件可以是同一次测试的不同视图，不各自生成概率。
+
+### Opportunity Set
+
+同一个 Primary Test 下的 Bull、Bear 与 Pending 结果集合。系统分别评价双方目标、后续证据和失效条件，并记录测试怎样可能继续未决；不同目标或 horizon 的概率不要求互补，也不表示必须同时交易。
+
 ### Market Path
 
-从当前测试到目标或失效的可更新假设，至少包含活动结构、起点事实、目标事件、直接路径、替代路径、失效事实与当前证据状态。它是系统连接读图与交易构造的核心对象。
+从 Primary Test 到一个明确市场目标事件的可更新假设，至少包含来源结构、目标、horizon、所需事实、反方事实、失效条件与当前证据状态。它是 Opportunity Set 中可以被独立评价的一条条件路径。
 
 ### Trade Plan
 
@@ -223,6 +231,10 @@ Trailing stop 随新确认结构向减少开放风险的方向移动。Breakeven
 ### Success / Failure / Scalper's Profit
 
 Success 与 failure 必须绑定预先声明的 outcome criterion：目标先到、stop 先到或 premise 变化主动退出是不同事件。Scalper's profit 只表示价格曾提供合理短线利润机会，不证明账户兑现，也不等于更远 swing 目标成功。
+
+### Pending Outcome / Sequence Unknown
+
+Pending Outcome 表示当前结构测试尚未解决，是实时 Opportunity Set 的一种结果；`SEQUENCE_UNKNOWN` 表示目标与失效在同一可观察区间内发生而先后顺序无法确认，是 Market Path 的闭环结果。两者不能用同一个未决状态代替。
 
 ### Scalp / Swing / TBTL
 

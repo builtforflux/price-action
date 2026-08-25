@@ -2,7 +2,7 @@
 
 > **状态：Trading System / Market Model**
 
-本页规定价格事实怎样生成活动结构、目标事件和 Market Path。概念名称只压缩已经观察到的关系；系统不按 Pattern 或 Setup 名称切换运行逻辑。
+本页规定价格事实怎样生成 Market Context、Location、Current Structural Test、双向目标事件和 Market Path。概念名称只压缩已经观察到的关系；系统不按 Pattern 或 Setup 名称切换运行逻辑。
 
 ## 一、统一价格命题
 
@@ -128,6 +128,31 @@ Approach
 - `Failure`：原目标路径未获得接受并被新价格实质否定；必须写明失败的是哪个 move 或 objective。
 
 没有立即 follow-through 会削弱路径，但普通回调不自动确认失败。Failed breakout 要求旧区域被重新接受；若反向尝试随后失败、原突破方向重新获得接受，则形成 failed failure / breakout-pullback 路径。
+
+### Current Structural Test
+
+Current Structural Test 把 Market Context、Location 和边界互动组织成一个当前可更新的市场命题：
+
+```text
+Current Structural Test
+
+角色：Primary / Context / Competing
+观察周期与外层关系：
+参照区域与当前位置：
+接近方向：
+当前运动与测试次序：
+Separation / Overlap：
+Pressure / Control：
+当前处于 Approach / Test / Reaction / Pending / Acceptance / Failure：
+Bull、Bear 与 Pending 结果事件：
+最迟判断时间：
+```
+
+同一测试可以同时具有 H2、Double Bottom、Wedge、Flag 或 MTR 组件等视图；这些视图帮助描述次序、空间和 Context 角色，不各自建立测试或增加概率。新结构、主要边界改变或观察周期改变时，关闭或替代旧测试，不在事后重写原测试。
+
+不同周期或区域的测试可以并存，但必须标明角色：`Primary` 是当前价格正在直接解决、当前 Trade Plan 可以绑定的测试；`Context` 是约束其目标、空间和正常波动的外层测试；`Competing` 是可能取代 Primary 的竞争解释。角色相对于当前评价范围定义；一个 Trade Plan 只绑定一个 Primary Test，不同周期或 horizon 若要独立承担风险，分别建立 Decision Record 与 Trade Plan。其他测试继续作为支持、反方或替代事实更新。
+
+测试生命周期可以压缩为 `APPROACHING → TESTING ↔ PENDING → ACCEPTED / FAILED / SUPERSEDED`。Acceptance 或 Failure 解决的是当前边界命题；它随后更新 Market Context、关闭相应路径并生成新的测试，而不是使整个市场流程停止。测试期间可以因再次接近或触及而在 `TESTING` 与 `PENDING` 间往复，不强迫连续市场进入单向状态链。
 
 ## 五、分离、重叠、压力与控制
 
@@ -327,9 +352,9 @@ Wedge、Double Top/Bottom、Head and Shoulders、rounding top/bottom、Final Fla
 
 Session 只通过剩余时间、波动、流动性、目标可达性和是否允许跨 Session 进入路径。盘中只能描述实时 session state，最终 day type 不能回填当时判断。Opening、first swing、Opening Breakout Mode、first-18 heuristic 和内部固定 opening window 不是同一对象，使用时必须声明边界来源。
 
-## 九、结构生成目标
+## 九、Primary Test 生成双向与 Pending 结果
 
-目标来自已经固定的结构或可见参照区域：
+目标来自已经固定的结构、可见参照区域和当前正在解决的测试。每个现实 Primary Test 都先考虑 Bull、Bear 与 Pending 结果；这要求说明双方可能期待的市场事件，以及测试怎样可能继续未决，不表示双方概率互补或必须同时交易。
 
 | 来源结构 | 候选目标事件 |
 | --- | --- |
@@ -354,12 +379,15 @@ Double-top height    = top area - neckline
 
 所有端点必须来自当时可见的同一结构并冻结。Measured move 是目标候选，不提供入场许可；更近障碍、成本和剩余时间会改变现实 Reward。多个投射落在相近区域可以增强 magnet，但同一结构的不同量法不能重复增加方向概率。
 
-## 十、从目标到 Market Path
+目标事件只定义市场结果：价格触及、进入区域、越过并获得接受，或在 horizon 内未发生。账户是否实际成交退出属于 Trade Outcome 与 Account Result，不能写入 Market Path 的市场目标。
 
-结构明确后，不先寻找 Entry，而是为每个现实目标建立路径：
+## 十、从 Opportunity Set 到 Market Path
+
+结构与 Primary Test 明确后，不先寻找 Entry，而是建立 Bull、Bear 与 Pending Opportunity Set，并为值得持续跟踪的现实目标建立路径：
 
 ```text
-来源结构
+Market Context + Location + Primary Test
+→ Bull / Bear / Pending 结果事件
 → 目标区域
 → 目标事件与到达口径
 → 到达所需的价格序列
@@ -367,6 +395,8 @@ Double-top height    = top area - neckline
 → 周期与时间范围
 → 条件概率
 ```
+
+双向考虑的最低要求是能够说明双方为什么可能承担风险、期待什么市场结果、需要什么后续证据以及什么会证明路径错误，并说明测试继续未决的现实方式。明显缺少现实目标、时间或空间的方向记录排除原因即可，不为形式完整制造伪路径；只有通过交易决策门的路径才构造 Trade Plan。
 
 典型测试可以生成：
 
@@ -379,7 +409,7 @@ Double-top height    = top area - neckline
 | 第二腿到旧结构边缘 | 外部接受并延续 | 第二腿陷阱并返回旧结构 |
 | 旧极值、EMA 或量度区域 | 穿越并获得接受 | 拒绝并启动返回路径 |
 
-路径状态随来源事实改变，不随名称数量改变。新的更具体结构可以替代旧路径；历史结构仍可保留为 Context，但必须服从证据生命周期。
+路径状态随来源事实改变，不随名称数量改变。新的更具体结构可以替代旧路径；历史结构仍可保留为 Context，但必须服从证据生命周期。不同目标或 horizon 的路径分别保存，不能用一个方向概率覆盖全部结果。
 
 ## 十一、证据生命周期
 
@@ -392,6 +422,19 @@ Double-top height    = top area - neckline
 ```
 
 削弱不等于立即失效；重置不否认历史发生，只说明旧事实不再支持当前路径。Pattern 演化、事后名称和旧概率都不能越过重置继续提供交易许可。
+
+Market Path 的生命周期与证据强弱分开：
+
+```text
+ACTIVE
+├─ 目标事件发生             → ACHIEVED
+├─ 市场事实实质否定         → INVALIDATED
+├─ horizon 结束             → EXPIRED
+├─ 新结构或测试取代         → SUPERSEDED
+└─ 目标与失效顺序无法确认   → SEQUENCE_UNKNOWN
+```
+
+增强、保持和削弱是 `ACTIVE` 内一次事件的更新结果；是否可交易则由当前 Entry、Stop、Reward、成本、时间和账户条件决定，不属于 Market Path 生命周期。
 
 ## 十二、证据追溯
 

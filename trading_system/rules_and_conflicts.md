@@ -44,6 +44,8 @@
 
 理由负责更新 Market Path 支持程度；条件规则提供概率。H2、Double Bottom、Second Entry 等同源名称不各自提供概率。
 
+Primary Test 的 Bull、Bear 路径分别匹配各自目标，Pending Outcome 记录测试尚未解决的现实方式。双方目标、horizon 或判断时点不同时，其概率不要求互补，也不能用 `1 - P(Bull)` 自动生成 Bear Path 概率。系统先独立匹配市场路径概率，再由当前 Entry、Stop、Targets、管理和成本形成交易结果估计。
+
 ## 四、概率语言与交易数学
 
 | 条件或措辞 | 目标事件 | 概率或风险交换 | 限制 |
@@ -55,6 +57,8 @@
 | 当前交易估计约 `60%` | 计划目标先于失败结果 | 约 `1R` 可能成立 | 仍须计成本、实际 Stop 和管理 |
 
 市场状态频率、结构最终演化、突破方向、目标先于 Stop 和账户盈利不是同一概率对象。
+
+条件规则给出的 Market Path 概率只有在计划目标与原目标事件一致时才可进入 Trader's Equation；账户盈利概率还受实际 Entry、Stop、部分退出、执行和成本影响，不能直接从市场目标概率复制。
 
 ## 五、市场状态与区间
 
@@ -161,7 +165,6 @@ Candidate measuring gap、potential exhaustion 和 climax bar 在结果出现前
 2. 检查[重复矩阵](../reference/course/repetition_matrix.md)是否只是同源、镜像或低增量重复；
 3. 检查[边界与冲突](../reference/course/boundaries_and_conflicts.md)是否存在分母、数学或翻译问题；
 4. 明确它替代哪条相同目标、周期和 horizon 的旧规则；
-5. 若来自内部连续样本，登记样本定义、版本和适用市场，不冒充 Brooks 通用规则。
+5. 若来自内部连续样本，登记样本定义、采集区间和适用市场，不冒充 Brooks 通用规则。
 
-单笔实盘结果不能直接改变本台账。条件定义改变时，新旧样本不得静默合并。
-
+规则修订必须登记生效时间，并说明替代、缩小或隔离了什么条件。单笔实盘结果不能直接改变本台账；条件定义改变时，新旧样本不得静默合并，后来的修订也不能回写历史 Decision Record 使用的规则。

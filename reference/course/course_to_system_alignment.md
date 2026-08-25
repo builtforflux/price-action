@@ -33,13 +33,13 @@
 ```text
 价格和账户事实
 → 分离、重叠、压力与接受
-→ 活动结构、边界和位置
-→ 结构生成候选目标事件
-→ 建立到达目标与路径失效的结果路径
-→ 匹配条件概率
+→ Market Context、Location 与 Primary Test
+→ 扫描 Gap、Pressure、Control、Follow-through 等双向证据
+→ Bull / Bear / Pending 目标事件与 Market Paths
+→ 分别匹配条件概率
 → 用 Entry / Invalidation / Stop 表达路径
 → 检查 Reward / Risk / Cost / Time
-→ 执行、保护、管理和复盘
+→ 执行、保护、持续更新、管理和复盘
 ```
 
 Pattern、Market Cycle、Context、H/L、Wedge、Double Test、Flag、MTR 等都在这条链中承担局部描述职责，不选择另一套运行逻辑。
@@ -129,4 +129,3 @@ Pattern、Market Cycle、Context、H/L、Wedge、Double Test、Flag、MTR 等都
 ## 七、覆盖维护
 
 新增课程证据时，先更新逐讲文件和必要的冲突/重复记录，再判断它是否改变现有系统字段。只有会改变结构、目标、路径、概率、计划、执行或复盘的内容才进入 `trading_system/`；否则保持 Reference-only。
-

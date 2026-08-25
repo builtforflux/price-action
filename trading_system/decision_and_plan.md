@@ -2,14 +2,15 @@
 
 > **状态：Trading System / Decision Contract**
 
-本页规定一条 Market Path 怎样在当前价格下成为 Trade Plan。系统不选择预设策略，也不因识别出 Pattern 就产生交易；只有结构生成的目标事件、条件概率和当前风险交换一致时，才允许承担风险。
+本页规定怎样从 Primary Test 的双向 Opportunity Set 中选择一条 Market Path，并在当前价格下形成 Trade Plan。系统不选择预设策略，也不因识别出 Pattern 就产生交易；只有目标事件、条件概率和当前风险交换一致时，才允许承担风险。
 
 ## 一、决策顺序
 
 ```text
-活动结构
-→ 候选目标与目标事件
-→ Market Path
+Market Context + Location + Primary Test
+→ Bull / Bear / Pending Opportunity Set
+→ 候选目标与 Market Paths
+→ 独立评价双向路径
 → 条件概率
 → 当前 Entry
 → Invalidation 与 Protective Stop
@@ -25,7 +26,7 @@
 
 Market Path 进入交易构造前必须具备：
 
-- 来源结构、边界和当前位置清楚；
+- 来源 Primary Test、边界和当前位置清楚；
 - 一个可观察的目标事件和到达口径；
 - 观察周期与现实时间范围；
 - 到达目标需要出现的价格序列；
@@ -34,6 +35,8 @@ Market Path 进入交易构造前必须具备：
 - 可匹配的条件概率或诚实的近似概率语言。
 
 缺少目标、失效事实或时间范围时只能等待；合理 Stop 无法定位、目标空间已不足或成本使方程不成立时不交易。
+
+双向考虑不要求为每个方向制造完整 Trade Plan。系统先独立说明 Bull、Bear 路径的目标、支持、反方事实与失效条件，并说明测试继续 Pending 的现实方式；明显缺少现实空间、时间或条件的路径记录排除原因。只有当前具有可观察 Entry、合理 Stop 和可计算结果的路径进入交易构造。
 
 ## 三、证据汇合，而不是理由计数
 
@@ -55,6 +58,8 @@ Market Path 进入交易构造前必须具备：
 - 旧高、区间边界、double-top 区域和 measured-move 落在同一价格区域。
 
 独立同向证据通常增强路径，但概率仍由与目标事件匹配的条件规则提供，不能按理由数量制造百分比。一个强反方事实可以覆盖多个弱支持理由。
+
+比较机会时不得只选择裸概率较高或支持名称较多的一侧。相同目标、周期和 horizon 的路径可以比较条件概率；不同目标或 horizon 必须分别构造当前 Entry、Stop、Target、成本和结果方程，再比较完整风险交换。未决、超时、scratch 等结果意味着双向概率不必相加为 `100%`。
 
 ## 四、Trigger 与判断时点
 
@@ -107,15 +112,18 @@ Entry
 - 过期或取消条件：
 - 承担风险前必须看到：
 - 成交后预期看到：
+- 是否允许在 Trigger 前预先提交条件订单：
 ```
+
+Market / close order 只能在承担风险前置条件已经成立后提交。Stop / Limit order 可以在 Trigger 或成交前预先提交，但 Trade Plan 必须明确许可，并固定价格规则、有效期、撤单条件和成交后的保护方式；订单一经提交即属于执行状态，不再属于“等待图表确认”。
 
 ### Stop entry
 
-Stop entry 用较差价格交换方向确认，常以 signal bar 高低点附近的触发条件表达。Buy stop / sell stop 是入场用途，不是保护性 Stop。
+Stop entry 用较差价格交换触发确认，常以 signal bar 高低点附近的条件表达。成交后仍要观察 entry-bar 表现、follow-through、触发区域是否守住和分离是否建立；触发本身不证明目标路径成立。Buy stop / sell stop 是入场用途，不是保护性 Stop。
 
 ### Limit entry
 
-Limit entry 用更好价格交换更少确认。价格 touch / cross 不保证账户全部成交；若计划依赖 scale-in，全部层、总数量、共同 Stop 和总风险必须在第一笔 entry 前确定。
+Limit entry 用更好价格交换更少确认。计划必须写明成交后期待的拒绝、重新进入旧区域、Pressure 变化或其他反应，以及允许这些事实出现的时间。价格 touch / cross 不保证账户全部成交；若计划依赖 scale-in，全部层、总数量、共同 Stop 和总风险必须在第一笔 entry 前确定。
 
 ### Market / close entry
 
@@ -131,10 +139,13 @@ Invalidation 是新价格事实已经使所选 Market Path 不再成立，例如
 
 - 原结构关键边界被有效突破并在反侧获得接受；
 - 目标所依赖的分离、控制或测试关系被实质否定；
-- 强反向 breakout、连续动量或 Always In 切换建立了反路径；
-- 时间、Session 或账户条件使原目标不再可实现。
+- 强反向 breakout、连续动量或 Always In 切换建立了反路径。
 
 Invalidation 可以在最远 Protective Stop 触发前要求主动退出。普通反色 K 线、正常 pullback 或短暂失望不自动构成 Invalidation。
+
+horizon 结束而目标和失效均未发生时，Market Path 进入 `EXPIRED`，不记为市场事实否定。若目标和失效在同一观察 K 线内且顺序无法确认，记为 `SEQUENCE_UNKNOWN`；它不同于测试仍在进行的 Pending Outcome。
+
+账户预算、成本、Session 持仓限制、基础设施或执行条件可以使当前 Trade Plan 失效，却不改变市场目标是否仍可能发生。Plan invalidation 要求停止新增风险、撤销对应工作订单或按计划收缩风险；只有市场事实或 horizon 才关闭 Market Path。
 
 ### Planned 与 Active Protective Stop
 
@@ -189,6 +200,8 @@ Brooks 教学中的 `likely / probably` 通常表示约 `60%+`，`unlikely` 表�
 
 无法说明当前路径为什么属于某条规则时，使用诚实的 40%–60% 近似语言或继续等待，不以标签数量制造精度。规则选择与隔离项见[条件规则与冲突台账](rules_and_conflicts.md)。
 
+Market Path 概率描述市场目标事件；Trader's Equation 使用的结果概率还必须与当前 Entry、Planned Stop、Targets、退出数量、时间和管理方式相容。市场目标概率不能在没有结果定义的情况下直接当作账户盈利概率。
+
 ## 九、Trader's Equation
 
 二结果近似：
@@ -239,7 +252,15 @@ gross stop risk = Σ[qᵢ × (eᵢ - s)]
 
 空单镜像。真实风险还要乘每点价值并加入成本、滑点和异常余量。
 
-Scale-in 不凭空提高目标路径概率。只有原路径仍有效、新层有可观察依据、全部层尚在计划内且最坏总风险仍在上限内，才允许新增数量。强反向证据出现时取消剩余层；无限摊平不是计划。
+若第 `i` 层预分配账户风险 `rᵢ`、每点价值为 `v`，数量近似为：
+
+```text
+qᵢ = (rᵢ - 该层成本与滑点预留) / (|eᵢ - s| × v)
+```
+
+同为账户 `1%` 风险的两层若 Entry 不同，数量通常也不同。提交或保留任何层时，已成交仓位与所有仍可能成交的计划层按共同或各自 Stop 计算的最坏风险总和，必须不超过计划总账户风险。
+
+Scale-in 不凭空提高目标路径概率。计划内新层可以来自两类可观察依据：预先定义的更好价格，或成交后出现的新确认。前者只改善价格和平均成本，不增加方向证据；后者可以增强路径，但仍增加总数量和回撤暴露。只有原路径仍有效、层数和价格规则符合原计划、保护正常且全部实际与剩余层的最坏总风险仍在上限内，才允许新增数量。强反向证据出现时取消剩余层；无限摊平不是计划。
 
 Scaling out 改变剩余数量、目标分布和成本。到计划目标部分退出、按预写分支降低风险或保留 runner 都必须在原方程中体现，不能用任意弱 K 线临时重写管理。
 
@@ -258,21 +279,30 @@ Scalp 与 Swing 不是交易类别，而是同一 Market Path 的不同目标、
 ```text
 Trade Plan
 
+Decision
+- 判断时点与 Runtime Snapshot：
+- 当时适用规则：
+
 Market Path
+- Primary Test：
 - 来源结构：
 - 目标事件与到达口径：
 - 周期与时间范围：
 - 当前条件概率：
 - 支持事实：
 - 最强反方事实：
+- Bull / Bear / Pending Opportunity Set 摘要：
 - 增强 / 削弱 / 失效条件：
 
 Entry
 - 条件：
 - 订单类型和价格规则：
 - 有效期与取消条件：
+- 是否允许在 Trigger 前预先提交条件订单：
 - 承担风险前必须看到：
 - 成交后预期看到：
+- 允许预期反应出现的时间：
+- 正常波动与 disappointment：
 
 Risk
 - Invalidation：
@@ -304,16 +334,19 @@ Execution
 - 部分成交处理：
 - 回执不明或保护不足处理：
 
+Trade Outcomes
+- 互斥结果、概率与 payoff：
+
 Trader's Equation：
 ```
 
-首次成交后冻结原始计划。新事实可以改变当前管理，却不能覆盖原目标、重选量度端点或把另一 horizon 的路径改写成原计划。
+执行决定形成时保留原始 Trade Plan；首次成交对应这份计划。新事实可以改变当前路径评价和管理动作，却不能覆盖原目标、重选量度端点或把另一 horizon 的路径改写成原计划。任何新增风险若不属于原计划层，必须建立新的完整 Trade Plan。
 
 ## 十四、唯一决策
 
 ### 执行
 
-路径、目标、概率、Entry、Invalidation、Stop、仓位、成本、时间和管理完整，交易方程成立。执行只表示允许提交当前计划，不表示账户已经成交。
+路径、目标、概率、Entry、Invalidation、Stop、仓位、成本、时间、成交后预期和管理完整，交易方程成立。执行时保留原始计划并提交计划规定的订单意图：即时订单要求前置条件已经成立；预挂 Stop / Limit 要求计划明确允许在 Trigger 或成交前工作。提交不表示订单已被确认或账户已经成交。
 
 ### 等待
 
@@ -327,6 +360,10 @@ Trader's Equation：
 
 等待必须写明所等事实和路径过期条件。
 
+等待不保留隐藏的可执行计划。未来事实发生时使用新的判断时点重新计算；已经提交并等待成交的 Stop / Limit order 属于执行状态，不属于等待决定。
+
+Breakout Mode 等双向条件下可以分别形成相反方向的 Trade Plan，但每份计划仍只表达一条 Market Path。若同时提交相反方向的工作订单，提交前必须定义 OCO 或独立取消关系，并把双边先后或同时成交的最坏暴露计入总风险。
+
 ### 不交易
 
 路径已失效，或现实 Target、剩余时间、风险、成本和执行条件使交换不值得承担。以后若形成新结构或新价格，建立新的 Market Path 与 Trade Plan，不复用旧计划。
@@ -334,4 +371,3 @@ Trader's Equation：
 ## 十五、证据追溯
 
 本页依据 [课程概念索引](../reference/course/concept_index.md)、[重复矩阵](../reference/course/repetition_matrix.md)、[边界与冲突](../reference/course/boundaries_and_conflicts.md)、[正式来源台账](../reference/official_sources.md)和逐讲材料对概率、风险、订单、目标和管理关系进行条件化整理。Reference 负责证据；本页负责统一决策契约。
-
