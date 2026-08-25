@@ -16,9 +16,10 @@ Reference 提供证据、来源和冲突
            ↓
 Trading System 选择、归并和条件化
            ↓
-结构 → 目标事件 → 结果路径 → 条件概率
-→ Entry / Invalidation / Stop → 交易方程
-→ 执行、管理与复盘
+Market Context + Location + Primary Test
+→ Bull / Bear / Pending Opportunity Set
+→ 条件概率 → Entry / Invalidation / Stop → 交易方程
+→ 执行、持续更新、管理与复盘
 ```
 
 | 目录 | 唯一职责 |
@@ -28,8 +29,9 @@ Trading System 选择、归并和条件化
 
 ## 系统原则
 
-- 系统不选择某个预设策略。所有交易由当前结构生成的目标事件、结果路径、条件概率和风险方程产生。
+- 系统不选择某个预设策略。所有方向都经过同一套 Market Context、Location、Current Structural Test、双向路径、条件概率和风险方程。
 - Pattern、Market Cycle、Context、H/L、Wedge、Double Test、Flag、MTR 等是流程中的派生描述，不是独立交易路由。
+- 每个现实 Primary Test 都考虑 Bull、Bear 与 Pending 结果；系统比较双方当前完整风险交换，不按理由数量或裸概率选择方向。
 - Target 是概率和 Entry 之前的上游对象；没有明确目标事件，不匹配概率，也不建立交易。
 - 同一来源事实的多个名称只形成一份证据；不同周期、结构来源或后续反应才可能增加信息。
 - 系统必须能够独立运行；Reference 用于核验，不是临场缺失语义的补丁。

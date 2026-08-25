@@ -2,15 +2,15 @@
 
 > **状态：Trading System / Execution Contract**
 
-本页负责把 Trade Plan 转成实际订单和账户状态，并在成交后继续更新所选 Market Path。图表事实、订单事实和账户事实必须分开；计划正确不表示订单已生效，图表触发也不表示账户已成交或受到保护。
+本页负责把执行决定所依据的原始 Trade Plan 转成实际订单和账户状态，并在成交后继续更新 Primary Test、Context / Competing Tests、所选 Market Path、对手路径和 Pending Outcome。图表事实、订单事实和账户事实必须分开；计划正确不表示订单已生效，图表触发也不表示账户已成交或受到保护。
 
 ## 一、执行前复核
 
 提交任何新增风险前重新同步：
 
 - 所选 Market Path 仍有效，目标、周期和时间范围未改变；
-- Entry 条件已经发生或工作订单仍在有效期；
-- 当前价格下的 Planned Stop、Reward、成本和 Trader's Equation 仍成立；
+- Market / close order 所需的 Entry 前置条件已经发生；或 Trade Plan 明确允许 Stop / Limit 在 Trigger 或成交前预先工作；
+- 以计划订单价格、允许成交范围和当前剩余空间计算的 Planned Stop、Reward、成本和 Trader's Equation 仍成立；
 - Position Size 与当前风险预算、现有仓位和全部计划层一致；
 - 订单方向、类型、价格规则、数量和有效期正确；
 - 成交后 Protective Stop 怎样激活、覆盖实际数量；
@@ -22,16 +22,10 @@
 
 ```text
 Trade Plan
-├─ 预挂 stop / limit order
-│  → 提交订单
-│  → 等待确认、触发或成交
-│
-├─ 等待图表条件后下单
-│  ├─ 条件未发生 → 继续等待
-│  └─ 条件发生且计划仍有效 → 提交订单
-│
-└─ 路径失效、方程不再成立或订单过期
-   → 取消计划和未成交订单
+→ 提交计划规定的 market / stop / limit order
+├─ 提交状态不明 → 核对账户，不重复下单
+├─ 已确认工作   → 等待触发、成交、取消或过期
+└─ 提交前关键输入改变 → 不提交，建立新的 Decision Record
 
 Working Order
 ├─ 回执不明 → 核对账户，不重复下单
@@ -43,6 +37,21 @@ Working Order
 ```
 
 订单意图、经纪商确认、图表触发和账户成交是不同事实。撤单请求也不等于订单已经取消；在取消状态得到确认前，仍按可能成交的暴露处理。
+
+没有提交订单的“等待图表确认”属于新的市场事件和决策时点，不保留隐藏的可执行计划。已提交的 Stop / Limit order 则属于 Working Order，并在每个相关事件后复核路径、有效期、计划成交范围下的风险和取消条件。
+
+Execution State 分别保存三个状态面，而不是用一个枚举掩盖并存事实：
+
+```text
+Order State：Intent / Submitted Unknown / Working / Partial / Filled
+             / Cancel Pending / Canceled / Rejected / Expired
+Exposure：Flat / Open(quantity) / Exiting(quantity)
+Protection：Not Required / Pending / Adequate / Deficient
+```
+
+部分成交可以同时表现为 `Partial + Open + Pending/Adequate`；撤单中可以同时存在 `Cancel Pending` 与可能新增的实际暴露。任何状态转换都以经纪商和账户事实确认，不凭订单意图推定。
+
+相反方向的条件订单若按 OCO 工作，一侧触发、成交或发出撤单请求都不证明另一侧已经取消。确认取消前按两侧都可能成交计算暴露；若异常形成双向或反向实际仓位，先核对净仓位与保护，再按预写异常路径减仓或退出。
 
 ## 三、成交事实
 
@@ -81,9 +90,9 @@ Limit price 被 touch 或 cross 不保证成交；Stop order 触发不保证最�
 
 Stop price 是图表上的保护触发依据，不保证最终 fill。真实账户风险必须容纳合理滑点和异常边界。若另有 Catastrophe Backup，必须独立记录价格、数量、最坏损失和撤换条件，不能把它当成正常 Active Stop。
 
-## 五、冻结原始计划
+## 五、保留并关联原始计划
 
-首次成交后冻结：
+执行决定时已经保留原始 Trade Plan；首次成交只确认实际仓位对应这份计划。此后保留：
 
 - 入场时的 Market Path、目标事件和 horizon；
 - 当时可见的支持与反方事实；
@@ -95,14 +104,17 @@ Stop price 是图表上的保护触发依据，不保证最终 fill。真实账�
 
 ## 六、持仓中的路径更新
 
-持仓管理仍运行同一市场结构和结果路径流程：
+持仓管理仍运行完整市场认知和结果路径流程。每根计划观察周期 K 线及其他相关事件先更新认知，再决定是否产生动作：
 
 ```text
 新市场事实
-→ 更新活动结构、目标和所选 Market Path
-→ 增强 / 削弱 / 未决 / 失效 / 目标完成
+→ 更新 Market Context、Location 与 Current Structural Tests
+→ 同时更新所选路径、对手路径和 Pending Outcome
+→ 增强 / 保持 / 削弱 / 失效 / 目标完成 / 新结构替代
 → 按原计划和当前账户状态采取动作
 ```
+
+认知更新不自动产生交易动作。普通波动、单根反色 K 线或计划周期内正常 pullback 可以使局部证据变化，却不自动要求加仓、减仓、移动 Stop 或退出。
 
 ### 路径增强
 
@@ -116,6 +128,7 @@ Stop price 是图表上的保护触发依据，不保证最终 fill。真实账�
 
 - 区分普通 pullback、entry disappointment 和实质 premise 变化；
 - 按预写分支保持、减仓、收缩当前管理目标或停止新增风险；
+- 未重新形成完整正方程前不新增风险；
 - 不因一根普通反向 K 线自动反向；
 - 不以原路径名称否认实际分离关闭、重叠增加或反方接受。
 
@@ -134,12 +147,14 @@ Stop price 是图表上的保护触发依据，不保证最终 fill。真实账�
 - 反方向是否值得承担风险，重新运行完整流程；
 - 原交易者 Stop、旧概率或被困叙述不能直接成为反向交易计划。
 
+对手路径轻微增强只属于所选路径的反方更新；只有它获得足够接受并实质否定所选路径，才触发 Path Invalidation。退出原方向后，反方向仍必须以当前价格经过完整决策门。
+
 ### 目标、Stop 或时间条件发生
 
 - 目标到达：按 Outcome Criterion 和计划数量减仓或退出；
 - Active Stop 触发：核对实际成交与剩余仓位；
 - Session、最迟退出时间或账户约束触发：按计划减仓或退出；
-- 同一回放 K 线同时包含目标和 Stop 且顺序无法确定：记为顺序不明，不选择有利结果。
+- 同一回放 K 线同时包含目标和 Stop 且顺序无法确定：记为 `SEQUENCE_UNKNOWN`，不选择有利结果。
 
 ## 七、三层退出保护
 
@@ -169,15 +184,19 @@ Breakeven Stop 是把 Active Stop 调整到计划 Entry 或整仓加权平均 En
 
 ### Scale-in
 
-所有层必须在第一笔 Entry 前进入最坏总风险。新增层前检查：
+原 Trade Plan 内的所有层必须在第一笔 Entry 前进入最坏总风险。新增层前检查：
 
 - 原 Market Path 仍有效；
-- 新层有独立可观察依据，而不是因为浮亏；
+- 新层来自原计划中的价格改善区域，或来自成交后预写的新确认；不是因为浮亏本身；
 - 层数、价格规则和数量仍符合原计划；
 - 共同 Stop 与全部实际、剩余层的账户风险仍在上限；
 - 强反向证据、时间或成本尚未使方程失效。
 
-向盈利仓位加仓依赖新的顺势证据，但仍增加总数量和回撤暴露；向亏损仓位加仓只改善均价，不提供新的方向概率。路径失效时不强制完成剩余层。
+`Price-improvement scale-in` 在预定更好价格增加数量，只改善 Entry 和均价，不提高 Market Path 概率；若该价格只是临场看到浮亏后选择，则不属于原计划。`Confirmation scale-in` 依赖新的顺势证据，但仍增加总数量和回撤暴露。无论哪一种，路径失效、保护异常或总风险不再合规时都取消剩余层，不强制完成计划数量。
+
+每层按其 Entry 到共同或独立 Stop 的距离计算账户风险；同为账户 `1%` 风险的两层不要求数量相同。第二层成交后立即按实际总数量确认 Active Protective Stop 覆盖，并把实际仓位、剩余工作订单、成本与滑点重新计入最坏总风险。
+
+原计划之外出现新的可交易结构时，必须建立新的 Decision Record 和完整 Trade Plan，并在提交前把已有仓位、全部工作订单、共同或独立 Stop 及新增层纳入合并最坏风险。它不能事后改写成原计划的 scale-in 层。
 
 ### Scale-out
 
@@ -238,14 +257,16 @@ Pain Trade 描述两类潜在反应共同推动低预期方向的行为路径。
 
 ## 十四、决策记录
 
-每次形成明确 Market Path 后，无论是否成交，都保存：
+普通 Observation Event 只保存相对上次判断的事实与路径变化。首次作出执行、等待或不交易，或其依据实质改变；提交、修改或取消订单；加减仓、移动保护或退出；Primary Test、Selected Path 或计划关键输入改变；以及路径闭环时，形成：
 
 ```text
 Decision Record
 
 判断时点：
+当时的 Market Model 与适用规则：
 运行边界：
-活动结构与位置：
+Market Context、Location 与 Primary Test：
+Bull / Bear / Pending Opportunity Set：
 目标事件、周期与时间范围：
 支持事实与最强反方事实：
 条件概率及适用规则：
@@ -281,10 +302,10 @@ Review Record
 
 结果
 - 原目标事件是否在时间范围内发生：
-- 价格结果、交易结果和账户结果：
+- Market result、Trade outcome 和 Account result：
 - 费用、滑点与 P&L：
 - 偏差来源：价格结果 / 结构 / 目标 / 概率 / 计划 / 风险 / 执行
-- 正常不确定结果还是系统违规：
+- Process result：正常不确定结果还是系统违规：
 ```
 
 单笔赢家、输家或错过不能证明一条规则正确或错误。概率校准要求条件、目标事件、周期、horizon 和判断时点一致的连续样本；样本规则的改变必须进入规则台账，不在复盘中静默修改。
@@ -292,4 +313,3 @@ Review Record
 ## 十六、证据追溯
 
 本页的订单、成交、Stop、管理和结果边界由 [课程概念索引](../reference/course/concept_index.md)、[边界与冲突](../reference/course/boundaries_and_conflicts.md)、[正式来源台账](../reference/official_sources.md)和逐讲课程 30–36、40–52 的相关材料支持。Reference 负责证据与现实限制；本页负责统一执行契约。
-
