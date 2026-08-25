@@ -8,7 +8,7 @@
 
 ```text
 Market Context + Location + Primary Test
-→ Bull / Bear / Pending Opportunity Set
+→ 向上 / 向下 / Pending Opportunity Set
 → 候选目标与 Market Paths
 → 独立评价双向路径
 → 条件概率
@@ -36,7 +36,7 @@ Market Path 进入交易构造前必须具备：
 
 缺少目标、失效事实或时间范围时只能等待；合理 Stop 无法定位、目标空间已不足或成本使方程不成立时不交易。
 
-双向考虑不要求为每个方向制造完整 Trade Plan。系统先独立说明 Bull、Bear 路径的目标、支持、反方事实与失效条件，并说明测试继续 Pending 的现实方式；明显缺少现实空间、时间或条件的路径记录排除原因。只有当前具有可观察 Entry、合理 Stop 和可计算结果的路径进入交易构造。
+双向考虑不要求为每个方向制造完整 Trade Plan。系统先独立说明向上、向下路径的目标、支持、反方事实与失效条件，并说明测试继续 Pending 的现实方式；明显缺少现实空间、时间或条件的路径记录排除原因。只有当前具有可观察 Entry、合理 Stop 和可计算结果的路径进入交易构造。
 
 ## 三、证据汇合，而不是理由计数
 
@@ -198,7 +198,7 @@ Brooks 教学中的 `likely / probably` 通常表示约 `60%+`，`unlikely` 表�
 
 70%–80% 的结构概率只有在当前目标事件、周期、时间范围和条件与原规则完全相同时才能直接使用。结构生命周期概率、突破方向先验、某次目标先于 Stop 的交易概率和市场状态频率不是同一对象。
 
-无法说明当前路径为什么属于某条规则时，使用诚实的 40%–60% 近似语言或继续等待，不以标签数量制造精度。规则选择与隔离项见[条件规则与冲突台账](rules_and_conflicts.md)。
+无法说明当前路径为什么属于某条规则时，使用诚实的 40%–60% 近似语言或继续等待，不以标签数量制造精度。规则选择与隔离项见[条件规则台账](conditional_rules_registry.md)。
 
 Market Path 概率描述市场目标事件；Trader's Equation 使用的结果概率还必须与当前 Entry、Planned Stop、Targets、退出数量、时间和管理方式相容。市场目标概率不能在没有结果定义的情况下直接当作账户盈利概率。
 
@@ -291,7 +291,7 @@ Market Path
 - 当前条件概率：
 - 支持事实：
 - 最强反方事实：
-- Bull / Bear / Pending Opportunity Set 摘要：
+- 向上 / 向下 / Pending Opportunity Set 摘要：
 - 增强 / 削弱 / 失效条件：
 
 Entry

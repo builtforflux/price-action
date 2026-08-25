@@ -9,7 +9,7 @@
 → Safety Gate：先核对订单、敞口、保护和数据
 → Event Gate：判断增量更新还是完整重构
 → 更新 Market Context、Location 与 Current Structural Tests
-→ 更新 Bull / Bear Market Paths 与 Pending Outcome
+→ 更新向上 / 向下 Market Paths 与 Pending Outcome
 → 比较当前可表达的风险交换
 → 按 Execution State 执行允许的动作
 → 记录决定、变化和下一观察条件
@@ -23,7 +23,7 @@
 | Runtime Snapshot | 固定判断时点及当时可见的市场、时间、订单、账户、数据和适用规则 |
 | Market Model | 保存 Market Context、Location、Pressure / Control、活动边界和结构测试 |
 | Current Structural Test | 表达价格正在从什么方向检验哪个区域或结构命题 |
-| Opportunity Set | 保存同一 Primary Test 下的 Bull、Bear 与 Pending 结果 |
+| Opportunity Set | 保存同一 Primary Test 下的向上、向下与 Pending 结果 |
 | Market Path | 描述从当前测试到一个明确市场目标事件的条件路径 |
 | Decision Record | 记录重要决策时点使用的事实、路径、规则、账户状态和决定 |
 | Trade Plan | 把一条 Market Path 转成当前时点完整的风险表达 |
@@ -103,8 +103,8 @@ Market Context 至少区分交易周期的 Trend / Trading Range、Trend 阶段�
 
 ```text
 Opportunity Set
-├─ Bull Paths
-├─ Bear Paths
+├─ 向上路径
+├─ 向下路径
 └─ Pending Outcome
 ```
 
@@ -125,7 +125,7 @@ ACTIVE
 
 ## 五、比较风险表达并作出决定
 
-概率只属于明确的条件、目标事件、周期、horizon 和判断时点。规则匹配与替代见[条件规则与冲突台账](rules_and_conflicts.md)。理由数量不生成概率；结构生命周期概率、市场目标概率和账户盈利概率不是同一对象。
+概率只属于明确的条件、目标事件、周期、horizon 和判断时点。规则匹配与替代见[条件规则台账](conditional_rules_registry.md)。理由数量不生成概率；结构生命周期概率、市场目标概率和账户盈利概率不是同一对象。
 
 系统先独立评价双向 Market Paths，再按照[交易决策与计划](decision_and_plan.md)为当前可交易路径构造：
 
@@ -154,7 +154,7 @@ Market Path
 
 ## 六、按 Execution State 分派动作
 
-执行生命周期由[执行、持仓与复盘](execution_and_review.md)负责。订单、敞口和保护是三个可以并存变化的状态面：
+执行生命周期由[执行、持仓与复盘](execution_management_and_review.md)负责。订单、敞口和保护是三个可以并存变化的状态面：
 
 ```text
 Order State：Intent / Submitted Unknown / Working / Partial / Filled
@@ -221,7 +221,7 @@ Protection：Not Required / Pending / Adequate / Deficient
 Safety：订单、敞口、保护和数据是否正常？
 Delta：相对上次判断，什么事实发生了变化？
 Frame：当前 Primary Test 是什么？Context / Competing Tests 怎样约束它？
-Paths：Bull、Bear 与 Pending 分别期待什么结果？
+Paths：向上、向下与 Pending 分别期待什么结果？
 Opposition：当前最强反路径及其获得接受的条件是什么？
 Expression：Selected Path 的 Entry、Stop、Target、成本和总风险是否成立？
 Action：执行、等待、不交易、持有、加仓、减仓、撤单还是退出？
@@ -233,7 +233,7 @@ Next：下一预期、失效、到期或强制检查条件是什么？
 ## 九、系统不变量
 
 - 所有方向使用同一套 Market Context、Location、Current Test 和证据更新；系统不按 Pattern 或 Setup 切换流程。
-- 每个现实 Primary Test 都考虑 Bull、Bear 和 Pending 结果；双向考虑不要求双向同时交易。
+- 每个现实 Primary Test 都考虑向上、向下和 Pending 结果；双向考虑不要求双向同时交易。
 - 没有明确市场目标事件，不匹配 Market Path 概率，也不建立 Trade Plan。
 - 一个概率必须绑定条件、目标、周期、horizon 和判断时点；同源名称不重复计数。
 - 一个 Trade Plan 只表达一个 Primary Test、一条 Market Path 和一个判断时点。

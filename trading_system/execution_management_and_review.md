@@ -266,7 +266,7 @@ Decision Record
 当时的 Market Model 与适用规则：
 运行边界：
 Market Context、Location 与 Primary Test：
-Bull / Bear / Pending Opportunity Set：
+向上 / 向下 / Pending Opportunity Set：
 目标事件、周期与时间范围：
 支持事实与最强反方事实：
 条件概率及适用规则：

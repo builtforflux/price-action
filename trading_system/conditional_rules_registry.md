@@ -1,4 +1,4 @@
-# 条件规则与冲突台账
+# 条件规则台账
 
 > **状态：Trading System / Rule Registry**
 
@@ -44,7 +44,7 @@
 
 理由负责更新 Market Path 支持程度；条件规则提供概率。H2、Double Bottom、Second Entry 等同源名称不各自提供概率。
 
-Primary Test 的 Bull、Bear 路径分别匹配各自目标，Pending Outcome 记录测试尚未解决的现实方式。双方目标、horizon 或判断时点不同时，其概率不要求互补，也不能用 `1 - P(Bull)` 自动生成 Bear Path 概率。系统先独立匹配市场路径概率，再由当前 Entry、Stop、Targets、管理和成本形成交易结果估计。
+Primary Test 的向上、向下路径分别匹配各自目标，Pending Outcome 记录测试尚未解决的现实方式。双方目标、horizon 或判断时点不同时，其概率不要求互补，也不能用 `1 - P(向上目标事件)` 自动生成向下路径概率。系统先独立匹配市场路径概率，再由当前 Entry、Stop、Targets、管理和成本形成交易结果估计。
 
 ## 四、概率语言与交易数学
 
