@@ -38,7 +38,7 @@ Trend、Trading Range、Gap、Breakout、Failed Breakout、H2、Double Bottom、
 | --- | --- | --- |
 | 本质归属 | A 是 B 的一种 | Channel 是当前周期 Trend 的阶段 |
 | 同源视图 | 同一事件从不同维度命名 | H2 与 Double Bottom 可以描述同一第二次测试 |
-| Context 角色 | 局部结构在外层路径中的作用 | Rising Channel 同时保留长期 Bear-Flag 视角 |
+| Context 角色 | 局部结构在外层路径中的作用 | Rising Channel 同时保留长期 Bear Flag 视角 |
 | 条件演化 | 新事实改变当前解释 | Breakout Attempt → Acceptance → Breakout Phase |
 | 周期展开 | 同一价格在不同尺度呈现不同结构 | 高周期 Breakout Bar 在低周期展开为 Channel / Range |
 
@@ -144,7 +144,7 @@ Current Structural Test
 Separation / Overlap：
 Pressure / Control：
 当前处于 Approach / Test / Reaction / Pending / Acceptance / Failure：
-Bull、Bear 与 Pending 结果事件：
+向上、向下与 Pending 结果事件：
 最迟判断时间：
 ```
 
@@ -238,7 +238,7 @@ Broad Channel 与 Trending Trading Range 可以是同一行情的两个观察视
 
 回调接近先前 leg 的一半可作为几何参照，但 `50%` 不是独立支撑或固定反转阈值。回调持续扩大为 endless pullback、反向 channel 或双边都能获利的区域时，应更新活动结构，而不是继续沿用“浅回调”名称。
 
-Rising Channel 在当前周期属于 Bull Trend；同时保留其完整生命周期中向下突破趋势线并通常区间化的 Bear-Flag 视角。若它位于外层 Bear Trend，本身直接承担外层 Bear Flag 角色。短期恢复旧高与长期向下突破属于不同 horizon，不能放进同一交易方程；Falling Channel 完全镜像。
+Rising Channel 在当前周期属于多头趋势；同时保留其完整生命周期中向下突破趋势线并通常区间化的 Bear Flag 视角。若它位于外层空头趋势，本身直接承担外层 Bear Flag 角色。短期恢复旧高与长期向下突破属于不同 horizon，不能放进同一交易方程；Falling Channel 完全镜像。
 
 趋势线或通道线只是候选区域。轻微 overshoot / undershoot 不使结构自动失效；强越界、边界外收盘、follow-through 或旧线长期不再组织价格，才支持重画或重新分类。
 
@@ -280,7 +280,7 @@ H1 / H2 / H3 记录同一牛向恢复逻辑中的第一、第二、第三次向�
 第二次向上恢复尝试
 ├─ 次序视图：H2
 ├─ 若两次下探测试近似区域：Double Bottom
-├─ 若外层牛趋势仍有效：Bull Flag 角色
+├─ 若外层多头趋势仍有效：Bull Flag 角色
 └─ 若旧空头结构已受破坏：MTR 测试组件
 ```
 
@@ -297,7 +297,7 @@ Parabolic Wedge 是 Tight Channel 中至少三次 surge 构成的高潮式三推
 Flag 只说明 pullback、channel、局部 range 或其他暂停在外层趋势路径中的角色。它没有统一概率，不产生 Entry、Stop 或 Target：
 
 - Double Bottom 可以是 Bull Flag，也可以是区间底部测试或 MTR 组件；
-- Rising Channel 可以是当前 Bull Trend，并同时是外层或长期 Bear-Flag 视角；
+- Rising Channel 可以是当前多头趋势，并同时是外层或长期 Bear Flag 视角；
 - 普通 pullback 可以拖长成 endless pullback、反向 channel 或 Trading Range。
 
 Final Flag 只能在顺势恢复失败和后续结果出现后得到更多确认；实时仍同时保留普通 continuation flag 路径。
@@ -354,7 +354,7 @@ Session 只通过剩余时间、波动、流动性、目标可达性和是否允
 
 ## 九、Primary Test 生成双向与 Pending 结果
 
-目标来自已经固定的结构、可见参照区域和当前正在解决的测试。每个现实 Primary Test 都先考虑 Bull、Bear 与 Pending 结果；这要求说明双方可能期待的市场事件，以及测试怎样可能继续未决，不表示双方概率互补或必须同时交易。
+目标来自已经固定的结构、可见参照区域和当前正在解决的测试。每个现实 Primary Test 都先考虑向上、向下与 Pending 结果；这要求说明双方可能期待的市场事件，以及测试怎样可能继续未决，不表示双方概率互补或必须同时交易。
 
 | 来源结构 | 候选目标事件 |
 | --- | --- |
@@ -383,11 +383,11 @@ Double-top height    = top area - neckline
 
 ## 十、从 Opportunity Set 到 Market Path
 
-结构与 Primary Test 明确后，不先寻找 Entry，而是建立 Bull、Bear 与 Pending Opportunity Set，并为值得持续跟踪的现实目标建立路径：
+结构与 Primary Test 明确后，不先寻找 Entry，而是建立向上、向下与 Pending Opportunity Set，并为值得持续跟踪的现实目标建立路径：
 
 ```text
 Market Context + Location + Primary Test
-→ Bull / Bear / Pending 结果事件
+→ 向上 / 向下 / Pending 结果事件
 → 目标区域
 → 目标事件与到达口径
 → 到达所需的价格序列

@@ -10,7 +10,7 @@
 价格与账户事实
 → Market Context、Location 与 Primary Test
 → 扫描 Gap、Pressure、Control、Follow-through 等双向证据
-→ Bull / Bear / Pending Opportunity Set
+→ 向上 / 向下 / Pending Opportunity Set
 → 当前条件匹配各自目标概率
 → Entry / Invalidation / Stop 表达该路径
 → Reward / Risk / Cost / Time 检查
@@ -24,8 +24,8 @@
 1. [交易系统总流程](overall_flow.md)：唯一运行入口；规定 Safety / Event Gates、运行对象、双向路径、状态分派、闭环和共同不变量。
 2. [市场结构与结果路径](market_structure_and_paths.md)：从价格事实推导 Market Context、Location、Current Structural Test、双向目标和 Market Paths，并把 Pattern 放回同源视图。
 3. [交易决策与计划](decision_and_plan.md)：独立评价双向路径，为当前可交易路径匹配概率，以 Entry、Invalidation、Stop、Target、仓位和管理构造交易方程。
-4. [执行、持仓与复盘](execution_and_review.md)：处理订单、成交、实际保护、持仓中的持续路径更新、退出、结果判定和行为纪律。
-5. [条件规则与冲突台账](rules_and_conflicts.md)：保存可运行的条件概率、规则替代顺序和隔离项。
+4. [执行、持仓与复盘](execution_management_and_review.md)：处理订单、成交、实际保护、持仓中的持续路径更新、退出、结果判定和行为纪律。
+5. [条件规则台账](conditional_rules_registry.md)：保存可运行的条件概率、规则替代顺序和隔离项。
 
 ## 权威边界
 
@@ -39,7 +39,7 @@
 ## 使用原则
 
 - 结构先生成目标事件，概率只属于条件、目标、周期、时间范围和判断时点完全明确的路径。
-- 每个现实 Primary Test 都考虑 Bull、Bear 与 Pending 结果；双向考虑不表示概率机械互补或必须同时交易。
+- 每个现实 Primary Test 都考虑向上、向下与 Pending 结果；双向考虑不表示概率机械互补或必须同时交易。
 - 初始化和 Reframe Event 完整重构市场解释；普通 Observation Event 只更新相对上次判断的新增事实。
 - Pattern 是结构、次序、空间或角色的压缩描述，不是系统路由，也不提供交易许可。
 - 同一事实的多个名称只形成一份证据；不同周期、结构来源或后续反应才可能增加信息。

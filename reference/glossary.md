@@ -269,5 +269,5 @@ Fade 押注当前尝试不会获接受；countertrend 明确逆当前控制方�
 - 统一循环：[价格行为交易系统总流程](../trading_system/overall_flow.md)
 - 概念关系：[市场结构与结果路径](../trading_system/market_structure_and_paths.md)
 - 交易构造：[交易决策与计划](../trading_system/decision_and_plan.md)
-- 持仓闭环：[执行、持仓与复盘](../trading_system/execution_and_review.md)
-- 条件概率：[条件规则与冲突台账](../trading_system/rules_and_conflicts.md)
+- 持仓闭环：[执行、持仓与复盘](../trading_system/execution_management_and_review.md)
+- 条件概率：[条件规则台账](../trading_system/conditional_rules_registry.md)

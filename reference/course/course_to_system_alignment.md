@@ -21,8 +21,8 @@
 | --- | --- |
 | 改变价格事实、活动结构、目标事件或结果路径 | 进入[市场结构与结果路径](../../trading_system/market_structure_and_paths.md) |
 | 改变目标概率、Entry、Invalidation、Stop、Reward、仓位或方程 | 进入[交易决策与计划](../../trading_system/decision_and_plan.md) |
-| 改变订单、实际保护、持仓、退出或复盘 | 进入[执行、持仓与复盘](../../trading_system/execution_and_review.md) |
-| 条件、目标、周期、horizon 和判断时点完整的概率 | 进入[条件规则台账](../../trading_system/rules_and_conflicts.md) |
+| 改变订单、实际保护、持仓、退出或复盘 | 进入[执行、持仓与复盘](../../trading_system/execution_management_and_review.md) |
+| 条件、目标、周期、horizon 和判断时点完整的概率 | 进入[条件规则台账](../../trading_system/conditional_rules_registry.md) |
 | 只提供来源、案例、产品或平台背景 | 留在 Reference |
 | 数学、分母、翻译或来源口径不清 | 隔离，不进入运行 |
 
