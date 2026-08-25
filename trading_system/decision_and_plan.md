@@ -4,10 +4,12 @@
 
 本页规定怎样从 Primary Test 的双向 Opportunity Set 中选择一条 Market Path，并在当前价格下形成 Trade Plan。系统不选择预设策略，也不因识别出 Pattern 就产生交易；只有目标事件、条件概率和当前风险交换一致时，才允许承担风险。
 
+本页首先是完整的内部决策契约，不是盘中默认表单。交易者必须在承担风险前明确所有会改变风险或动作的输入，但只按[总流程的三层使用接口](overall_flow.md#三层使用接口)保存最小决策信息；其余内容可以观察、心中确认或由工具自动计算。
+
 ## 一、决策顺序
 
 ```text
-Market Context + Location + Primary Test
+Frame + Environment + Location + Price Action Now + Active Test
 → 向上 / 向下 / Pending Opportunity Set
 → 候选目标与 Market Paths
 → 独立评价双向路径
@@ -36,7 +38,7 @@ Market Path 进入交易构造前必须具备：
 
 缺少目标、失效事实或时间范围时只能等待；合理 Stop 无法定位、目标空间已不足或成本使方程不成立时不交易。
 
-双向考虑不要求为每个方向制造完整 Trade Plan。系统先独立说明向上、向下路径的目标、支持、反方事实与失效条件，并说明测试继续 Pending 的现实方式；明显缺少现实空间、时间或条件的路径记录排除原因。只有当前具有可观察 Entry、合理 Stop 和可计算结果的路径进入交易构造。
+双向考虑不要求为每个方向制造完整 Trade Plan。系统先独立说明向上、向下路径的目标、支持、反方事实与失效条件，并说明测试继续 Pending 的现实方式；明显缺少现实空间、时间或条件的路径只需识别排除原因。只有当前具有可观察 Entry、合理 Stop 和可计算结果的路径进入交易构造。
 
 ## 三、证据汇合，而不是理由计数
 
@@ -54,6 +56,7 @@ Market Path 进入交易构造前必须具备：
 
 - H2、Double Bottom、Second Signal 和 H1 失败来自同一两次尝试；
 - 同一突破产生的大实体、gap、pressure、control 和 acceptance；
+- 同一突破或失败链产生的 disappointment、trapped / Pain Trade 推断和预期退出压力；
 - Broad Channel 与 Trending Trading Range 描述同一方向移动；
 - 旧高、区间边界、double-top 区域和 measured-move 落在同一价格区域。
 
@@ -63,7 +66,7 @@ Market Path 进入交易构造前必须具备：
 
 ## 四、Trigger 与判断时点
 
-Trigger 只说明当前可以用某个价格表达 Market Path，不保证目标实现。计划必须写明 Trigger 是在承担风险前必须完成，还是成交后继续验证。
+Trigger 只说明当前可以用某个价格表达 Market Path，不保证目标实现。计划必须明确 Trigger 是在承担风险前必须完成，还是成交后继续验证。
 
 ### Signal bar、chart entry 与 actual fill
 
@@ -101,7 +104,7 @@ Trigger 只说明当前可以用某个价格表达 Market Path，不保证目标
 
 ## 五、Entry
 
-Entry 必须写成可观察条件、订单表达和有效期：
+Entry 必须定义为可观察条件、订单表达和有效期：
 
 ```text
 Entry
@@ -123,7 +126,7 @@ Stop entry 用较差价格交换触发确认，常以 signal bar 高低点附近
 
 ### Limit entry
 
-Limit entry 用更好价格交换更少确认。计划必须写明成交后期待的拒绝、重新进入旧区域、Pressure 变化或其他反应，以及允许这些事实出现的时间。价格 touch / cross 不保证账户全部成交；若计划依赖 scale-in，全部层、总数量、共同 Stop 和总风险必须在第一笔 entry 前确定。
+Limit entry 用更好价格交换更少确认。计划必须明确成交后期待的拒绝、重新进入旧区域、Pressure 变化或其他反应，以及允许这些事实出现的时间。价格 touch / cross 不保证账户全部成交；若计划依赖 scale-in，全部层、总数量、共同 Stop 和总风险必须在第一笔 entry 前确定。
 
 ### Market / close entry
 
@@ -182,9 +185,10 @@ Outcome Criterion 必须规定：
 
 ## 八、条件概率
 
-概率判断格式：
+条件规则台账保存可匹配模板；模板中的相对条件只有绑定当前 Market Path 后才能成为可运行的 Rule Match。概率判断格式：
 
 ```text
+候选规则模板：
 已经成立的条件：
 目标事件：
 观察周期：
@@ -192,11 +196,14 @@ Outcome Criterion 必须规定：
 判断时点：
 适用近似概率：
 替代当前判断的新事实：
+匹配状态：可运行 / 仅背景 / 字段不完整 / 已被更具体条件替代
 ```
+
+只有 `可运行` 的当前匹配可以进入 Trader's Equation。模板若缺少当前目标、周期、horizon 或判断时点，只能提供 Context 或概率语言；不能用计划临时选择的远端目标补齐来源规则，也不能把相同方向但不同目标的规则当作更具体替代。
 
 Brooks 教学中的 `likely / probably` 通常表示约 `60%+`，`unlikely` 表示约 `40%-`；它们是近似语言，不是经过统一样本校准的统计模型。
 
-70%–80% 的结构概率只有在当前目标事件、周期、时间范围和条件与原规则完全相同时才能直接使用。结构生命周期概率、突破方向先验、某次目标先于 Stop 的交易概率和市场状态频率不是同一对象。
+70%–80% 的结构概率只有在当前目标事件、周期、时间范围和条件与原规则完全相同时才能直接使用。结构生命周期概率、突破方向先验、某次目标先于 Stop 的交易概率和基础结构/阶段频率不是同一对象。
 
 无法说明当前路径为什么属于某条规则时，使用诚实的 40%–60% 近似语言或继续等待，不以标签数量制造精度。规则选择与隔离项见[条件规则台账](conditional_rules_registry.md)。
 
@@ -276,6 +283,16 @@ Scalp 与 Swing 不是交易类别，而是同一 Market Path 的不同目标、
 
 ## 十三、完整 Trade Plan
 
+完整 Trade Plan 是系统语义的权威模板，用于复杂计划、自动化实现和盘后审计，不是每次 scalp 都要在盘中填完的文档。盘中记录负担按复杂度分层：
+
+| 情况 | 必须保存 |
+| --- | --- |
+| 单次 Entry、单一 Stop、单一 Target 的普通计划 | 时点，路径目标，最强反方/失效，Entry、Stop、Target、Size，最迟有效条件 |
+| 多层入场、多目标、runner 或条件化管理 | 在最小计划上增加数量分配、总风险、分支触发和取消条件 |
+| 预挂条件单、OCO、跨 Session、异常处置或高执行风险 | 展开与实际风险相关的完整字段 |
+
+心中确认不能替代必须冻结的风险数字；反过来，与当前计划无关的备选字段不得为了填满模板而虚构。下列完整字段在语义上仍然有效：
+
 ```text
 Trade Plan
 
@@ -340,7 +357,7 @@ Trade Outcomes
 Trader's Equation：
 ```
 
-执行决定形成时保留原始 Trade Plan；首次成交对应这份计划。新事实可以改变当前路径评价和管理动作，却不能覆盖原目标、重选量度端点或把另一 horizon 的路径改写成原计划。任何新增风险若不属于原计划层，必须建立新的完整 Trade Plan。
+执行决定形成时保留当时适用的原始计划字段；首次成交对应这份计划。新事实可以改变当前路径评价和管理动作，却不能覆盖原目标、重选量度端点或把另一 horizon 的路径改写成原计划。任何计划外新增风险必须作为新计划评价并保存相应风险字段；只有新计划本身复杂时才要求展开全部模板。
 
 ## 十四、唯一决策
 
@@ -358,7 +375,7 @@ Trader's Equation：
 - 合理 Entry、Stop 或现实空间；
 - 当前价格下成立的方程。
 
-等待必须写明所等事实和路径过期条件。
+等待必须明确所等事实和路径过期条件。只在它成为需要后续跟踪的正式 Wait 决定时，才保存这两项的简短记录。
 
 等待不保留隐藏的可执行计划。未来事实发生时使用新的判断时点重新计算；已经提交并等待成交的 Stop / Limit order 属于执行状态，不属于等待决定。
 
@@ -367,6 +384,45 @@ Breakout Mode 等双向条件下可以分别形成相反方向的 Trade Plan，�
 ### 不交易
 
 路径已失效，或现实 Target、剩余时间、风险、成本和执行条件使交换不值得承担。以后若形成新结构或新价格，建立新的 Market Path 与 Trade Plan，不复用旧计划。
+
+### Decision Record
+
+首次形成执行、可跟踪的等待或不交易决定，以及[总流程规定的关键节点](overall_flow.md#七必要记录与闭环)，保存一份最小 Decision Record：
+
+```text
+Decision Record
+
+时点 + 品种/周期：
+决定：Execute / Wait / No Trade
+依据：Environment / Location + 所选路径或排除原因（一短句）
+边界：目标 + 最强反方/失效条件
+计划（如执行）：Entry + Stop + Target + Size
+下一条件：触发 / 过期 / 重构
+```
+
+这些字段是必须固定的最小充分信息，可由简写、图表标记或工具自动生成。只有决定依据复杂、存在多周期/多分支、需要审计规则匹配，或盘后调查异常时，才展开下列完整格式：
+
+```text
+Extended Decision Record
+
+判断时点与 Runtime Snapshot：
+当时的 Market Model：
+运行边界：
+Frame、Environment、Location、Price Action Now 与 Active Test：
+向上 / 向下 / Pending Opportunity Set：
+目标事件、周期与时间范围：
+支持事实与最强反方事实：
+Rule Match 及其条件、目标、周期、horizon 和判断时点：
+Entry / Invalidation / Stop / Target：
+Trader's Equation：
+Execution State（如适用）：
+决定或实际动作：
+决定原因、等待项或拒绝原因：
+路径过期或替代条件：
+订单、敞口、保护和动作确认结果（如适用）：
+```
+
+等待与不交易没有 Trade Plan 时，不填不适用的交易字段，也不从未来事实回填。执行阶段以原记录为锚，只补充实质改变的计划/风险 Delta 和必要执行事实；经纪商已可靠留存的普通提交、回执和成交不重复抄写，也不另建第二种决策记录。
 
 ## 十五、证据追溯
 
