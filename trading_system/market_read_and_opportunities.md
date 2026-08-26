@@ -4,7 +4,7 @@
 
 本页定义 `Market Read = Context + Price Map + Price Process` 怎样从连续价格事实形成，以及它怎样生成可证伪的双向 `Opportunity Set`。Price Process 在实盘中按 `Current Move → Active Test` 读取；连续运行时先继承当前有效 Context，再以位置、运动和测试的新事实确认或重构它。首次看图或 Reframe 可从暂定分类或 `UNCLEAR` 开始。
 
-本页是系统知识与内部模型，不是盘中标注任务。下文的区分首先是语义边界；交易者通常只需观察或心中确认，记录负担由[总流程](overall_flow.md#九必要记录)规定。
+本页是系统知识与内部模型，不是盘中标注任务。下文的区分首先是语义边界；交易者通常只需观察或心中确认，记录负担由[总流程](overall_flow.md#六必要记录)规定。
 
 ## 一、统一价格命题
 

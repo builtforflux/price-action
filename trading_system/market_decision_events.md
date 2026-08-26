@@ -2,15 +2,16 @@
 
 > **状态：Trading System / Runtime Navigation**
 
-本页回答一个盘中问题：`当前价格变化是否值得重新展开判断，若值得，应重开哪几步？` 它是 [Market Read](market_read_and_opportunities.md) 的事件索引，不是形态、Setup、信号或概率目录。
+本页回答一个盘中问题：`当前边界或价格变化是否值得重新展开判断，若值得，应重开哪几步？` 它是[总流程增量更新](overall_flow.md#四增量更新只沿变化传播)与 [Market Read](market_read_and_opportunities.md) 的事件索引，不是形态、Setup、信号或概率目录。
 
 事件不建立新的持久对象。识别后只更新既有的 `Price Map → Current Move → Active Test → Context → Long / Short Opportunity`；只有机会、计划、风险或动作改变时才记录最小增量。订单、成交、保护和账户异常由[执行生命周期](execution_management_and_review.md)处理。
 
 ## 一、盘中用法
 
-普通新 K 线仍只运行三问：
+普通新 K 线仍只运行增量问题：
 
 ```text
+Frame / Safety 是否发生边界变化？
 区域、运动或测试出现新事实了吗？
 多空路径、顺序或 Context 因此变了吗？
 Candidate、计划、风险或动作因而需要改变吗？
@@ -21,7 +22,7 @@ Candidate、计划、风险或动作因而需要改变吗？
 一次事件更新的最小输出是：
 
 ```text
-What changed：新区域、运动、测试或期限事实
+What changed：Frame 边界，或新区域、运动、测试、期限事实
 Bull Pressure：增强 / 保持 / 减弱 / 未建立
 Bear Pressure：增强 / 保持 / 减弱 / 未建立
 Control：Bull / Bear / Balanced / Unclear
@@ -32,7 +33,17 @@ Route：No Change / Update Opportunity / Rebuild Candidate / Update Position
 
 这是快速判断格式，不是逐项书面记录要求。
 
-## 二、通用事件路由
+Bull 与 Bear Pressure 使用同一个能回答当前过程的最小窗口，默认是当前腿、当前测试或上次 Reframe 以来；只有窗口发生切换或可能产生歧义时才另行说明。纯 Frame 事件没有产生新价格事实时，两侧 Pressure 与 Control 继承原结论。
+
+## 二、边界与通用价格事件路由
+
+### Frame / Session Boundary
+
+新 Session、Opening、计划 horizon / 最迟退出边界、已知事件窗口，或波动与流动性条件实质变化时，从 `Frame` 重开。先更新 Session、Remaining Time、目标可达性和相关外层约束；Opening Gap 同时进入 Price Map，开盘后的第一段运动再进入 Current Move / Active Test。只有这些变化继续改变 Context、Opportunity、Candidate 或 Position 时才向后传播。
+
+Frame 事件不建立 Day Type、Opening Setup 或新的交易状态。盘中只能使用当时已知的 opening state；Opening、first swing、Opening Breakout Mode、内部 opening window 和最终 day type 的边界不能互换。
+
+### 通用价格事件路由
 
 所有价格事件都先更新 `Current Move`，再更新它与区域互动形成的 `Active Test`。Price Map、Context、Opportunity、Candidate 或 Position 只在上游结论改变时继续展开。下表的“必重开”是起点，不表示跳过共同传播顺序。
 
@@ -47,11 +58,23 @@ Route：No Change / Update Opportunity / Rebuild Candidate / Update Position
 | 控制转换 | 正常回调、目标、双边获利能力或 Always In 边界改变 | Current Move → Active Test → Context | Keep、Transition 还是 Reframe；修正与反转是否仍分开？ |
 | 目标与期限 | 到达 magnet / target cluster，空间耗尽、时间到期 | Current Move（价格到达时）→ Active Test → Opportunity / Position | 目标已完成、需要新目标，还是路径/计划到期？ |
 
-无法归入复合卡的新场景，仍可由这八个事件族完整路由；因此目录可以扩充高价值快捷卡，而不需要穷举所有形态。
+无法归入复合卡的新价格场景，仍可由这八个价格事件族完整路由；Frame、账户和执行变化分别使用本节边界路由或[执行生命周期](execution_management_and_review.md)，不需要把它们伪装成价格形态。
 
 ## 三、高价值复合事件卡
 
-### 1. 长期分离后的首次 EMA 测试
+### 1. Session Open / Opening Gap / First Swing
+
+```text
+识别：新 Session 开始；opening gap 或开盘后的第一段方向运动开始形成
+重开：Frame → Price Map(open / prior close / session levels) → Current Move → Active Test
+双向：外部价格能否获得接受并延续；还是 gap 关闭、旧区域重新接受并形成 range / reversal path？
+Next：开盘运动的 follow-through、回踩守住；或 gap close 后旧区域接受、反向跟随
+Expiry：开盘问题已被接受/失败解决，第一 swing 被新 Context 取代，或内部 opening window 到期
+```
+
+Opening Gap、first swing、Opening Breakout Mode 和 opening reversal 可以描述同一早期 Session 的不同事实，但不是同一对象，也不共享机械 Entry。当前 Context、位置、两侧压力、接受和剩余空间仍决定 Opportunity 与 Candidate。
+
+### 2. 长期分离后的首次 EMA 测试
 
 ```text
 识别：强趋势在当前周期约 20 根或足够长时间未触 EMA，首次回到 EMA 区域
@@ -63,7 +86,7 @@ Expiry：首次测试完成、区域被反复穿越，或 Context 已重构
 
 它首先是趋势背景下的区域测试。长期分离提高首次测试的意义，但不提供机械 EMA entry；顺势继续测试旧极值与反向演化为更深修正或反转必须分别表达。
 
-### 2. Surprise / 强主动突破
+### 3. Surprise / 强主动突破
 
 ```text
 识别：相对背景异常大的趋势 K、连续强 K 或快速形成分离
@@ -73,7 +96,7 @@ Next：follow-through、回踩守住；或分离关闭并重新接受旧区域
 Expiry：初始运动已被后续过程确认、否定或吸收到新 Context
 ```
 
-### 3. 突破后的第一反应
+### 4. 突破后的第一反应
 
 ```text
 识别：初始突破后的下一段延伸、停顿或反向反应
@@ -83,7 +106,7 @@ Next：接受、breakout pullback 守住；或 failed breakout 所需的旧区�
 Expiry：突破被确认、失败，或演化为通道 / 区间
 ```
 
-### 4. Breakout Pullback / 首次回踩突破区域
+### 5. Breakout Pullback / 首次回踩突破区域
 
 ```text
 识别：突破已发生，价格首次回到突破点、gap 或新区域边界
@@ -93,7 +116,7 @@ Next：顺势恢复 / H1-H2 trigger；或回踩失败与旧区域接受
 Expiry：测试完成、边界反复穿越，或突破路径失效
 ```
 
-### 5. 第二或第三次区域测试
+### 6. 第二或第三次区域测试
 
 ```text
 识别：同一 Region / objective 的独立再次尝试，中间存在可辨识反应
@@ -105,7 +128,7 @@ Expiry：测试逻辑被接受/失败解决，或新 Context 取代原测试
 
 H2、Double Bottom、L2、Double Top、三推或 Wedge 可描述次序和几何。它们只在新增测试链确实形成时提供增量，名称本身不增加票数。
 
-### 6. 三推 / Climax 候选后的对手反应
+### 7. 三推 / Climax 候选后的对手反应
 
 ```text
 识别：第三次推进、延伸衰减或潜在高潮，来到相关区域或目标
@@ -117,7 +140,7 @@ Expiry：第四次有效推进、原趋势恢复，或反方获得接受并重�
 
 三推在强原方向 Pressure、弱对手反应下通常只支持回调或暂停；它不能单独把 reversal attempt 升级为 reversal。
 
-### 7. Trading Range 边缘测试
+### 8. Trading Range 边缘测试
 
 ```text
 识别：价格 Approach / Touch / Overshoot 成熟区间边缘
@@ -127,7 +150,7 @@ Next：反向 signal / 跟随；或边界外保持、回踩守住
 Expiry：回到内部目标、区间外接受，或测试时间失去意义
 ```
 
-### 8. ii / ioi / Triangle / Local Balance 释放
+### 9. ii / ioi / Triangle / Local Balance 释放
 
 ```text
 识别：局部重叠和波幅收缩后突破压缩边界
@@ -137,7 +160,7 @@ Next：突破 follow-through / hold；或快速收回并向另一侧测试
 Expiry：某侧获得接受，或压缩继续扩展而需重画边界
 ```
 
-### 9. 趋势结构破坏后的旧极值测试
+### 10. 趋势结构破坏后的旧极值测试
 
 ```text
 识别：反向 breakout 破坏通道 / 主要摆动结构，随后测试旧 extreme
@@ -149,7 +172,7 @@ Expiry：旧趋势重建，或新方向结构获得接受
 
 MTR、Head and Shoulders、Double Top / Bottom 是对这段过程的视图；运行结论来自结构破坏、旧极值测试和后续接受。
 
-### 10. 目标簇 / Measured Move 到达
+### 11. 目标簇 / Measured Move 到达
 
 ```text
 识别：价格进入旧高低、区间投射、Leg 1 = Leg 2、通道边界等目标汇合区

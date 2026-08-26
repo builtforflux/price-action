@@ -4,7 +4,7 @@
 
 本页规定怎样应用 Context Permission，把完成双向扫描且具备当前表达资格的 Opportunity 变成 `Trade Candidates`：先在 Trade Construction 中确定判断时点、Entry Method、Planned Protective Stop、Targets 与 Size，再由 Trade Gate 比较完整风险交换，并把被选 Candidate 冻结为 `Trade Plan`。
 
-本页首先是完整的内部决策契约，不是盘中默认表单。交易者必须在承担风险前明确所有会改变风险或动作的输入，但只按[必要记录](overall_flow.md#九必要记录)保存最小决策信息；其余内容可以观察、心中确认或由工具自动计算。
+本页首先是完整的内部决策契约，不是盘中默认表单。交易者必须在承担风险前明确所有会改变风险或动作的输入，但只按[必要记录](overall_flow.md#六必要记录)保存最小决策信息；其余内容可以观察、心中确认或由工具自动计算。
 
 ## 一、决策顺序
 
@@ -374,7 +374,7 @@ Scalp 与 Swing 不是交易类别，而是同一 Opportunity 的不同目标、
 
 | 情况 | 必须保存 |
 | --- | --- |
-| 单次 Entry、单一 Stop、单一 Target 的普通计划 | 时点，Long / Short 结论与所选路径目标，最强反方/失效，Entry、Stop、Target、Size，Candidate Outcome Probability / 区间与净 Reward:Risk，最迟有效条件 |
+| 单次 Entry、单一 Stop、单一 Target 的普通计划 | 时点；Long / Short 结论；所选 Opportunity 的 Direction / Role / Horizon、Objective / Target；最强反方、Invalidation 与 Expiry；Entry Method、Entry、Stop、Target、Size；Candidate Outcome Probability / 区间与净 Reward:Risk；直接使用条件规则时附目标事件、Market Probability / Rule Match |
 | 多层入场、多目标、runner 或条件化管理 | 在最小计划上增加 Risk Limit、首层额度、Add / 取消条件和分支触发 |
 | 预挂条件单、OCO、跨 Session、异常处置或高执行风险 | 展开与实际风险相关的完整字段 |
 
@@ -457,7 +457,7 @@ Trade Gate 只评价已经完成 Trade Construction 的 Candidate。进入唯一
 
 ### 执行
 
-路径、目标、概率、Entry、Invalidation、Stop、仓位、成本、时间、成交后预期和管理完整，交易方程成立。执行时保留原始计划并提交计划规定的订单意图：即时订单要求前置条件已经成立；预挂 Stop / Limit 要求计划明确允许在 Trigger 或成交前工作。提交不表示订单已被确认或账户已经成交。
+路径、目标、概率、Entry、Invalidation、Stop、仓位、成本、时间、成交后预期和管理完整，交易方程成立。`EXECUTE` 冻结原始 Trade Plan 并进入 Ready to Submit，尚未产生订单意图；[执行前复核](execution_management_and_review.md#一执行前复核)确认关键输入仍成立后，才提交计划规定的订单。即时订单要求前置条件已经成立；预挂 Stop / Limit 要求计划明确允许在 Trigger 或成交前工作。提交仍不表示订单已被确认或账户已经成交。
 
 ### 等待
 
@@ -479,7 +479,7 @@ Opportunity 已失效，或现实 Target、剩余时间、风险、成本和执�
 
 ### Decision Record 与 Trade Plan
 
-需要跨事件跟踪的 Wait，以及[总流程规定的少数重要 No Trade](overall_flow.md#九必要记录)，保存一份最小 Decision Record。普通扫描得到 No Trade 不记录；Execute 直接把被选 Candidate 冻结为 Trade Plan。
+需要跨事件跟踪的 Wait，以及[总流程规定的少数重要 No Trade](overall_flow.md#六必要记录)，保存一份最小 Decision Record。普通扫描得到 No Trade 不记录；Execute 直接把被选 Candidate 冻结为 Trade Plan。
 
 ```text
 Decision Record

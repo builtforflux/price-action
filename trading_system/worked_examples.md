@@ -264,6 +264,15 @@ Likely Sequence
 - 在 `4958–4960` 下方获得接受：Long / Correction 失效，按当前价格构造 Short Candidate；
 - 修正到 EMA / 4970 后出现强 bear response：多头第一目标完成，重新运行双向扫描，不把原 Long Correction 改写成 Long Reversal。
 
+### E. 三种运行模式怎样衔接
+
+1. 大阴线出现前首次读取图表：运行完整 Checklist，得到外层 Bull 但区间化增加的 Market Read，以及 `Long / Continuation`、`Short / Correction` 两侧观察路径；没有 Candidate 时停在 Flat / Observing。
+2. 大阴线收盘：运行增量问题。Frame 未变，Current Move 与 Active Test 改变，因此只从 Current Move 向后重开；外层 Context 进入 Transition，两个方向更新后仍缺合适表达，输出 `WAIT + Next + Expiry`。
+3. 局部第二次测试与 bull signal 完成：再次从 Current Move / Active Test 向后传播。Long / Correction 完成 Activation，才进入 Trade Construction；Short / Continuation 保留为竞争路径，但不为形式对称制造当前 Candidate。
+4. Long Candidate 通过 Trade Gate 后冻结 Trade Plan 并进入 Ready to Submit；执行前复核仍成立才提交 Buy Stop。提交后立即进入订单生命周期；回执未确认时按 `Submitted Unknown` 核对且不重复下单，确认工作后成为 Working Order。图表触发后只按实际成交进入 Open Position，并确认 Active Protective Stop 覆盖真实数量。
+5. 持仓中的普通 K 线：只运行 Open Position checklist；所选与竞争 Opportunity、风险、保护和动作均未改变时，结果是 `NO_CHANGE`，不记录。出现 follow-through、signal failure、区域外接受、目标到达或新保护锚点时，才从最早变化处向后更新并追加必要 Delta。
+6. 目标、Stop 或主动退出完成后：确认仓位、剩余订单和保护的最终状态，再运行 Closed / Review，分开 Market Result、Trade Outcome 与 Account Result；当前 Trade Plan / Candidate 关闭，关联 Opportunity 则按市场事实独立更新，若仍为 ACTIVE 就返回 Flat / Observing。
+
 该场景验证：重要位置只登记一次；外层位置与局部触发两个尺度共同读取；Long / Short 路径同时存在且可能顺序实现；Entry Method、Planned Stop 与 Targets 都引用已有 Price Region 或 Active Test。
 
 ## 八、Trading Range 下沿：2% 风险额度与动态第二层
@@ -289,6 +298,8 @@ Cancel Add：A 下方形成强 bear breakout 与 follow-through、获得接受�
 - 若原计划允许在成熟区间下沿用更少确认换价格改善，且卖压没有增强、`A` 下方没有接受，可以按当前价格重新计算数量并使用 Limit Add；
 - 若下跌动量使直接接多不再合适，则等待拒绝、micro double bottom、合格 bull signal 或 follow-through，再用对应 Trigger 的 Stop / Market / Limit Add；
 - 若连续强 bear bars、分离和跟随使下沿转为向下接受，执行 `CANCEL ADD`，并按原 Long Opportunity 的 Invalidation 管理第一层。
+
+前两种情况只有当前方程和 Risk Available 同时允许时才输出 `ADD_TO_READY`；随后进入 Ready to Submit，重新确认实际仓位、全部工作订单、当前保护、总风险和订单参数，再提交新增层。
 
 第二层最多使用：
 

@@ -16,7 +16,7 @@ Safety Check
 
 1. [总流程](overall_flow.md)：盘中入口、运行顺序、状态路由、检查清单与最小记录。
 2. [市场结构与机会](market_read_and_opportunities.md)：定义 Market Read、连续价格事实、Context、Price Map、Current Move、Active Test 和双向 Opportunity Set。
-3. [市场决策事件导航](market_decision_events.md)：识别哪些价格变化需要重读，以及只重开哪些既有步骤；不是 Setup 或记录对象。
+3. [市场决策事件导航](market_decision_events.md)：识别哪些 Frame 边界或价格变化需要重读，以及只重开哪些既有步骤；不是 Setup 或记录对象。
 4. [交易决策与计划](decision_and_plan.md)：应用 Context Permission，把具备当前表达资格的 Opportunity 变成 Candidate，构造判断时点、Entry Method、Planned Stop、Targets、仓位与管理，再由 Trade Gate 比较方程并冻结所选 Trade Plan。
 5. [执行、管理与复盘](execution_management_and_review.md)：订单、成交、保护、持仓更新、退出和复盘。
 6. [条件规则台账](conditional_rules_registry.md)：保存可审计的条件概率与适用边界，不是另一套路由。
@@ -30,7 +30,9 @@ Safety Check
 - **实盘检查**：快速扫图或心中确认；普通 K 线没有改变 Context、机会、风险或动作时，不产生记录。
 - **必要记录**：只在形成或改变计划、订单、仓位、保护、关键等待条件、异常或交易结束时保存最小增量。
 
-“必须检查”不等于“必须书面记录”。空仓扫描和持仓更新以数秒为目标；只有新建计划、改变风险、发生执行事件或交易结束时，才进入较完整记录。
+“必须检查”不等于“必须书面记录”。普通空仓增量扫描和持仓更新以数秒为目标；首次看图或 Reframe 使用完整 Checklist，不受逐 K 线负担上限约束。只有新建计划、改变风险、发生执行事件或交易结束时，才进入较完整记录。
+
+运行时按三种模式切换：首次看图或 Reframe 运行总流程的完整逐步 Checklist；普通新 K 线或相关事件只运行增量问题，并从最早改变的步骤向后传播；准备提交、Working Order、Open Position、Closed / Review 或账户异常只运行对应状态 Checklist。完整模型始终有效，但不会被转化成逐 K 线填表义务。
 
 ## 运行不变量
 
