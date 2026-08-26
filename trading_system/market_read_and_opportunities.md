@@ -44,13 +44,13 @@ Trend、Trading Range、Gap、Breakout、Failed Breakout、H2、Double Bottom、
 | 条件演化 | 新事实改变当前解释 | Breakout Attempt → Acceptance → Breakout Phase |
 | 周期展开 | 同一价格在不同尺度呈现不同结构 | 高周期 Breakout Bar 在低周期展开为 Channel / Range |
 
-同源视图只产生一份证据。外层角色可以同时成立，但内部模型必须分开它们的周期、目标事件与 horizon。
+同源视图只产生一份证据。外层角色可以同时成立，但内部模型必须分开它们的周期、目标事件与 Outcome Horizon。
 
 ## 三、原始价格事实
 
 ### 外部信息的边界
 
-价格运动的任何表示都属于价格行为。Volume、DOM、新闻、NYSE TICK 等辅助指标和日程事件可以作为背景、流动性、时机或尾部风险输入，却不能独立保证方向；运行证据仍是这些信息怎样反映在突破、跟随、回调、接受或失败上。产品报价、pip、tick、保证金、rollover 和平台机制属于外部产品事实，只通过成本、仓位、订单和风险边界进入系统。数据中断、基础设施异常和已知事件风险进入运行边界与 Trade Plan，不因系统以价格反应为主而被忽略。
+价格运动的任何表示都属于价格行为。Volume、DOM、新闻、NYSE TICK 等辅助指标和日程事件可以作为背景、流动性、时机或尾部风险输入，却不能独立保证方向；运行证据仍是这些信息怎样反映在突破、跟随、回调、接受或失败上。产品报价、pip、tick、保证金、rollover 和平台机制属于外部产品事实，只通过成本、仓位、订单和风险边界进入系统。已知事件、波动和流动性约束由 Frame 处理；数据、连接、订单或保护异常由 Execution State 处理。
 
 ### K 线几何
 
@@ -127,7 +127,7 @@ Price Map
 
 地图只唯一登记价格带、来源、汇合与距离。Active Area 是当前正在互动的区域；Potential Entry Area、Support / Resistance、Obstacle、Magnet、Target 和 Invalidation Reference 是相对某条 Opportunity 的运行角色。因此同一 `50%`、EMA 或旧高可以是一条机会的 Target，同时是另一条机会的 Potential Entry Area 或 Invalidation Reference；底层仍只保留一个价格带。Acceptance 与 Re-entry 属于 Price Process 事件，不是区域属性。
 
-区域在以下任一条件成立时进入当前地图：价格正在互动；它是当前 horizon 的现实目标或障碍；它会改变正常 Stop、Invalidation、空间或动作；它是当前 Context 必须保留的外层约束。其他历史高低保持休眠，接近或获得新职责时再激活。
+区域在以下任一条件成立时进入当前地图：价格正在互动；它是当前 Trading Timeframe 与 Frame 时间边界内的现实目标或障碍；它会改变正常 Stop、Invalidation、空间或动作；它是当前 Context 必须保留的外层约束。其他历史高低保持休眠，接近或获得新职责时再激活。
 
 ## 四、Price Process｜先读当前运动，再读活动测试
 
@@ -155,25 +155,29 @@ Current Move 与 Price Map 的互动形成当前要解决的问题：
 
 ```text
 Object：正在测试哪个区域、边界或旧 Control
-Stage：APPROACH / TOUCH / REACTION / BREAKOUT_ATTEMPT /
-       FOLLOW_THROUGH / ACCEPTANCE / FAILURE / PENDING
-Attempt：当前逻辑中的第一次、第二次或第三次尝试
-Scale：外层位置测试与局部触发测试
-Response：分离、拒绝、突破、重叠或重新进入旧区域
-Next：什么事实表示接受、拒绝、Activation、失败或重构
-Expiry：最迟何时当前问题仍有意义
+Tested Objective：当前运动试图在 Object 完成什么
+Phase：APPROACH / TOUCH / REACTION / BREAKOUT_ATTEMPT / FOLLOW_THROUGH
+Resolution：PENDING / ACCEPTED / FAILED
+Attempt：绑定当前 Object 与逻辑的第一次、第二次或第三次以上尝试
+Response：可并存的分离、拒绝、突破、重叠或重新进入旧区域
+Acceptance Criterion：哪些价格事实完成 Tested Objective
+Failure Criterion：哪些价格事实否定 Tested Objective
+Next Observation：下一项值得观察、并使测试接近接受或失败的增量事实
+Test Expiry：最迟何时当前问题仍有意义
 ```
 
-外层位置决定这次测试可能承担的市场作用，局部测试次序和反应决定是否形成当前 Trigger。默认只展开当前 horizon 的这两个尺度；新增尺度必须改变目标、正常波动、失效或动作。
+每个 Active Test 只表达当前真正驱动下一步的一个市场问题，Object、Tested Objective 和当前判断周期共同限定尺度。`ACCEPTED / FAILED` 始终回答该 Tested Objective，不能只写一个没有方向和对象的“接受/失败”。Acceptance / Failure Criterion 定义终局；Next Observation 只指出最近的增量，并在它成为最早流程变化条件时由 Watch、Activation 或 Decision 引用。外层位置由 Object 引用 Price Map；局部第二次测试、双底或三推进入 Attempt / Response；实际 signal bar 与入场边界属于 Candidate.Trigger。
 
-所有边界互动按同一顺序更新 Stage：
+Test Expiry 是当前问题的终止边界，不是第四种 Resolution。到期、被替代或已经解决后终止旧 Test：若新区域或运动已经形成现实问题，从最早变化步骤建立新的 Active Test；若只有明确下一事件则进入 Wait 判断；若没有新问题或值得等待的事件则进入 No Trade。只有另一个价格问题会独立改变目标、正常波动、失效或动作时才建立新的 Active Test，不维护通用主次或嵌套层级。
+
+所有边界互动按同一顺序更新 Phase，并单独更新 Resolution：
 
 ```text
 Approach
 → Touch / Overshoot
 → Reaction 或 Breakout Attempt
 → Follow-through / No Follow-through
-→ Acceptance / Failure / Still Pending
+→ Resolution：Accepted / Failed / Pending
 ```
 
 - `Approach`：正在接近区域，尚未触及。
@@ -181,8 +185,9 @@ Approach
 - `Reaction`：停顿、拒绝、反向或加速，结果仍可能缺少延续。
 - `Breakout event / attempt`：高低点越过重要边界；此时新区域是否被接受仍未知。
 - `Follow-through`：初始运动后，后续一根或多根继续延伸。
-- `Acceptance`：边界外收盘、跟随、保持在外或回踩守住等证据支持新价格；它是证据状态，不直接许可交易。
-- `Failure`：原目标路径未获得接受并被新价格实质否定；必须明确失败的是哪个 move 或 objective。
+- `Accepted`：边界外收盘、跟随、保持在外或回踩守住等证据支持新价格；它是测试结果，不直接许可交易。
+- `Failed`：原目标路径未获得接受并被新价格实质否定；必须明确失败的是哪个 move 或 objective。
+- `Pending`：当前 Object 与双向结果条件已经明确，但结果尚未发生；它不是另一个 Phase。
 
 没有立即 follow-through 会削弱路径，但普通回调不自动确认失败。Failed breakout 要求旧区域被重新接受；若反向尝试随后失败、原突破方向重新获得接受，则形成 failed failure / breakout-pullback 路径。
 
@@ -192,15 +197,15 @@ Price Process 最后把 Current Move 与 Active Test 压缩成一句双向问题
 
 ```text
 当前运动从哪里来，质量怎样？
-正在测试哪个区域，是第几次、哪个尺度的尝试？
+正在测试哪个区域，是第几次尝试？
 怎样算在外侧获得接受？
 怎样算拒绝、失败或重新接受旧区域？
-下一事实和 Expiry 是什么？
+Next Observation 和 Test Expiry 是什么？
 ```
 
 例如：`强空头腿第三推延伸缩小，反弹后第二次下探卖压更弱；旧低下方会获得接受，还是多头先建立修正？`
 
-H2、Double Bottom、Wedge、Flag 或 MTR 只在它们帮助说明 Attempt、Scale、几何、外层作用、目标或失效时附在这个过程上。价格进入新区域或 Context 重新分类时，新的 Current Move / Active Test 取代旧问题；旧结构只保留对新目标或正常回调仍有作用的部分。
+H2、Double Bottom、Wedge、Flag 或 MTR 只在它们帮助说明 Attempt、Response、几何、外层作用、目标或失效时附在这个过程上。价格进入新区域或 Context 重新分类时，新的 Current Move / Active Test 取代旧问题；旧结构只保留对新目标或正常回调仍有作用的部分。
 
 发生关键变化时，用[市场决策事件导航](market_decision_events.md)确定只需重开哪些步骤。事件卡压缩常见过程，不拥有独立状态、概率或入场许可。
 
@@ -310,12 +315,22 @@ Context
 ├─ Range Condition（仅 TRADING_RANGE）
 │  ├─ Width：TIGHT / BROAD / UNCLEAR
 │  └─ Maturity：DEVELOPING / MATURE / UNCLEAR
-└─ Overlays：BREAKOUT_MODE / CLIMACTIC_MOVE_CANDIDATE / CONFIRMED_CLIMAX / TRANSITION
+└─ Conditions：[NONE，或可并存：BREAKOUT_MODE / CLIMACTIC_MOVE_CANDIDATE /
+                CONFIRMED_CLIMAX / TRANSITION]
 ```
 
-Operating State 在当前 horizon 内只选择一个主导值。Range Condition 只在 `TRADING_RANGE` 下启用，不恢复跨状态的通用 Variant。Broad Channel 与 Trending Trading Range 同时可见时，选择真正决定正常回撤、目标与管理的一项，另一项只作同源视图。只解释某段过程的第三推、Wedge 或局部 Triangle 留在 Price Process；Session 属于 Context。
+Operating State 在当前交易周期内只选择一个主导值。Range Condition 只在 `TRADING_RANGE` 下启用，不恢复跨状态的通用 Variant。Broad Channel 与 Trending Trading Range 同时可见时，选择真正决定正常回撤、目标与管理的一项，另一项只作同源视图。只解释某段过程的第三推、Wedge 或局部 Triangle 留在 Price Process；Session、剩余时间、事件和流动性约束属于 Frame。
 
 连续观察中的 Context 是上一次确认结果，也是本次 Price Process 的比较基线；它不是无需复核的先验结论。普通新事实没有跨过正常回调、目标、Control 或双边获利能力边界时保持原值；跨过边界才按上节转换表更新。首次看图没有可继承状态时，先用相关窗口作暂定分类，无法确认就保留 `UNCLEAR`。
+
+Context Update 是更新操作，输出 Updated Context 与相对基线的 `Context Change`：
+
+- `INITIALIZED`：首次读取，没有可继承基线；
+- `UNCHANGED`：运行职责没有变化；
+- `UPDATED`：主状态未被替代，但 Conditions 或运行边界实质改变；
+- `REFRAMED`：主导价格组织、方向、正常回调、目标或管理方式被替代。
+
+不确定性直接保留在 Operating State、Direction 或 Range Condition 的 `UNCLEAR`，不与变化类型混合。`TRANSITION` 只作为 Updated Context 中持续影响 Permission 的 Condition；Context Change 不包含同义状态。
 
 分类依据是回调深度和持续时间、Overlap、Separation 是否保持、双边获利能力，以及新旧公平区域是否仍在方向迁移。`UNCLEAR` 是允许结果；Overlay 只描述当前附加条件，不与 Operating State 并列计数。
 
@@ -335,7 +350,7 @@ Broad Channel 与 Trending Trading Range 可以是同一行情的两个观察视
 
 回调接近先前 leg 的一半可作为几何参照，但 `50%` 不是独立支撑或固定反转阈值。回调持续扩大为 endless pullback、反向 channel 或双边都能获利的区域时，应更新活动结构，而不是继续沿用“浅回调”名称。
 
-Rising Channel 在当前周期属于多头趋势；同时保留其完整生命周期中向下突破趋势线并通常区间化的 Bear Flag 视角。若它位于外层空头趋势，本身直接承担外层 Bear Flag 角色。短期恢复旧高与长期向下突破属于不同 horizon，不能放进同一交易方程；Falling Channel 完全镜像。
+Rising Channel 在当前周期属于多头趋势；同时保留其完整生命周期中向下突破趋势线并通常区间化的 Bear Flag 视角。若它位于外层空头趋势，本身直接承担外层 Bear Flag 角色。短期恢复旧高与长期向下突破属于不同 Outcome Horizon，不能放进同一交易方程；Falling Channel 完全镜像。
 
 趋势线或通道线只是候选区域。轻微 overshoot / undershoot 不使结构自动失效；强越界、边界外收盘、follow-through 或旧线长期不再组织价格，才支持重画或重新分类。
 
@@ -354,7 +369,7 @@ Width 与 Maturity 都是连续判断，`UNCLEAR` 是合法值；系统不使用
 
 Limit Order Market 是从重叠、影线、反转尝试和双边获利等事件事实归纳出的行为条件，常见于区间、宽通道和弱趋势，不是新的 Context 状态。价格 touch / cross limit price 也不证明账户成交。
 
-### Overlays：Breakout Mode、Climax 与 Transition
+### Conditions：Breakout Mode、Climax 与 Transition
 
 Breakout Mode 表示任一方向突破都有可能获得跟进；它常叠加在成熟 Trading Range、Triangle、ii、ioi、oo 或压缩上，不是 Trading Range 的同义词。由这些 Geometry Views 归纳出 Breakout Mode 不构成第二份证据。Breakout Mode 不预测方向，也不保证首次突破成功。
 
@@ -447,13 +462,13 @@ Wedge、Double Top/Bottom、Head and Shoulders、rounding top/bottom、Final Fla
 
 ```text
 Context
-- Trading Timeframe、Relevant Outer Constraint、Session / Remaining Horizon
+- Trading Timeframe、Relevant Outer Constraint 与已经确认的价格组织
 
 Market Read
 - Context、Price Map、Current Move、Active Test
 
 Opportunity
-- Direction、Role、Objective、Horizon、价格区域角色与结构失效
+- Direction、Role、Objective、Outcome Horizon、价格区域引用与结构失效
 
 Trade Candidate
 - 当前 Entry、Planned Stop、Target、Size 与管理
@@ -490,7 +505,7 @@ Double-top height    = top area - neckline
 
 所有端点必须来自当时可见的结构并冻结。Measured move 是目标候选，不提供入场许可；更近障碍、成本和剩余时间会改变现实 Reward。多个来源相对独立的投射落在相近区域，可以增强 target cluster 的 magnet 和到达后反应意义；同一结构的不同量法仍只属于一个来源族。
 
-目标事件只定义市场结果：价格触及、进入区域、越过并获得接受，或在 horizon 内未发生。账户是否实际成交退出属于 Trade Outcome 与 Account Result，不能写入 Opportunity 的市场目标。
+目标事件只定义市场结果：价格触及、进入区域、越过并获得接受，或在 Outcome Horizon 内未发生。账户是否实际成交退出属于 Trade Outcome 与 Account Result，不能写入 Opportunity 的市场目标。
 
 ## 十、从 Market Read 到 Opportunity Set
 
@@ -498,27 +513,39 @@ Double-top height    = top area - neckline
 
 ```text
 Opportunity
-- Direction + Role + Horizon
-- Objective + Market Outcome Criterion
+- Direction
+- Role
+- Outcome Horizon
+- Objective
+- Market Outcome Criterion
 - Market Targets
-- Why：去重后的价格事实链
-- Already → Next
+- Support / Already：去重后的已发生价格事实链
 - Activation：什么过程事实使机会具备交易表达资格
+- Activation Status：MET / PENDING
 - Invalidation：引用哪个 Region，什么市场事实真正否定机会
-- Price Region Roles：Support / Resistance / Potential Entry Area / Obstacles /
-  Magnets / Targets / Invalidation Reference
-- Against：最强矛盾或对手 Opportunity
-- Market Probability / Rule Match
-- Expiry
+- Counterevidence：尚未由完整对手 Opportunity 表达的最强反方价格事实；没有则 NONE
+- Market Probability
+- Rule Match
+- Opportunity Expiry
 ```
 
-每一侧都必须得到运行结论：构造现实 Opportunity、等待 Next，或以没有现实 objective、空间、时间为由排除。排除结果只保留原因，不展开伪 Opportunity。Context Control 提供 Permission 和先验，不替代另一方向的扫描。
+每一侧先得到一个 Side Scan Result，再只保存该结果需要的内容：
+
+- `OPPORTUNITY`：保存上方完整对象；Activation 可以尚未满足；
+- `WATCH`：只保存 Watch Next Event 与 Watch Expiry，不建立 Pending Opportunity；
+- `EXCLUDED`：只保存 Exclusion Reason，不展开伪 Opportunity。
+
+一个方向可以引用多张 Opportunity 卡。例如 Up / Correction 与 Up / Reversal，或同方向不同 Outcome Horizon，必须保持独立 Objective、Target、Activation、Invalidation、Probability 与 Expiry；Side Scan Result 只说明本侧是否至少存在一条完整路径。
+
+Context Control 提供 Permission 和先验，不替代另一方向的扫描。至少一侧为 `OPPORTUNITY` 才进入 Context Permission 与 Candidate 检查；只有 `WATCH` 时向 Decision 提交最早的 Next Event 与 Expiry；两侧均 `EXCLUDED` 时进入 No Trade 判断。
 
 事实不必平均分布。一条机会可以由一条强而连贯的突破链主导，也可以由独立位置、对手失败和新跟随补全。关键是它们分别支持机会的背景、Activation、接受、持续或目标，而不是理由数量。
 
-`Role` 只用来防止混合 objective 和 horizon：continuation、correction、reversal、range return 或 breakout。例如强空头趋势中，`Up / Correction` 可先到 EMA 或 50%，随后 `Down / Continuation` 再测试旧低；两者可顺序成立。只有该顺序会改变当前选择或管理时才保存一句 `Likely Sequence`。`Up / Reversal` 则要求破坏空头控制并获得新方向接受，不能从短期修正目标直接推出。
+`Role` 只用来防止混合 objective 和 Outcome Horizon：continuation、correction、reversal、range return 或 balance breakout。趋势或回调中的突破按其外层职责归入 continuation / reversal；`BALANCE_BREAKOUT` 只表示从平衡状态向外建立新路径。例如强空头趋势中，`Up / Correction` 可先到 EMA 或 50%，随后 `Down / Continuation` 再测试旧低；两者可顺序成立。只有该顺序会改变当前选择或管理时才保存一句 `Likely Sequence`。`Up / Reversal` 则要求破坏空头控制并获得新方向接受，不能从短期修正目标直接推出。
 
-明显缺少现实目标、时间或空间的方向只保留排除原因，不为形式对称制造伪机会。Market Read 尚未解决、Activation 尚未满足且不能由许可的条件 Trigger 完整执行，或当前没有值得承担的表达，都可以产生 Wait；Wait 只保存下一事件与 Expiry，不需要独立 Pending 对象。
+Long 与 Short 两列天然互为竞争机会；Counterevidence 只保存尚不足以形成完整对手 Opportunity、但会削弱当前路径的价格事实。`Opportunity Expiry` 只规定当前 Objective 在 Outcome Horizon 内仍有意义的最迟边界；市场事实否定进入 `INVALIDATED`，新 Context 或价格问题取代进入 `SUPERSEDED`。
+
+明显缺少现实目标、时间或空间的方向只保留排除原因，不为形式对称制造伪机会。双向扫描只提交 Side Scan Result、Next Event 或完整 Opportunity；`WAIT / NO_TRADE / EXECUTE` 由 Decision 唯一输出。
 
 常见双向问题可以生成：
 
@@ -530,7 +557,7 @@ Opportunity
 | 通道边界 | 内部反应并继续通道运动 | 外部突破获得接受并重分类 |
 | 旧极值、EMA 或量度区域 | 穿越并获得接受 | 拒绝并启动返回路径 |
 
-机会随来源事实改变，不随名称数量改变。新的 Context、价格区域、Current Move 或 Active Test 可以替代旧机会；历史结构只在仍能改变目标、正常回调或管理时留在 Context。不同 objective 或 horizon 分别表达，不用一个方向概率覆盖全部结果。
+机会随来源事实改变，不随名称数量改变。新的 Context、价格区域、Current Move 或 Active Test 可以替代旧机会；历史结构只在仍能改变目标、正常回调或管理时留在 Context。不同 objective 或 Outcome Horizon 分别表达，不用一个方向概率覆盖全部结果。
 
 ## 十一、证据生命周期
 
@@ -550,7 +577,7 @@ Opportunity 的生命周期与证据强弱分开：
 ACTIVE
 ├─ 目标事件发生             → ACHIEVED
 ├─ 市场事实实质否定         → INVALIDATED
-├─ horizon 结束             → EXPIRED
+├─ Outcome Horizon 结束     → EXPIRED
 ├─ 新 Context、价格问题或机会取代 → SUPERSEDED
 └─ 目标与失效顺序无法确认   → SEQUENCE_UNKNOWN
 ```

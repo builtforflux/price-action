@@ -2,339 +2,446 @@
 
 > **状态：Trading System / Runtime Contract**
 
-本页是唯一运行入口。它规定交易者现在运行哪一套检查、每一步必须得到什么输出、什么时候进入下一步，以及何时停止、等待或转入异常处理。检查可以是观察、心中确认或快速勾选；只有跨过计划、风险、执行或复盘边界的变化才记录。
+本页是唯一运行入口。它规定交易者现在观察什么、本步形成什么输出、何时进入下一步，以及何时等待、不交易或转入账户异常处理。检查可以是观察、心中确认或快速勾选；只有计划、风险、执行或复盘边界发生变化时才记录。
 
 ```text
-Safety
-→ Frame + Inherited Context
+Safety Guard ──异常──→ Safety Exception
+
+市场—决策运行图：
+Frame
 → Price Map
 → Current Move
 → Active Test
-→ Confirm / Transition / Reframe Context
-→ Long / Short Opportunity Set + Likely Sequence
-→ Trade Construction
-→ Trade Gate：Execute / Wait / No Trade
-→ Order / Position / Protection
-→ Event Update / Exit / Review
+→ Context Update
+→ Long / Short Opportunity Scan
+├─ 至少一侧 OPPORTUNITY → Context Permission + Trade Construction
+│  ├─ Candidate 完整 → Decision
+│  ├─ 仍需明确下一事件 → Decision
+│  └─ 无现实表达或事件 → Decision
+├─ 只有 WATCH → Next Event → Decision
+└─ 两侧 EXCLUDED 且无事件 → Decision
+
+Decision
+├─ EXECUTE → Ready → Order / Position / Protection → Exit / Review
+├─ WAIT → Flat / Observing；事件发生或到期后从最早变化步骤重开
+└─ NO_TRADE → Flat / Observing；新事件、问题或 Reframe 后重开
+
+Frame 是运行前提；Frame 完成后的停止点统一进入 Decision：
+存在明确下一事件与有效边界 → WAIT
+没有完整 Candidate，也没有值得等待的事件 → NO_TRADE
 ```
 
 ## 一、选择运行模式
 
 | 当前情形 | 运行方式 | 结束条件 |
 | --- | --- | --- |
-| 首次看图、交易周期或主导组织改变、原 Context 不再可用 | 从 Safety 开始运行[完整 Checklist](#三完整-checklist) | 得到 Execute / Wait / No Trade，或在某一步明确停止 |
+| 首次看图、交易周期或主导组织改变、原 Context 不再可用 | 先过 Safety Guard，再从 Frame 运行[完整 Checklist](#三完整-checklist) | 得到 Execute / Wait / No Trade，或进入账户异常处理 |
 | 普通新 K 线、价格事件、时间边界或计划条件发生 | 运行[增量更新](#四增量更新只沿变化传播)，从最早改变的步骤向后传播 | 下游结论不再改变即停止 |
-| 准备提交、订单工作中、持仓中、交易结束或账户异常 | 运行对应[账户状态路由](#五账户状态路由) | 状态得到确认，并完成当前允许动作或复盘 |
+| 准备提交、存在工作订单或仓位、交易结束或账户异常 | 按[账户状态分派](#五账户状态分派)运行所有适用入口 | 真实账户状态、保护和当前动作得到确认 |
 
 完整 Checklist 是防遗漏的观察顺序，不是每根 K 线都要填写的表。普通新 K 线若没有改变 Frame、市场读取、双向机会、计划、风险或动作，数秒内结束且不记录。
 
 ### 盘中一屏卡
 
 ```text
-SAFE？          仓位、订单、总 Stop 风险、实际保护、数据与连接
-判断边界？      交易周期、horizon、Session、剩余时间、外层约束
-价格在哪里？    Active Area、上方/下方最近相关区域、两侧空间
-怎样来到这里？  当前腿、K 线质量、连续性、gap/overlap、回调、反方反应
-正在测试什么？  Object、Stage、Response、Attempt、双向接受/失败条件、Next、Expiry
-Context？       Keep / Transition / Reframe / Unclear
-Long / Short？  各自 Objective、Targets、Already → Next、Invalidation、Against
-怎样承担风险？  Trigger、Stop / Limit / Market、Planned Stop、Targets、Size
+SAFE？          全局 Guard：仓位/订单一致性、总 Stop 风险、实际保护、数据与连接
+判断边界？      交易周期、Session、剩余时间、事件/流动性约束、外层参照
+价格在哪里？    Active Area、最近上方/下方区域、两侧空间
+怎样来到这里？  当前腿/角色、连续性、gap/overlap、回调、反方反应、双方 Pressure
+正在测试什么？  Object / Objective、当前反应、接受/失败、下一观察、有效边界
+Context？       Operating State、Direction、Conditions；沿用还是 Reframe
+Long / Short？  各自 Opportunity / Watch / Excluded；目标、缺什么、怎样失效
+怎样承担风险？  Trigger、Stop/Limit/Market、Planned Stop、Targets、Size、方程
 当前决定？      Execute / Wait / No Trade
 ```
 
-## 二、运行对象与职责
+## 二、Checklist 的用法与职责
 
-| 对象或门 | 唯一职责 | 权威文档 |
+Checklist 负责防遗漏和路由，不要求盘中填写完整对象。每一步必须检查所有会改变事实、路径、概率、计划、风险或动作的条件，并形成结构化的本步判断；字段定义、边界条件和复杂计划在权威文档中展开。判断必须完整，只有书面记录遵循最小充分原则。
+
+| 层次 | 盘中用途 | 权威文档 |
 | --- | --- | --- |
-| Market Read | 继承 Context，更新 Price Map、Current Move 与 Active Test，再确认或重构 Context；不选择交易方向 | [Market Read 与 Opportunity](market_read_and_opportunities.md) |
-| Opportunity Set | 分别表达现实 Long / Short 的 objective、目标、Already → Next、Activation、Invalidation、Against、horizon 与可能顺序 | [Market Read 与 Opportunity](market_read_and_opportunities.md#十从-market-read-到-opportunity-set) |
-| Trade Candidate / Plan | 为当前允许且可表达的 Opportunity 构造 Trigger、Entry、Planned Protective Stop、Targets、Size、结果概率与管理；选中后冻结 Trade Plan | [交易决策与计划](decision_and_plan.md) |
-| Execution State | 保存实际订单、成交、敞口、风险容量与 Active Protective Stop | [执行、持仓与复盘](execution_management_and_review.md) |
+| Frame | 固定周期、时间与外层约束 | 本页 |
+| Market Read | 回答价格在哪里、怎样来到这里、正在测试什么及 Context 是否重构 | [Market Read 与 Opportunity](market_read_and_opportunities.md) |
+| Opportunity Scan | 分别回答 Long / Short 当前有路径、需等待还是应排除 | [Market Read 与 Opportunity](market_read_and_opportunities.md#十从-market-read-到-opportunity-set) |
+| Trade Construction | 把一条可表达路径变成 Entry、Stop、Target、Size 与管理 | [交易决策与计划](decision_and_plan.md) |
+| Decision | 根据 Candidate 或下一事件输出 Execute / Wait / No Trade | [交易决策与计划](decision_and_plan.md#十四decision-与唯一决定) |
+| Execution | 按真实订单、敞口、保护和风险采取动作 | [执行、持仓与复盘](execution_management_and_review.md) |
 
-Frame、Safety、Decision 和 Review 是运行门，不另建复杂对象。Pattern 只压缩结构、次序或外层作用；H2、Double Bottom、Wedge、Flag、MTR、ii / ioi 等名称只有在改变现有运行对象时才有作用，不产生 Setup 路由或额外证据票数。
+`UNRESOLVED` 表示当前事实不足；`PENDING` 表示问题已定义但结果未发生；`WATCH` 是某一方向等待下一事实；`WAIT` 是整体不执行并等待一个明确事件；`NO_TRADE` 结束当前交易表达。Checklist 统一显示 `Valid Until`；内部模型按对象分别保存 Test、Watch、Opportunity、Entry 或 Decision 的有效边界。
+
+运行图只画会改变下一步的判断，不把所有观察问题变成分支：事实问题留在当前节点，状态归纳成为本步判断，决策门形成分支，动作形成下一跳。每个分支必须进入另一个节点、明确的终点或 Safety Exception；Wait 必须有 Next Event 与有效边界，订单终态必须按真实账户状态重新分派。市场—决策图由本页维护；并行账户入口和完整订单转换只由[执行、持仓与复盘](execution_management_and_review.md)维护。
 
 ## 三、完整 Checklist
 
-### 0. Safety｜现在可以继续正常运行并新增风险吗？
+完整 Checklist 只在首次看图、周期改变或 Reframe 时逐步运行。每一步采用同一结构：先完成全部必看条件，形成能够支持后续步骤的本步判断，再按路由继续。
 
-**检查**
+### Safety Guard｜现在可以继续正常运行并新增风险吗？
 
-- 实际净仓位、全部工作订单与回执是否一致？
-- 现有仓位与所有仍可能增加暴露的订单到各自 Stop 的总风险是否在上限内？
-- Active Protective Stop 是否状态可确认并覆盖实际数量？
-- 行情、账户、连接和已知事件风险是否可靠？
+**必看**
 
-**输出与门**
+- 仓位、工作订单与回执是否一致？
+- 所有仍可能形成的 Stop 风险是否在上限内？
+- 实际保护是否可确认并覆盖真实数量？
+- 数据、账户和连接是否可靠？
 
-- `SAFE`：进入 Frame；
-- `SAFETY_EXCEPTION`：停止新增风险，只允许核对、恢复保护、撤单、减仓或退出。
+**本步判断与路由**
+
+- 全部确认：`SAFE → Frame`；
+- 任一不一致、超限、保护不足或无法确认：`SAFETY_EXCEPTION`，停止新增风险。
 
 ### 1. Frame｜本轮判断的边界是什么？
 
-**检查**
+**必看**
 
-- Trading Timeframe 与实际管理周期是什么？
-- 当前路径是 scalp、swing，还是只观察一个尚未解决的测试？
-- 当前 Session、剩余时间、波动、流动性和已知事件窗口是否影响目标可达性或执行？
-- 哪个外层约束会真正改变本周期的目标、正常回调、Stop 或管理？
-- 上一次确认的 Context 是什么；首次看图时能否暂定，还是应标为 `UNCLEAR`？
+- 用哪个 Trading Timeframe 判断结构和正常波动？
+- Session、剩余时间、事件、波动或流动性是否限制目标、Entry、Size 或新增风险？
+- 哪个外层区域或结构真正改变本周期目标、正常回调、Stop 或管理？
+- 上一次 Context 是否仍可作为比较基线？
 
-**输出与门**
+**本步判断**
 
-输出 `Trading Timeframe + Horizon + Session / Remaining Time + Relevant Outer Constraint + Inherited Context`。Inherited Context 只是本轮比较基线，须由当前价格过程确认；周期或目标时间范围说不清时，不进入概率和 Trade Construction。
+```text
+Trading Timeframe + Session / Remaining Time
+Trading Constraint + Relevant Outer Constraint
+Context Baseline：继承 / 首次读取 / Unresolved
+```
+
+Scalp / Swing 属于 Opportunity 的 Outcome Horizon，不在 Frame 预先决定。
+
+**路由**
+
+- 必要边界未定义：先补齐 Frame，不承担新风险；
+- `NO_NEW_RISK`：继续读取市场，只管理已有订单和仓位；
+- 边界明确：进入 Price Map。
 
 ### 2. Price Map｜价格在哪里，前方有什么？
 
-**检查**
+**必看**
 
-- 当前正在互动的 Current / Active Area 是什么？
-- 上方和下方最近哪些区域会改变目标、障碍、Entry、Invalidation、Stop、空间或动作？
-- 每个相关区域来自哪些相对独立的来源；哪些名称只是同一价格带？
-- 当前价格到两侧第一现实区域分别还有多少可用空间？
+- 当前正在互动哪个区域，还是处于两个区域之间？
+- 新 swing high / low、突破点、运动起点、固定 MM 或保护锚点是否刚获得运行职责？
+- 上方和下方最近哪个区域会改变目标、障碍、失效、Stop 或动作？
+- 到两侧第一现实区域还有多少可用空间？同一价格带是否被多个名称重复登记？
 
-区域来源可以包括旧高低、区间边界和中部、突破点与运动起点、gap、50%、EMA、趋势线 / 通道线、事前固定 MM 和 Session 水平。同一价格带只登记一次；其他历史高低保持休眠，获得运行职责时再激活。
+**本步判断**
 
-**输出与门**
+```text
+Current Area + 所有当前相关 Areas Above / Below
+到两侧第一现实障碍的 Space Up / Down
+```
 
-输出 `Active Area + Nearest Relevant Area Above / Below + Available Space Up / Down`。一侧经过检查、在当前 horizon 内确实没有相关障碍时标为 `OPEN_SPACE`；尚未识别或信息不足时标为 `UNRESOLVED`，两者不能互换。可以继续读取 Current Move，但当前区域或现实空间仍为 `UNRESOLVED` 时不进入 Candidate；不能用远端目标绕过近端障碍来修复 Reward / Risk。
+已检查且没有现实障碍为 `OPEN_SPACE`；尚未识别为 `UNRESOLVED`。
 
-Price Map 只拥有位置、来源、汇合、距离和空间。Support / Resistance、Potential Entry Area、Obstacle、Magnet、Target 与 Invalidation Reference 是后续 Opportunity 对同一区域分配的角色。
+**路由**
+
+- 地图足以支持当前判断：进入 Current Move；
+- 某侧位置或空间仍未解决：可以继续读取，但该侧不能形成完整 Opportunity。
 
 ### 3. Current Move｜价格怎样来到这里？
 
-在能回答当前过程的同一最小窗口中检查：当前腿、当前区域测试，或上次 Reframe 以来。
+**必看**
 
-**检查**
+- 价格从哪里出发；现在是上涨腿、下跌腿、暂停还是局部平衡？
+- 当前腿是 continuation、pullback、range leg 还是 reversal attempt？
+- K 线实体、收盘、影线、连续性和 follow-through 怎样？
+- separation / gap 在扩大、保持、缩小还是关闭；overlap 与回调深度、持续时间怎样？
+- 反方只有单根反应，还是已经建立自己的强 K、连续性、分离或恢复？
 
-- 价格从哪个区域、运动或反应开始；现在是 Up Leg、Down Leg、Pause 还是 Local Balance？
-- 当前运动承担 Continuation、Pullback、Range Leg、Reversal Attempt 还是 Unresolved？
-- K 线实体、收盘、影线与相对大小怎样；同向连续性和 follow-through 怎样？
-- gap / breakout separation 是扩大、保持、缩小还是关闭；overlap 是否增加？
-- 回调的深度、持续时间、gap 与原方向恢复速度怎样？
-- 反方只有单根反应，还是已有自己的强 K、连续性、分离或失败后的恢复？
+**本步判断**
 
-**输出与门**
+```text
+From + Now + Role
+一条去重的 Bars / Continuity / Separation / Pullback / Opponent 事实链
+Bull Pressure：增强 / 保持 / 减弱 / 未建立
+Bear Pressure：增强 / 保持 / 减弱 / 未建立
+Control：Bull / Bear / Balanced / Unclear
+```
 
-输出一条连续价格事实链，并分别给出 `Bull Pressure` 与 `Bear Pressure` 的增强、保持、减弱或未建立，以及对 Control 的含义。一侧减弱不等于另一侧建立；大实体、强收盘、gap、Pressure、Control 和 Acceptance 若来自同一次运动，仍是一条来源链。
+一侧减弱不等于另一侧建立；同一突破产生的大实体、gap、Pressure、Control 和接受仍属于同一事实链。
 
-能够说明哪一方正在保持或失去分离、连续性和控制后，进入 Active Test；冲突时保留 `Mixed / Unclear`，不以 Pattern 名称补齐结论。
+**路由**
+
+- 能说明当前运动与双方压力：进入 Active Test；
+- 暂时无法分类但下一事实明确：把该事实作为 Decision 的 Next Event；
+- 无法形成当前问题且没有现实下一事件：进入 No Trade 判断。
 
 ### 4. Active Test｜市场正在解决什么问题？
 
-**检查**
+**必看**
 
-- 当前运动正在测试 Price Map 中哪个区域、边界、突破点或旧 Control？
-- 当前处于 Approach、Touch、Reaction、Breakout Attempt、Follow-through、Acceptance、Failure 还是 Pending？
-- 价格目前怎样回应这个测试：分离、拒绝、突破、重叠，还是重新进入旧区域？
-- 这是当前逻辑的第一次、第二次还是第三次尝试？
-- 当前 horizon 的外层位置测试和局部触发测试分别是什么；额外尺度是否会改变目标、正常波动、失效或动作？
-- 向上怎样才算获得接受；向下怎样才算获得接受或使原路径失败？
-- 下一项可以解决当前测试的可观察事实是什么；什么时候该问题过期？
+- 正在测试哪个区域、边界或旧 Control；哪一方试图完成什么？
+- 当前是接近、触及、反应、突破尝试还是跟随阶段？
+- 这是同一问题的第几次尝试；本次延伸和反应相对上一次怎样？
+- 怎样算 Tested Objective 获得接受；怎样算失败或旧区域重新获得接受？
+- 下一项真正会改变判断的事实是什么；当前问题最迟何时仍有效？
 
-**输出与门**
-
-压缩成一句过程问题：
+**本步判断**
 
 ```text
-价格正在测试 X；当前处于 Y，Response 为 R；向上需要 A，向下需要 B；下一事实是 C，最迟到 D。
+价格正在测试 [Object]，试图 [Objective]；
+当前 [Phase / Resolution / Attempt / Response]；接受需要 [A]，失败需要 [B]；
+下一观察 [Next Observation]，有效至 [Valid Until]。
 ```
 
-说不清 Object、双向结果条件、Next 或 Expiry 时，停在 Market Read / Wait，不构造交易路径。H2、Double Bottom、Wedge、Triangle、ii / ioi、MTR 等可以帮助说明 Attempt、Scale、几何或过程作用，但不能替代这个输出。
+H2、Double Bottom、Wedge、Triangle、ii / ioi 或 MTR 只帮助说明次序、几何和过程作用；signal bar 与实际入场边界属于后续 Candidate。
 
-### 5. Context Update｜当前过程改变外层组织了吗？
+**路由**
 
-**检查**
+- 问题仍 Pending 或刚被接受 / 失败：进入 Context Update；
+- 问题到期或被替代：终止旧 Test；有新问题就从最早变化步骤重建，没有新问题则进入 Wait / No Trade；
+- Object、结果条件和下一事实都无法表达：进入 No Trade 判断。
+
+### 5. Context Update｜外层价格组织是否仍可沿用？
+
+**必看**
 
 - 新事实仍属于原 Context 的正常回调、目标和双边获利能力吗？
-- 原方向只是 Pressure 减弱，还是反方已经建立持续 Pressure 与接受？
-- 正常回调、目标、Control、双边获利能力或管理边界是否跨过原分类？
-- 当前结果应为 `KEEP / TRANSITION / REFRAME / UNCLEAR`？
+- 原方向只是减弱，还是反方已经建立持续 Pressure 与接受？
+- 正常回调、目标、Control 或管理边界是否已经跨过原分类？
+- Breakout Mode、Climax 或 Transition 等条件是否新增、解除或改变 Permission？
 
-**输出与门**
+**本步判断**
 
-输出确认后的 Operating State、Direction / Control 和必要 Overlay，再应用对应 Context Permission。普通反色 K、一个形态名称或轻微边界越过不能单独确认控制转移；`UNCLEAR` 是合法输出，并使用保守 Permission。
+```text
+Current Context：Operating State + Direction + Conditions
+Range Condition：Width + Maturity（仅 Trading Range）
+Reframe：NO / YES
+```
 
-只有确认后的 Context 进入 Opportunity。完整分类、状态转换和 fallback 由 [Market Read 与 Opportunity](market_read_and_opportunities.md#六context继承后由当前过程确认)拥有。
+内部模型可以保存完整 Context delta；盘中只需明确当前 Context 和是否 Reframe。`Current Move.Control` 是当前窗口结论，`Context.Direction` 是交易周期持续组织。
 
-### 6. Opportunity Set｜多空分别准备完成什么？
+**路由**
 
-每次决策事件分别扫描 Long 与 Short。每一侧使用同一组问题：
+- Context 沿用或条件更新：进入 Opportunity Scan；
+- Reframe 同时替代 Price Map 或 Active Test：从最早变化步骤重开；
+- 分类不清：保留 `UNCLEAR` 并应用保守 Context Permission。
 
-**检查**
+### 6. Opportunity Scan｜Long 与 Short 分别准备完成什么？
 
-- Direction、Role 与 Horizon 是什么；这是 continuation、correction、reversal、range return 还是 breakout？
-- Objective 与可观察的 Market Outcome Criterion 是什么？
-- 第一现实目标和主要 Market Targets 来自哪些已登记区域或事前固定投射？
-- 去重后的价格事实链已经完成什么；下一项 Activation 是什么？
-- 哪个区域和什么市场事件真正使该路径失效？
-- 当前最强反方事实或竞争 Opportunity 是什么？
-- 与当前目标、周期和 horizon 一致的 Market Probability / Rule Match 是什么；没有可运行规则时能否诚实表达不确定性？
-- 空间、剩余时间和目标可达性是否现实；什么时候路径过期？
+对 Long、Short 各运行一次同样的检查。
 
-**每侧输出**
+**每侧必看**
 
-- `REAL OPPORTUNITY`：字段足以表达现实市场路径；
-- `WAIT`：保留下一可观察事实与 Expiry；
-- `EXCLUDED`：只说明没有现实 objective、空间、时间、有效 horizon，或当前事实已经否定该路径的原因，不制造伪 Opportunity。
+- 当前是否存在现实 Objective、Outcome Horizon 和第一目标？
+- 已发生事实怎样支持该路径；还缺什么 Activation？
+- 哪个区域与什么价格事件使路径失效？
+- 目标前是否有足够空间和时间；适用概率是否与目标、周期和时点一致？
+- 对手是否已有完整 Opportunity；除此之外还有什么最强 Counterevidence？
 
-随后检查两侧是竞争关系，还是可能按 `Likely Sequence` 先后发生。例如强空头背景可以先有 `Up / Correction` 到 EMA 或 50%，再有 `Down / Continuation` 测试旧低；短期修正目标不能借给长期反转。
+**每侧判断必须覆盖**
 
-**进入下一步条件**
+```text
+Path：Role + Outcome Horizon；Objective + Target
+Evidence：Support / Already；Activation + Status
+Opposition：竞争 Opportunity；其余最强 Counterevidence
+Boundary：Invalidation + Valid Until
+Probability：Market Probability + Rule Match
+```
 
-双向扫描完成后按结果路由：至少一条 `REAL OPPORTUNITY` 才进入 Trade Construction；没有现实 Opportunity、但至少一侧存在可观察 Next 时输出 `WAIT + Next + Expiry`；两侧都被排除且没有现实下一事件时输出 `NO_TRADE`。Context Permission 不删除现实市场路径，只决定它能否在当前时点产生 Candidate。
+完成判断后，本侧只进入一种运行状态：
+
+| 状态 | 继续运行所需信息 |
+| --- | --- |
+| `OPPORTUNITY` | 上述五组判断 |
+| `WATCH` | 下一可观察事实 + Valid Until |
+| `EXCLUDED` | 一句排除原因 |
+
+同方向不同 Objective 或 Outcome Horizon 分开表达；只有会改变当前选择或管理时才保存 `Likely Sequence`。
+
+**路由**
+
+- 至少一侧为 `OPPORTUNITY`：无论 Activation 当前是 `MET` 还是 `PENDING`，都进入 Context Permission 与 Trade Construction；
+- 没有 Opportunity、只有 `WATCH`：选最早会改变流程的 Next Event，进入 Wait 判断；
+- 两侧都被排除且没有现实下一事件：进入 No Trade 判断。
 
 ### 7. Trade Construction｜现在怎样承担风险？
 
-只对 Context Permission 允许且值得表达的 Opportunity 构造 Candidate。现实 Opportunity 尚未取得 Permission 时，若存在明确的控制转移、接受或其他许可条件，输出 `WAIT + Next + Expiry`；没有现实许可路径时，当前交易表达为 `NO_TRADE`，但市场 Opportunity 保持自身生命周期。
+**必看**
 
-**检查**
+- 当前 Context Permission 是否允许该 Role、方向和 Early / Confirmed 风险承担时点？
+- 承担风险前必须完成的 Activation 是否已经发生；订单 Trigger 能否完整表达尚缺条件？
+- 应使用 Stop、Limit 还是 Market / close；Entry 规则与有效期是什么？
+- Planned Stop 是否引用有效结构并容纳管理周期正常波动？
+- First / Main Target 是否来自已登记区域；扣除近端障碍后空间是否足够？
+- Size 是否由 Entry 到 Stop 的风险反推；成本、时间和管理是否仍形成正方程？
+- 成交后必须看到什么、允许多久；怎样区分普通失望与计划失败？
 
-- 当前承担 Early 还是 Confirmed 风险；判断时点已经具备哪些证据？
-- Activation 已经完成，还是计划明确允许订单 Trigger 完整执行尚缺条件？若仍要求 bar close、follow-through、回踩守住或 acceptance，单纯越过价格是否不足？
-- Trigger Boundary 来自哪个 Region、signal bar 或 Active Test 边界？
-- 应使用 Stop、Limit 还是 Market / close Entry；价格规则、有效期和取消条件是什么？
-- Opportunity 的 Structural Invalidation 是什么；Planned Protective Stop 应放在哪里才能容纳管理周期正常波动？
-- First Target、Main Target 和 Outcome Criterion 来自哪个已有区域或投射；近端障碍后的净空间是否足够？
-- 当前 Entry 到 Stop 的 Planned Risk 对应多大 Size；多层时 Risk Limit、Initial Limit、Add 与 Cancel Add 是否完整？
-- Candidate Outcome Probability、Reward、Risk、实质相关成本、剩余时间和管理是否描述同一计划？
-- 成交后必须看到什么，允许多久；普通 disappointment 与计划失败怎样区分？
-
-**输出与门**
-
-输出完整 Trade Candidate；当前仍有明确的更好 Entry 或确认事件时返回 `WAIT + Next + Expiry`，没有现实下一事件时进入 `NO_TRADE`。需要价格先向计划方向越过 Trigger 时使用 Stop entry；位置与 Context 已允许承担较少确认并换取价格改善时才使用 Limit；breakout、follow-through 或 acceptance 已完成且继续等待代价更高时可以使用 Market / close。
-
-Entry、Stop 与 Target 必须沿同一引用链形成：
+**本步判断**
 
 ```text
-Price Map 中的 Region
-→ Active Test 的互动和 Trigger Boundary
-→ Opportunity 分配目标、障碍与 Invalidation 角色
-→ Candidate 选择 Entry、Planned Protective Stop 与 First / Main Target
+Selected Opportunity + Risk Timing / Activation Status
+Trigger / Entry Method / Entry Rule
+Planned Stop + First / Main Target + Size / Risk
+Entry Validity + Management / Time Exit
+Candidate Outcome Probability / Range + Net Reward:Risk / Trader's Equation
 ```
 
-Structural Invalidation 属于 Opportunity；Planned Protective Stop 是 Candidate 的账户风险边界；成交后状态可确认并覆盖实际数量的 Active Protective Stop 属于 Execution State。Protective Stop 先触发可以结束 Candidate，而市场 Opportunity 未必已经失效。
+Stop 用确认换价格，Limit 用较少确认换价格改善，Market / close 只在前置条件完成后使用。完整 Candidate 字段见[交易决策与计划](decision_and_plan.md)。
 
-### 8. Trade Gate｜当前唯一决定是什么？
+**路由**
 
-**检查**
+- Candidate 完整且方程成立：提交 Decision；
+- 只缺一个明确、现实的新 Candidate 事件：提交该 Next Event 与 Valid Until；
+- 没有现实表达或下一事件：进入 No Trade 判断。
 
-1. 双向扫描是否完成，为什么选择当前 Opportunity？
-2. Context Permission 是否允许；Activation 已满足，还是由许可的条件 Trigger 完整执行？
-3. Entry、Stop 与 Targets 是否能追溯到 Price Map 或 Active Test？
-4. Candidate Outcome Probability、净 Reward、Risk、实质相关成本、剩余时间和管理是否形成正方程？
-5. Planned Risk、Size 和执行可靠性是否允许；多层、已有暴露或新增风险订单时，Risk Limit / Committed / Available 是否允许？
+### 8. Decision｜当前是否建立新的交易表达？
 
-| 输出 | 动作 | 必须明确 |
+**检查与唯一输出**
+
+| 当前事实 | Decision | 动作 |
 | --- | --- | --- |
-| Candidate 完整、方程成立、账户可靠表达 | `EXECUTE` | 冻结 Trade Plan，进入 Ready to Submit；尚未产生订单意图 |
-| 当前问题值得跟踪，但缺 Next / Activation 或当前表达 | `WAIT` | 下一可观察事实与 Expiry |
-| 当前没有现实 Candidate 或值得等待的事件 | `NO_TRADE` | 排除原因；新 Reframe 后再评 |
+| 有完整 Candidate，双向扫描、Permission、风险与方程均成立 | `EXECUTE` | 冻结一份 Trade Plan，进入 Ready to Submit |
+| 没有 Candidate，但有明确且未过期的 Next Event | `WAIT` | 不保留隐藏 Candidate；事件发生或到期后重算 |
+| 既无 Candidate，也无值得等待的事件 | `NO_TRADE` | 结束当前交易表达；新的相关市场事件、问题或 Reframe 后再评 |
 
-已经提交并等待成交的 Stop / Limit 属于 Working Order，不是 Wait。
+Decision 一次只建立一份单侧交易表达。双向 Breakout Mode 等待实际突破、失败或其他预先声明的事件，再以新的判断时点重读双向机会并构造 Candidate。已经提交的 Stop / Limit 属于 Working Order，不是 Wait。
 
 ## 四、增量更新｜只沿变化传播
 
 普通新 K 线、价格事件、Session / 时间边界或计划条件发生时只问：
 
 ```text
-1. Frame、Safety 或账户事实发生边界变化了吗？
-2. Price Map / Current Move / Active Test 出现了什么新事实？
-3. Context / Long / Short Opportunity / Likely Sequence 因此改变了吗？
-4. Candidate / Trade Plan / Risk / Action 因此改变了吗？
+1. Safety 或 Frame 边界改变了吗？
+2. 新 Region 是否形成或获得职责；Price Map / Current Move / Active Test 改变了吗？
+3. Context、Long / Short Opportunity 或 Likely Sequence 改变了吗？
+4. Candidate、Trade Plan、风险、保护或动作改变了吗？
 ```
 
-全为“否”：`NO_CHANGE`，继续观察、继续工作原订单或按计划持仓，不产生人工记录。
+全为“否”：`NO_CHANGE`，继续观察、继续工作原订单或按计划持仓，不记录。
 
-任一项为“是”：从最早改变的步骤重开，沿因果链向后传播；后续输出未变即停止。价格事件用[市场决策事件导航](market_decision_events.md)定位最小重开范围；Frame / Session 事件从 Frame 开始；计划、订单、仓位、保护或风险变化直接进入对应状态路由。
+任一项为“是”：从最早改变的步骤重开，沿因果链向后传播；下游输出未变即停止。价格事件用[市场决策事件导航](market_decision_events.md)定位起点；Frame / Session 事件从 Frame 开始；订单、仓位、保护或风险变化直接进入账户状态分派。
 
-只有交易周期、主导组织、Control、当前区域问题或 Opportunity Set 被替代时，才重做完整 Market Read。常见 EMA 首次测试、surprise、breakout pullback、第二/第三次测试、三推、ii / ioi、MTR 和目标到达只是通用路由的快捷卡，不建立新状态。
+只有 Trading Timeframe、主导 Context、当前价格问题或 Opportunity Set 被替代时，才重做完整 Market Read。EMA 首次测试、surprise、breakout pullback、第二/第三次测试、三推、ii/ioi、MTR 和目标到达只是通用路由快捷卡，不建立新状态。
 
-## 五、账户状态路由
+## 五、账户状态分派
 
-完整订单、成交、保护和复盘语义由[执行、持仓与复盘](execution_management_and_review.md)拥有。以下状态入口引用完整 Checklist 已确认的上游结论，并只检查当前账户状态需要解决的问题。
+Safety Guard 优先抢占；安全确认后，以下条件独立判断，所有成立的入口并行运行：
+
+```text
+账户、连接、回执或保护不可靠
+→ Safety Exception
+
+安全确认后：
+├─ 存在实际 Exposure → Open Position
+├─ 存在未提交且仍有效的 Entry / Add 执行意图 → Ready to Submit
+├─ 存在 Working / Cancel Pending 订单 → Working Order
+├─ 存在待执行的 Reduce / Exit 动作或相关订单，且仍有 Exposure → Exiting
+├─ 交易或路径刚结束，盘中终结确认 / Review 交接尚未完成 → Closed / Review
+└─ 以上全部不成立，且没有待完成的盘中关闭动作 → Flat / Observing
+```
+
+以下入口只规定盘中必须检查什么和下一步去哪里；Order Purpose、Order State、Exposure、Protection 及其完整转换由[执行、持仓与复盘](execution_management_and_review.md)唯一规定。
 
 ### Flat / Observing
 
-- 当前完整 Market Read 是否仍有效，还是需要 Reframe？
-- Long 与 Short 分别准备完成什么，下一事实是什么？
-- 当前是 `NO_CHANGE`、需要跨事件保存的 `WAIT`，还是已经产生并完成 Trade Gate 的 Candidate？
-
-没有 Candidate 就继续观察；Candidate 先经过 Trade Gate，只有 `EXECUTE` 才冻结 Trade Plan 并进入 Ready to Submit。
+- 当前 Market Read 是否仍有效；若失效，从 Frame 重开；
+- Long / Short 各自的 Side Scan Result 和下一事实是什么；
+- 没有 Candidate 就继续观察；只有 Decision 输出 `EXECUTE` 才进入 Ready。
 
 ### Ready to Submit
 
-- 所选 Opportunity、Activation、Invalidation、Targets、周期和时间范围是否仍有效？
-- Safety、实际仓位、全部工作订单、保护和总 Stop 风险是否仍允许新增风险？
-- Entry 使用 Stop、Limit 还是 Market / close；方向、价格规则、数量、有效期与取消条件是否正确？
-- Planned Stop、Targets、Size、风险和方程是否仍按当前允许成交范围成立？
-- 成交后保护怎样覆盖实际数量；部分成交、拒单、回执不明或连接异常怎样处理？
+```text
+Intent Purpose：ENTRY / ADD
+Plan Validity：VALID / CHANGED / EXPIRED / ABANDONED
+Account / Risk：CONFIRMED / NOT_ALLOWED / UNKNOWN
+Order Parameters：CONFIRMED / CHANGED
+Cumulative Fills → Remaining Intended Quantity：CONFIRMED / ZERO / INCONSISTENT
+Protection on Fill：READY / UNRESOLVED
+```
 
-关键输入改变时不提交，返回 Trade Construction。提交订单只产生订单意图，并立即进入订单生命周期；状态未确认时按 `Submitted Unknown` 核对账户且不重复提交，确认工作后才是 `Working`。
+Remaining Intended Quantity 由原计划数量和平台累计成交直接计算，只需核对，不新增人工记录对象。
+
+- 全部有效且确认、剩余计划数量大于零：只提交扣除本执行意图累计成交后的剩余数量，立即进入订单生命周期；已有 Exposure 时继续并行运行 Open Position；
+- 剩余计划数量为零：关闭当前执行意图并按真实状态重新分派；数量不一致：不提交，先按原计划数量、累计成交、当前 Exposure 与风险修正；
+- Entry 意图的 Market Read、Opportunity、Candidate 或订单参数改变：从最早变化步骤重开，经 Trade Construction 与 Decision 形成新计划；
+- Add 意图的原 Opportunity、Add 条件、风险或订单参数改变：关闭旧意图并返回 Open Position / Add Gate；只有计划外的新 Opportunity 才重新经过 Candidate 与 Decision；
+- 到期或主动放弃且未提交：关闭当前执行意图，再按真实 Exposure、订单和其他有效意图重新分派，不固定返回 Flat；
+- 提交状态不明：进入 `Submitted Unknown`，核对账户且不重复提交。
 
 ### Working Order
 
-- 实际 Order State、仍可能增加的 Exposure、Risk Committed 与总 Stop 风险是什么？
-- Opportunity、允许成交范围、方程、有效期和取消条件仍成立吗？
-- 如果现在成交，Active Protective Stop 能否按计划覆盖实际数量？
+```text
+订单用途、经纪商状态、实际成交量和剩余数量是什么？
+实际 Exposure 与 Active Protective Stop 是否一致？
+若是 Entry / Add：Opportunity、Entry Validity 和原方程是否仍成立？
+若是 Reduce / Exit：退出动作是否仍有效，剩余 Exposure 是否仍需处理？
+现在应保持、撤单、补足保护，还是按成交后的真实状态重新分派？
+```
 
-继续有效则保持工作；Opportunity 失效、过期或成交范围外方程不再成立时撤单并确认。部分成交、撤单中或 OCO 另一侧未确认取消时，按所有仍可能成交的最坏暴露处理；图表触发、撤单请求和账户确认不是同一事实。
+- 回执不明或 Cancel Pending：核对账户，不重复提交，按订单仍可能成交计算暴露；
+- Entry / Add 的 Opportunity 不再 `ACTIVE`、Entry Validity 结束或方程失效：撤单并等待确认；
+- Entry / Add 被拒、取消或到期：关闭该订单；执行意图仍有效则重新进入 Ready，否则按真实状态重新分派；
+- Reduce / Exit 被拒、取消或到期且仍有 Exposure：维持实际保护并进入 Exiting；退出动作仍有效则修复或重新提交，无法可靠执行或保护不足则进入 Safety Exception；
+- 发生 Partial / Filled：按订单用途和剩余 Exposure 进入 Open Position、继续 Working / Exiting，或在仓位归零并确认残留状态后进入 Closed / Review；具体转换只引用[订单生命周期](execution_management_and_review.md#二订单生命周期)。
 
 ### Open Position
 
-每个相关事件按以下顺序检查：
+每个相关事件依次回答：
 
 ```text
 1. 实际数量、工作订单与 Active Protective Stop 一致吗？
-2. Price Map / Current Move / Active Test 出现了什么新事实？
-3. 所选 Opportunity 增强、保持、削弱、失效、完成还是过期？
-4. 竞争 Opportunity 只是出现或增强，还是已经获得接受？
-5. Target、Invalidation、Active Stop、时间或原计划条件发生了吗？
-6. 是否形成了能容纳管理周期正常波动并降低风险的新保护锚点？
-7. 当前动作：Hold / Stop Adding / Reduce / Trail / Exit？
+2. Price Map / Current Move / Active Test 出现什么新事实？
+3. Selected Lifecycle：ACTIVE / ACHIEVED / INVALIDATED / EXPIRED /
+                       SUPERSEDED / SEQUENCE_UNKNOWN
+   Active Update（仅 ACTIVE）：STRENGTHENED / UNCHANGED / WEAKENED
+4. Competing Opportunity：NONE / PRESENT
+   Competing Acceptance：NOT_ESTABLISHED / PENDING / ACCEPTED
+5. Target、Stop、时间或原计划条件发生了吗？
+6. 是否形成能容纳正常波动并降低风险的新保护锚点？
+7. Action：HOLD / STOP_ADDING / REDUCE / TRAIL / EXIT
 ```
 
-| 所选路径与竞争路径 | 允许动作 |
+| 所选与竞争路径 | 允许动作 |
 | --- | --- |
-| 所选 Opportunity 增强或保持；竞争路径仍弱或仅出现 | 按计划持有；计划内 Add 运行 Add Gate，计划外新增风险构造新 Candidate |
-| 所选 Opportunity 削弱但未失效；竞争路径增强但未接受 | Hold、Stop Adding，或执行预写减仓 / 目标收缩 |
-| Structural Invalidation 或强反向动量已经否定所选路径 | 取消剩余新增风险并主动退出；归零前维持保护 |
+| 所选增强或不变；竞争仍弱或仅出现 | 按计划持有；计划内 Add 运行 Add Gate |
+| 所选削弱但未失效；竞争增强但未接受 | Hold、Stop Adding，或执行预写 Reduce / 目标收缩 |
+| Structural Invalidation 或强反向动量否定所选路径 | 取消新增风险并主动退出；归零前维持保护 |
 | 竞争 Opportunity 获得接受并否定所选路径 | 先处理原仓位；反向交易重新构造 Candidate |
-| Target、Active Stop、时间或账户条件发生 | 按 Outcome Criterion 处理并核对实际剩余仓位 |
+| `SUPERSEDED` | 停止新增风险并退出；新路径只在归零后重新构造交易表达 |
+| `ACHIEVED / EXPIRED / SEQUENCE_UNKNOWN`，或 Target、Active Stop、时间或账户条件发生 | 按 Outcome Criterion 处理并核对剩余仓位；顺序未知时不选择有利解释 |
 
-退出原方向不提供反向交易许可。Trapped traders 和预期退出压力只解释已发生的失败与跟随链。Trailing / Breakeven 只能使用已经形成、与管理 horizon 一致、能容纳正常波动并降低开放风险的新保护锚点；Stop amend / replace 以确认后的新价格和数量为准，确认后原保护由修改后的 Stop 直接取代。
+Trailing / Breakeven 只使用已经形成、与管理周期一致、能容纳正常波动并降低开放风险的新保护锚点。Stop amend / replace 以确认后的新价格和数量为准；确认后原保护由修改后的 Stop 直接取代。
 
-### Add Gate｜是否使用剩余风险？
+### Exiting｜减仓或退出是否真正完成？
 
-同一 Trade Plan 可以预留未使用风险。Add Gate 是冻结计划内新增层的短版 Trade Construction / Trade Gate，不是绕过风险门的授权；到达计划内价格改善区域或确认事件时运行：
+```text
+剩余 Exposure、退出订单状态和成交数量是什么？
+Active Protective Stop 是否覆盖尚未退出的真实数量？
+是否还有可能成交的订单或残留保护？
+```
+
+Reduce / Exit 请求不等于仓位已经减少。仍有 Exposure 时继续运行 Open Position，并按实际退出订单状态同时运行 Working Order；仓位归零后确认残留订单与保护的最终状态，才进入 Closed / Review。部分成交、回执不明和退出竞态的完整转换只引用[主动退出与退出订单](execution_management_and_review.md#主动退出与退出订单)。
+
+退出订单被拒、取消或到期但仍有 Exposure 时，先保持实际保护：退出动作仍有效就修复参数或重新提交；新事实使退出动作不再有效就返回 Open Position 重新判断；无法确认仓位、保护或可靠退出时进入 Safety Exception。
+
+### Add Gate｜是否使用计划内剩余风险？
 
 ```text
 原 Opportunity 仍有效，竞争路径尚未获得接受？
-→ Add 条件已发生，取消条件未发生？
-→ 当前使用 Limit 取得价格改善，还是用 Stop / Market 等待确认？
-→ 当前 Entry、共同或独立 Stop、Targets、时间与管理仍形成正方程？
-→ 当前 Risk Available 足以容纳按实际价格计算的新数量？
-→ ADD_TO_READY / HOLD RESERVE / CANCEL ADD
+→ Add 条件已发生，Cancel Add 未发生？
+→ 当前 Entry Method、共同/独立 Stop、Targets、时间与管理仍形成正方程？
+→ Risk Available 足以容纳按实际价格计算的新数量？
+→ ADD_TO_READY / HOLD_RESERVE / CANCEL_ADD
 ```
 
-`ADD_TO_READY` 只冻结本层的 Entry Method、价格规则、数量、Stop、触发依据和加仓后风险，并进入 Ready to Submit；实际提交仍由执行前复核负责。`HOLD RESERVE` 保持 Open Position，`CANCEL ADD` 撤销剩余额度的使用资格；已有 Working Add 需撤单并确认，确认前继续计入风险。Risk Limit、Initial Limit、Add Permission、Cancel Add 与 Stop Rule 属于冻结 Trade Plan；Risk Committed / Available 由 Execution State 根据实际仓位、仍可能增加暴露的订单和保护动态维护。剩余额度或 Trail 后释放的容量不构成加仓理由。
+`ADD_TO_READY` 只冻结本层 Entry、数量、Stop、触发依据和加仓后风险，再进入 Ready to Submit。剩余额度或 Trail 后释放的数值容量不构成加仓理由；计划外新增风险必须建立新 Candidate。
 
 ### Safety Exception
 
-- 真实净仓位、所有可能成交订单和最坏暴露是什么？
-- 保护、数据、连接、回执或账户事实哪里不一致？
-- 当前安全动作是核对、恢复保护、撤单、减仓还是退出？
-
-异常解除并重新确认实际状态前不新增风险。市场分析不能替代账户恢复。
+- 核对真实净仓位、所有可能成交订单、保护、最坏暴露和连接状态；
+- 只允许恢复保护、撤单、减仓或退出，不新增风险；
+- 异常解除后重新应用并行状态分派；原 Entry / Add 意图必须重新通过 Ready 检查，不能因异常前有效而自动提交；
+- 若 Market Read 已经过期，再从 Frame 重开。
 
 ### Closed / Review
 
-- 实际仓位已经归零，剩余工作订单与保护订单的最终状态都确认了吗？
-- 原 Opportunity 的 Market Result、计划表达的 Trade Outcome 和实际 Account Result 分别是什么？
-- 执行属于按计划、正常不确定结果，还是系统违规？
-- 哪一两项关键差异会改变后续计划、风险或规则样本；没有则记无？
-- 若进入概率校准，条件、目标事件、周期、horizon 和判断时点是否与样本定义一致？
+- 先确认仓位归零，剩余工作订单和保护订单最终状态明确；
+- 分开 Market Result、Trade Outcome 与 Account Result；
+- 判断按计划、正常不确定结果或系统违规；
+- 只保存会改变后续计划、风险或规则样本的一两项关键差异。
 
-输出最小 Review，并关闭当前 Trade Plan / Candidate。关联 Opportunity 按自身事实更新为 `ACHIEVED / INVALIDATED / EXPIRED / SUPERSEDED / SEQUENCE_UNKNOWN`；若仍为 `ACTIVE`，返回 Flat / Observing，并使用新的判断时点决定是否形成另一 Candidate。只有异常、违规、多分支、顺序不明或规则校准样本才展开完整 Review Record；复盘不改写原始计划和当时可见事实。
+Closed / Review 可以在仓位已归零但残留订单仍待确认时与 Working Order 并行。盘中只需完成终结确认、保存必要终结事实，并把需要深入分析的问题交给盘后 Review；该交接完成后即可返回 Flat / Observing，盘后详细复盘不阻止继续观察或下一笔交易。关联 Opportunity 独立更新为 `ACTIVE / ACHIEVED / INVALIDATED / EXPIRED / SUPERSEDED / SEQUENCE_UNKNOWN`；若仍 Active 就继续当前 Market Read，否则等待新问题或在 Context 过期时从 Frame 重开。
 
 ## 六、必要记录
 
@@ -343,42 +450,39 @@ Structural Invalidation 属于 Opportunity；Planned Protective Stop 是 Candida
 | 事件 | 保存内容 |
 | --- | --- |
 | 普通观察，机会、风险和动作未变 | 无 |
-| 新市场问题或 Opportunity 实质改变下一观察 | 更新 Next / Expiry；需要跨事件保留时合入 Decision Record |
+| 新市场问题或 Side Scan 实质改变下一观察 | 更新所引用的 Next Event / 对应 Expiry；需要跨事件保留时合入 Decision Record |
 | 需要跨事件跟踪的 Wait | 最小 Decision Record |
-| 形成 Execute / 选中 Candidate | 直接冻结 Trade Plan |
-| 普通扫描得到 No Trade | 无；只有改变观察计划、风险或规则样本时记原因 |
+| Execute / 选中 Candidate | 冻结 Trade Plan |
+| 普通 No Trade | 无；只有改变观察计划、风险或规则样本时记原因 |
 | 实质修改计划、仓位、保护或风险 | 在原 Trade Plan 追加 Delta |
 | 成交、拒单、部分成交、撤单确认、异常、减仓或退出 | 平台原始事实 + 必要差异 |
 | Opportunity 或交易结束 | 终结事实；盘后复盘 |
 
 ```text
-Decision Record（跨事件 Wait；重要 No Trade 按需使用）
-- 时点 + 品种 / 周期
-- 决定：Wait / No Trade
-- Market Read：Context + 当前区域 / 测试（一短句）
-- Long / Short 结论 + 必要的 Likely Sequence
-- 边界：Next / Activation / 最强反方 / Invalidation / Expiry
+Decision Record
+- 时点 + 品种 / Trading Timeframe
+- Long / Short 结论（一短句）
+- WAIT 的 Next Event + Valid Until
+- 重要 NO_TRADE 的排除原因（普通扫描不记录）
 
-Trade Plan（Execute）
-- 时点 + Market Read + Long / Short 结论
-- 所选 Opportunity：Direction / Role / Horizon + Objective / Target
-- Against / Invalidation / Expiry
-- Entry Method + Entry + Planned Stop + Target + Size
-- Candidate Outcome Probability / 区间 + 净 Reward:Risk
-- 直接使用条件规则时附目标事件、Market Probability / Rule Match
-- 多层计划另加 Risk Limit / Initial Limit / Add 与取消条件
+Trade Plan
+- 时点 + 所选路径及最强反方（一短句）
+- Entry Method / Price + Entry Validity
+- Planned Stop + Target + Size / Risk
+- Invalidation / Cancel Condition
+- 多层计划另加 Risk Limit / Initial Limit / Add / Cancel Add / Stop Rule
 ```
 
-Wait 后形成 Execute 时，保留原 Wait 时点并追加新的判断时点，再升级为 Trade Plan。复杂多层、多目标、跨 Session、OCO 或异常计划才展开完整字段。平台已可靠保存的订单、成交和费用不人工重抄。
+概率或 Rule Match 只有在它们实质决定当前方程或用于样本校准时保存。平台已可靠保存的订单、成交和费用不人工重抄；完整字段只在多层、多目标、跨 Session、自动化或异常计划中按需展开。
 
 ## 七、运行不变量
 
-- Context 先继承，后由 Price Map、Current Move 与 Active Test 确认、转换或重构。
-- Market Read 先固定位置与连续价格事实，再分别构造 Long / Short Opportunity；双向扫描完成后才构造 Candidate。
-- Price Map 唯一登记区域；Opportunity 为区域分配 Support / Resistance、Entry Area、Obstacle、Magnet、Target 与 Invalidation Reference 角色。
-- Pattern 名称只解释 Price Process；新位置、新测试、新反应和 follow-through 才提供事实增量，同一价格链不重复计数。
-- Correction、reversal、continuation 与 range return 按 objective 和 horizon 分开，并可按 Likely Sequence 先后发生。
-- Market Targets 与 Structural Invalidation 属于 Opportunity；Trigger、Entry、Planned Protective Stop 和 Candidate Targets 属于 Candidate；Active Protective Stop 属于 Execution State。
-- Market Probability 与 Candidate Outcome Probability 分开；Trader's Equation 只使用与当前 Entry、Stop、退出、成本、时间和管理一致的结果概率。
-- 认知变化不自动产生交易动作；新 Opportunity 或计划外新增风险重新经过完整 Trade Construction / Trade Gate，冻结计划内 Add 经过 Add Gate；两者都进入 Ready to Submit 并重新确认 Safety。
-- 普通未变事件不记录；Wait、No Trade、未成交机会、实际交易和规则样本分别闭环。
+- Context 先继承，后由 Price Map、Current Move 与 Active Test 确认或重构；首次读取直接初始化。
+- Market Read 先固定位置与连续价格事实，再分别扫描 Long / Short；双向完成后才构造 Candidate。
+- Price Map 唯一登记 Region；Opportunity 和 Candidate 通过引用为它分配角色，不维护平行位置清单。
+- Pattern 名称只解释 Price Process；新位置、新测试、新反应和 follow-through 才提供事实增量。
+- Correction、reversal、continuation 与 range return 按 objective 和 Outcome Horizon 分开，并可按 Likely Sequence 先后发生。
+- Opportunity 描述市场路径；Candidate 描述当前风险表达；Decision 描述动作；Execution 只接受真实账户事实。
+- WAIT 必须有 Next Event + Valid Until（内部对应 Decision Expiry），不保存隐藏 Candidate；Working Order 不是 Wait。
+- Ready、Working、Open 与 Exiting 按事实并行适用；任何订单终态先关闭该订单事实，再按剩余 Exposure、其他订单和有效执行意图重新分派。
+- 持仓退出不提供反向许可；反向风险始终重新经过 Opportunity、Candidate 和 Decision。

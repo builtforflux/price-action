@@ -4,7 +4,7 @@
 
 本页只保存可匹配的条件概率模板、背景、规则替代顺序和隔离项。模板不是可以直接抄入计划的百分比；市场结构、目标生成和 Pattern 关系由[Market Read 与 Opportunity](market_read_and_opportunities.md)负责，当前实例化和实时决策由[交易系统总流程](overall_flow.md)与[交易决策与计划](decision_and_plan.md)负责。
 
-规则实例化是内部判断边界，不是 scalp 交易者的逐项填表任务。实盘只需快速确认当前目标、周期、horizon 和条件与所用规则一致，并检查是否已有更具体的新条件替代它。只有 Rule Match 本身成为关键决定依据、需要复盘或参与样本校准时，才保存必要字段。
+规则实例化是内部判断边界，不是 scalp 交易者的逐项填表任务。实盘只需快速确认当前目标、周期、Outcome Horizon 和条件与所用规则一致，并检查是否已有更具体的新条件替代它。只有 Rule Match 本身成为关键决定依据、需要复盘或参与样本校准时，才保存必要字段。
 
 ## 一、规则模板与当前匹配
 
@@ -15,21 +15,21 @@
 已经成立的 Market Read 事实
 当前可观察的目标事件与到达口径
 当前观察周期
-当前时间范围 / horizon
+当前 Outcome Horizon
 判断时点
 近似概率或概率语言
 增强、削弱、替代和失效条件
 与同源证据的合并关系
 ```
 
-实例化结果称为当前 Rule Match。缺少目标、分母、周期、时间范围或判断时点的模板不能进入 Trader's Equation；不同目标或 horizon 的模板也不能互相补字段。
+实例化结果称为当前 Rule Match。缺少目标、分母、周期、Outcome Horizon 或判断时点的模板不能进入 Trader's Equation；不同目标或 Outcome Horizon 的模板也不能互相补字段。
 
 ## 二、规则状态
 
 | 状态 | 含义 | 能否进入当前路径或方程 |
 | --- | --- | --- |
 | 候选模板 | 保存相对条件、目标关系和近似概率 | 完成当前实例化后才可以 |
-| 可运行匹配 | 当前条件、目标、周期、horizon 和时点完整，且未被更具体规则替代 | 可以 |
+| 可运行匹配 | 当前条件、目标、周期、Outcome Horizon 和时点完整，且未被更具体规则替代 | 可以 |
 | 条件更新 | 同一目标在新时点出现更具体条件 | 使用新规则替代旧规则 |
 | 背景 | 描述状态频率、语言或长期倾向，不是当前交易结果 | 只进入 Context |
 | 隔离 | 分母、目标、数学或来源口径不清 | 不可以 |
@@ -46,11 +46,11 @@
 → 当前判断时点的目标先于失败结果估计
 ```
 
-匹配顺序应用于当前已经实例化的规则。只有目标事件、周期和 horizon 相同，更具体条件才替代一般规则。不同目标事件可以同时成立，但不相加、不相乘，也不共同进入一份 Trade Plan。
+匹配顺序应用于当前已经实例化的规则。只有目标事件、周期和 Outcome Horizon 相同，更具体条件才替代一般规则。不同目标事件可以同时成立，但不相加、不相乘，也不共同进入一份 Trade Plan。
 
 理由负责更新 Opportunity 支持程度与 Activation；条件规则提供 Market Probability。H2、Double Bottom、Second Entry 等同源名称不各自提供概率。
 
-Long / Short Opportunity 分别匹配各自目标。双方目标、horizon 或判断时点不同时，其概率不要求互补，也不能用 `1 - P(向上目标事件)` 自动生成向下目标概率。系统先独立匹配 Market Probability；Candidate 再根据 Trigger、Entry、Stop、Targets、管理和成本形成 Candidate Outcome Probability 或诚实区间。
+Long / Short Opportunity 分别匹配各自目标。双方目标、Outcome Horizon 或判断时点不同时，其概率不要求互补，也不能用 `1 - P(向上目标事件)` 自动生成向下目标概率。系统先独立匹配 Market Probability；Candidate 再根据 Trigger、Entry、Stop、Targets、管理和成本形成 Candidate Outcome Probability 或诚实区间。
 
 ## 四、概率语言与交易数学
 
@@ -90,7 +90,7 @@ Long / Short Opportunity 分别匹配各自目标。双方目标、horizon 或�
 | Channel 向原趋势方向突破外轨 | 最高适用周期约五根内失败 | 约 `75%` | 强跟随出现后按新 breakout 更新 |
 | Trending Trading Range 形成新区间 | 回测并与前一区间重叠 | 约 `60%` | 描述局部公平区域重叠 |
 
-Rising Channel 当前恢复旧高约 60%，与完整生命周期最终向下突破趋势线约 75% 可以同时成立；它们使用不同 horizon，不构成当前多空交易概率冲突。
+Rising Channel 当前恢复旧高约 60%，与完整生命周期最终向下突破趋势线约 75% 可以同时成立；它们使用不同 Outcome Horizon，不构成当前多空交易概率冲突。
 
 普通 Flag 的统一 40% 说法因 Flag 范围过宽，不进入运行。实际路径按当前 Trend、Channel、Wedge 或 Range 条件匹配。
 
@@ -123,7 +123,7 @@ Candidate measuring gap、potential exhaustion 和 climax bar 在结果出现前
 | 已成立条件 | 目标事件 | 近似概率 | 状态与限制 |
 | --- | --- | --- | --- |
 | 第一根 / 前 7 根 / 第一小时 / 前 90 分钟 | 已形成当日一个极值 | 约 `20 / 50 / 70 / 90%` | 背景；窗口嵌套，不相加 |
-| 初始 opening swing 已形成 | 初始 swing 发生反转 | 约 `50%` | 候选模板；仍需定义 swing、horizon、结构、目标和 Trigger |
+| 初始 opening swing 已形成 | 初始 swing 发生反转 | 约 `50%` | 候选模板；仍需定义 swing、Outcome Horizon、结构、目标和 Trigger |
 | 前两小时 / 日中 / 最后两小时 | 启动当日 major swing | 约 `90 / 50 / 80%` | 背景；窗口可重叠，不是互斥分布 |
 | 约 18 根 opening range 后出现获接受突破 | 对侧极值保持不被测试 | 约 `90%` | 候选模板；仅适用来源市场与周期，普通越界不适用 |
 | 开盘前 90 分钟 | 测试事前标出的 support / resistance | 约 `80%` | 候选模板；仅适用来源市场与周期，不得事后挑价位 |
@@ -136,7 +136,7 @@ Candidate measuring gap、potential exhaustion 和 climax bar 在结果出现前
 | 表面冲突 | 实际关系 | 正确切换 |
 | --- | --- | --- |
 | 区间 breakout attempt 约 80% 失败；强突破约 60% 有第二腿 | 观察时点和突破质量不同 | 普通 attempt → 获接受后切换第二腿规则 |
-| Channel 最终约 75% 反向突破；当前顺势回调约 60% 测试旧极值 | 长期生命周期与短期内部腿不同 | 分别保存 horizon |
+| Channel 最终约 75% 反向突破；当前顺势回调约 60% 测试旧极值 | 长期生命周期与短期内部腿不同 | 分别保存 Outcome Horizon |
 | Tight Channel 第一次逆势约 70% 只是 minor；Channel 最终约 75% 反向突破 | 第一次信号近期结果与最终寿命不同 | 先按 minor；反向接受后更新结构 |
 | Wedge 突破前 75/25；低概率方向已经突破后约 50/50 | 25% 事件已发生，条件分母改变 | 突破后重置旧先验 |
 | Channel 边界 70/30；同向外轨突破约 75% 失败 | 局部边界反应与越界后的失败事件不同 | 以当前已经发生的事件选规则 |
@@ -170,7 +170,7 @@ Candidate measuring gap、potential exhaustion 和 climax bar 在结果出现前
 1. 回到 [正式来源台账](../reference/official_sources.md)和具体逐讲材料核对原条件；
 2. 检查[重复矩阵](../reference/course/repetition_matrix.md)是否只是同源、镜像或低增量重复；
 3. 检查[边界与冲突](../reference/course/boundaries_and_conflicts.md)是否存在分母、数学或翻译问题；
-4. 明确它替代哪条相同目标、周期和 horizon 的旧规则；
+4. 明确它替代哪条相同目标、周期和 Outcome Horizon 的旧规则；
 5. 若来自内部连续样本，登记样本定义、采集区间和适用市场，不冒充 Brooks 通用规则。
 
 规则修订必须登记生效时间，并说明替代、缩小或隔离了什么条件。单笔实盘结果不能直接改变本台账；条件定义改变时，新旧样本不得静默合并，后来的修订也不能回写历史 Decision Record / Trade Plan 使用的规则。

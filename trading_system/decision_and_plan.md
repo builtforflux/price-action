@@ -2,7 +2,7 @@
 
 > **状态：Trading System / Decision Contract**
 
-本页规定怎样应用 Context Permission，把完成双向扫描且具备当前表达资格的 Opportunity 变成 `Trade Candidates`：先在 Trade Construction 中确定判断时点、Entry Method、Planned Protective Stop、Targets 与 Size，再由 Trade Gate 比较完整风险交换，并把被选 Candidate 冻结为 `Trade Plan`。
+本页规定怎样应用 Context Permission，把完成双向扫描且具备当前表达资格的 Opportunity 变成 `Trade Candidates`，以及怎样由唯一 `Decision` 根据完整 Candidate 或下一事件输出 `EXECUTE / WAIT / NO_TRADE`。Trade Construction 确定判断时点、Entry Method、Planned Protective Stop、Targets 与 Size；只有 `EXECUTE` 才把 Candidate 冻结为 `Trade Plan`。
 
 本页首先是完整的内部决策契约，不是盘中默认表单。交易者必须在承担风险前明确所有会改变风险或动作的输入，但只按[必要记录](overall_flow.md#六必要记录)保存最小决策信息；其余内容可以观察、心中确认或由工具自动计算。
 
@@ -11,11 +11,11 @@
 ```text
 Market Read
 → Opportunity Set：分别构造现实的多空机会
-→ Opportunity qualification：目标、Activation rule、Invalidation、horizon 与市场目标概率完整
+→ Opportunity qualification：目标、Activation rule、Invalidation、Outcome Horizon 与市场目标概率完整
 → Context Permission：当前市场是否允许这种表达
 → Trade Construction：为当前允许且可表达的少数机会构造判断时点、Trigger、Entry Method、Planned Stop、Targets 与 Size
-→ Trade Gate：比较交易结果概率 / Reward / Risk / Cost / Time / Management
-→ 执行 / 等待 / 不交易
+→ Decision：完整 Candidate / 明确下一事件 / 两者皆无
+→ Execute / Wait / No Trade
 ```
 
 Opportunity 是“市场可能怎样走”；Candidate 是“现在怎样承担风险”。一个 Opportunity 可以在不同判断时点产生不同 Candidate，例如强突破后的 close entry、等待 follow-through、或回调后的 H1/H2。目标必须先于 Entry；不能先看到触发，再寻找远端目标修复 reward/risk。
@@ -24,18 +24,18 @@ Opportunity 是“市场可能怎样走”；Candidate 是“现在怎样承担�
 
 Opportunity 进入交易构造前必须具备：
 
-- Direction、Role 与 Horizon 清楚；
+- Direction、Role 与 Outcome Horizon 清楚；
 - 一个可观察的 Objective 和 Market Outcome Criterion；
 - 来自 Price Map 或事前固定投射的 Market Targets；
-- 去重后的理由链，以及已经发生与下一步需要发生的价格事实；
+- `Support / Already`：去重后的已发生价格事实链；
 - 明确 Activation：哪些后续事实使机会具备交易表达资格；
 - 明确 Invalidation：哪些市场事实真正否定机会；
-- Support / Resistance、Potential Entry Area、Obstacle、Magnet、Targets 与 Invalidation Reference 的 Price Region Roles；
-- 当前最强反方事实或竞争 Opportunity；
-- 过期条件；
-- 与 Objective、周期、horizon 和时点一致的 Market Probability / Rule Match。
+- 所有 Support / Resistance、Potential Entry Area、Obstacle、Magnet、Targets 与 Invalidation Reference 直接引用 Price Map 中唯一登记的 Region；
+- `Counterevidence`：尚未由完整对手 Opportunity 表达的最强反方价格事实；没有则 `NONE`；
+- `Opportunity Expiry`：当前 Objective 在 Outcome Horizon 内仍有意义的最迟边界；
+- 与 Objective、周期、Outcome Horizon 和时点一致的 Market Probability / Rule Match。
 
-缺少 Objective、Invalidation 或 horizon 时仍是未解决的 Market Read，不伪造 Opportunity。Market Read 未解决、Opportunity 尚未 Activation，或当前没有值得承担的 Candidate 时，都可以输出 `Wait`；只说明下一事实与过期条件。
+缺少 Objective、Invalidation 或 Outcome Horizon 时不伪造 Opportunity。双向扫描只有 `OPPORTUNITY / WATCH / EXCLUDED` 三种侧面结果：WATCH 保存 Next Event 与 Expiry，EXCLUDED 保存排除原因；这些结果与 Candidate 一起进入 Decision，由 Decision 唯一输出 `WAIT / NO_TRADE / EXECUTE`。
 
 双向考虑不要求为每个方向制造 Candidate。明显没有现实目标、空间或时间的一侧只需说明排除原因；只有当前具有可观察 Entry、合理 Stop 和可计算结果的少数 Opportunity 进入 Candidate 计算。
 
@@ -43,15 +43,16 @@ Opportunity 进入交易构造前必须具备：
 Trade Candidate
 - Opportunity 引用与判断时点
 - Early / Confirmed 风险承担时点
+- Activation Status / Trigger 是否完整执行剩余 Activation
 - Trigger Boundary
-- Entry Method / Entry Price Rule / Expiry
+- Entry Method / Entry Price Rule / Entry Validity
 - 引用 Opportunity Invalidation / Planned Protective Stop
 - First Target / Main Target / Outcome Criterion
 - Candidate Outcome Probability / Reward / Risk / Cost / Time
 - Size / Management
 ```
 
-结构失效属于 Opportunity；Trigger、Entry 和实际保护性 Stop 属于 Candidate。Trade Plan 为审计冻结 Invalidation 的当时值，但不能重新定义它。Stop 的距离会决定这个机会是否值得、是否需要等待更好 Entry，却不是额外的方向证据。
+结构失效属于 Opportunity；Trigger、Entry 和实际保护性 Stop 属于 Candidate。Trade Plan 为审计冻结 Invalidation 的当时值，但不能重新定义它。Stop 的距离会决定这个机会是否值得、是否需要等待更好 Entry，却不是额外的方向证据。Long 与 Short Opportunity 天然互为竞争对象；Counterevidence 只保存尚未形成完整对手 Opportunity 的反方价格事实。
 
 ### Context Permission
 
@@ -91,7 +92,7 @@ Context 先决定当前表达的最低证据，而不是事后调整同一个 Pa
 
 独立同向证据通常增强路径，但概率仍由与目标事件匹配的条件规则提供，不能按理由数量制造百分比。一个强反方事实可以覆盖多个弱支持理由。
 
-比较机会时不得只选择裸概率较高或支持名称较多的一侧。相同 Objective、周期和 horizon 的 Opportunity 可以比较 Market Probability；不同 Objective 或 horizon 必须分别构造当前 Entry、Stop、Target、成本和结果方程，再比较完整风险交换。未决、超时、scratch 等结果意味着双向概率不必相加为 `100%`。
+比较机会时不得只选择裸概率较高或支持名称较多的一侧。相同 Objective、周期和 Outcome Horizon 的 Opportunity 可以比较 Market Probability；不同 Objective 或 Outcome Horizon 必须分别构造当前 Entry、Stop、Target、成本和结果方程，再比较完整风险交换。未决、超时、scratch 等结果意味着双向概率不必相加为 `100%`。
 
 ## 四、Trade Construction｜Trigger 与判断时点
 
@@ -110,7 +111,7 @@ Price Map 中唯一登记的 Region
 → Candidate 选择 Entry Method、Planned Protective Stop 与 First / Main Target
 ```
 
-Entry 可以引用 Price Region、signal-bar 高低或其他 Active Test 边界；Target 引用 Opportunity 已固定的区域或投射；Structural Invalidation 同时包含区域引用和否定路径的市场事件；Planned Protective Stop 引用当前 Candidate 的局部结构、正常波动与账户风险。无法说明价格来源的 Candidate 不进入 Trade Gate。
+Entry 可以引用 Price Region、signal-bar 高低或其他 Active Test 边界；Target 引用 Opportunity 已固定的区域或投射；Structural Invalidation 同时包含区域引用和否定路径的市场事件；Planned Protective Stop 引用当前 Candidate 的局部结构、正常波动与账户风险。无法说明价格来源的 Candidate 不能成为 Ready Candidate。
 
 ### Signal bar、chart entry 与 actual fill
 
@@ -155,7 +156,7 @@ Entry
 - 条件：
 - 方向：
 - 订单类型与价格规则：
-- 有效期：
+- Entry Validity：
 - 过期或取消条件：
 - 承担风险前必须看到：
 - 成交后预期看到：
@@ -198,9 +199,9 @@ Structural Invalidation 由 Opportunity 唯一定义，是新价格事实已经�
 
 Invalidation 可以在最远 Protective Stop 触发前要求主动退出。普通反色 K 线、正常 pullback 或短暂失望不自动构成 Invalidation。
 
-horizon 结束而目标和失效均未发生时，Opportunity 进入 `EXPIRED`，不记为市场事实否定。若目标和失效在同一观察 K 线内且顺序无法确认，记为 `SEQUENCE_UNKNOWN`；当前问题尚未解决则仍是 `ACTIVE`，两者不同。
+Outcome Horizon 结束而目标和失效均未发生时，Opportunity 进入 `EXPIRED`，不记为市场事实否定。若目标和失效在同一观察 K 线内且顺序无法确认，记为 `SEQUENCE_UNKNOWN`；当前问题尚未解决则仍是 `ACTIVE`，两者不同。
 
-账户预算、成本、Session 持仓限制、基础设施或执行条件可以淘汰当前 Candidate 或使 Trade Plan 失效，却不改变市场目标是否仍可能发生。Plan invalidation 要求停止新增风险、撤销对应工作订单或按计划收缩风险；只有市场事实或 horizon 才关闭 Opportunity。
+账户预算、成本、Session 持仓限制、基础设施或执行条件可以淘汰当前 Candidate 或使 Trade Plan 失效，却不改变市场目标是否仍可能发生。Plan invalidation 要求停止新增风险、撤销对应工作订单或按计划收缩风险；只有市场事实或 Outcome Horizon 才关闭 Opportunity。
 
 ### Planned 与 Active Protective Stop
 
@@ -253,7 +254,7 @@ Outcome Criterion 必须规定：
 匹配状态：可运行 / 仅背景 / 字段不完整 / 已被更具体条件替代
 ```
 
-只有 `可运行` 的当前匹配可以成为 Opportunity 的 Market Probability。模板若缺少当前目标、周期、horizon 或判断时点，只能提供 Context 或概率语言；不能用计划临时选择的远端目标补齐来源规则，也不能把相同方向但不同目标的规则当作更具体替代。
+只有 `可运行` 的当前匹配可以成为 Opportunity 的 Market Probability。模板若缺少当前目标、周期、Outcome Horizon 或判断时点，只能提供 Context 或概率语言；不能用计划临时选择的远端目标补齐来源规则，也不能把相同方向但不同目标的规则当作更具体替代。
 
 Brooks 教学中的 `likely / probably` 通常表示约 `60%+`，`unlikely` 表示约 `40%-`；它们是近似语言，不是经过统一样本校准的统计模型。
 
@@ -263,7 +264,7 @@ Brooks 教学中的 `likely / probably` 通常表示约 `60%+`，`unlikely` 表�
 
 ```text
 Market Probability
-= P(Opportunity Objective 在 horizon 内按口径发生 | 当前市场条件)
+= P(Opportunity Objective 在 Outcome Horizon 内按口径发生 | 当前市场条件)
 
 Candidate Outcome Probability
 = P(各交易结果 | Trigger、Entry、Stop、Targets、数量、时间与管理)
@@ -374,9 +375,9 @@ Scalp 与 Swing 不是交易类别，而是同一 Opportunity 的不同目标、
 
 | 情况 | 必须保存 |
 | --- | --- |
-| 单次 Entry、单一 Stop、单一 Target 的普通计划 | 时点；Long / Short 结论；所选 Opportunity 的 Direction / Role / Horizon、Objective / Target；最强反方、Invalidation 与 Expiry；Entry Method、Entry、Stop、Target、Size；Candidate Outcome Probability / 区间与净 Reward:Risk；直接使用条件规则时附目标事件、Market Probability / Rule Match |
+| 单次 Entry、单一 Stop、单一 Target 的普通计划 | 时点；所选路径与最强反方（一短句）；Entry Method / Price 与 Entry Validity；Planned Stop；Target；Size / Risk；Invalidation / Cancel Condition |
 | 多层入场、多目标、runner 或条件化管理 | 在最小计划上增加 Risk Limit、首层额度、Add / 取消条件和分支触发 |
-| 预挂条件单、OCO、跨 Session、异常处置或高执行风险 | 展开与实际风险相关的完整字段 |
+| 预挂条件单、跨 Session、异常处置或高执行风险 | 展开与实际风险相关的完整字段 |
 
 心中确认不能替代必须冻结的风险数字；反过来，与当前计划无关的备选字段不得为了填满模板而虚构。下列完整字段在语义上仍然有效：
 
@@ -384,28 +385,35 @@ Scalp 与 Swing 不是交易类别，而是同一 Opportunity 的不同目标、
 Trade Plan
 
 Decision
-- 判断时点与 Runtime Snapshot：
+- 判断时点：
+- Runtime Snapshot：
 - 当时适用规则：
 
 Selected Opportunity
-- Direction / Role / Horizon：
-- Objective 与到达口径：
+- Direction：
+- Role：
+- Outcome Horizon：
+- Objective：
+- Market Outcome Criterion：
 - Market Targets：
-- Why（去重后的价格链）：
-- Already → Next：
+- Support / Already（去重后的价格链）：
 - Activation：
-- Against：
-- Expiry / Structural Invalidation：
-- Price Map 引用：Support / Resistance / Potential Entry Area / Obstacles / Magnets / Targets / Invalidation Reference：
-- Market Probability / Rule Match：
+- Activation Status：
+- Counterevidence：
+- Opportunity Expiry：
+- Structural Invalidation：
+- 引用的 Price Map Regions 及其当前角色：
+- Market Probability：
+- Rule Match：
 
 Entry
-- 判断时点：Early / Confirmed：
+- Risk Timing：Early / Confirmed：
 - Trigger Boundary：
 - 条件：
 - Entry Method：Stop / Limit / Market-Close：
 - 订单价格规则：
-- 有效期与取消条件：
+- Entry Validity：
+- Cancel Condition：
 - 是否允许在 Trigger 前预先提交条件订单：
 - 承担风险前必须看到：
 - 成交后预期看到：
@@ -449,33 +457,41 @@ Trade Outcomes
 Trader's Equation：
 ```
 
-执行决定形成时保留当时适用的原始计划字段；首次成交对应这份计划。新事实可以改变当前路径评价和管理动作，却不能覆盖原目标、重选量度端点或把另一 horizon 的路径改写成原计划。计划内 Add 发生时只在 Execution State / Plan Delta 追加 Entry Method、价格、数量、Stop、加仓后 Risk Committed 和触发依据；出现原计划外的新 Opportunity、目标、失效或 Stop 时，新增风险才必须作为新 Candidate 评价。只有新计划本身复杂时才要求展开全部模板。
+执行决定形成时保留当时适用的原始计划字段；首次成交对应这份计划。新事实可以改变当前路径评价和管理动作，却不能覆盖原目标、重选量度端点或把另一 Outcome Horizon 的路径改写成原计划。计划内 Add 发生时只在 Execution State / Plan Delta 追加 Entry Method、价格、数量、Stop、加仓后 Risk Committed 和触发依据；出现原计划外的新 Opportunity、目标、失效或 Stop 时，新增风险才必须作为新 Candidate 评价。只有新计划本身复杂时才要求展开全部模板。
 
-## 十四、Trade Gate 与唯一决策
+## 十四、Decision 与唯一决定
 
-Trade Gate 只评价已经完成 Trade Construction 的 Candidate。进入唯一决策前确认：双向扫描完成，Context Permission 允许，Activation 已满足或由许可的条件 Trigger 完整执行，Entry / Stop / Targets 的价格来源可追溯，且当前结果概率、Reward、Risk、成本、时间、Size、管理和执行可靠性形成完整方程。
+Market Read、Opportunity Scan 和 Trade Construction 只产生继续所需的对象，或指出下一项现实事件。Decision 的输入是：
+
+```text
+Candidate：[COMPLETE / NONE]
+Next Event：[可观察事件 / NONE]
+Decision Expiry：[时间或替代事件 / N/A]
+```
+
+Decision 一次只接收一条 Candidate。Candidate 完整时可以得到 `EXECUTE`；没有 Candidate、但存在明确、现实且尚未过期的 Next Event 时得到 `WAIT`；两者都没有时得到 `NO_TRADE`。Decision 只拥有当前新交易表达；实际订单参数、保护激活和提交时账户状态由 Ready to Submit 复核，持仓动作与原计划内 Add 分别由 Open Position 和 Add Gate 处理。
 
 ### 执行
 
-路径、目标、概率、Entry、Invalidation、Stop、仓位、成本、时间、成交后预期和管理完整，交易方程成立。`EXECUTE` 冻结原始 Trade Plan 并进入 Ready to Submit，尚未产生订单意图；[执行前复核](execution_management_and_review.md#一执行前复核)确认关键输入仍成立后，才提交计划规定的订单。即时订单要求前置条件已经成立；预挂 Stop / Limit 要求计划明确允许在 Trigger 或成交前工作。提交仍不表示订单已被确认或账户已经成交。
+双向扫描完成，Context Permission 允许，Activation 已满足或由许可 Trigger 完整执行，Entry / Stop / Targets 可追溯，且概率、Reward、Risk、成本、时间、Size 与管理形成正方程时，完整 Candidate 得到 `EXECUTE`。Decision 冻结原始 Trade Plan 并进入 Ready to Submit，尚未产生订单意图；[执行前复核](execution_management_and_review.md#一执行前复核)确认关键输入仍成立后，才提交计划规定的订单。即时订单要求前置条件已经成立；预挂 Stop / Limit 要求计划明确允许在 Trigger 或成交前工作。提交仍不表示订单已被确认或账户已经成交。
 
 ### 等待
 
-等待可以发生在三个阶段：
+下一事件可以来自三个阶段：
 
 1. Market Read 尚未解决：等待区域接受、拒绝或 Control 变化；
 2. Opportunity 尚未 Activation：等待预先声明的 follow-through、第二次测试或结构破坏；
-3. Opportunity 已 Activation，但当前没有正方程：只有 Expiry 前存在明确、现实的更好价格或新 Candidate 事件时才等待。
+3. Opportunity 已 Activation，但当前没有正方程：只有 Decision Expiry 前存在明确、现实的更好价格或新 Candidate 事件时才等待。
 
-等待必须明确下一可观察事实和 Expiry。缺少现实下一事件，或空间、时间、风险已经排除当前机会时，输出 No Trade。只在 Wait 需要跨事件持续跟踪时，才保存下一事实和 Expiry。
+Decision 只有在没有 Candidate、但存在 `Next Event + Decision Expiry` 时才输出 Wait。缺少现实下一事件，或空间、时间、风险已经排除当前机会时，输出 No Trade。只在 Wait 需要跨事件持续跟踪时，才保存这两个边界。
 
 等待不保留隐藏的可执行计划。未来事实发生时使用新的判断时点重新计算；已经提交并等待成交的 Stop / Limit order 属于执行状态，不属于等待决定。
 
-Breakout Mode 等双向条件下可以分别形成相反方向的 Trade Plan，但每份计划仍只表达一条 Opportunity。若同时提交相反方向的工作订单，提交前必须定义 OCO 或独立取消关系，并把双边先后或同时成交的最坏暴露计入总风险。
+Decision 一次只冻结一份 Trade Plan。Breakout Mode 等双向条件先等待实际突破、失败或其他预先声明的事件，再以新的判断时点重读双向机会并构造一条单侧 Candidate。
 
 ### 不交易
 
-Opportunity 已失效，或现实 Target、剩余时间、风险、成本和执行条件使当前 horizon 内不存在值得跟踪的 Candidate。以后若发生新 Reframe，建立新的 Opportunity 与 Trade Plan，不复用旧计划。
+Market Read 没有现实问题、两侧均被排除、Opportunity 已失效，或现实 Target、剩余时间、风险、成本和执行条件使当前 Outcome Horizon 内既不存在 Candidate 也没有值得等待的事件。以后若出现新的相关市场事件、Active Test 或 Reframe，从最早发生变化的步骤重开，重新建立 Opportunity 与 Trade Plan，不复用旧计划。
 
 ### Decision Record 与 Trade Plan
 
@@ -486,13 +502,12 @@ Decision Record
 
 时点 + 品种/周期：
 决定：Wait / No Trade
-依据：Market Read + 所选 Opportunity 或排除原因（一短句）
-双向：Long / Short 结论 + Likely Sequence
-边界：Next / Activation + 最强反方 / Invalidation / Expiry
-下一条件：触发 / 过期 / 重构
+Long / Short 结论（一短句）：
+Wait：Next Event + Decision Expiry
+重要 No Trade：排除原因
 ```
 
-Execute 的最小保存字段直接使用本页上一节的普通 Trade Plan；复杂计划只按对应条件展开额外字段。若 Market Probability 与 Candidate Outcome Probability 因 Protective Stop、部分退出或管理方式而实质不同，Trade Plan 同时保存两者；否则不重复。Wait 后形成 Execute 时，在同一记录中保留原 Wait 时点与下一条件，追加新的判断时点并升级为 Trade Plan。执行阶段只在原 Trade Plan 追加实质改变的计划/风险 Delta 和必要执行事实。
+Execute 的最小保存字段直接使用本页上一节的普通 Trade Plan；复杂计划只按对应条件展开额外字段。概率或 Rule Match 只有在它们实质决定当前方程或用于样本校准时保存；若 Market Probability 与 Candidate Outcome Probability 因 Protective Stop、部分退出或管理方式而实质不同，复杂计划或复盘中再分别保留。Wait 后形成 Execute 时，保留原 Wait 时点与下一条件，追加新的判断时点并冻结 Trade Plan。执行阶段只在原 Trade Plan 追加实质改变的计划/风险 Delta 和必要执行事实。
 
 ## 十五、证据追溯
 
