@@ -19,7 +19,7 @@ Price Process
 - Role：当前 Down Leg 仍是空头 continuation attempt；多头只形成 reversal attempt
 - Pressure：Bear 仅略减；Bull 尚未建立，没有连续 bull bars，gap 未关闭；Bear Control 保持
 - Testing：空头是否仍能维持旧低下方控制
-- Next：强 bull breakout + follow-through，或空头恢复
+- Next Observation：强 bull breakout + follow-through，或空头恢复
 ```
 
 `三推 / Wedge / L3` 是第一段推进的视图，`H2 / Double Bottom` 是后续第二次测试的视图；它们可以是两条增量价格链，但形态名称本身不改变 Tight Channel Permission。
@@ -56,7 +56,7 @@ Price Process
 - Role：空头 continuation attempt，同时测试能否激活短期 Up / Correction
 - Pressure：Bear 相对上次减弱；Bull 在局部开始建立但尚待 signal / follow-through；Bear Control 减弱但未转移
 - Testing：旧低守住后先修正，还是空头恢复
-- Next：bull signal + follow-through，或 100 下方接受
+- Next Observation：bull signal + follow-through，或 100 下方接受
 ```
 
 | Opportunity | Objective | Activation | Invalidation | Market Probability |
@@ -84,12 +84,12 @@ Long Correction Candidate
 成熟区间上沿 `200` 被大 bull bar 突破并收于 `202`；区间高度事前固定，主要目标为 `206`。
 
 ```text
-Up / Breakout Opportunity
+Up / Balance Breakout Opportunity
 - Objective：206 measured-move area
-- Why：区间上破 + 强实体 / 强收盘（同一突破链）
+- Support / Already：区间上破 + 强实体 / 强收盘（同一突破链）
 - Activation：计划若允许早期风险，可由强收盘激活；保守表达等待 follow-through 或回踩守住
 - Invalidation：重新接受 200 下方并形成 bear follow-through
-- Market Probability：只匹配当前 breakout quality、objective 和 horizon
+- Market Probability：只匹配当前 breakout quality、objective 和 Outcome Horizon
 ```
 
 | 判断时点 | Candidate | 新信息 | 代价 |
@@ -123,7 +123,7 @@ Testing：多头能否恢复，还是回调扩大为 Range
 Context：Mature Trading Range + Breakout Mode
 Price Process：中部 Local Balance；Bull / Bear Pressure balanced
 Permission：中部不做 range fade；形态不提供方向
-Decision：WAIT for breakout + follow-through + hold
+Decision：WAIT；Next Event = breakout + follow-through + hold；Decision Expiry = 压缩边界被重画或当前 Session 时间不足
 ```
 
 同一 `ioi` 在两个 Context 中拥有不同 Role、目标和 Candidate Permission。系统没有切换“ioi 策略”，只更新外层作用和后续接受。
@@ -138,11 +138,11 @@ Now：gap 关闭并重新进入旧区域
 Role：原突破 failure test；当前 Down Leg 尝试成为 Range Return
 Pressure：Bull Separation 关闭、Bull Pressure 减弱；Bear Pressure 随重新进入和跟随建立
 Testing：旧区间是否重新获得接受
-Next：区间内 bear follow-through，或多头再次收复 300
+Next Observation：区间内 bear follow-through，或多头再次收复 300
 ```
 
-- 第一次回到 `300` 下只削弱 Up / Breakout；
-- 旧区间获得接受后，Up / Breakout 才失效；
+- 第一次回到 `300` 下只削弱 Up / Balance Breakout；
+- 旧区间获得接受后，Up / Balance Breakout 才失效；
 - `trapped breakout buyers` 解释潜在退出压力，但不在 gap 关闭、re-entry 和 bear follow-through 之外重复增加证据；
 - Down / Range Return 只有在自己的 Activation、目标、Invalidation 和 Context Permission 完整后才生成 Candidate。
 
@@ -164,8 +164,11 @@ Execution State 只更新订单、敞口和保护，不倒推 Opportunity、Mark
 ### A. 大阴线出现前｜继承外层上涨，但区间化增加
 
 ```text
-Frame / Context
-- 5m scalp / short swing
+Frame
+- Trading Timeframe：5m
+- 当前无额外 Session / Event Constraint
+
+Context
 - 外层 Bull Broad Channel / Trending Trading Range 倾向
 - 多头仍控制，但回调变深、双边逐渐可以获利
 
@@ -198,12 +201,17 @@ Current Move
 
 Active Test
 - Object：4958–4960 旧整理 / 突破起点
-- Stage：Touch / Overshoot 后 Pending
-- Scale：外层旧区域测试
-- Next：空头在区域下方获得跟随与接受，或区域产生实际拒绝
+- Tested Objective：当前向下 surprise 能否在该区域下方建立接受
+- Phase：Touch / Overshoot 后进入 Reaction
+- Resolution：Pending
+- Acceptance Criterion：区域下方继续收盘、跟随或回踩受阻
+- Failure Criterion：重新进入区域并形成向上拒绝与恢复
+- Next Observation：空头在区域下方获得跟随与接受，或区域产生实际拒绝
+- Test Expiry：区域被一侧接受，或新 Context 取代当前问题
 
-Confirm
-- 外层 Bull Context 进入 Transition；不以单根 K 线直接确认完整 Bear Trend
+Context Update
+- Context Change：UPDATED
+- Conditions：TRANSITION；不以单根 K 线直接确认完整 Bear Trend
 ```
 
 `Short / Continuation` 已有强 surprise，但直接追空面对支撑、Stop 距离和空间问题；`Long / Correction` 尚无局部 Trigger。当前 Decision = `WAIT`。
@@ -224,10 +232,15 @@ Current Move
 - Control：外层 Transition；局部尚未确认 Bull Control
 
 Active Test
-- 外层：4958–4960 再次承担支撑 / 突破回测
-- 局部：第二次向下测试，Double Bottom / H2 是同一次序的视图
-- Response：卖出被拒绝，局部 bull signal bar 完成
-- Next：向上触发并跟随，或 signal failure 后在区域下方接受
+- Object：4958–4960 支撑 / 突破回测
+- Tested Objective：第二次向下测试能否突破区域并延续
+- Phase：Reaction
+- Resolution：Pending
+- Attempt：拒绝逻辑中的第二次向下测试；Double Bottom / H2 是同一次序的视图
+- Response：卖出被拒绝；本根长下影并收在中点以上
+- Acceptance Criterion：区域下方获得持续跟随
+- Failure Criterion：向上触发并恢复到区域上方
+- Next Observation：向上触发并跟随，或 signal failure 后在区域下方接受
 ```
 
 外层区域、局部二次测试和 signal-bar 反应分别承担位置、次序和 Trigger 质量；H2、小双底、微型 W 与第二次下探不按名称重复计数。
@@ -235,24 +248,24 @@ Active Test
 ```text
 Long / Correction
 - Objective：向 EMA、4970 附近或大阴线内部修正
-- Already：重要区域 + 空头无立即跟随 + 局部第二次测试 + bull signal
+- Support / Already：重要区域 + 空头无立即跟随 + 局部第二次测试 + bull signal
 - Activation：外层区域的局部第二次测试被拒绝，合格 bull signal 已完成
-- Next：早期 Candidate 等 signal-bar 高点 Stop Trigger；保守 Candidate 等 bull follow-through
+- Next Candidate Event：早期 Candidate 使用 signal-bar 高点 Stop Trigger；保守 Candidate 等 bull follow-through
 - Invalidation：局部低点失守并在 4958–4960 下方获得接受
-- Against：强 bear surprise 仍可能产生第二腿
+- Counterevidence：NONE；强 bear surprise 与第二腿风险由 Short / Continuation 独立表达
 
 Short / Continuation
 - Objective：完成 bear surprise 的第二腿并测试更低 magnet
-- Already：强空头运动与短期 Selling Pressure
+- Support / Already：强空头运动与短期 Selling Pressure
 - Activation：强 bear surprise 已使延续路径具备表达资格，但当前位置使直接追空 Candidate 方程不利
-- Next：bull signal failure、局部低点下破并在区域下方跟随 / 接受，届时重算更好的 Candidate
+- Next Candidate Event：bull signal failure、局部低点下破并在区域下方跟随 / 接受，届时重算更好的 Candidate
 - Invalidation：多头持续脱离低点并重新控制大阴线内部
 
 Likely Sequence
 - Up / Correction 可先到 EMA；该区域若出现 bear recovery，再重算 Down / Continuation
 ```
 
-较早的 Long Candidate 使用 signal bar 上方 `Buy Stop`；Planned Protective Stop 引用局部双底结构并容纳正常波动，First Target 引用 EMA / 4970 区域。直接在支撑内 `Limit Buy` 是确认更少的另一 Candidate，只有当前 Context、风险和计划明确允许时才进入 Trade Gate。
+较早的 Long Candidate 使用 signal bar 上方 `Buy Stop`；Planned Protective Stop 引用局部双底结构并容纳正常波动，First Target 引用 EMA / 4970 区域。直接在支撑内 `Limit Buy` 是确认更少的另一 Candidate，只有当前 Context、风险和计划明确允许时才提交 Decision。
 
 ### D. 触发后的分支｜新事实使用新 Candidate
 
@@ -267,13 +280,13 @@ Likely Sequence
 ### E. 三种运行模式怎样衔接
 
 1. 大阴线出现前首次读取图表：运行完整 Checklist，得到外层 Bull 但区间化增加的 Market Read，以及 `Long / Continuation`、`Short / Correction` 两侧观察路径；没有 Candidate 时停在 Flat / Observing。
-2. 大阴线收盘：运行增量问题。Frame 未变，Current Move 与 Active Test 改变，因此只从 Current Move 向后重开；外层 Context 进入 Transition，两个方向更新后仍缺合适表达，输出 `WAIT + Next + Expiry`。
+2. 大阴线收盘：运行增量问题。Frame 未变，Current Move 与 Active Test 改变，因此只从 Current Move 向后重开；Context Change = `UPDATED` 且 Conditions 加入 `TRANSITION`。两个方向更新后仍缺合适表达，向 Decision 提交 Next Event 与 Decision Expiry，由 Decision 输出 `WAIT`。
 3. 局部第二次测试与 bull signal 完成：再次从 Current Move / Active Test 向后传播。Long / Correction 完成 Activation，才进入 Trade Construction；Short / Continuation 保留为竞争路径，但不为形式对称制造当前 Candidate。
-4. Long Candidate 通过 Trade Gate 后冻结 Trade Plan 并进入 Ready to Submit；执行前复核仍成立才提交 Buy Stop。提交后立即进入订单生命周期；回执未确认时按 `Submitted Unknown` 核对且不重复下单，确认工作后成为 Working Order。图表触发后只按实际成交进入 Open Position，并确认 Active Protective Stop 覆盖真实数量。
+4. Long Candidate 提交 Decision 并得到 `EXECUTE` 后冻结 Trade Plan，进入 Ready to Submit；执行前复核仍成立才提交 Buy Stop。提交后立即进入订单生命周期；回执未确认时按 `Submitted Unknown` 核对且不重复下单，确认工作后成为 Working Order。图表触发后只按实际成交进入 Open Position，并确认 Active Protective Stop 覆盖真实数量。
 5. 持仓中的普通 K 线：只运行 Open Position checklist；所选与竞争 Opportunity、风险、保护和动作均未改变时，结果是 `NO_CHANGE`，不记录。出现 follow-through、signal failure、区域外接受、目标到达或新保护锚点时，才从最早变化处向后更新并追加必要 Delta。
-6. 目标、Stop 或主动退出完成后：确认仓位、剩余订单和保护的最终状态，再运行 Closed / Review，分开 Market Result、Trade Outcome 与 Account Result；当前 Trade Plan / Candidate 关闭，关联 Opportunity 则按市场事实独立更新，若仍为 ACTIVE 就返回 Flat / Observing。
+6. 目标、Stop 或主动退出决定发生后：按退出订单生命周期处理 Unknown / Working / Rejected / Canceled / Expired / Partial / Filled；归零前保持剩余数量的实际保护，退出动作仍有效时修复或重新提交失败订单，归零并确认残留订单与保护最终状态后再运行 Closed / Review。复盘分开 Market Result、Trade Outcome 与 Account Result；当前 Trade Plan / Candidate 关闭，关联 Opportunity 按市场事实独立更新，若仍为 ACTIVE 就返回 Flat / Observing。
 
-该场景验证：重要位置只登记一次；外层位置与局部触发两个尺度共同读取；Long / Short 路径同时存在且可能顺序实现；Entry Method、Planned Stop 与 Targets 都引用已有 Price Region 或 Active Test。
+该场景验证：重要位置只登记一次；Active Test 以该位置为 Object，局部第二次测试进入 Attempt / Response，signal bar 边界再进入 Candidate.Trigger；Long / Short 路径同时存在且可能顺序实现。
 
 ## 八、Trading Range 下沿：2% 风险额度与动态第二层
 
@@ -299,7 +312,7 @@ Cancel Add：A 下方形成强 bear breakout 与 follow-through、获得接受�
 - 若下跌动量使直接接多不再合适，则等待拒绝、micro double bottom、合格 bull signal 或 follow-through，再用对应 Trigger 的 Stop / Market / Limit Add；
 - 若连续强 bear bars、分离和跟随使下沿转为向下接受，执行 `CANCEL ADD`，并按原 Long Opportunity 的 Invalidation 管理第一层。
 
-前两种情况只有当前方程和 Risk Available 同时允许时才输出 `ADD_TO_READY`；随后进入 Ready to Submit，重新确认实际仓位、全部工作订单、当前保护、总风险和订单参数，再提交新增层。
+前两种情况只有当前方程和 Risk Available 同时允许时才输出 `ADD_TO_READY`；由于第一层仍是实际 Exposure，随后并行运行 Open Position 与 Ready to Submit，重新确认实际仓位、全部工作订单、当前保护、总风险和订单参数，再提交新增层。
 
 第二层最多使用：
 
@@ -332,9 +345,13 @@ Current Move
 
 Active Test
 - Object：首次 EMA / target cluster 测试
-- Stage：Touch 后等待 Response
-- Next：bear signal + 向下恢复；或强 bull breakout、follow-through 并守在区域上方
-- Expiry：区域反复穿越、测试完成，或 Context Reframe
+- Tested Objective：当前 correction 能否突破该区域并破坏 Bear Control
+- Phase：Touch 后等待 Reaction
+- Resolution：Pending
+- Acceptance Criterion：强 bull breakout、follow-through 并守在区域上方
+- Failure Criterion：区域拒绝后 bear pressure 恢复
+- Next Observation：bear signal + 向下恢复；或强 bull breakout、follow-through 并守在区域上方
+- Test Expiry：区域反复穿越、测试完成，或 Context Reframe
 ```
 
 双向路径不是“到 EMA 就做空”：
@@ -342,15 +359,15 @@ Active Test
 ```text
 Down / Continuation
 - Objective：重测 4000；接受后再看更低 magnet
-- Already：Bear Control + 首次 EMA 测试 + 弱反弹
+- Support / Already：Bear Control + 首次 EMA 测试 + 弱反弹
 - Activation：区域内形成合格 bear signal 并向下触发；保守路径再等 bear follow-through
 - Invalidation：4011–4013 上方出现强 bull breakout、跟随并守住，破坏原 lower-high 约束
-- Against：首次测试也可能扩大成更深修正，当前位置的单根 signal 可能失败
+- Counterevidence：首次测试也可能扩大成更深修正，当前位置的单根 signal 可能失败
 
 Up / Reversal
 - Objective：破坏 bear structure，测试更高旧公平区域
-- Already：反弹到 EMA；Bear Pressure 暂时减弱
-- Next：强 bull breakout + follow-through、EMA 上方回踩守住并形成 HL
+- Support / Already：反弹到 EMA；Bear Pressure 暂时减弱
+- Activation：强 bull breakout + follow-through、EMA 上方回踩守住并形成 HL
 - 当前状态：未 Activation；弱反弹到 EMA 本身只完成 correction objective
 ```
 
@@ -369,12 +386,12 @@ Up / Reversal
 ```text
 Inherited Context + Price Map
 → Current Move：From / Now / Role；Bars / Continuity / Separation / Pullback / Opponent → Bull / Bear Pressure → Control
-→ Active Test：Object / Stage / Attempt / Scale / Response / Next / Expiry
-→ Confirm Context / Transition / Reframe
-→ Long / Short Opportunity + Likely Sequence：Objective、Targets、Activation、Invalidation、Market Probability
+→ Active Test：Object / Tested Objective / Phase / Resolution / Attempt / Response / Acceptance / Failure / Next Observation / Test Expiry
+→ Context Update：Updated Context + Context Change
+→ Long / Short Side Scan + Likely Sequence：Objective、Targets、Activation、Invalidation、Market Probability
 → Context Permission
 → Trade Construction：Trigger、Entry Method、Planned Stop、Targets、Size 与管理
-→ Trade Gate：交易结果概率、方程与 Execute / Wait / No Trade
+→ Decision：完整 Candidate / 明确下一事件 / 两者皆无 → Execute / Wait / No Trade
 → Follow-through、Acceptance、Failure 与账户事件持续更新
 ```
 
