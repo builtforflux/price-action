@@ -6,6 +6,8 @@
 
 本页定义的状态必须真实，但不要求交易者在每次状态转换后手工抄写完整对象。订单、回执、成交和仓位优先使用经纪商或平台的可靠记录；人工只快速核对它们是否一致，并在计划/风险改变或异常时补充最小说明。
 
+执行环境固定保证：杠杆只用于资本效率；账户使用 Cross Margin 或为 Isolated Position 配置足够保证金，使强平边界天然位于 Planned / Active Protective Stop 之外。该条件由账户配置持续保证，不进入每笔交易清单；一旦不再成立即进入 `SAFETY_EXCEPTION`。
+
 ## 一、执行前复核
 
 提交任何新增风险前重新同步：
@@ -13,8 +15,8 @@
 - 所选 Opportunity 仍有效，Activation、Invalidation、目标、周期和时间范围未改变；
 - Entry Method、Trigger Boundary、Planned Protective Stop 与 First / Main Target 仍引用原 Price Map / Active Test；
 - Market / close order 所需的 Entry 前置条件已经发生；或 Trade Plan 明确允许 Stop / Limit 在 Trigger 或成交前预先工作；
-- 以计划订单价格、允许成交范围和当前剩余空间计算的 Planned Stop、Reward、成本和 Trader's Equation 仍成立；
-- Position Size 与当前风险预算、现有仓位和全部计划层一致；
+- 以计划订单价格、允许成交范围和当前剩余空间计算的 Planned Stop、Reward、实质相关的 Execution Cost 和 Trader's Equation 仍成立；
+- Position Size 与 Risk Limit、现有仓位和全部仍可能增加暴露的订单一致；
 - 订单方向、类型、价格规则、数量和有效期正确；
 - 成交后 Protective Stop 怎样激活、覆盖实际数量；
 - 回执不明、部分成交、保护不足、连接或平台异常的处理已经明确。
@@ -28,7 +30,7 @@ Trade Plan
 → 提交计划规定的 market / stop / limit order
 ├─ 提交状态不明 → 核对账户，不重复下单
 ├─ 已确认工作   → 等待触发、成交、取消或过期
-└─ 提交前关键输入改变 → 不提交，建立新的 Decision Record
+└─ 提交前关键输入改变 → 不提交，重建 Candidate；Execute 时冻结新的 Trade Plan
 
 Working Order
 ├─ 回执不明 → 核对账户，不重复下单
@@ -43,13 +45,14 @@ Working Order
 
 没有提交订单的“等待图表确认”属于新的市场事件和决策时点，不保留隐藏的可执行计划。已提交的 Stop / Limit order 则属于 Working Order，并在每个相关事件后复核 Opportunity、有效期、计划成交范围下的风险和取消条件。
 
-Execution State 分别保存三个状态面，而不是用一个枚举掩盖并存事实：
+Execution State 分别保存四个状态面，而不是用一个枚举掩盖并存事实：
 
 ```text
 Order State：Intent / Submitted Unknown / Working / Partial / Filled
              / Cancel Pending / Canceled / Rejected / Expired
 Exposure：Flat / Open(quantity) / Exiting(quantity)
 Protection：Not Required / Pending / Adequate / Deficient
+Risk：Committed / Available
 ```
 
 部分成交可以同时表现为 `Partial + Open + Pending/Adequate`；撤单中可以同时存在 `Cancel Pending` 与可能新增的实际暴露。任何状态转换都以经纪商和账户事实确认，不凭订单意图推定。
@@ -91,7 +94,7 @@ Limit price 被 touch 或 cross 不保证成交；Stop order 触发不保证最�
 
 只在心里记住退出价不等于受到保护。Active Protective Stop 必须是实际在场、状态可确认并覆盖当前仓位的订单或平台保护机制。
 
-Stop price 是图表上的保护触发依据，不保证最终 fill。真实账户风险必须容纳合理滑点和异常边界。若另有 Catastrophe Backup，必须独立记录价格、数量、最坏损失和撤换条件，不能把它当成正常 Active Stop。
+Stop price 是图表上的保护触发依据，不保证最终 fill。正常高流动性执行可以把预计滑点配置为零；异常流动性、跳空、停牌或平台异常进入 `SAFETY_EXCEPTION`，不在普通计划中反复增加字段。若另有 Catastrophe Backup，必须独立记录价格、数量、最坏损失和撤换条件，不能把它当成正常 Active Stop。
 
 ## 五、保留并关联原始计划
 
@@ -132,7 +135,7 @@ Stop price 是图表上的保护触发依据，不保证最终 fill。真实账�
 
 | 所选路径 | 竞争路径 | 当前动作边界 |
 | --- | --- | --- |
-| 增强或保持 | 仍弱或仅出现 | 按计划持有；新增风险仍需新 Candidate |
+| 增强或保持 | 仍弱或仅出现 | 按计划持有；计划内 Add 运行 Add Gate，计划外新增风险构造新 Candidate |
 | 削弱但未失效 | 增强但未接受 | Hold、Stop Adding，或执行预写减仓 / 目标收缩 |
 | Structural Invalidation | 任意状态 | 主动退出；不必等待最远 Active Stop |
 | 因竞争路径接受而失效 | 已获得接受并实质否定所选路径 | 先退出原交易；反向交易重新经过完整流程 |
@@ -216,19 +219,16 @@ Breakeven Stop 是把 Active Stop 调整到计划 Entry 或整仓加权平均 En
 
 ### Scale-in
 
-原 Trade Plan 内的所有层必须在第一笔 Entry 前进入最坏总风险。新增层前检查：
+第一笔 Entry 前确定 Risk Limit、Initial Limit、共同或独立 Stop、Add Permission 与 Cancel Add；未来层在决策事件发生时计算准确价格和数量。新增层先通过[总流程 Add Gate](overall_flow.md#add-gate是否使用剩余风险)，执行阶段只再确认两件事：
 
-- 原 Opportunity 仍有效；
-- 新层来自原计划中的价格改善区域，或来自成交后预写的新确认；不是因为浮亏本身；
-- 层数、价格规则和数量仍符合原计划；
-- 共同 Stop 与全部实际、剩余层的账户风险仍在上限；
-- 强反向证据、时间或成本尚未使方程失效。
+- 订单方向、Entry Method、价格、数量与有效期正确，加仓后的 Risk Committed 不超过 Risk Limit；
+- 当前保护正常，新层成交后可以修改 Active Protective Stop 覆盖实际总数量。
 
 `Price-improvement scale-in` 在预定更好价格增加数量，只改善 Entry 和均价，不提高 Market Probability；若该价格只是临场看到浮亏后选择，则不属于原计划。`Confirmation scale-in` 依赖新的顺势证据，可以更新 Market Probability 或 Candidate Outcome Probability，但仍增加总数量和回撤暴露。无论哪一种，Opportunity 失效、保护异常或总风险不再合规时都取消剩余层，不强制完成计划数量。
 
-每层按其 Entry 到共同或独立 Stop 的距离计算账户风险；同为账户 `1%` 风险的两层不要求数量相同。第二层成交后立即按实际总数量确认 Active Protective Stop 覆盖，并把实际仓位、剩余工作订单、成本与滑点重新计入最坏总风险。
+每层按其 Entry 到共同或独立 Stop 的距离计算账户风险；同为账户 `1%` 风险的两层不要求数量相同。尚未下单的保留额度不是实际暴露；已提交并仍可能增加暴露的订单必须计入 Risk Committed。Active Stop 位于盈利区域时，该仓位的 Stop Risk 以零为下限，不用已保护利润抵消新订单风险。Trail 后释放的额度也不自动授权 Add。新层成交后立即修改并确认 Active Protective Stop 覆盖实际总数量，再更新实际仓位、剩余工作订单、Execution Cost 与 Risk Committed / Available。
 
-原计划之外出现新的可交易结构时，必须建立新的 Decision Record 和 Trade Plan，并在提交前把已有仓位、全部工作订单、共同或独立 Stop 及新增层纳入合并最坏风险。保存哪些字段按新计划复杂度决定；它不能事后改写成原计划的 scale-in 层。
+`CANCEL ADD` 时，尚无加仓订单则撤销剩余额度的使用资格；已有 Working Add 则撤单并确认，确认前继续计入 Risk Committed。计划内 Add 只在原 Trade Plan 追加 Entry Method、价格、数量、Stop、加仓后 Risk Committed 与触发依据。原计划之外出现新的 Opportunity、目标、失效或 Stop 时，必须建立新的 Candidate；决定 Execute 时冻结新的 Trade Plan，并在提交前把已有仓位、全部工作订单、共同或独立 Stop 及新增层纳入 Risk Limit。它不能事后改写成原计划的 scale-in 层。
 
 ### Scale-out
 
@@ -296,7 +296,7 @@ Trapped、disappointment 和预期退出压力若由已经记录的 Entry、fail
 | 类型 | 最小处理 |
 | --- | --- |
 | 普通订单、回执、成交、费用和当时仓位 | 使用经纪商/平台原始记录，只快速核对，不人工重抄 |
-| 修改计划、新增或降低风险、加减仓、移动保护、主动退出 | 在原 Decision Record 上保存：时点 + 变化 + 原因 + 确认后的数量/保护 |
+| 修改计划、新增或降低风险、加减仓、移动保护、主动退出 | 在原 Trade Plan 上追加 Delta：时点 + 变化 + 原因 + 确认后的数量/保护 |
 | 状态不明、部分成交、保护不足、双向成交或基础设施异常 | 保存：发现时的最坏暴露 + 处置动作 + 最终确认结果 |
 
 普通持有、订单按原计划继续工作、或无成交的正常到期，若未改变计划、风险或复盘结论，不生成叙事性记录。订单意图、图表 Trigger 和账户事实在语义上仍然分开；保存方式可以分别是计划简记、图表标记和平台记录。
@@ -308,7 +308,7 @@ Trapped、disappointment 和预期退出压力若由已经记录的 Entry、fail
 每笔交易的最小盘后复盘只需：
 
 ```text
-关联：原 Decision Record / Trade Plan
+关联：原 Trade Plan；未成交路径复盘使用 Decision Record
 结果：Market result + Trade outcome + Account result
 流程：按计划 / 正常不确定 / 系统违规
 关键差异：最多一两项，无则记无

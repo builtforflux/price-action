@@ -20,10 +20,10 @@ Safety
 
 ## 盘中一屏卡
 
-首次看图、Reframe 或决策事件使用完整卡；普通 K 线只运行后面的三问增量扫描。所有项目都是观察顺序，只有跨过计划、风险、执行或复盘边界的变化才记录。
+首次看图或 Reframe 使用完整卡；普通 K 线只运行后面的三问增量扫描。出现决策事件时，用[事件导航](market_decision_events.md)从最早受影响的步骤开始，沿变化向后传播，后续结论未变即停止。所有项目都是观察顺序，只有跨过计划、风险、执行或复盘边界的变化才记录。
 
 ```text
-Safety   仓位 / 工作订单 / 最坏暴露 / 实际保护 / 数据与连接
+Safety   仓位 / 工作订单 / 总 Stop 风险 / 实际保护 / 数据与连接
 
 Frame    交易周期 / horizon / Session / 剩余时间 / 相关外层约束
 Context  继承的市场组织 / Control / Breakout Mode、Climax、Transition
@@ -36,7 +36,7 @@ Move     From / Now / Role
   Separation  gap 保持、缩小、关闭；overlap 是否增加
   Pullback    深度、持续时间、gap 与原方向恢复速度
   Opponent    反方 K 线、跟随和失败尝试
-  Result      Buying / Selling Pressure；Control 保持、减弱或转移
+  Result      Bull Pressure 变化；Bear Pressure 变化；Control 含义
 
 Test     Object / Stage / Attempt / Scale / Response / Next / Expiry
 Confirm  Keep Context / Transition / Reframe
@@ -47,8 +47,9 @@ Short    使用相同字段
 Sequence 两侧能否顺序实现，哪个事实会切换当前路径
 
 Construct  判断时点；Trigger；Stop / Limit / Market Entry；
-           Planned Protective Stop；First / Main Target；Size / Management
-Gate       Permission；Probability；Reward / Risk / Cost / Time；
+           Planned Protective Stop；First / Main Target；
+           Planned Risk / Size；多层时 Risk Limit / Initial Limit / Add / Cancel Add
+Gate       Permission；Probability；Reward / Risk / Execution Cost / Time；
            Execute / Wait / No Trade
 ```
 
@@ -76,8 +77,8 @@ Frame、Safety、Decision 和 Review 是运行门，不需要另建复杂对象�
 每次承担新风险或处理账户事件前确认：
 
 ```text
-实际净仓位与可能暴露
-→ 全部工作订单与回执
+实际净仓位、全部工作订单与回执是否一致
+→ 现有仓位与仍可能增加暴露的订单到各自 Stop 的总风险是否在上限内
 → Active Protective Stop 是否覆盖实际数量
 → 行情、账户、连接与已知事件风险是否可靠
 ```
@@ -120,7 +121,7 @@ Continuity  同向连续性与 follow-through
 Separation  gap / breakout separation 保持、缩小或关闭；overlap
 Pullback    深度、持续时间、gap 与原方向恢复速度
 Opponent    反方 K 线质量、跟随和失败尝试
-Result      Buying / Selling Pressure 与 Control 变化
+Result      Bull Pressure 变化；Bear Pressure 变化；Control 含义
 ```
 
 输出是一条连续价格事实链，不是形态名称清单。
@@ -203,7 +204,8 @@ Trade Candidate
 - Opportunity Invalidation 引用
 - Planned Protective Stop：结构锚点、正常波动与账户风险
 - First Target / Main Target / Outcome Criterion
-- Position Size + Cost / Slippage + Time + Management
+- Planned Risk + Position Size；多层时 Risk Limit / Initial Limit / Add / Cancel Add
+- Execution Cost + Time + Management
 - Candidate Outcome Probability + Trader's Equation
 - 成交后必须看到的事实
 ```
@@ -231,8 +233,8 @@ Protective Stop 先于完整 Structural Invalidation 触发时，原 Candidate �
 3. Entry、Stop、Targets 是否能追溯到 Price Map 或 Active Test；
 4. 当前 Entry 到合理 Stop 的 Risk；
 5. 第一现实目标和主要目标前的净 Reward；
-6. Candidate Outcome Probability、成本、滑点、剩余时间与管理；
-7. Size、账户风险与执行可靠性。
+6. Candidate Outcome Probability、实质相关的 Execution Cost、剩余时间与管理；
+7. Planned Risk、Size 和执行可靠性；多层、已有仓位或新增风险订单时，再检查 Risk Limit / Committed / Available。
 
 | 结果 | 动作 | 必须明确 |
 | --- | --- | --- |
@@ -254,7 +256,9 @@ Protective Stop 先于完整 Structural Invalidation 触发时，原 Candidate �
 
 第 2–5 步没有跨过原边界时，结果是 `NO_CHANGE`：继续观察、继续工作原订单或按计划持仓，不产生人工记录。
 
-以下事件展开相关步骤：首次看图或 Reframe、surprise bar、到达重要区域、第二或第三次测试、breakout / failed breakout、gap 状态显著变化、新 Trigger / Candidate，以及计划、订单、仓位、保护或风险变化。只有交易周期、主导组织、Control、当前区域问题或 Opportunity Set 被替代时，才重做完整 Market Read。
+价格事件先用[市场决策事件导航](market_decision_events.md)定位最小重开范围：区域互动、主动运动、后续反应、尝试递进、接受/失败、压缩释放、控制转换或目标/期限。常见的 EMA 首次测试、surprise、breakout pullback、第二/第三次测试、三推、ii / ioi、MTR 和目标到达只是这些通用路由的快捷卡，不建立新状态。
+
+计划、订单、仓位、保护或风险变化直接进入对应决策或执行步骤。只有交易周期、主导组织、Control、当前区域问题或 Opportunity Set 被替代时，才重做完整 Market Read。
 
 ## 八、订单与持仓路由
 
@@ -282,7 +286,7 @@ Account / Protection
 
 | 机会与计划变化 | 允许动作 |
 | --- | --- |
-| 增强或保持 | 按计划持有；新增风险仍需新 Candidate |
+| 增强或保持 | 按计划持有；计划内 Add 运行 Add Gate，计划外新增风险构造新 Candidate |
 | 削弱但未失效 | 持有、停止新增风险，或执行预写减仓 / 目标收缩 |
 | 所选 Opportunity 失效 | 取消剩余新增风险并主动退出；归零前维持保护 |
 | 反方 Opportunity 获得接受 | 先处理原仓位；反向交易重新构造 Candidate |
@@ -291,6 +295,23 @@ Account / Protection
 
 退出原方向不提供反向交易许可。Trapped traders 和预期退出压力只解释已发生的失败与跟随链。
 
+### Add Gate｜是否使用剩余风险
+
+同一 Trade Plan 可以预留未使用风险，而不预先冻结未来层的准确价格和数量。到达计划内的价格改善区域或确认事件时，只运行一次短门：
+
+```text
+原 Opportunity 仍有效，竞争路径尚未获得接受？
+→ 计划内 Add 条件已发生，取消条件未发生？
+→ 当前是用 Limit 取得价格改善，还是用 Stop / Market 等待确认？
+→ 当前 Entry、共同或独立 Stop、Targets 与时间仍形成正方程？
+→ Risk Available 足以容纳按当前价格计算的新数量？
+→ ADD / HOLD RESERVE / CANCEL ADD
+```
+
+`Risk Limit` 是冻结在 Trade Plan 中的最大账户风险；Execution State 动态维护实际仓位和仍可能增加暴露的订单对应的 `Risk Committed`，并计算 `Risk Available = max(0, Risk Limit - Risk Committed)`。已有仓位到 Active Stop 的损失下限为零；已保护利润不抵消其他订单风险。剩余额度或 Trail 后释放的额度只提供容量，不构成加仓理由。
+
+`CANCEL ADD` 在尚无加仓订单时撤销使用剩余额度的资格；已有 Working Add 时发出撤单并确认，确认前仍计入 Risk Committed。计划内 Add 只追加 Entry Method、价格、数量、Stop、加仓后 Risk Committed 和触发依据；出现原计划外的新 Opportunity、目标、失效或 Stop 时，才重新构造完整 Candidate。
+
 ## 九、必要记录
 
 系统按事件保存最小增量：
@@ -298,24 +319,31 @@ Account / Protection
 | 事件 | 保存内容 |
 | --- | --- |
 | 普通观察，机会、风险和动作未变 | 无 |
-| 新市场问题或 Opportunity 实质改变下一观察 | 变化 + Next / Expiry |
-| 形成 Execute，或需要跨事件跟踪的 Wait | 最小 Decision Record |
+| 新市场问题或 Opportunity 实质改变下一观察 | 更新当前 Next / Expiry；需跨事件保留时合入下面的 Decision Record |
+| 需要跨事件跟踪的 Wait | 最小 Decision Record |
+| 形成 Execute / 选中 Candidate | 直接冻结一份 Trade Plan |
 | 普通扫描得到 No Trade | 无；只有改变观察计划、风险或规则样本时记原因 |
-| 选中 Candidate 或实质修改计划、仓位、保护或风险 | 冻结 Trade Plan 或追加 Delta |
+| 实质修改计划、仓位、保护或风险 | 在原 Trade Plan 追加 Delta |
 | 成交、拒单、部分成交、撤单确认、异常、减仓或退出 | 平台原始事实 + 必要差异 |
 | Opportunity 或交易结束 | 终结事实；盘后复盘 |
 
 ```text
-Decision Record
+Decision Record（跨事件 Wait；重要 No Trade 按需使用）
 - 时点 + 品种 / 周期
-- 决定：Execute / Wait / No Trade
+- 决定：Wait / No Trade
 - Market Read：Context + 当前区域 / 测试（一短句）
-- Long / Short 结论 + 所选 Opportunity / Likely Sequence
-- 边界：Next / Activation / Target / Invalidation / Expiry
-- 如执行：Entry Method + Entry + Planned Stop + Target + Size
+- Long / Short 结论 + Likely Sequence
+- 边界：Next / Activation / Invalidation / Expiry
+
+Trade Plan（Execute）
+- 时点 + Market Read + Long / Short 结论 + 所选 Opportunity
+- Objective / Target + Against / Invalidation / Expiry
+- Entry Method + Entry + Planned Stop + Target + Size
+- Candidate Outcome Probability / 区间 + 净 Reward:Risk；直接使用条件规则时附 Rule Match
+- 多层计划另加 Risk Limit / 首层额度 / Add 与取消条件
 ```
 
-复杂多层、多目标、跨 Session、OCO 或异常计划才展开完整字段。平台已可靠保存的订单、成交和费用不人工重抄。
+Wait 后形成 Execute 时，在同一记录上保留原 Wait 时点并追加新的判断时点，再升级为 Trade Plan。复杂多层、多目标、跨 Session、OCO 或异常计划才展开完整字段。平台已可靠保存的订单、成交和费用不人工重抄。
 
 ## 十、账户状态快速清单
 
@@ -331,12 +359,14 @@ Decision Record
 - Context Permission 是否允许；Activation 已满足还是由许可的条件 Trigger 完整执行？
 - Entry 使用 Stop、Limit 还是 Market；引用哪个 Trigger / Region？
 - Structural Invalidation、Planned Stop、First / Main Target 分别来自哪里？
-- Size、成本、有效期与成交后预期清楚吗？
+- 本次 Planned Risk 与 Size 清楚吗？
+- 仅在多层或已有暴露时：Risk Limit、Initial Limit、Risk Committed / Available、Add 与取消条件清楚吗？
+- 实质相关的 Execution Cost、有效期与成交后预期清楚吗？
 - 当前账户可以可靠表达它吗？
 
 ### 订单工作中
 
-- 实际 Order State 和最坏 Exposure 是什么？
+- 实际 Order State、Risk Committed 和仍可能增加暴露订单的总 Stop 风险是什么？
 - Opportunity、成交范围、有效期和方程仍成立吗？
 - 如果现在成交，保护会立即覆盖实际数量吗？
 
@@ -347,6 +377,7 @@ Decision Record
 - 所选 Opportunity 增强、保持、削弱还是失效？
 - 竞争 Opportunity 只是出现，还是已经获得接受？
 - Target、Active Stop、时间或原计划条件发生了吗？
+- 仅在计划允许 Add 时：继续保留额度、运行 Add Gate，还是取消并处理 Working Add？
 - 是否形成了能容纳正常波动的新保护锚点？
 - 现在的计划动作是 Hold、Stop Adding、Reduce、Trail 还是 Exit？
 
@@ -366,5 +397,6 @@ Decision Record
 - 双向 Opportunity 扫描完成后，才为当前可表达的少数机会构造 Candidate。
 - Market Targets 与 Structural Invalidation 属于 Opportunity；Candidate 选择 First / Main Targets，并拥有 Trigger、Entry 和 Planned Protective Stop；Active Protective Stop 属于 Execution State。
 - Market Probability 与 Candidate Outcome Probability 分开；只有后者与当前 Entry、Stop、退出、成本和管理进入 Trader's Equation。
+- Risk Limit、Initial Limit、Add 与 Cancel Add 属于冻结计划；Risk Committed / Available 属于 Execution State，只在仓位、订单或保护变化时更新。
 - 认知变化不自动产生交易动作；新增风险永远重新经过 Trade Construction、Trade Gate 和账户安全检查。
 - 普通未变事件不记录；Wait、No Trade、未成交机会、实际交易和规则样本分别闭环。

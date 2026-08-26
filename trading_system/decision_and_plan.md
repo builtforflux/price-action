@@ -178,7 +178,7 @@ Stop entry 用较差价格交换触发确认，常以 signal bar 高低点附近
 
 ### Limit entry
 
-Limit entry 用更好价格交换更少确认。计划必须明确成交后期待的拒绝、重新进入旧区域、Pressure 变化或其他反应，以及允许这些事实出现的时间。价格 touch / cross 不保证账户全部成交；若计划依赖 scale-in，全部层、总数量、共同 Stop 和总风险必须在第一笔 entry 前确定。
+Limit entry 用更好价格交换更少确认。计划必须明确成交后期待的拒绝、重新进入旧区域、Pressure 变化或其他反应，以及允许这些事实出现的时间。价格 touch / cross 不保证账户全部成交；若计划依赖 scale-in，第一笔 entry 前必须确定整份计划的风险上限、首层最大额度、共同或独立 Stop、允许 Add 的区域或事件以及取消条件。未来层的准确价格和数量可以在条件发生时按剩余风险计算。
 
 ### Market / close entry
 
@@ -281,7 +281,7 @@ Candidate Outcome Probability
 失败概率 × Risk + 成本
 ```
 
-概率、Reward 和 Risk 必须描述同一 Entry、Planned Stop、Target、时间和管理方式。佣金、点差、滑点与异常余量进入真实净结果。
+概率、Reward 和 Risk 必须描述同一 Entry、Planned Stop、Target、时间和管理方式。`Execution Cost` 只计会实质改变当前结果的手续费、点差和预计滑点；正常高流动性执行中预计滑点可以配置为零，异常流动性、跳空或平台状态统一进入执行安全路径。
 
 在“赢家 `2R`、失败 `1R`”且暂不计成本的二结果中，正期望要求成功概率大于 `1/3`；这不表示任何 `2R` 远端目标都合理。约 40% 的较早或较低概率路径通常需要更大现实 Reward，约 60% 的条件可以在约 1R 时仍可能成立，但均须使用当前实际输入。
 
@@ -293,20 +293,45 @@ Candidate Outcome Probability
 
 没有可靠样本时不构造伪精确的完整概率树；至少保证所有计划内的重要结果没有被二结果公式隐藏。
 
-## 十、四种风险
+## 十、风险口径
 
 | 风险 | 含义 | 使用时点 |
 | --- | --- | --- |
 | Initial / price risk | 计划 Entry 到 Planned Protective Stop 的结构距离 | 事前计划输入 |
 | Actual Risk / MAE | 交易结束后实际经历的最大不利距离 | 事后样本统计 |
-| Account risk | 风险距离 × 数量，再计合约价值、成本、滑点和计划加仓 | 事前预算并按实际成交更新 |
-| Personal risk | 因希望、恐惧、仓位过大或破坏规则产生的额外损失 | 通过计划和纪律限制 |
+| Account risk | 风险距离 × 数量 × 每点价值，再计实质相关的 Execution Cost 和计划加仓 | 事前预算并按实际成交更新 |
 
-Actual Risk 不能用单笔赢家的事后浅回调替代事前 Stop，也不能证明原交易天然具有高 reward/risk。结构决定 Stop，仓位决定账户金额风险。
+盘中只计算 Initial / price risk 与 Account risk；Actual Risk / MAE 只在复盘使用。希望、恐惧、仓位过大或破坏规则归入行为纪律。Actual Risk 不能用单笔赢家的事后浅回调替代事前 Stop，也不能证明原交易天然具有高 reward/risk。结构决定 Stop，仓位决定账户金额风险。
 
 ## 十一、Position Size 与数量变化
 
-仓位服从 Planned Stop 和账户风险预算，不服务于信心。若多次 Entry 的价格为 `eᵢ`、数量为 `qᵢ`：
+仓位服从 Planned Stop 和整份 Trade Plan 的账户风险上限，不服务于信心。多层计划在第一笔 Entry 前冻结：
+
+```text
+Risk Limit      整份计划最多承担的账户风险
+Initial Limit   第一层最多使用的风险
+Add Permission  后续允许使用剩余额度的区域或确认事件
+Cancel Add      取消剩余层的市场、时间、方程或执行条件
+Stop Rule       各层共同或独立的保护规则
+```
+
+`Risk Limit = 账户配置的风险资本 × 本计划风险比例`。账户配置统一提供风险资本与默认比例，每份计划只保存本次计算得到的金额或比例上限。
+
+Risk Limit 属于当前 Trade Plan。多个计划同时存在时，账户当前承诺风险等于各计划 Risk Committed 之和；有效 Risk Available 为 `max(0, min(本计划剩余额度, 账户总上限剩余额度))`。只有一个计划时两者相同，无需展开组合对象。
+
+未来层在 Add 决策事件到达后，以实际价格计算 Entry、数量和订单：
+
+```text
+Open Position Stop Risk = max(0, 实际仓位在 Active Stop 成交时的损失)
+Working Order Stop Risk = Σ max(0, 每个仍可能增加暴露的订单成交后到 Planned Stop 的损失)
+Risk Committed = Open Position Stop Risk + Working Order Stop Risk
+                 + 实质相关的 Execution Cost
+Risk Available = max(0, Risk Limit - Risk Committed)
+```
+
+Risk Limit、Initial Limit、Add Permission、Cancel Add 和 Stop Rule 冻结在 Trade Plan；Risk Committed / Available 由 Execution State 根据订单、仓位和保护动态计算。保留额度不等于已经承担的暴露，也不授权加仓。Trail 最多把已有仓位的 Stop Risk 降到零；已保护利润不作为负风险抵消其他订单风险。释放的数值容量也不自动产生新的 Add Permission。原 Opportunity、Add Permission、当前方程和保护必须同时允许，新增数量才可使用 Risk Available。
+
+若多次 Entry 的价格为 `eᵢ`、数量为 `qᵢ`：
 
 ```text
 Q = Σqᵢ
@@ -316,20 +341,20 @@ weighted average entry = Σ(qᵢ × eᵢ) / Q
 多单共用 Stop `s` 时：
 
 ```text
-gross stop risk = Σ[qᵢ × (eᵢ - s)]
+gross stop loss = max(0, Σ[qᵢ × (eᵢ - s)])
 ```
 
-空单镜像。真实风险还要乘每点价值并加入成本、滑点和异常余量。
+空单镜像。账户风险还要乘每点价值，并只加入实质相关的 Execution Cost。
 
-若第 `i` 层预分配账户风险 `rᵢ`、每点价值为 `v`，数量近似为：
+若第 `i` 层最多分配账户风险 `rᵢ`、每点价值为 `v`、每单位实质相关的 Execution Cost 为 `cᵢ`，数量近似为：
 
 ```text
-qᵢ = (rᵢ - 该层成本与滑点预留) / (|eᵢ - s| × v)
+qᵢ = rᵢ / (|eᵢ - s| × v + cᵢ)
 ```
 
-同为账户 `1%` 风险的两层若 Entry 不同，数量通常也不同。提交或保留任何层时，已成交仓位与所有仍可能成交的计划层按共同或各自 Stop 计算的最坏风险总和，必须不超过计划总账户风险。
+同为账户 `1%` 风险的两层若 Entry 不同，数量通常也不同。已经提交并仍可能增加暴露的层计入 Risk Committed；仅保留资格、尚未形成订单的层仍属于 Risk Available。提交或保留任何新增风险订单时，已成交仓位与所有仍可能增加暴露的订单按共同或各自 Stop 计算的总风险必须不超过 Risk Limit。
 
-Scale-in 不凭空提高 Market Probability。计划内新层可以来自两类可观察依据：预先定义的更好价格，或成交后出现的新确认。前者只改善价格和平均成本，不增加方向证据；后者可以更新 Opportunity 或 Candidate Outcome Probability，但仍增加总数量和回撤暴露。只有原 Opportunity 仍有效、层数和价格规则符合原计划、保护正常且全部实际与剩余层的最坏总风险仍在上限内，才允许新增数量。强反向证据出现时取消剩余层；无限摊平不是计划。
+Scale-in 不凭空提高 Market Probability。计划内新层可以来自两类可观察依据：预先定义的更好价格区域，或成交后出现的新确认。前者通常用 Limit 换取价格改善，只改善 Entry 和平均成本，不增加方向证据；后者在确认事实完成后使用适合当前 Trigger 的 Stop / Market / Limit 表达，可以更新 Opportunity 或 Candidate Outcome Probability，但仍增加总数量和回撤暴露。只有原 Opportunity 仍有效、Add 条件已经发生、取消条件未发生、保护正常且加仓后 Risk Committed 仍在上限内，才允许新增数量。强反向证据出现时取消剩余额度的使用资格；无限摊平不是计划。
 
 Scaling out 改变剩余数量、目标分布和成本。到计划目标部分退出、按预写分支降低风险或保留 runner 都必须在原方程中体现，不能用任意弱 K 线临时重写管理。
 
@@ -349,8 +374,8 @@ Scalp 与 Swing 不是交易类别，而是同一 Opportunity 的不同目标、
 
 | 情况 | 必须保存 |
 | --- | --- |
-| 单次 Entry、单一 Stop、单一 Target 的普通计划 | 时点，路径目标，最强反方/失效，Entry、Stop、Target、Size，最迟有效条件 |
-| 多层入场、多目标、runner 或条件化管理 | 在最小计划上增加数量分配、总风险、分支触发和取消条件 |
+| 单次 Entry、单一 Stop、单一 Target 的普通计划 | 时点，Long / Short 结论与所选路径目标，最强反方/失效，Entry、Stop、Target、Size，Candidate Outcome Probability / 区间与净 Reward:Risk，最迟有效条件 |
+| 多层入场、多目标、runner 或条件化管理 | 在最小计划上增加 Risk Limit、首层额度、Add / 取消条件和分支触发 |
 | 预挂条件单、OCO、跨 Session、异常处置或高执行风险 | 展开与实际风险相关的完整字段 |
 
 心中确认不能替代必须冻结的风险数字；反过来，与当前计划无关的备选字段不得为了填满模板而虚构。下列完整字段在语义上仍然有效：
@@ -392,8 +417,9 @@ Risk
 - Planned Protective Stop：
 - Catastrophe Backup（如有）：
 - Position Size：
-- 全部层总账户风险：
-- 成本与滑点假设：
+- Risk Limit：
+- Initial Limit：
+- Execution Cost 假设：
 
 Targets
 - 第一现实目标：
@@ -408,7 +434,7 @@ Management
 - 减仓规则：
 - Runner：
 - Trailing / Breakeven 条件：
-- Scale-in 全部层与取消条件：
+- Scale-in：Add Permission / Cancel Add / Stop Rule：
 - 最迟退出时间：
 
 Execution
@@ -423,7 +449,7 @@ Trade Outcomes
 Trader's Equation：
 ```
 
-执行决定形成时保留当时适用的原始计划字段；首次成交对应这份计划。新事实可以改变当前路径评价和管理动作，却不能覆盖原目标、重选量度端点或把另一 horizon 的路径改写成原计划。任何计划外新增风险必须作为新计划评价并保存相应风险字段；只有新计划本身复杂时才要求展开全部模板。
+执行决定形成时保留当时适用的原始计划字段；首次成交对应这份计划。新事实可以改变当前路径评价和管理动作，却不能覆盖原目标、重选量度端点或把另一 horizon 的路径改写成原计划。计划内 Add 发生时只在 Execution State / Plan Delta 追加 Entry Method、价格、数量、Stop、加仓后 Risk Committed 和触发依据；出现原计划外的新 Opportunity、目标、失效或 Stop 时，新增风险才必须作为新 Candidate 评价。只有新计划本身复杂时才要求展开全部模板。
 
 ## 十四、Trade Gate 与唯一决策
 
@@ -451,23 +477,22 @@ Breakout Mode 等双向条件下可以分别形成相反方向的 Trade Plan，�
 
 Opportunity 已失效，或现实 Target、剩余时间、风险、成本和执行条件使当前 horizon 内不存在值得跟踪的 Candidate。以后若发生新 Reframe，建立新的 Opportunity 与 Trade Plan，不复用旧计划。
 
-### Decision Record
+### Decision Record 与 Trade Plan
 
-首次形成执行或需跨事件跟踪的等待，以及[总流程规定的关键节点](overall_flow.md#九必要记录)，保存一份最小 Decision Record。普通扫描得到 No Trade 不记录；只有它改变观察计划、风险或规则样本时才保存原因。
+需要跨事件跟踪的 Wait，以及[总流程规定的少数重要 No Trade](overall_flow.md#九必要记录)，保存一份最小 Decision Record。普通扫描得到 No Trade 不记录；Execute 直接把被选 Candidate 冻结为 Trade Plan。
 
 ```text
 Decision Record
 
 时点 + 品种/周期：
-决定：Execute / Wait / No Trade
+决定：Wait / No Trade
 依据：Market Read + 所选 Opportunity 或排除原因（一短句）
 双向：Long / Short 结论 + Likely Sequence
-边界：Activation / 目标 + 最强反方 / Invalidation / Expiry
-计划（如执行）：Entry Method + Entry + Planned Stop + Target + Size
+边界：Next / Activation + 最强反方 / Invalidation / Expiry
 下一条件：触发 / 过期 / 重构
 ```
 
-这些字段是必须固定的最小充分信息，可由简写、图表标记或工具自动生成。复杂执行直接关联本页上一节的完整 Trade Plan；系统不再维护一份重复的 Extended Decision Record。等待与不交易没有 Trade Plan 时，不填交易字段；执行阶段只在原记录追加实质改变的计划/风险 Delta 和必要执行事实。
+Execute 的最小保存字段直接使用本页上一节的普通 Trade Plan；复杂计划只按对应条件展开额外字段。若 Market Probability 与 Candidate Outcome Probability 因 Protective Stop、部分退出或管理方式而实质不同，Trade Plan 同时保存两者；否则不重复。Wait 后形成 Execute 时，在同一记录中保留原 Wait 时点与下一条件，追加新的判断时点并升级为 Trade Plan。执行阶段只在原 Trade Plan 追加实质改变的计划/风险 Delta 和必要执行事实。
 
 ## 十五、证据追溯
 
