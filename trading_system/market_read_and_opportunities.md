@@ -2,7 +2,7 @@
 
 > **状态：Trading System / Market Model**
 
-本页定义 `Market Read = Context + Price Map + Price Process` 怎样从连续价格事实形成，以及它怎样生成可证伪的 `Opportunity Set`。连续运行时先继承当前有效 Context，再以 Price Map 和 Price Process 的新事实确认或重构它；首次看图或 Reframe 可从暂定分类或 `UNCLEAR` 开始。运行顺序由总流程规定；本页按价格事实、过程、状态、结构关系和机会生成保存完整知识。
+本页定义 `Market Read = Context + Price Map + Price Process` 怎样从连续价格事实形成，以及它怎样生成可证伪的双向 `Opportunity Set`。Price Process 在实盘中按 `Current Move → Active Test` 读取；连续运行时先继承当前有效 Context，再以位置、运动和测试的新事实确认或重构它。首次看图或 Reframe 可从暂定分类或 `UNCLEAR` 开始。
 
 本页是系统知识与内部模型，不是盘中标注任务。下文的区分首先是语义边界；交易者通常只需观察或心中确认，记录负担由[总流程](overall_flow.md#九必要记录)规定。
 
@@ -113,7 +113,7 @@ Support 位于当前价格下方，Resistance 位于当前价格上方；穿越�
 
 ### Price Map
 
-相关区域进入同一张位置地图；同一价格带先合并，再按当前价格上方、下方和距离排序：
+相关区域进入同一张位置地图；同一价格带先合并，再按当前价格上方、下方和距离排序。当前运动正在到达、穿越或离开的区域优先进入 Active Area：
 
 ```text
 Price Map
@@ -125,26 +125,48 @@ Price Map
 └─ Nearest Relevant Area / Available Space：Up / Down
 ```
 
-地图只唯一登记价格带、来源、汇合与距离。Active Area 是当前正在互动的区域；Potential Entry Area、Obstacle、Magnet、Target 和 Invalidation Reference 是相对某条 Opportunity 的角色。因此同一 `50%`、EMA 或旧高可以是一条机会的 Target，同时是另一条机会的 Potential Entry Area 或 Invalidation Reference；底层仍只保留一个价格带。Acceptance 与 Re-entry 属于 Price Process 事件，不是区域属性。
+地图只唯一登记价格带、来源、汇合与距离。Active Area 是当前正在互动的区域；Potential Entry Area、Support / Resistance、Obstacle、Magnet、Target 和 Invalidation Reference 是相对某条 Opportunity 的运行角色。因此同一 `50%`、EMA 或旧高可以是一条机会的 Target，同时是另一条机会的 Potential Entry Area 或 Invalidation Reference；底层仍只保留一个价格带。Acceptance 与 Re-entry 属于 Price Process 事件，不是区域属性。
 
-## 四、Price Process｜价格怎样演化到这里
+区域在以下任一条件成立时进入当前地图：价格正在互动；它是当前 horizon 的现实目标或障碍；它会改变正常 Stop、Invalidation、空间或动作；它是当前 Context 必须保留的外层约束。其他历史高低保持休眠，接近或获得新职责时再激活。
 
-Price Process 保存前后关系，不把当前 K 线或形态从其来源运动中截断：
+## 四、Price Process｜先读当前运动，再读活动测试
+
+Price Process 保存前后关系，不把当前 K 线、位置反应或形态从其来源运动中截断。实盘分两步读取，内部仍属于同一连续过程。
+
+### Current Move
 
 ```text
-From：此前的方向运动、回调或区域测试
+From：此前的方向运动、回调或区域反应
 Now：UP_LEG / DOWN_LEG / PAUSE / LOCAL_BALANCE
 Role：CONTINUATION / PULLBACK / RANGE_LEG / REVERSAL_ATTEMPT / UNRESOLVED
-Change：由 Bars、Continuity、Separation、Pullback 与 Opponent Response 汇总 Pressure 变化
-Testing：引用 Price Map 中当前区域，并说明 Control 是否仍有效
-Next：什么事实表示接受、拒绝、Activation、失败或重构
+Bars：实体、收盘、影线与相对大小
+Continuity：同向连续性与 follow-through
+Separation：gap / breakout separation 与 overlap
+Pullback：深度、持续时间、gap 与恢复速度
+Opponent：反方 K 线质量、跟随与失败尝试
+Result：Buying / Selling Pressure 与 Control 变化
 ```
 
-Now 与 Role 分开：同一段 Down Leg 在多头方向状态中可能承担 Pullback 角色，在 Trading Range 中可能只是 Range Leg。`PAUSE` 尚未形成清楚方向腿；`LOCAL_BALANCE` 表示局部小区间已经比单腿或暂停更能组织价格。反向运动获得持续接受并改变外层正常回撤、目标或管理方式后，Role 从 Pullback / Reversal Attempt 升级为新的 Context。
+Now 与 Role 分开：同一段 Down Leg 在多头方向状态中可能承担 Pullback 角色，在 Trading Range 中可能只是 Range Leg。`PAUSE` 尚未形成清楚方向腿；`LOCAL_BALANCE` 表示局部小区间已经比单腿或暂停更能组织价格。反向运动获得持续接受并改变外层正常回撤、目标或管理方式后，Role 才升级为新的 Context。
 
-### 测试与接受的共同事件链
+### Active Test
 
-所有边界互动按同一顺序解释：
+Current Move 与 Price Map 的互动形成当前要解决的问题：
+
+```text
+Object：正在测试哪个区域、边界或旧 Control
+Stage：APPROACH / TOUCH / REACTION / BREAKOUT_ATTEMPT /
+       FOLLOW_THROUGH / ACCEPTANCE / FAILURE / PENDING
+Attempt：当前逻辑中的第一次、第二次或第三次尝试
+Scale：外层位置测试与局部触发测试
+Response：分离、拒绝、突破、重叠或重新进入旧区域
+Next：什么事实表示接受、拒绝、Activation、失败或重构
+Expiry：最迟何时当前问题仍有意义
+```
+
+外层位置决定这次测试可能承担的市场作用，局部测试次序和反应决定是否形成当前 Trigger。默认只展开当前 horizon 的这两个尺度；新增尺度必须改变目标、正常波动、失效或动作。
+
+所有边界互动按同一顺序更新 Stage：
 
 ```text
 Approach
@@ -166,25 +188,26 @@ Approach
 
 ### Process Question
 
-Price Process 最后把连续过程压缩成一句双向问题：
+Price Process 最后把 Current Move 与 Active Test 压缩成一句双向问题：
 
 ```text
-正在测试哪个区域？
+当前运动从哪里来，质量怎样？
+正在测试哪个区域，是第几次、哪个尺度的尝试？
 怎样算在外侧获得接受？
 怎样算拒绝、失败或重新接受旧区域？
-最迟何时这个问题仍有意义？
+下一事实和 Expiry 是什么？
 ```
 
 例如：`强空头腿第三推延伸缩小，反弹后第二次下探卖压更弱；旧低下方会获得接受，还是多头先建立修正？`
 
-H2、Double Bottom、Wedge、Flag 或 MTR 只在它们帮助说明次序、几何、外层作用、目标或失效时附在这个过程上。价格进入新区域或 Context 重新分类时，新的 From–Now 链取代旧问题；旧结构只保留对新目标或正常回调仍有作用的部分。
+H2、Double Bottom、Wedge、Flag 或 MTR 只在它们帮助说明 Attempt、Scale、几何、外层作用、目标或失效时附在这个过程上。价格进入新区域或 Context 重新分类时，新的 Current Move / Active Test 取代旧问题；旧结构只保留对新目标或正常回调仍有作用的部分。
 
 ## 五、压力与状态更新
 
-每个相关事件先更新 Price Map 或 Price Process，再汇总 Pressure / Control：
+每个相关事件先更新 Price Map、Current Move 或 Active Test，再汇总 Pressure / Control：
 
 ```text
-新的区域或运动事实
+新的区域、运动或测试事实
 → Bars：实体、收盘、影线与相对强度
 → Continuity：同向连续性与 Follow-through
 → Separation：Gap 保持/关闭与 Overlap
@@ -193,7 +216,7 @@ H2、Double Bottom、Wedge、Flag 或 MTR 只在它们帮助说明次序、几�
 → Buying / Selling Pressure
 → Bull / Bear / Balanced / Unclear Control
 → 确认原 Context、标记 Transition 或 Reframe
-→ Opportunity 是否改变
+→ Long / Short Opportunity 或 Likely Sequence 是否改变
 ```
 
 使用能回答当前过程的最小时间窗口：当前腿、当前区域测试，或上次 Reframe 以来。更早或更高周期事实留在 Context，不混入眼前 Pressure。
@@ -425,7 +448,7 @@ Context
 - Trading Timeframe、Relevant Outer Constraint、Session / Remaining Horizon
 
 Market Read
-- Context、Price Map、Price Process
+- Context、Price Map、Current Move、Active Test
 
 Opportunity
 - Direction、Role、Objective、Horizon、价格区域角色与结构失效
@@ -469,27 +492,31 @@ Double-top height    = top area - neckline
 
 ## 十、从 Market Read 到 Opportunity Set
 
-结构、位置与当前价格问题明确后，分别构造现实 Long / Short Opportunity，不用一个“偏多/偏空”标签代替双方论证：
+结构、位置与当前价格问题明确后，分别扫描现实 Long / Short 路径，不用一个“偏多/偏空”标签代替双方论证。双向扫描完成前不进入 Trade Construction：
 
 ```text
 Opportunity
 - Direction + Role + Horizon
 - Objective + Market Outcome Criterion
+- Market Targets
 - Why：去重后的价格事实链
 - Already → Next
 - Activation：什么过程事实使机会具备交易表达资格
-- Invalidation：什么市场事实真正否定机会
-- Price Areas：Potential Entry Area / Obstacles / Targets
+- Invalidation：引用哪个 Region，什么市场事实真正否定机会
+- Price Region Roles：Support / Resistance / Potential Entry Area / Obstacles /
+  Magnets / Targets / Invalidation Reference
 - Against：最强矛盾或对手 Opportunity
 - Market Probability / Rule Match
 - Expiry
 ```
 
+每一侧都必须得到运行结论：构造现实 Opportunity、等待 Next，或以没有现实 objective、空间、时间为由排除。排除结果只保留原因，不展开伪 Opportunity。Context Control 提供 Permission 和先验，不替代另一方向的扫描。
+
 事实不必平均分布。一条机会可以由一条强而连贯的突破链主导，也可以由独立位置、对手失败和新跟随补全。关键是它们分别支持机会的背景、Activation、接受、持续或目标，而不是理由数量。
 
-`Role` 只用来防止混合 objective 和 horizon：continuation、correction、reversal、range return 或 breakout。例如强空头趋势中，`Up / Correction` 可先到 EMA 或 50%，随后 `Down / Continuation` 再测试旧低；两者可顺序成立。`Up / Reversal` 则要求破坏空头控制并获得新方向接受，不能从短期修正目标直接推出。
+`Role` 只用来防止混合 objective 和 horizon：continuation、correction、reversal、range return 或 breakout。例如强空头趋势中，`Up / Correction` 可先到 EMA 或 50%，随后 `Down / Continuation` 再测试旧低；两者可顺序成立。只有该顺序会改变当前选择或管理时才保存一句 `Likely Sequence`。`Up / Reversal` 则要求破坏空头控制并获得新方向接受，不能从短期修正目标直接推出。
 
-明显缺少现实目标、时间或空间的方向只保留排除原因，不为形式对称制造伪机会。Market Read 尚未解决、机会尚未 Activation，或当前没有值得承担的表达，都可以产生 Wait；Wait 只保存下一事件与 Expiry，不需要独立 Pending 对象。
+明显缺少现实目标、时间或空间的方向只保留排除原因，不为形式对称制造伪机会。Market Read 尚未解决、Activation 尚未满足且不能由许可的条件 Trigger 完整执行，或当前没有值得承担的表达，都可以产生 Wait；Wait 只保存下一事件与 Expiry，不需要独立 Pending 对象。
 
 常见双向问题可以生成：
 
@@ -501,7 +528,7 @@ Opportunity
 | 通道边界 | 内部反应并继续通道运动 | 外部突破获得接受并重分类 |
 | 旧极值、EMA 或量度区域 | 穿越并获得接受 | 拒绝并启动返回路径 |
 
-机会随来源事实改变，不随名称数量改变。新的 Context、价格区域或 Price Process 可以替代旧机会；历史结构只在仍能改变目标、正常回调或管理时留在 Context。不同 objective 或 horizon 分别表达，不用一个方向概率覆盖全部结果。
+机会随来源事实改变，不随名称数量改变。新的 Context、价格区域、Current Move 或 Active Test 可以替代旧机会；历史结构只在仍能改变目标、正常回调或管理时留在 Context。不同 objective 或 horizon 分别表达，不用一个方向概率覆盖全部结果。
 
 ## 十一、证据生命周期
 
