@@ -219,7 +219,7 @@ Breakeven Stop 是把 Active Stop 调整到计划 Entry 或整仓加权平均 En
 
 ### Scale-in
 
-第一笔 Entry 前确定 Risk Limit、Initial Limit、共同或独立 Stop、Add Permission 与 Cancel Add；未来层在决策事件发生时计算准确价格和数量。新增层先通过[总流程 Add Gate](overall_flow.md#add-gate是否使用剩余风险)，执行阶段只再确认两件事：
+第一笔 Entry 前确定 Risk Limit、Initial Limit、共同或独立 Stop、Add Permission 与 Cancel Add；未来层在决策事件发生时计算准确价格和数量。新增层通过[总流程 Add Gate](overall_flow.md#add-gate是否使用剩余风险)得到 `ADD_TO_READY` 后进入 Ready to Submit，执行阶段再确认两件事：
 
 - 订单方向、Entry Method、价格、数量与有效期正确，加仓后的 Risk Committed 不超过 Risk Limit；
 - 当前保护正常，新层成交后可以修改 Active Protective Stop 覆盖实际总数量。
@@ -291,7 +291,7 @@ Trapped、disappointment 和预期退出压力若由已经记录的 Entry、fail
 
 ## 十四、执行事件的必要记录
 
-记录时点由[总流程](overall_flow.md#九必要记录)统一规定。执行阶段分开处理三类信息：
+记录时点由[总流程](overall_flow.md#六必要记录)统一规定。执行阶段分开处理三类信息：
 
 | 类型 | 最小处理 |
 | --- | --- |
