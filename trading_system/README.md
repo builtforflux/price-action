@@ -16,10 +16,11 @@ Safety Check
 
 1. [总流程](overall_flow.md)：盘中入口、运行顺序、状态路由、检查清单与最小记录。
 2. [市场结构与机会](market_read_and_opportunities.md)：定义 Market Read、连续价格事实、Context、Price Map、Current Move、Active Test 和双向 Opportunity Set。
-3. [交易决策与计划](decision_and_plan.md)：应用 Context Permission，把具备当前表达资格的 Opportunity 变成 Candidate，构造判断时点、Entry Method、Planned Stop、Targets、仓位与管理，再由 Trade Gate 比较方程并冻结所选 Trade Plan。
-4. [执行、管理与复盘](execution_management_and_review.md)：订单、成交、保护、持仓更新、退出和复盘。
-5. [条件规则台账](conditional_rules_registry.md)：保存可审计的条件概率与适用边界，不是另一套路由。
-6. [完整示例](worked_examples.md)：用复合多空场景走完整流程。
+3. [市场决策事件导航](market_decision_events.md)：识别哪些价格变化需要重读，以及只重开哪些既有步骤；不是 Setup 或记录对象。
+4. [交易决策与计划](decision_and_plan.md)：应用 Context Permission，把具备当前表达资格的 Opportunity 变成 Candidate，构造判断时点、Entry Method、Planned Stop、Targets、仓位与管理，再由 Trade Gate 比较方程并冻结所选 Trade Plan。
+5. [执行、管理与复盘](execution_management_and_review.md)：订单、成交、保护、持仓更新、退出和复盘。
+6. [条件规则台账](conditional_rules_registry.md)：保存可审计的条件概率与适用边界，不是另一套路由。
+7. [完整示例](worked_examples.md)：用复合多空场景走完整流程。
 
 每个事实只在承担唯一职责的文件定义；其他文档引用结论。`overall_flow.md` 决定现在看什么和下一步做什么，下级文档负责需要时展开知识。
 

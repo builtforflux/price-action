@@ -17,7 +17,7 @@ Price Process
 - From：连续、低重叠的空头腿
 - Now：第三推后反弹，再次下探形成 Double Bottom / H2 视图
 - Role：当前 Down Leg 仍是空头 continuation attempt；多头只形成 reversal attempt
-- Change：Selling Pressure 仅略减；没有连续 bull bars，gap 未关闭
+- Pressure：Bear 仅略减；Bull 尚未建立，没有连续 bull bars，gap 未关闭；Bear Control 保持
 - Testing：空头是否仍能维持旧低下方控制
 - Next：强 bull breakout + follow-through，或空头恢复
 ```
@@ -54,7 +54,7 @@ Price Process
 - From：Bear Broad Channel 的第三次 Down Leg
 - Now：反弹后的第二次低位测试
 - Role：空头 continuation attempt，同时测试能否激活短期 Up / Correction
-- Change：延伸缩小、Overlap 增加、第二次测试 Selling Pressure 更弱
+- Pressure：Bear 相对上次减弱；Bull 在局部开始建立但尚待 signal / follow-through；Bear Control 减弱但未转移
 - Testing：旧低守住后先修正，还是空头恢复
 - Next：bull signal + follow-through，或 100 下方接受
 ```
@@ -121,7 +121,7 @@ Testing：多头能否恢复，还是回调扩大为 Range
 
 ```text
 Context：Mature Trading Range + Breakout Mode
-Price Process：中部 Local Balance，Pressure balanced
+Price Process：中部 Local Balance；Bull / Bear Pressure balanced
 Permission：中部不做 range fade；形态不提供方向
 Decision：WAIT for breakout + follow-through + hold
 ```
@@ -136,7 +136,7 @@ Decision：WAIT for breakout + follow-through + hold
 From：Bull Breakout Attempt
 Now：gap 关闭并重新进入旧区域
 Role：原突破 failure test；当前 Down Leg 尝试成为 Range Return
-Change：Bull Separation 关闭，Selling Pressure 建立
+Pressure：Bull Separation 关闭、Bull Pressure 减弱；Bear Pressure 随重新进入和跟随建立
 Testing：旧区间是否重新获得接受
 Next：区间内 bear follow-through，或多头再次收复 300
 ```
@@ -192,7 +192,9 @@ Current Move
 - Bars：异常大的 bear trend bar，靠近低点收盘
 - Continuity：当前只有初始 surprise，后续跟随未知
 - Separation：快速形成向下分离
-- Result：Selling Pressure 显著增强；短期 Control 可能转 Short
+- Bull Pressure：显著减弱，但外层结构尚未被一根 K 线完全否定
+- Bear Pressure：由 surprise 显著建立，后续连续性未知
+- Control：外层 Bull 进入 Transition；短期 Bear Control 候选
 
 Active Test
 - Object：4958–4960 旧整理 / 突破起点
@@ -211,6 +213,16 @@ Confirm
 第一次反应后再次下探近似低位，形成局部小双底；完成的 bull reversal bar 具有长下影并收在自身中点以上：
 
 ```text
+Current Move
+- From：强 bear surprise 到达 4958–4960 后的第一次反应
+- Now：再次 Down Leg 测试近似低位，并形成局部 Reversal Attempt
+- Bars：第二次测试的延伸有限；bull reversal bar 下影长、收在自身中点以上
+- Continuity：空头没有立即跟随；多头 signal 已完成，向上触发与 follow-through 未知
+- Separation：向下分离缩小，外层区域尚未在任一侧获得持续接受
+- Bull Pressure：在局部开始建立，仍需触发或跟随
+- Bear Pressure：相对 surprise 减弱，但强空头第二腿风险仍在
+- Control：外层 Transition；局部尚未确认 Bull Control
+
 Active Test
 - 外层：4958–4960 再次承担支撑 / 突破回测
 - 局部：第二次向下测试，Double Bottom / H2 是同一次序的视图
@@ -254,11 +266,98 @@ Likely Sequence
 
 该场景验证：重要位置只登记一次；外层位置与局部触发两个尺度共同读取；Long / Short 路径同时存在且可能顺序实现；Entry Method、Planned Stop 与 Targets 都引用已有 Price Region 或 Active Test。
 
-## 八、共同闭环
+## 八、Trading Range 下沿：2% 风险额度与动态第二层
+
+BTC 5 分钟成熟 Trading Range 下沿形成现实 Long / Range Return Opportunity。示例账户配置为整份计划最多承担 `2%` 风险、第一层最多使用 `1%`；这些数字只演示额度分配，不表示通用安全比例。Planned Stop 位于能够容纳 TR 下沿正常测试的位置之外；空方在区域下方获得接受才构成市场 Structural Invalidation，Protective Stop 可以更早结束当前 Candidate。正常高流动性执行假设下预计滑点配置为零，实质相关的手续费仍进入方程。
+
+第一笔 Entry 前只冻结：
+
+```text
+Risk Limit：2%
+Initial Limit：1%
+Stop Rule：两层共用结构保护 S
+Add Permission：价格进入更低的预定区域 A，且原 Long Opportunity 仍有效；
+                或区域 A 出现拒绝、bull signal / follow-through
+Cancel Add：A 下方形成强 bear breakout 与 follow-through、获得接受、
+            目标空间消失、时间过期或保护异常
+```
+
+第一层按当前 Entry 到 `S` 的距离使用不超过 `1%` 风险。此时另一部分只是 `Risk Available`，不是已经承诺的风险，也不是“下跌就加”的授权。
+
+价格随后下跌几个 ticks 到区域 `A`：
+
+- 若原计划允许在成熟区间下沿用更少确认换价格改善，且卖压没有增强、`A` 下方没有接受，可以按当前价格重新计算数量并使用 Limit Add；
+- 若下跌动量使直接接多不再合适，则等待拒绝、micro double bottom、合格 bull signal 或 follow-through，再用对应 Trigger 的 Stop / Market / Limit Add；
+- 若连续强 bear bars、分离和跟随使下沿转为向下接受，执行 `CANCEL ADD`，并按原 Long Opportunity 的 Invalidation 管理第一层。
+
+第二层最多使用：
+
+```text
+Risk Available = max(0, Risk Limit - Risk Committed)
+q₂ = 可分配风险 / (|e₂ - S| × 每点价值 + 每单位 Execution Cost)
+```
+
+更低的 `e₂` 距共同 Stop 更近，因此同样最多 `1%` 风险时，第二层数量通常大于第一层；实际数量仍受当前目标空间、方程和最小单位限制，不要求用满。成交后立即修改并确认 Active Protective Stop 的数量覆盖整仓，再更新加权均价、Risk Committed / Available。计划内 Add 只保存 Entry Method、价格、数量、共同 Stop、加仓后总风险和触发依据。
+
+这个例子验证：账户层只提供固定的 `2%` 风险上限；市场读取决定是否有资格使用剩余额度，当前 Entry 到共同 Stop 的距离才决定第二层数量。
+
+## 九、长期未触 EMA 后的首次测试
+
+标普 5 分钟处于 Bear Tight Channel，约 20 根以上 K 线未触 EMA。旧低在 `4000`，EMA、下跌腿 50% 与先前小 lower high 汇合在 `4011–4013`。价格从 `4000` 反弹到该区域；反弹 K 线偏小、重叠较多，bull follow-through 一般。
+
+```text
+Event：长期分离后的首次 EMA 测试
+
+Price Map
+- 4011–4013：EMA + 50% + prior lower high
+- 4000：旧低 / 顺势第一目标
+
+Current Move
+- From：连续 Bear Tight Channel 与长期 EMA 分离
+- Now：Up Leg / Pullback 到 4011–4013
+- Bull Pressure：略有建立，但连续性和分离较弱
+- Bear Pressure：回调中减弱，尚未被反向接受否定
+- Control：Bear 保持；当前是 correction，未升级为 bull reversal
+
+Active Test
+- Object：首次 EMA / target cluster 测试
+- Stage：Touch 后等待 Response
+- Next：bear signal + 向下恢复；或强 bull breakout、follow-through 并守在区域上方
+- Expiry：区域反复穿越、测试完成，或 Context Reframe
+```
+
+双向路径不是“到 EMA 就做空”：
+
+```text
+Down / Continuation
+- Objective：重测 4000；接受后再看更低 magnet
+- Already：Bear Control + 首次 EMA 测试 + 弱反弹
+- Activation：区域内形成合格 bear signal 并向下触发；保守路径再等 bear follow-through
+- Invalidation：4011–4013 上方出现强 bull breakout、跟随并守住，破坏原 lower-high 约束
+- Against：首次测试也可能扩大成更深修正，当前位置的单根 signal 可能失败
+
+Up / Reversal
+- Objective：破坏 bear structure，测试更高旧公平区域
+- Already：反弹到 EMA；Bear Pressure 暂时减弱
+- Next：强 bull breakout + follow-through、EMA 上方回踩守住并形成 HL
+- 当前状态：未 Activation；弱反弹到 EMA 本身只完成 correction objective
+```
+
+若在 `4012` 形成高点 `4013`、低点 `4010.5` 的合格 bear signal bar：
+
+- `Sell Stop below 4010.5`：让价格先完成向下 Trigger；Planned Stop 锚定该 EMA 测试的结构高点上方并容纳 5 分钟正常波动；First Target 为 `4000`；
+- `Limit Sell in 4011–4013`：以更好价格交换更少确认，只在强 Bear Context、区域与风险计划事前允许时构造，使用自己的 Entry、Stop、概率和方程；
+- 等 bear follow-through 后 Market / pullback entry：确认更多但剩余空间变小，必须重新计算 Candidate，不能沿用 signal bar 时的方程。
+
+若 bull breakout 和 follow-through 先发生，取消未成交的顺势卖出计划并 Reframe 当前测试；这只使 Long / Reversal 获得新的 Already，仍需用当前目标、Entry、Stop 和剩余空间构造自己的 Candidate。若顺势空单成交后没有恢复、反而在 EMA 上方获得接受，所选 Opportunity 削弱或失效；按原计划 Reduce / Exit，不把首次 EMA 测试当作继续持有的理由。
+
+这个例子验证：事件卡只保证及时重开正确步骤；压力、跟随、接受、位置与交易方程共同决定动作。EMA、50% 和 prior lower high 是独立来源的区域汇合，但“首次测试、EMA touch、bear flag”若描述同一回调链，不重复计票。
+
+## 十、共同闭环
 
 ```text
 Inherited Context + Price Map
-→ Current Move：From / Now / Role；Bars / Continuity / Separation / Pullback / Opponent → Pressure / Control
+→ Current Move：From / Now / Role；Bars / Continuity / Separation / Pullback / Opponent → Bull / Bear Pressure → Control
 → Active Test：Object / Stage / Attempt / Scale / Response / Next / Expiry
 → Confirm Context / Transition / Reframe
 → Long / Short Opportunity + Likely Sequence：Objective、Targets、Activation、Invalidation、Market Probability

@@ -144,7 +144,7 @@ Continuity：同向连续性与 follow-through
 Separation：gap / breakout separation 与 overlap
 Pullback：深度、持续时间、gap 与恢复速度
 Opponent：反方 K 线质量、跟随与失败尝试
-Result：Buying / Selling Pressure 与 Control 变化
+Result：Bull Pressure 变化；Bear Pressure 变化；Control 含义
 ```
 
 Now 与 Role 分开：同一段 Down Leg 在多头方向状态中可能承担 Pullback 角色，在 Trading Range 中可能只是 Range Leg。`PAUSE` 尚未形成清楚方向腿；`LOCAL_BALANCE` 表示局部小区间已经比单腿或暂停更能组织价格。反向运动获得持续接受并改变外层正常回撤、目标或管理方式后，Role 才升级为新的 Context。
@@ -202,6 +202,8 @@ Price Process 最后把 Current Move 与 Active Test 压缩成一句双向问题
 
 H2、Double Bottom、Wedge、Flag 或 MTR 只在它们帮助说明 Attempt、Scale、几何、外层作用、目标或失效时附在这个过程上。价格进入新区域或 Context 重新分类时，新的 Current Move / Active Test 取代旧问题；旧结构只保留对新目标或正常回调仍有作用的部分。
 
+发生关键变化时，用[市场决策事件导航](market_decision_events.md)确定只需重开哪些步骤。事件卡压缩常见过程，不拥有独立状态、概率或入场许可。
+
 ## 五、压力与状态更新
 
 每个相关事件先更新 Price Map、Current Move 或 Active Test，再汇总 Pressure / Control：
@@ -213,7 +215,7 @@ H2、Double Bottom、Wedge、Flag 或 MTR 只在它们帮助说明 Attempt、Sca
 → Separation：Gap 保持/关闭与 Overlap
 → Pullback：深度、持续时间、Gap 与恢复速度
 → Opponent Response：反方 K 线质量、跟随与失败尝试
-→ Buying / Selling Pressure
+→ Bull Pressure 变化 + Bear Pressure 变化
 → Bull / Bear / Balanced / Unclear Control
 → 确认原 Context、标记 Transition 或 Reframe
 → Long / Short Opportunity 或 Likely Sequence 是否改变
@@ -262,7 +264,7 @@ Moving-average gap bar 的两个常见语境不能混用：整根 K 线位于 EM
 
 ### Pressure / Control / Always In
 
-Buying / Selling Pressure 汇总一段窗口中的可观察事实：
+Bull / Bear Pressure 分别汇总同一段窗口中的可观察事实：
 
 - 顺势 K 线、实体和强收盘的数量与连续性；
 - 反向影线和失败尝试；
@@ -270,7 +272,7 @@ Buying / Selling Pressure 汇总一段窗口中的可观察事实：
 - pullback 深度、持续时间和恢复速度；
 - 反方能否获得 scalp 或持续路径。
 
-同一根 K 线的“大实体、强收盘、顺势 K 线”不能算成三个独立理由。Pressure 是事实簇的方向汇总；一侧明显占优才支持 Control，控制足够强时才支持 Always In。Always In 不是必须持仓，也不能替代位置、目标和交易方程。
+同一根 K 线的“大实体、强收盘、顺势 K 线”不能算成三个独立理由。每次更新分别回答两侧是增强、保持、减弱还是尚未建立；一侧减弱不自动等于另一侧建立。Pressure 是事实簇的方向汇总；一侧明显占优才支持 Control，控制足够强时才支持 Always In。Always In 不是必须持仓，也不能替代位置、目标和交易方程。这是观察输出，只有它改变 Opportunity、计划或动作时才记录。
 
 通常需要足够强的反向运动和跟进改变 Always In。单根异常强反转只有在方向、相对强度、重要位置和对旧控制的否定同时清楚时，才可能直接完成切换；普通反色 K 线不够。
 
