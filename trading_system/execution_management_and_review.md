@@ -11,6 +11,7 @@
 提交任何新增风险前重新同步：
 
 - 所选 Opportunity 仍有效，Activation、Invalidation、目标、周期和时间范围未改变；
+- Entry Method、Trigger Boundary、Planned Protective Stop 与 First / Main Target 仍引用原 Price Map / Active Test；
 - Market / close order 所需的 Entry 前置条件已经发生；或 Trade Plan 明确允许 Stop / Limit 在 Trigger 或成交前预先工作；
 - 以计划订单价格、允许成交范围和当前剩余空间计算的 Planned Stop、Reward、成本和 Trader's Equation 仍成立；
 - Position Size 与当前风险预算、现有仓位和全部计划层一致；
@@ -110,12 +111,32 @@ Stop price 是图表上的保护触发依据，不保证最终 fill。真实账�
 
 ```text
 新市场事实
-→ 继承当前 Context，更新 Price Map 与 From–Now–Role–Change–Testing–Next 价格过程
+→ 继承当前 Context，更新 Price Map、Current Move 与 Active Test
 → 确认原 Context、标记 Transition 或 Reframe
-→ 同时更新所选 Opportunity 和现实竞争机会
+→ 同时更新所选 Opportunity、现实竞争机会与 Likely Sequence
 → 增强 / 保持 / 削弱 / 失效 / 目标完成 / 过期 / 新结构替代
 → 按原计划和当前账户状态采取动作
 ```
+
+持仓中的双向检查以所选 Opportunity 和现实竞争 Opportunity 为核心，不因已有仓位省略反方，也不为每根 K 线重建两份 Candidate：
+
+```text
+1. 实际仓位、工作订单与 Active Protective Stop 一致吗？
+2. Price Map / Current Move / Active Test 出现了什么新事实？
+3. 所选 Opportunity 增强、保持、削弱、失效还是目标完成？
+4. 竞争 Opportunity 只是出现、增强，还是已经获得接受？
+5. Target、Stop、时间或原计划条件发生了吗？
+6. 是否形成了能容纳正常波动的新保护锚点？
+7. 当前动作：Hold / Stop Adding / Reduce / Trail / Exit？
+```
+
+| 所选路径 | 竞争路径 | 当前动作边界 |
+| --- | --- | --- |
+| 增强或保持 | 仍弱或仅出现 | 按计划持有；新增风险仍需新 Candidate |
+| 削弱但未失效 | 增强但未接受 | Hold、Stop Adding，或执行预写减仓 / 目标收缩 |
+| Structural Invalidation | 任意状态 | 主动退出；不必等待最远 Active Stop |
+| 因竞争路径接受而失效 | 已获得接受并实质否定所选路径 | 先退出原交易；反向交易重新经过完整流程 |
+| Target / Stop / Time 条件发生 | 任意状态 | 按 Outcome Criterion 处理并核对实际仓位与保护 |
 
 认知更新不自动产生交易动作。普通波动、单根反色 K 线或计划周期内正常 pullback 可以使局部证据变化，却不自动要求加仓、减仓、移动 Stop 或退出。
 
@@ -173,7 +194,13 @@ Opportunity 增强不自动许可加仓。新增数量仍须通过 Context Permi
 
 ## 八、Trailing 与 Breakeven
 
-Trailing Stop 只能向降低开放风险方向移动：多头向上，空头向下。只有新结构能够容纳所选周期正常波动，并且替换保护已确认生效后，新 Stop 才成立；撤旧挂新的过程中不能留下无保护空档。
+Trailing Stop 只能向降低开放风险方向移动：多头向上，空头向下。一个更近的高低点或价格区域只有同时满足以下条件，才成为新的保护锚点：
+
+1. 新结构已经形成，并与原 Opportunity、Price Map 和管理 horizon 一致；
+2. 价格已从该结构建立足够分离、follow-through 或成功恢复；
+3. 新 Stop 仍能容纳该周期的正常波动，不落在普通 pullback 内；
+4. 调整降低开放风险，并符合原计划或保存为风险 Delta；
+5. 通过 amend / replace 修改当前 Active Protective Stop；以经纪商 / 交易所确认后的新价格与数量为准。确认前仍按原 Stop 和最坏暴露处理，确认后原保护由修改后的 Stop 直接取代。
 
 可用锚点包括：
 
@@ -181,9 +208,9 @@ Trailing Stop 只能向降低开放风险方向移动：多头向上，空头向
 - 完整走势腿或回调结构；
 - 原 Opportunity 仍成立时的其他有效失效边界。
 
-任意次要 swing、每根盈利 K 线或固定点数不要求机械 trailing。
+重要位置本身不自动要求 Trail；任意次要 swing、每根盈利 K 线或固定点数也不形成新保护边界。强反向动量或 Structural Invalidation 可以要求主动退出，无需等待一个适合 Trailing 的新锚点。
 
-Breakeven Stop 是把 Active Stop 调整到计划 Entry 或整仓加权平均 Entry 附近的管理选择。它降低名义价格风险，但佣金、滑点、跳空和数量差异意味着账户结果未必为零。Scale-in 后必须使用加权均价，不能机械使用第一笔 Entry 或简单中点。
+Breakeven Stop 是把 Active Stop 调整到计划 Entry 或整仓加权平均 Entry 附近的管理选择，也必须通过上述结构与正常波动资格门。它降低名义价格风险，但佣金、滑点、跳空和数量差异意味着账户结果未必为零。Scale-in 后必须使用加权均价，不能机械使用第一笔 Entry 或简单中点。
 
 ## 九、数量更新
 

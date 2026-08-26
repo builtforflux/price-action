@@ -4,10 +4,10 @@
 
 ```text
 Safety Check
-→ Market Read：继承 Context → 更新 Price Map / Price Process → 确认或重构 Context
+→ Market Read：继承 Context → Price Map → Current Move → Active Test → 确认或重构 Context
 → Opportunity Set：现实的多空机会与可能先后顺序
-→ Context Permission + Trade Candidates：当前允许表达机会的 Trigger / Entry / Stop / Target / Size
-→ Execute / Wait / No Trade
+→ Trade Construction：当前允许表达机会的 Trigger / Entry Method / Planned Stop / Targets / Size
+→ Trade Gate：Execute / Wait / No Trade
 → Order / Position / Protection
 → Event Update / Exit / Review
 ```
@@ -15,8 +15,8 @@ Safety Check
 ## 文件职责
 
 1. [总流程](overall_flow.md)：盘中入口、运行顺序、状态路由、检查清单与最小记录。
-2. [市场结构与机会](market_read_and_opportunities.md)：定义 Market Read、连续价格事实、Context、Price Map、Price Process 和 Opportunity Set。
-3. [交易决策与计划](decision_and_plan.md)：应用 Context Permission，把已 Activation 的 Opportunity 变成 Candidate，计算 Trigger、Entry、Stop、Target、交易结果概率、仓位与方程，并冻结所选 Trade Plan。
+2. [市场结构与机会](market_read_and_opportunities.md)：定义 Market Read、连续价格事实、Context、Price Map、Current Move、Active Test 和双向 Opportunity Set。
+3. [交易决策与计划](decision_and_plan.md)：应用 Context Permission，把具备当前表达资格的 Opportunity 变成 Candidate，构造判断时点、Entry Method、Planned Stop、Targets、仓位与管理，再由 Trade Gate 比较方程并冻结所选 Trade Plan。
 4. [执行、管理与复盘](execution_management_and_review.md)：订单、成交、保护、持仓更新、退出和复盘。
 5. [条件规则台账](conditional_rules_registry.md)：保存可审计的条件概率与适用边界，不是另一套路由。
 6. [完整示例](worked_examples.md)：用复合多空场景走完整流程。
@@ -37,7 +37,10 @@ Safety Check
 - 多空理由分别组织，不按名称数量投票；同一价格链的多个标签只算一次。
 - 独立汇合可以增强机会，但必须说明它增强的是 Activation、接受、延续、到达目标，还是目标区反应。
 - 不同方向、角色、目标或 horizon 分成不同 Opportunity；可以表达“先修正、后顺势”的序列。
-- Opportunity 拥有 Objective、Activation、Invalidation 和 Market Probability；Candidate 拥有 Trigger、Entry、Protective Stop 与 Candidate Outcome Probability。
+- Price Map 唯一登记区域；Opportunity 为区域分配 Support / Resistance、Entry Area、Obstacle、Magnet、Target 与 Invalidation Reference 角色。
+- Opportunity 拥有 Objective、Market Targets、Activation、Invalidation 和 Market Probability；Candidate 拥有 Trigger、Entry Method、Planned Protective Stop、选定 Targets 与 Candidate Outcome Probability。
 - 只为当前可表达的少数 Opportunity 计算 Candidate；只把被选 Candidate 冻结成 Trade Plan。
 - `Wait` 保存下一事实和过期条件，不藏一份尚未重新计算的可执行计划。
 - 订单意图、经纪商确认、实际成交、敞口和保护状态始终分开。
+- 持仓中同时更新所选 Opportunity 与现实竞争 Opportunity；竞争路径获得接受先触发原仓位处理，反向风险仍需新 Candidate。
+- Trailing / Breakeven 只使用已经形成、能容纳管理周期正常波动并降低开放风险的新保护锚点。
