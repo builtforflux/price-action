@@ -62,10 +62,10 @@ Pattern、Market Cycle、Context、H/L、Wedge、Double Test、Flag、MTR 等都
 | 12A–C | Trend / Trading Range、Breakout–Channel–Range | 活动结构连续谱与 fallback |
 | 13A–C | Always In、Trader's Equation、Scalp / Swing | Control；条件概率；风险方程 |
 | 14A–E | Trend、Spike–Channel、紧/宽通道、小回调 | 活动结构、Channel 角色和 Stop 空间 |
-| 15A–G | Breakout attempt、follow-through、surprise、失败和第二腿 | 测试—接受链与结果路径 |
+| 15A–G | Breakout attempt、follow-through、surprise、失败和第二段 | 测试—接受链与结果路径 |
 | 16A–F | 通道线、重画、边界测试、周期嵌套和区间化 | Channel 生命周期、多 horizon 路径 |
 | 17A–B | Microchannel、小回调趋势、首次反转和 TTR | Tight Channel、minor path 与压缩 |
-| 18A–F | Range、BLSHS、BOM、LOM、vacuum、成功突破和第二腿陷阱 | Range 目标、Breakout Mode、限价行为 |
+| 18A–F | Range、BLSHS、BOM、LOM、vacuum、成功突破和第二段陷阱 | Range 目标、Breakout Mode、限价行为 |
 | 19A–E | Support / Resistance、magnet、多周期位置和 entry test | 参照区域、目标事件与 confluence |
 | 20A–B | Leg 1 = Leg 2、Range/Breakout height | 结构目标与投射端点 |
 | 21A–D | Minor/Major reversal、压力、TBTL 和早晚风险时点 | Reversal 路径；条件概率与管理 |
@@ -89,14 +89,14 @@ Pattern、Market Cycle、Context、H/L、Wedge、Double Test、Flag、MTR 等都
 | 39A–D | 底部镜像、概率交换和 trailing | MTR 镜像；Stop 与管理 |
 | 40A–E | 趋势末端、FOMO、Final Trend Bar、失望和 trapped | Transition、持仓更新和行为纪律 |
 | 41A–D | 强突破、Buy/Sell The Close 和 Swing Stop | Breakout 路径的不同判断时点 |
-| 42A–C | Minor/Major climax、Gap、microchannel 和区间第二腿 | 特定覆盖条件与结果路径 |
+| 42A–C | Minor/Major climax、Gap、microchannel 和区间第二段 | 特定覆盖条件与结果路径 |
 | 43A–D | Tight Bull Channel、首次反转和逆势加仓困难 | Channel 路径；数量风险；冲突数字隔离 |
 | 44A–D | Tight Bear Channel 镜像 | 同一无方向系统关系，不重复规则 |
 | 45A–E | Broad Bull Channel、周期嵌套、深回调和失败反转 | Broad Channel / TTR 双视图 |
 | 46A–E | Broad Bear Channel 镜像 | 同一无方向系统关系，不重复规则 |
-| 47A–D | Range、80% attempt、第二腿陷阱和限价交易 | Range 目标与突破条件更新 |
+| 47A–D | Range、80% attempt、第二段陷阱和限价交易 | Range 目标与突破条件更新 |
 | 48A–K | First swing、Opening BOM、first-18、Opening Reversal 和尾盘 | Session 对象分层与时间风险 |
-| 49A–E | 整日状态重判、H/L、高潮和第二腿 | 总流程动态更新案例 |
+| 49A–E | 整日状态重判、H/L、高潮和第二段 | 总流程动态更新案例 |
 | 50A–E | Scalp、低周期、TICK 和管理 | Scalp 管理；TICK 只作辅助背景 |
 | 51A–D | 错误、Mental Stop、周期一致和数量风险 | 系统违规、保护和行为纪律 |
 | 52A–B | 三层保护、前提变化、再入和 trapped | 执行、持仓和复盘总结合同 |

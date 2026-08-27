@@ -24,7 +24,7 @@
 
 ### Price Process
 
-Price Process 用 `From → Now → Role → Change → Testing → Next` 保存价格怎样演化到当前区域，包括当前腿、暂停或局部平衡，以及它承担 continuation、pullback、range leg 还是 reversal attempt 作用。`Change` 依次观察 K 线质量、连续性与 follow-through、gap / overlap、回调质量和反方尝试结果，再汇总 Buying / Selling Pressure 与 Control。它最终压缩成一句双向问题：此前运动怎样变化、哪个区域正在被测试，以及什么新事实表示接受、拒绝、Activation、失败或过期。
+Price Process 用 `From → Now → Role → Change → Testing → Next` 保存价格怎样演化到当前区域，包括当前段、暂停或局部平衡，以及它承担 continuation、pullback、range leg 还是 reversal attempt 作用。`Change` 依次观察 K 线质量、连续性与 follow-through、gap / overlap、回调质量和反方尝试结果，再汇总 Buying / Selling Pressure 与 Control。它最终压缩成一句双向问题：此前运动怎样变化、哪个区域正在被测试，以及什么新事实表示接受、拒绝、Activation、失败或过期。
 
 ### Pattern
 
@@ -98,7 +98,7 @@ Trend 与 Trading Range 之间连续演化的观察模型。常见路径为 `bre
 
 ### Pullback / Leg / Swing
 
-Pullback 是原运动内尚未否定恢复预期的暂停或反向运动；leg 是较大结构中的一段方向运动；swing 是相对更大的价格路径或持仓目标。第一腿后的第二腿是条件倾向，不保证长度、力度或完成方式。
+Pullback 是原运动内尚未否定恢复预期的暂停或反向运动；leg 是较大结构中的一段方向运动；swing 是相对更大的价格路径或持仓目标。第一段后的第二段是条件倾向，不保证长度、力度或完成方式。
 
 ### Reversal / Minor Reversal
 
@@ -162,15 +162,15 @@ Second signal 是第二次可观察触发机会；严格的 second entry 还要�
 
 ### Wedge / Parabolic Wedge
 
-Wedge 描述三次推动或三次尝试。它可属于顺势回调、反转过程或普通区间；parabolic wedge 强调 tight channel 中的高潮式多次 surge。三推只形成当前测试，不保证反转或两腿修正。
+Wedge 描述三次推动或三次尝试。它可属于顺势回调、反转过程或普通区间；parabolic wedge 强调 tight channel 中的高潮式多次 surge。三推只形成当前测试，不保证反转或两段修正。
 
 ### Flag / Final Flag
 
-Flag 是对更大运动的逆向或横向修正；因此上涨宽通道在更高层可以是 bear flag，下跌宽通道可以是 bull flag。Final flag 只能实时标为候选，只有后续路径确实终结原趋势腿才能确认。
+Flag 是对更大运动的逆向或横向修正；因此上涨宽通道在更高层可以是 bear flag，下跌宽通道可以是 bull flag。Final flag 只能实时标为候选，只有后续路径确实终结原趋势段才能确认。
 
 ### Triangle / ii / ioi / oo
 
-这些结构都可以表达压缩与双向突破候选。来源对 triangle 的“反转次数”与“腿数”口径不同，标注时应声明口径；近 50/50 的倾向只适用于相应成熟结构，不能外推给所有压缩。
+这些结构都可以表达压缩与双向突破候选。来源对 triangle 的“反转次数”与“段数”口径不同，标注时应声明口径；近 50/50 的倾向只适用于相应成熟结构，不能外推给所有压缩。
 
 ### Major Trend Reversal / MTR
 
@@ -208,7 +208,7 @@ Signal bar 提供计划触发所需的局部信息；chart entry bar 是声明�
 
 ### Follow-through / Surprise / Disappointment
 
-Follow-through 是初始运动后的继续延伸；surprise 是明显超出原预期的强行为，常增加第二腿可能；entry disappointment 只是入场后表现偏弱，不能单独确认路径或交易 failure。
+Follow-through 是初始运动后的继续延伸；surprise 是明显超出原预期的强行为，常增加第二段可能；entry disappointment 只是入场后表现偏弱，不能单独确认路径或交易 failure。
 
 ## 六、订单、风险与结果
 

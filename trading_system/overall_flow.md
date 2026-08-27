@@ -47,7 +47,7 @@ Frame 是运行前提；Frame 完成后的停止点统一进入 Decision：
 SAFE？          全局 Guard：仓位/订单一致性、总 Stop 风险、实际保护、数据与连接
 判断边界？      交易周期、Session、剩余时间、事件/流动性约束、外层参照
 价格在哪里？    Active Area、最近上方/下方区域、两侧空间
-怎样来到这里？  当前腿/角色、连续性、gap/overlap、回调、反方反应、双方 Pressure
+怎样来到这里？  当前段/角色、连续性、gap/overlap、回调、反方反应、双方 Pressure
 正在测试什么？  Object / Objective、当前反应、接受/失败、下一观察、有效边界
 Context？       Operating State、Direction、Conditions；沿用还是 Reframe
 Long / Short？  各自 Opportunity / Watch / Excluded；目标、缺什么、怎样失效
@@ -142,8 +142,8 @@ Current Area + 所有当前相关 Areas Above / Below
 
 **必看**
 
-- 价格从哪里出发；现在是上涨腿、下跌腿、暂停还是局部平衡？
-- 当前腿是 continuation、pullback、range leg 还是 reversal attempt？
+- 价格从哪里出发；现在是上涨段、下跌段、暂停还是局部平衡？
+- 当前段是 continuation、pullback、range leg 还是 reversal attempt？
 - K 线实体、收盘、影线、连续性和 follow-through 怎样？
 - separation / gap 在扩大、保持、缩小还是关闭；overlap 与回调深度、持续时间怎样？
 - 反方只有单根反应，还是已经建立自己的强 K、连续性、分离或恢复？
