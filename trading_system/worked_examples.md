@@ -14,7 +14,7 @@ Price Map
 - 当前位于新低和通道下沿；上方 EMA 很近，逆势净空间有限
 
 Price Process
-- From：连续、低重叠的空头腿
+- From：连续、低重叠的空头段
 - Now：第三推后反弹，再次下探形成 Double Bottom / H2 视图
 - Role：当前 Down Leg 仍是空头 continuation attempt；多头只形成 reversal attempt
 - Pressure：Bear 仅略减；Bull 尚未建立，没有连续 bull bars，gap 未关闭；Bear Control 保持
@@ -26,7 +26,7 @@ Price Process
 
 ```text
 Up / Correction Opportunity
-- Objective：EMA 或很小两腿修正
+- Objective：EMA 或很小两段修正
 - Activation：强 bull breakout、follow-through，并开始关闭分离
 - Invalidation：旧低下方重新建立空头分离与跟随
 - 当前状态：未 Activation
@@ -47,7 +47,7 @@ Down / Continuation Opportunity
 
 ## 二、Broad Bear Channel：修正 scalp 与 major reversal 分开
 
-5 分钟 Bear Broad Channel 第三推到 `100`，反弹到颈线 `101`，随后第二次下探 `100.10` 且卖压明显更弱。`102` 同时接近下跌腿 50%、EMA 和 Double Bottom 高度投射：`101 + (101 - 100) = 102`。
+5 分钟 Bear Broad Channel 第三推到 `100`，反弹到颈线 `101`，随后第二次下探 `100.10` 且卖压明显更弱。`102` 同时接近下跌段 50%、EMA 和 Double Bottom 高度投射：`101 + (101 - 100) = 102`。
 
 ```text
 Price Process
@@ -61,7 +61,7 @@ Price Process
 
 | Opportunity | Objective | Activation | Invalidation | Market Probability |
 | --- | --- | --- | --- | --- |
-| Up / Correction | `102` target cluster；短期 scalp / 两腿修正 | Broad Channel 边缘第二次测试被拒绝并完成合格 bull signal；保守 Candidate 另等实际跟随 | `100` 下方重新接受 | 与 Broad Channel 边缘反应、第二次测试及当前时点匹配 |
+| Up / Correction | `102` target cluster；短期 scalp / 两段修正 | Broad Channel 边缘第二次测试被拒绝并完成合格 bull signal；保守 Candidate 另等实际跟随 | `100` 下方重新接受 | 与 Broad Channel 边缘反应、第二次测试及当前时点匹配 |
 | Up / Reversal | `103` 通道起点及更高；swing | 强 bull breakout、follow-through、破坏 lower high，回调形成 HL 且空头恢复失败 | 空头重新建立主要结构控制 | 当前尚未匹配；不能借用 correction 概率 |
 | Down / Continuation | `99` 旧低或下一 magnet | 直接在 `100` 下方接受，或先反弹到 `102` 后恢复卖压 | 多头破坏空头结构并获得接受 | 仍受 Bear Context 支持，但直接追空位置差 |
 
@@ -228,7 +228,7 @@ Current Move
 - Continuity：空头没有立即跟随；多头 signal 已完成，向上触发与 follow-through 未知
 - Separation：向下分离缩小，外层区域尚未在任一侧获得持续接受
 - Bull Pressure：在局部开始建立，仍需触发或跟随
-- Bear Pressure：相对 surprise 减弱，但强空头第二腿风险仍在
+- Bear Pressure：相对 surprise 减弱，但强空头第二段风险仍在
 - Control：外层 Transition；局部尚未确认 Bull Control
 
 Active Test
@@ -252,10 +252,10 @@ Long / Correction
 - Activation：外层区域的局部第二次测试被拒绝，合格 bull signal 已完成
 - Next Candidate Event：早期 Candidate 使用 signal-bar 高点 Stop Trigger；保守 Candidate 等 bull follow-through
 - Invalidation：局部低点失守并在 4958–4960 下方获得接受
-- Counterevidence：NONE；强 bear surprise 与第二腿风险由 Short / Continuation 独立表达
+- Counterevidence：NONE；强 bear surprise 与第二段风险由 Short / Continuation 独立表达
 
 Short / Continuation
-- Objective：完成 bear surprise 的第二腿并测试更低 magnet
+- Objective：完成 bear surprise 的第二段并测试更低 magnet
 - Support / Already：强空头运动与短期 Selling Pressure
 - Activation：强 bear surprise 已使延续路径具备表达资格，但当前位置使直接追空 Candidate 方程不利
 - Next Candidate Event：bull signal failure、局部低点下破并在区域下方跟随 / 接受，届时重算更好的 Candidate
@@ -327,7 +327,7 @@ q₂ = 可分配风险 / (|e₂ - S| × 每点价值 + 每单位 Execution Cost)
 
 ## 九、长期未触 EMA 后的首次测试
 
-标普 5 分钟处于 Bear Tight Channel，约 20 根以上 K 线未触 EMA。旧低在 `4000`，EMA、下跌腿 50% 与先前小 lower high 汇合在 `4011–4013`。价格从 `4000` 反弹到该区域；反弹 K 线偏小、重叠较多，bull follow-through 一般。
+标普 5 分钟处于 Bear Tight Channel，约 20 根以上 K 线未触 EMA。旧低在 `4000`，EMA、下跌段 50% 与先前小 lower high 汇合在 `4011–4013`。价格从 `4000` 反弹到该区域；反弹 K 线偏小、重叠较多，bull follow-through 一般。
 
 ```text
 Event：长期分离后的首次 EMA 测试

@@ -266,7 +266,7 @@ Trailing Stop 只能向降低开放风险方向移动：多头向上，空头向
 可用锚点包括：
 
 - 新 breakout 建立的 major higher low / lower high；
-- 完整走势腿或回调结构；
+- 完整走势段或回调结构；
 - 原 Opportunity 仍成立时的其他有效失效边界。
 
 重要位置本身不自动要求 Trail；任意次要 swing、每根盈利 K 线或固定点数也不形成新保护边界。强反向动量或 Structural Invalidation 可以要求主动退出，无需等待一个适合 Trailing 的新锚点。
@@ -310,7 +310,7 @@ Scalp 部分 → 近端目标与较快退出
 Runner      → 仅在路径增强和延伸目标启用时继续持有
 ```
 
-则分别记录数量、Stop、目标和结果。TBTL 只帮助容忍反向 swing 的时间与腿数，不覆盖价格目标、Invalidation 或 Session 约束。
+则分别记录数量、Stop、目标和结果。TBTL 只帮助容忍反向 swing 的时间与段数，不覆盖价格目标、Invalidation 或 Session 约束。
 
 ## 十一、交易结果与价格结果
 

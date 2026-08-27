@@ -93,7 +93,7 @@ Trend bar 与 trading-range bar 是连续谱。实体相对大、影线较小、
 - `Actual pullback`：当前周期已满足高低点反向运动的几何事实。
 - `Implied pullback`：当前周期的停顿角色；在较低周期常已展开成实际回调，不能改写当前周期几何。
 
-第二腿是条件路径倾向：第一腿足够强并使参与者期待延续时，市场常再尝试一次。第二腿可以很短、横向、未创新极值或很快失败；它不保证 `Leg 1 = Leg 2`，也不同于 second signal、second entry 或第二次实际成交。
+第二段是条件路径倾向：第一段足够强并使参与者期待延续时，市场常再尝试一次。第二段可以很短、横向、未创新极值或很快失败；它不保证 `Leg 1 = Leg 2`，也不同于 second signal、second entry 或第二次实际成交。
 
 ### 参照区域
 
@@ -147,7 +147,7 @@ Opponent：反方 K 线质量、跟随与失败尝试
 Result：Bull Pressure 变化；Bear Pressure 变化；Control 含义
 ```
 
-Now 与 Role 分开：同一段 Down Leg 在多头方向状态中可能承担 Pullback 角色，在 Trading Range 中可能只是 Range Leg。`PAUSE` 尚未形成清楚方向腿；`LOCAL_BALANCE` 表示局部小区间已经比单腿或暂停更能组织价格。反向运动获得持续接受并改变外层正常回撤、目标或管理方式后，Role 才升级为新的 Context。
+Now 与 Role 分开：同一段 Down Leg 在多头方向状态中可能承担 Pullback 角色，在 Trading Range 中可能只是 Range Leg。`PAUSE` 尚未形成清楚方向段；`LOCAL_BALANCE` 表示局部小区间已经比单段或暂停更能组织价格。反向运动获得持续接受并改变外层正常回撤、目标或管理方式后，Role 才升级为新的 Context。
 
 ### Active Test
 
@@ -203,7 +203,7 @@ Price Process 最后把 Current Move 与 Active Test 压缩成一句双向问题
 Next Observation 和 Test Expiry 是什么？
 ```
 
-例如：`强空头腿第三推延伸缩小，反弹后第二次下探卖压更弱；旧低下方会获得接受，还是多头先建立修正？`
+例如：`强空头段第三推延伸缩小，反弹后第二次下探卖压更弱；旧低下方会获得接受，还是多头先建立修正？`
 
 H2、Double Bottom、Wedge、Flag 或 MTR 只在它们帮助说明 Attempt、Response、几何、外层作用、目标或失效时附在这个过程上。价格进入新区域或 Context 重新分类时，新的 Current Move / Active Test 取代旧问题；旧结构只保留对新目标或正常回调仍有作用的部分。
 
@@ -226,7 +226,7 @@ H2、Double Bottom、Wedge、Flag 或 MTR 只在它们帮助说明 Attempt、Res
 → Long / Short Opportunity 或 Likely Sequence 是否改变
 ```
 
-使用能回答当前过程的最小时间窗口：当前腿、当前区域测试，或上次 Reframe 以来。更早或更高周期事实留在 Context，不混入眼前 Pressure。
+使用能回答当前过程的最小时间窗口：当前段、当前区域测试，或上次 Reframe 以来。更早或更高周期事实留在 Context，不混入眼前 Pressure。
 
 事实按来源价格链合并。一个强突破产生的大实体、强收盘、gap、Pressure、Control 和 Acceptance 可以影响机会的多个环节，但仍只是一条价格链。新的二次测试、后续 follow-through、反方尝试失败或独立价格区域才可能提供增量。
 
@@ -360,9 +360,9 @@ Trading Range 表示市场围绕公平区域反复双向测试，双方都能获
 
 - `Width = TIGHT`：barbwire 或压缩重叠多，通常缺少扣除成本后的目标空间；
 - `Width = BROAD`：边缘可能生成路径，中部通常缺少优势；
-- `Maturity = DEVELOPING`：前序方向和初始腿仍可能明显约束测试与目标；
+- `Maturity = DEVELOPING`：前序方向和初始段仍可能明显约束测试与目标；
 - `Maturity = MATURE`：价格已经反复双向测试公平区域，前序方向影响减弱，任一方向突破获得跟随的可能性上升；
-- 强区间腿可能只是 vacuum test 或边缘第二腿陷阱，不因运动强就取得趋势突破后的延续概率；
+- 强区间段可能只是 vacuum test 或边缘第二段陷阱，不因运动强就取得趋势突破后的延续概率；
 - 边界越过先记 breakout attempt，只有外部接受和控制形成后才更新为 Trend。
 
 Width 与 Maturity 都是连续判断，`UNCLEAR` 是合法值；系统不使用固定根数或绝对点数强制分类。Breakout Mode 仍需双向突破可能性等当前事实，不能只由 `MATURE` 自动推出。
@@ -408,7 +408,7 @@ Wedge 描述三次可区分的推动或测试；H3/L3 是尝试计数视图。We
 
 Parabolic Wedge 是 Tight Channel 中至少三次 surge 构成的高潮式三推。它描述推进紧迫性，不要求每一推机械变陡；没有反向接受时仍可能继续原趋势，第一笔反向运动通常先按 minor correction 或 Range 路径处理。
 
-新的强 breakout 获得接受、成熟区间切断旧运动、主要结构被替换或观察周期改变时，旧 H/L 与腿数重置。局部重计和全局累计都必须绑定明确尺度，不能在结果出现后选择更漂亮的计数。
+新的强 breakout 获得接受、成熟区间切断旧运动、主要结构被替换或观察周期改变时，旧 H/L 与段数重置。局部重计和全局累计都必须绑定明确尺度，不能在结果出现后选择更漂亮的计数。
 
 ### Flag
 
@@ -422,7 +422,7 @@ Final Flag 只能在顺势恢复失败和后续结果出现后得到更多确认
 
 ### Triangle、ii、ioi 与 oo
 
-Triangle 是成熟 Trading Range 与 Breakout Mode 的结构视图。来源对“五次反转”和“一侧三推且总体至少五腿”存在不同计数口径；运行中必须声明采用的观察尺度，不能建立机械换算。
+Triangle 是成熟 Trading Range 与 Breakout Mode 的结构视图。来源对“五次反转”和“一侧三推且总体至少五段”存在不同计数口径；运行中必须声明采用的观察尺度，不能建立机械换算。
 
 - `ii / iii`：连续 inside bars，表示压缩；
 - `ioi`：inside–outside–inside；
@@ -435,7 +435,7 @@ Triangle 是成熟 Trading Range 与 Breakout Mode 的结构视图。来源对�
 
 ### Reversal 与 MTR 过程
 
-第一次逆势尝试默认是 Minor Reversal，常见目标是两腿修正或 Trading Range，不自动形成 opposite trend。
+第一次逆势尝试默认是 Minor Reversal，常见目标是两段修正或 Trading Range，不自动形成 opposite trend。
 
 MTR 描述一条过程，而不是另一套交易方法：
 
@@ -452,7 +452,7 @@ MTR 描述一条过程，而不是另一套交易方法：
 
 Wedge、Double Top/Bottom、Head and Shoulders、rounding top/bottom、Final Flag 或 Climax 可以描述其中组件，不能替代完整过程。Head and Shoulders 通常可拆回结构破坏、旧极值测试和反向路径；rounding top/bottom 常可拆回 Broad Channel、Endless Pullback 或 Trading Range。强反向 breakout 获得接受后，它同时是旧趋势失控和新方向 breakout continuation 的事实链，不需要在两种“策略”间选择。
 
-旧趋势以新的强 breakout 和紧密趋势腿重新建立控制时，旧趋势线破坏、旧极值测试和 H/L 证据重置，不能永久借给后来的反转候选。
+旧趋势以新的强 breakout 和紧密趋势段重新建立控制时，旧趋势线破坏、旧极值测试和 H/L 证据重置，不能永久借给后来的反转候选。
 
 ## 八、多周期与时间范围
 
@@ -487,15 +487,15 @@ Session 只通过剩余时间、波动、流动性、目标可达性和是否允
 | Trend / Channel 内恢复 | 测试旧极值、通道边界或下一现实 magnet |
 | Trading Range 边缘反应 | 返回内部公平区域、中部或另一侧 |
 | Range / Pattern 突破并接受 | 测试按固定高度投射的 measured-move 区域 |
-| 强 Breakout 与回调 | 尝试第二腿、旧极值或 Leg 1 = Leg 2 |
+| 强 Breakout 与回调 | 尝试第二段、旧极值或 Leg 1 = Leg 2 |
 | Failed Breakout | 返回旧结构、内部目标、中部或另一侧 |
 | 通道反向突破并接受 | 通道起点或更大 Trading Range |
-| MTR 路径 | 反向两腿、旧公平区域或其他实际 swing magnet |
+| MTR 路径 | 反向两段、旧公平区域或其他实际 swing magnet |
 
 常见投射：
 
 ```text
-Leg 1 = Leg 2：第一腿 A → B，第二腿起点 C，目标 = C + (B - A)
+Leg 1 = Leg 2：第一段 A → B，第二段起点 C，目标 = C + (B - A)
 Range height：H = upper boundary - lower boundary
   向上目标 = upper boundary + H
   向下目标 = lower boundary - H

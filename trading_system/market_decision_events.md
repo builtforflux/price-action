@@ -34,7 +34,7 @@ Route：No Change / Update Opportunity / Rebuild Candidate / Submit Decision / U
 
 这是快速判断格式，不是逐项书面记录要求。
 
-Bull 与 Bear Pressure 使用同一个能回答当前过程的最小窗口，默认是当前腿、当前测试或上次 Reframe 以来；只有窗口发生切换或可能产生歧义时才另行说明。纯 Frame 事件没有产生新价格事实时，两侧 Pressure 与 Control 继承原结论。
+Bull 与 Bear Pressure 使用同一个能回答当前过程的最小窗口，默认是当前段、当前测试或上次 Reframe 以来；只有窗口发生切换或可能产生歧义时才另行说明。纯 Frame 事件没有产生新价格事实时，两侧 Pressure 与 Control 继承原结论。
 
 ## 二、边界与通用价格事件路由
 
@@ -167,7 +167,7 @@ Event Expiry：某侧获得接受，或压缩继续扩展而需重画边界
 ```text
 识别：反向 breakout 破坏通道 / 主要摆动结构，随后测试旧 extreme
 重开：Price Map → Current Move → Active Test → Context → 双向 Opportunity
-双向：原趋势能否恢复并重建 Control；反方能否形成第二腿、HL/LH 与新方向接受？
+双向：原趋势能否恢复并重建 Control；反方能否形成第二段、HL/LH 与新方向接受？
 Next Observation：旧极值突破并恢复原趋势；或测试失败、反向跟随并完成 MTR 路径
 Event Expiry：旧趋势重建，或新方向结构获得接受
 ```
