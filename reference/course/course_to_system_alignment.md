@@ -36,9 +36,12 @@
 → Market Read：继承 Context → 更新 Price Map / Price Process → 确认或重构 Context
 → 构造现实 Long / Short Opportunity 与可能顺序
 → 用 Context Permission 筛选当前允许的风险表达
-→ 只为已 Activation 且当前可表达的机会生成 Trade Candidates
+→ 为已 Activation，或许可 Trigger 能完整执行剩余 Activation 的当前机会生成 Trade Candidates
 → 分开 Market Probability 与 Candidate Outcome Probability
+→ 选择 Signal Bar、multi-bar response、Region、close 或确认过程作为 Entry Basis
 → 用当前 Trigger / Entry / Stop / Target 检查 Reward / Risk / Cost / Time
+→ 多个互斥 Candidate 只选择一条；无法选择则等待明确事件或不交易
+→ Chart Entry 与账户 Actual Fill 分开确认
 → 执行、保护、持续更新、管理和复盘
 ```
 
@@ -55,8 +58,8 @@ Pattern、Market Cycle、Context、H/L、Wedge、Double Test、Flag、MTR 等都
 | 05 | 程序、高频和操纵叙事的证据边界 | 只保留可观察价格反应；机制叙事留 Reference |
 | 06 | 纪律、耐心、客观和风险承受 | 执行纪律与仓位边界 |
 | 07A–B | 市场/周期选择、选择性交易和情绪 | 运行边界、等待和行为纪律 |
-| 08A–D | Trend/TR bar、反转、内外包、ii、Signal Bar | K 线事实、压缩视图和 Trigger |
-| 09A–C | Pullback、H/L、高阶计数、重置、多周期 | 价格运动、同源视图和证据重置 |
+| 08A–D | Trend/TR bar、反转、内外包、ii、Signal Bar | Current Move 的 K 线事实与 Pressure；Active Test 的 Response；Candidate 的可选 Signal Bar Entry Basis |
+| 09A–C | Pullback、H/L recovery setup / Trigger、高阶计数、重置、多周期 | Active Test 的恢复触发次序与潜在边界；Candidate Entry Basis；Chart Entry；证据重置 |
 | 10A–B | 实体、收盘、影线、突破和回调形成 Pressure | Pressure / Control / Always In |
 | 11A–D | Session、open/close、完整、body、micro、MA、measuring/exhaustion gaps | Separation / Gap 与目标边界 |
 | 12A–C | Trend / Trading Range、Breakout–Channel–Range | 活动结构连续谱与 fallback |

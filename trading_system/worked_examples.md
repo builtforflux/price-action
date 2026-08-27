@@ -4,7 +4,7 @@
 
 以下价格只验证同一运行流程怎样处理不同 Context、结构视图、跟随和执行状态，不建立 Setup 路由。
 
-## 一、Tight Bear Channel：三推与 H2 仍不许可逆势
+## 一、Tight Bear Channel：三推与 H2 Setup 仍不许可逆势
 
 ```text
 Context
@@ -15,14 +15,14 @@ Price Map
 
 Price Process
 - From：连续、低重叠的空头段
-- Now：第三推后反弹，再次下探形成 Double Bottom / H2 视图
+- Now：第三推后反弹，再次下探形成 Double Bottom / H2 recovery setup
 - Role：当前 Down Leg 仍是空头 continuation attempt；多头只形成 reversal attempt
 - Pressure：Bear 仅略减；Bull 尚未建立，没有连续 bull bars，gap 未关闭；Bear Control 保持
 - Testing：空头是否仍能维持旧低下方控制
 - Next Observation：强 bull breakout + follow-through，或空头恢复
 ```
 
-`三推 / Wedge / L3` 是第一段推进的视图，`H2 / Double Bottom` 是后续第二次测试的视图；它们可以是两条增量价格链，但形态名称本身不改变 Tight Channel Permission。
+第一段第三次下探可形成 `三推 / Wedge Bottom / H3 Setup` 视图；后续反弹已经形成第一次向上恢复 Trigger 后，再次下探可形成 `H2 recovery setup / Double Bottom`。它们是两段实际测试链，名称本身不改变 Tight Channel Permission。定义潜在边界的完成 K 线可以按课程称为 H2 Signal Bar，但当前运行只把它作为 Response：Context Permission 不允许 Long Candidate；其高点尚未被越过时，也不能把 H2 Trigger 或 Chart Entry 写成已经发生。
 
 ```text
 Up / Correction Opportunity
@@ -43,7 +43,7 @@ Down / Continuation Opportunity
 - 不在通道底部直接追空，因为位置与空间可能不利；
 - Decision = `WAIT`：等多头完成 Activation，或等空头恢复后重新计算顺势 Candidate。
 
-这验证：H2 可以真实存在，却仍然不是入场许可；卖压减弱也不等于买压建立或 Always In 翻转。
+这验证：H2 Setup 可以真实存在，却仍然不是入场许可；即使随后 Trigger 发生，卖压减弱也不等于买压已建立或 Always In 翻转。
 
 ## 二、Broad Bear Channel：修正 scalp 与 major reversal 分开
 
@@ -69,6 +69,7 @@ Price Process
 
 ```text
 Long Correction Candidate
+- Entry Basis：完成的 H2 bull response / Signal Bar
 - Trigger / Entry：buy stop above 100.50
 - Opportunity Invalidation：100 下方重新接受
 - Planned Stop：按该候选正常波动和账户风险确定，不改写市场 Invalidation
@@ -76,6 +77,8 @@ Long Correction Candidate
 - Candidate Outcome Probability：按当前 Entry、Stop、退出与成本估计
 - Management：逆主要趋势，只按 scalp / correction 管理
 ```
+
+此时 Double Bottom 是测试几何，完成 K 线在课程图表语言中是 H2 Signal Bar；因为当前 Long / Correction Opportunity、Permission 和方程都成立，Candidate 才把该 Signal Bar 纳入 Entry Basis。价格随后越过 `100.50` 才形成 H2 Trigger，该越界所在 K 线是 Chart Entry Bar；账户只有真实成交后才产生 Actual Fill Bar、Exposure 与 Active Protective Stop。
 
 没有 follow-through 时 Opportunity 削弱；不能因为已经成交就把 correction 改写成 reversal。到 `102` 后若出现强 bear response，当前多头目标结束，重新计算 Down / Continuation Candidate。
 
@@ -94,11 +97,13 @@ Up / Balance Breakout Opportunity
 
 | 判断时点 | Candidate | 新信息 | 代价 |
 | --- | --- | --- | --- |
-| 强 bar 收盘 | Buy close near `202` | 最早表达 | Acceptance 尚不完整，Stop 可能较宽 |
-| 下一根跟随后 | Buy near `202.8` | 新增独立持续事实 | Entry 更差，剩余 Reward 下降 |
-| 回踩突破点后 | Buy pullback / H1-H2 | 可能获得结构更清楚的 Entry | 可能踏空；深回区间会使 Opportunity 失效 |
+| 强 bar 收盘 | Entry Basis 为强 breakout close；Buy close near `202` | 最早表达 | Acceptance 尚不完整，Stop 可能较宽 |
+| 下一根跟随后 | Entry Basis 为新增 follow-through；Buy near `202.8` | 新增独立持续事实 | Entry 更差，剩余 Reward 下降 |
+| 回踩突破点后 | 等 H1/H2 recovery setup；路径仍现实时把完成 Response / Signal Bar 纳入 Entry Basis | 可能获得结构更清楚的 Entry | 可能踏空；深回区间会使 Opportunity 失效 |
 
-每个 Candidate 都重新估计交易结果概率和方程；不能用 follow-through 后的概率配合 `202` 的旧 Entry，也不能因为出现 H2 再增加一票。
+每个 Candidate 都重新估计交易结果概率和方程；不能用 follow-through 后的概率配合 `202` 的旧 Entry，也不能因为出现 H2 Setup、Double Bottom 与 Signal Bar 三个名称再增加票数。
+
+强第一段与实际跟随可以建立第二段预期，但不自动等于 TBTL。若第二段随后在 `206` 或其他事前标出的边界吸引追随者，却不能保持接受并重新进入旧区域，才调用第二段陷阱视图；原 Up Opportunity 先按失败事实更新，Down Opportunity 仍需独立 Activation，不能把“有人被困”再算一份反向证据。
 
 ## 四、同一个 ioi：趋势 Flag 与 Range Breakout Mode
 
@@ -236,14 +241,14 @@ Active Test
 - Tested Objective：第二次向下测试能否突破区域并延续
 - Phase：Reaction
 - Resolution：Pending
-- Attempt：拒绝逻辑中的第二次向下测试；Double Bottom / H2 是同一次序的视图
+- Attempt：第一次向上恢复 Trigger 已发生；当前第二次向下测试形成 Double Bottom / H2 recovery setup
 - Response：卖出被拒绝；本根长下影并收在中点以上
 - Acceptance Criterion：区域下方获得持续跟随
 - Failure Criterion：向上触发并恢复到区域上方
 - Next Observation：向上触发并跟随，或 signal failure 后在区域下方接受
 ```
 
-外层区域、局部二次测试和 signal-bar 反应分别承担位置、次序和 Trigger 质量；H2、小双底、微型 W 与第二次下探不按名称重复计数。
+外层区域、局部二次测试和 reversal-bar response 分别承担位置、次序和反应质量。该完成 K 线先更新卖压减弱与 Bull Pressure 开始建立，并在课程图表语言中是 H2 Signal Bar；只有 Long / Correction Opportunity 成立后，Candidate 才决定是否选择它作为 Entry Basis。H2、小双底、微型 W、Signal Bar 与第二次下探不按名称重复计数。
 
 ```text
 Long / Correction
@@ -265,7 +270,7 @@ Likely Sequence
 - Up / Correction 可先到 EMA；该区域若出现 bear recovery，再重算 Down / Continuation
 ```
 
-较早的 Long Candidate 使用 signal bar 上方 `Buy Stop`；Planned Protective Stop 引用局部双底结构并容纳正常波动，First Target 引用 EMA / 4970 区域。直接在支撑内 `Limit Buy` 是确认更少的另一 Candidate，只有当前 Context、风险和计划明确允许时才提交 Decision。
+较早的 Long Candidate 把完成的 H2 Signal Bar 作为 Entry Basis，使用其上方 `Buy Stop`；越过边界的 K 线成为 Chart Entry Bar，账户实际成交后才进入 Open Position。Planned Protective Stop 引用局部双底结构并容纳正常波动，First Target 引用 EMA / 4970 区域。直接在支撑内 `Limit Buy` 以该 Region 作为 Entry Basis，是确认更少的另一 Candidate；若两个 Candidate 同时成立，Candidate Choice 只能选择当前一条表达，不能同时保留为隐藏计划。
 
 ### D. 触发后的分支｜新事实使用新 Candidate
 
@@ -284,9 +289,9 @@ Likely Sequence
 3. 局部第二次测试与 bull signal 完成：再次从 Current Move / Active Test 向后传播。Long / Correction 完成 Activation，才进入 Trade Construction；Short / Continuation 保留为竞争路径，但不为形式对称制造当前 Candidate。
 4. Long Candidate 提交 Decision 并得到 `EXECUTE` 后冻结 Trade Plan，进入 Ready to Submit；执行前复核仍成立才提交 Buy Stop。提交后立即进入订单生命周期；回执未确认时按 `Submitted Unknown` 核对且不重复下单，确认工作后成为 Working Order。图表触发后只按实际成交进入 Open Position，并确认 Active Protective Stop 覆盖真实数量。
 5. 持仓中的普通 K 线：只运行 Open Position checklist；所选与竞争 Opportunity、风险、保护和动作均未改变时，结果是 `NO_CHANGE`，不记录。出现 follow-through、signal failure、区域外接受、目标到达或新保护锚点时，才从最早变化处向后更新并追加必要 Delta。
-6. 目标、Stop 或主动退出决定发生后：按退出订单生命周期处理 Unknown / Working / Rejected / Canceled / Expired / Partial / Filled；归零前保持剩余数量的实际保护，退出动作仍有效时修复或重新提交失败订单，归零并确认残留订单与保护最终状态后再运行 Closed / Review。复盘分开 Market Result、Trade Outcome 与 Account Result；当前 Trade Plan / Candidate 关闭，关联 Opportunity 按市场事实独立更新，若仍为 ACTIVE 就返回 Flat / Observing。
+6. 目标、Stop 或主动退出决定发生后：按退出订单生命周期处理 Unknown / Working / Rejected / Canceled / Expired / Partial / Filled；归零前保持剩余数量的实际保护，退出动作仍有效时修复或重新提交失败订单。归零终结当前 Trade Plan 时，关闭其 Entry / Add Intent、Add Permission 和仍可能新增 Exposure 的工作订单；撤销确认前继续按可能成交处理，确认残留订单与保护最终状态后再运行 Closed / Review。复盘分开 Market Result、Trade Outcome 与 Account Result；当前 Trade Plan / Candidate 关闭，关联 Opportunity 按市场事实独立更新，若仍为 ACTIVE 就返回 Flat / Observing。
 
-该场景验证：重要位置只登记一次；Active Test 以该位置为 Object，局部第二次测试进入 Attempt / Response，signal bar 边界再进入 Candidate.Trigger；Long / Short 路径同时存在且可能顺序实现。
+该场景验证：重要位置只登记一次；Active Test 以该位置为 Object，局部第二次测试进入 Attempt / Response 并形成 signal-bar 边界，Candidate 只选择是否采用；Long / Short 路径同时存在且可能顺序实现。
 
 ## 八、Trading Range 下沿：2% 风险额度与动态第二层
 
@@ -298,7 +303,7 @@ BTC 5 分钟成熟 Trading Range 下沿形成现实 Long / Range Return Opportun
 Risk Limit：2%
 Initial Limit：1%
 Stop Rule：两层共用结构保护 S
-Add Permission：价格进入更低的预定区域 A，且原 Long Opportunity 仍有效；
+Add Permission：当前 Context Permission 仍允许新增风险；价格进入更低的预定区域 A，且原 Long Opportunity 仍有效；
                 或区域 A 出现拒绝、bull signal / follow-through
 Cancel Add：A 下方形成强 bear breakout 与 follow-through、获得接受、
             目标空间消失、时间过期或保护异常
@@ -308,9 +313,9 @@ Cancel Add：A 下方形成强 bear breakout 与 follow-through、获得接受�
 
 价格随后下跌几个 ticks 到区域 `A`：
 
-- 若原计划允许在成熟区间下沿用更少确认换价格改善，且卖压没有增强、`A` 下方没有接受，可以按当前价格重新计算数量并使用 Limit Add；
-- 若下跌动量使直接接多不再合适，则等待拒绝、micro double bottom、合格 bull signal 或 follow-through，再用对应 Trigger 的 Stop / Market / Limit Add；
-- 若连续强 bear bars、分离和跟随使下沿转为向下接受，执行 `CANCEL ADD`，并按原 Long Opportunity 的 Invalidation 管理第一层。
+- 若原计划允许在成熟区间下沿用更少确认换价格改善，且卖压没有增强、`A` 下方没有接受，可以把 Region `A` 作为 Entry Basis，按当前价格重新计算数量并使用 Limit Add；
+- 若下跌动量使直接接多不再合适，则等待拒绝、micro double bottom、合格 bull signal 或 follow-through，再把必要的 Signal Bar、multi-bar response 或 follow-through 纳入 Entry Basis，并选择对应 Trigger 的 Stop / Market / Limit Add；
+- 若连续强 bear bars、分离和跟随使下沿转为向下接受，执行 `CANCEL_ADD`，并按原 Long Opportunity 的 Invalidation 管理第一层。
 
 前两种情况只有当前方程和 Risk Available 同时允许时才输出 `ADD_TO_READY`；由于第一层仍是实际 Exposure，随后并行运行 Open Position 与 Ready to Submit，重新确认实际仓位、全部工作订单、当前保护、总风险和订单参数，再提交新增层。
 
@@ -321,7 +326,7 @@ Risk Available = max(0, Risk Limit - Risk Committed)
 q₂ = 可分配风险 / (|e₂ - S| × 每点价值 + 每单位 Execution Cost)
 ```
 
-更低的 `e₂` 距共同 Stop 更近，因此同样最多 `1%` 风险时，第二层数量通常大于第一层；实际数量仍受当前目标空间、方程和最小单位限制，不要求用满。成交后立即修改并确认 Active Protective Stop 的数量覆盖整仓，再更新加权均价、Risk Committed / Available。计划内 Add 只保存 Entry Method、价格、数量、共同 Stop、加仓后总风险和触发依据。
+更低的 `e₂` 距共同 Stop 更近，因此同样最多 `1%` 风险时，第二层数量通常大于第一层；实际数量仍受当前目标空间、方程和最小单位限制，不要求用满。成交后立即修改并确认 Active Protective Stop 的数量覆盖整仓，再更新加权均价、Risk Committed / Available。计划内 Add 只保存 Entry Basis、Trigger、Entry Method、价格、数量、共同 Stop、加仓后总风险和触发依据。
 
 这个例子验证：账户层只提供固定的 `2%` 风险上限；市场读取决定是否有资格使用剩余额度，当前 Entry 到共同 Stop 的距离才决定第二层数量。
 
@@ -377,6 +382,8 @@ Up / Reversal
 - `Limit Sell in 4011–4013`：以更好价格交换更少确认，只在强 Bear Context、区域与风险计划事前允许时构造，使用自己的 Entry、Stop、概率和方程；
 - 等 bear follow-through 后 Market / pullback entry：确认更多但剩余空间变小，必须重新计算 Candidate，不能沿用 signal bar 时的方程。
 
+若第一次向下恢复 Trigger 后没有延续，价格再次测试 `4011–4013` 并形成近似双顶，则当前测试可以同时表达为 `L2 recovery setup / Double Top / Bear Flag Test`。完成的 bear response 先更新卖压与区域反应，并在课程图表语言中是 L2 Signal Bar；只有 Down / Continuation Opportunity 仍现实且 Permission、方程允许时，Candidate 才把该 Signal Bar 纳入 Entry Basis。价格跌破其低点才完成 L2 Trigger，跌破所在 K 线是 Chart Entry Bar，账户真实成交仍单独确认。若区域上方先获得 bull acceptance，这组 L2 / Double Top 解释随原测试失效，不能继续提供卖出许可。
+
 若 bull breakout 和 follow-through 先发生，取消未成交的顺势卖出计划并 Reframe 当前测试；这只使 Long / Reversal 获得新的 Already，仍需用当前目标、Entry、Stop 和剩余空间构造自己的 Candidate。若顺势空单成交后没有恢复、反而在 EMA 上方获得接受，所选 Opportunity 削弱或失效；按原计划 Reduce / Exit，不把首次 EMA 测试当作继续持有的理由。
 
 这个例子验证：事件卡只保证及时重开正确步骤；压力、跟随、接受、位置与交易方程共同决定动作。EMA、50% 和 prior lower high 是独立来源的区域汇合，但“首次测试、EMA touch、bear flag”若描述同一回调链，不重复计票。
@@ -385,14 +392,16 @@ Up / Reversal
 
 ```text
 Inherited Context + Price Map
+→ Observable Change：由事件导航调用本次相关概念与条件规则，只从最早变化处重开
 → Current Move：From / Now / Role；Bars / Continuity / Separation / Pullback / Opponent → Bull / Bear Pressure → Control
-→ Active Test：Object / Tested Objective / Phase / Resolution / Attempt / Response / Acceptance / Failure / Next Observation / Test Expiry
+→ Active Test：Object / Tested Objective / Phase / Resolution；H/L Trigger 次序 + Double/Wedge/Triangle 几何 + Response；Acceptance / Failure / Next Observation / Test Expiry
 → Context Update：Updated Context + Context Change
 → Long / Short Side Scan + Likely Sequence：Objective、Targets、Activation、Invalidation、Market Probability
 → Context Permission
-→ Trade Construction：Trigger、Entry Method、Planned Stop、Targets、Size 与管理
-→ Decision：完整 Candidate / 明确下一事件 / 两者皆无 → Execute / Wait / No Trade
-→ Follow-through、Acceptance、Failure 与账户事件持续更新
+→ Trade Construction：Entry Basis + Reference、Trigger Boundary、Entry Method、Planned Stop、Targets、Size 与管理
+→ Candidate Choice：当前多个表达只选择一条；否则等待明确事件或不交易
+→ Decision：Selected Candidate / 明确下一事件 / 两者皆无 → Execute / Wait / No Trade
+→ Chart Entry、Actual Fill、Follow-through、Acceptance、Failure 与账户事件持续更新
 ```
 
-H2、Double Bottom、Wedge、Flag、ioi、Triangle、Gap、MTR 和 trapped traders 都只能改变这条共同过程中的某一部分，不建立独立路由，也不按名称数量投票。
+H2、Double Bottom、Wedge、Flag、ioi、Triangle、Gap、MTR 和 trapped traders 只是示例。任何进入系统的 Brooks 知识都必须改变这条共同过程中的某一部分，或改变条件概率、Candidate、执行管理与复盘；否则只保留为同源视图、Reference 或隔离项，不建立独立路由，也不按名称数量投票。

@@ -2,7 +2,7 @@
 
 > **状态：Trading System / Decision Contract**
 
-本页规定怎样应用 Context Permission，把完成双向扫描且具备当前表达资格的 Opportunity 变成 `Trade Candidates`，以及怎样由唯一 `Decision` 根据完整 Candidate 或下一事件输出 `EXECUTE / WAIT / NO_TRADE`。Trade Construction 确定判断时点、Entry Method、Planned Protective Stop、Targets 与 Size；只有 `EXECUTE` 才把 Candidate 冻结为 `Trade Plan`。
+本页规定怎样应用 Context Permission，把完成双向扫描且具备当前表达资格的 Opportunity 变成 `Trade Candidates`，怎样从多个当前表达中只选择一条，以及怎样由唯一 `Decision` 根据 Selected Candidate 或下一事件输出 `EXECUTE / WAIT / NO_TRADE`。Trade Construction 确定判断时点、Entry Basis、Trigger、Entry Method、Planned Protective Stop、Targets 与 Size；只有 `EXECUTE` 才把 Selected Candidate 冻结为 `Trade Plan`。
 
 本页首先是完整的内部决策契约，不是盘中默认表单。交易者必须在承担风险前明确所有会改变风险或动作的输入，但只按[必要记录](overall_flow.md#六必要记录)保存最小决策信息；其余内容可以观察、心中确认或由工具自动计算。
 
@@ -13,8 +13,9 @@ Market Read
 → Opportunity Set：分别构造现实的多空机会
 → Opportunity qualification：目标、Activation rule、Invalidation、Outcome Horizon 与市场目标概率完整
 → Context Permission：当前市场是否允许这种表达
-→ Trade Construction：为当前允许且可表达的少数机会构造判断时点、Trigger、Entry Method、Planned Stop、Targets 与 Size
-→ Decision：完整 Candidate / 明确下一事件 / 两者皆无
+→ Trade Construction：为当前允许且可表达的少数机会构造判断时点、Entry Basis、Trigger、Entry Method、Planned Stop、Targets 与 Size
+→ Candidate Choice：多个当前表达只能选择一条；无法选择时提交下一事件或 No Trade 判断
+→ Decision：Selected Candidate / 明确下一事件 / 两者皆无
 → Execute / Wait / No Trade
 ```
 
@@ -44,6 +45,8 @@ Trade Candidate
 - Opportunity 引用与判断时点
 - Early / Confirmed 风险承担时点
 - Activation Status / Trigger 是否完整执行剩余 Activation
+- Entry Basis：当前承担风险所依赖的最小完成事实；可以引用 Signal Bar、multi-bar response、Region、breakout close、follow-through、pullback hold 或 acceptance condition
+- Entry Basis Reference：所选 K 线、价格区域或完成条件
 - Trigger Boundary
 - Entry Method / Entry Price Rule / Entry Validity
 - 引用 Opportunity Invalidation / Planned Protective Stop
@@ -84,7 +87,7 @@ Context 先决定当前表达的最低证据，而不是事后调整同一个 Pa
 
 这些维度用于检查支持是否完整，不是评分器，也不要求全部出现。以下通常只是一份证据：
 
-- H2、Double Bottom、Second Signal 和 H1 失败来自同一两次尝试；
+- H2、Double Bottom、Second Buy Signal 与 H1 失败来自同一向上恢复链；L2、Double Top、Second Sell Signal 与 L1 失败完全镜像；
 - 同一突破产生的大实体、gap、pressure、control 和 acceptance；
 - 同一突破或失败链产生的 disappointment、trapped / Pain Trade 推断和预期退出压力；
 - Broad Channel 与 Trending Trading Range 描述同一方向移动；
@@ -94,7 +97,7 @@ Context 先决定当前表达的最低证据，而不是事后调整同一个 Pa
 
 比较机会时不得只选择裸概率较高或支持名称较多的一侧。相同 Objective、周期和 Outcome Horizon 的 Opportunity 可以比较 Market Probability；不同 Objective 或 Outcome Horizon 必须分别构造当前 Entry、Stop、Target、成本和结果方程，再比较完整风险交换。未决、超时、scratch 等结果意味着双向概率不必相加为 `100%`。
 
-## 四、Trade Construction｜Trigger 与判断时点
+## 四、Trade Construction｜Entry Basis、Trigger 与判断时点
 
 Trigger 只说明当前 Candidate 可以用某个价格表达，不保证 Opportunity 的目标实现。Candidate 必须明确 Trigger 是在承担风险前必须完成，还是成交后继续验证。
 
@@ -106,25 +109,44 @@ Trade Construction 中的所有可执行价格都必须能沿当前判断链追�
 
 ```text
 Price Map 中唯一登记的 Region
-→ Active Test 的互动与 Trigger Boundary
+→ Active Test 的互动、Response 与潜在边界 / 完成条件
 → Opportunity 分配 Entry Area / Obstacle / Target / Invalidation Reference
-→ Candidate 选择 Entry Method、Planned Protective Stop 与 First / Main Target
+→ Candidate 选择 Entry Basis、Entry Method、Planned Protective Stop 与 First / Main Target
 ```
 
 Entry 可以引用 Price Region、signal-bar 高低或其他 Active Test 边界；Target 引用 Opportunity 已固定的区域或投射；Structural Invalidation 同时包含区域引用和否定路径的市场事件；Planned Protective Stop 引用当前 Candidate 的局部结构、正常波动与账户风险。无法说明价格来源的 Candidate 不能成为 Ready Candidate。
 
-### Signal bar、chart entry 与 actual fill
+### 从市场事实到 Actual Fill
 
-- `Prospective signal bar`：仍在形成、可能提供触发依据的 K 线；
-- `Signal bar`：完成后为当前路径提供可观察入场依据的 K 线，即使订单最终未触发；
-- `Chart entry bar`：图表上既定触发条件第一次被越过或满足的 K 线，不要求账户下单；
-- `Actual fill bar`：账户真实获得成交的 K 线。
+入场表达沿现有对象连续形成，不从形态名称直接跳到订单：
 
-这些角色可能落在同一根，也可能不同。没有实际成交不能抹去图表触发，没有图表触发也不能从账户意图制造 Pattern 事实。
+```text
+Current Move / Active Test
+→ 已完成 K 线或 multi-bar response：价格事实与测试反应
+→ Opportunity：该反应是否支持现实路径及 Activation
+→ Candidate：选择 Entry Basis；需要价格触发时定义 Trigger Boundary
+→ 图表满足 Trigger：Chart Entry Bar
+→ 账户真实成交：Actual Fill Bar
+→ Entry Bar、follow-through 或 failure 返回 Current Move 更新
+```
+
+- `Response / Reversal Bar`：Market Read 中已经发生的价格事实；可以表现拒绝或反向压力，却不因外观自动成为交易信号；
+- `Signal Bar`：Brooks chart language 中位于 entry bar 前、为某个 setup 定义潜在 Trigger 的完成 K 线；即使 context 不足、Candidate 放弃或订单未提交，该图表角色仍可成立，但运行不优先扫描它；
+- `Entry Basis`：Candidate 实际选择的最小完成事实，可以引用 Signal Bar、multi-bar response、Price Map Region、breakout close、follow-through、pullback hold 或 acceptance condition；需要组合时只保留各事实不可替代的运行作用，不把这些名称做成互斥类型或额外票数；
+- `Entry Basis Reference`：组成 Entry Basis 的已选 K 线、区域或完成条件引用；不适用单根 K 线时不虚构 Signal Bar，同一底层事实也不因多个名称重复引用；
+- `Trigger Boundary`：Entry Basis 使用的 Signal Bar 高低、区域边界或由许可复合条件定义的可观察触发；Market / close entry 在前置条件已经完成时可以没有后续价格边界；
+- `Chart Entry Bar`（简称 `Entry Bar`）：图表上既定 Trigger 第一次被满足的 K 线，不要求账户下单或成交；
+- `Actual Fill Bar`：账户真实获得成交的 K 线，由 Execution 事实确认。
+
+仍在形成的 K 线不建立 `Prospective Signal Bar` 对象，也不能按尚未知的最终高低、实体、影线或收盘评价为完成 Signal Bar。若计划明确允许 intrabar Stop / Market 表达，只能使用当时已经可观察且事前定义的价格条件；需要 close、完整 Response 或 follow-through 的 Entry Basis 必须等相应事实完成。
+
+这些角色可以重合，也可以分开。Reversal Bar 可以成为 Signal Bar，但 Signal Bar 不要求拥有漂亮的反转几何；Market / close entry 可以使同一根完成 K 线兼任 Signal Bar 与 Chart Entry Bar；outside bar 也可能同时承担 reversal、breakout 与 entry 角色。角色重合不增加证据，Chart Entry 出现也不证明账户已经成交。
+
+H/L 使用同一交接：Active Test 识别 H2 / L2 recovery setup、完成 Response 与潜在边界；课程可以把定义边界的完成 K 线称为 H2 / L2 Signal Bar。Opportunity 先判断这条恢复路径是否现实，Candidate 再决定是否把该 Signal Bar 纳入 Entry Basis；价格越过边界才形成 H2 / L2 Trigger 与 Chart Entry Bar。Double Bottom / Top、H2 / L2、Reversal Bar 与 Signal Bar 可以描述同一测试的几何、次序、反应和图表角色，但只使用一次底层价格事实。
 
 ### Signal-bar 评价
 
-只有 Context Permission、Opportunity、位置、目标和交易方向已经明确后，才评价 signal bar：
+只有 Entry Basis 使用 Signal Bar 时才运行本节。Context Permission、Opportunity、位置、目标和交易方向必须先明确，再评价是否选择该 Signal Bar 以及它对当前风险表达的质量：
 
 | 观察 | 较强多头表达 | 较强空头表达 |
 | --- | --- | --- |
@@ -153,6 +175,9 @@ Entry 必须定义为可观察条件、订单表达和有效期：
 
 ```text
 Entry
+- Entry Basis：
+- Entry Basis Reference：
+- Trigger Boundary：
 - 条件：
 - 方向：
 - 订单类型与价格规则：
@@ -169,7 +194,7 @@ Entry
 - 位置与 Context 已提供足够优势、计划允许在较少确认下换取价格改善时，使用 Limit entry；
 - breakout、follow-through 或 acceptance 已经完成，继续等待的代价高于立即表达时，可以使用 Market / close。
 
-“等待回调后的 H2”通常是先等待新的局部测试，再在其 signal bar 上方或下方使用 Stop entry；它不因价格比突破收盘更好就自动属于 Limit entry。
+“等待回调后的 H2”是先由 Active Test 识别第二次向上 recovery setup、完成 Response 与潜在边界，再由 Opportunity 判断路径是否现实；若 Candidate 把 Brooks 所称 H2 Signal Bar 纳入 Entry Basis，通常在其高点上方使用 Buy Stop，L2 镜像使用低点下方 Sell Stop。它们不因价格比突破收盘更好就自动属于 Limit entry。
 
 Market / close order 只能在承担风险前置条件已经成立后提交。Stop / Limit order 可以在 Trigger 或成交前预先提交，但 Trade Plan 必须明确许可，并固定价格规则、有效期、撤单条件和成交后的保护方式；订单一经提交即属于执行状态，不再属于“等待图表确认”。
 
@@ -369,13 +394,28 @@ Scalp 与 Swing 不是交易类别，而是同一 Opportunity 的不同目标、
 
 管理方式必须在承担风险前确定。按较低概率大目标进入后改用小 scalp 退出，或把区间内小目标临时改成趋势 swing，都会破坏原交易方程。若预写部分退出与 runner，可分别保存数量和结果条件。
 
-## 十三、完整 Trade Plan
+## 十三、Candidate Choice 与完整 Trade Plan
+
+Trade Construction 可以为当前确实可表达的少数 Opportunity 计算 Candidate，但提交 Decision 前必须只选择一条。Candidate Choice 是一次决策门，不新增持久状态、评分表或隐藏计划：
+
+```text
+淘汰不完整、Permission 不允许或方程不成立的 Candidate
+→ 只剩一条：提交 Decision
+→ 多条互斥 Candidate：比较当前 Entry 后的完整风险交换、Context Permission 与现实先后顺序
+   ├─ 当前事实给出明确选择 → 只提交被选 Candidate
+   ├─ 一个现实事件可以解决选择 → Candidate = NONE；提交 Next Event 与 Expiry
+   └─ 无明确选择且无现实下一事件 → Candidate = NONE；提交 No Trade 判断
+```
+
+相同 Objective、周期与 Outcome Horizon 可以比较当前 Market Probability 和完整方程；不同 Objective 或 Horizon 必须分别使用各自 Entry、Stop、Target、时间与管理，不能只比较裸概率或理由数量。若 `Likely Sequence` 表明先修正、后顺势，只选择当前阶段已经可表达的一条，后续阶段到达新判断时点再重算。未选中的 Opportunity 继续按市场事实更新；未选 Candidate 不冻结、不提交，也不在 Wait 中保留为可执行计划。
+
+### 完整 Trade Plan
 
 完整 Trade Plan 是被选 Candidate 的冻结快照，用于复杂计划、自动化实现和盘后审计，不是每次 scalp 都要在盘中填完的文档。盘中记录负担按复杂度分层：
 
 | 情况 | 必须保存 |
 | --- | --- |
-| 单次 Entry、单一 Stop、单一 Target 的普通计划 | 时点；所选路径与最强反方（一短句）；Entry Method / Price 与 Entry Validity；Planned Stop；Target；Size / Risk；Invalidation / Cancel Condition |
+| 单次 Entry、单一 Stop、单一 Target 的普通计划 | 时点；所选路径与最强反方（一短句）；Entry Basis / Entry Method / Price 与 Entry Validity；Planned Stop；Target；Size / Risk；Invalidation / Cancel Condition |
 | 多层入场、多目标、runner 或条件化管理 | 在最小计划上增加 Risk Limit、首层额度、Add / 取消条件和分支触发 |
 | 预挂条件单、跨 Session、异常处置或高执行风险 | 展开与实际风险相关的完整字段 |
 
@@ -408,6 +448,8 @@ Selected Opportunity
 
 Entry
 - Risk Timing：Early / Confirmed：
+- Entry Basis：
+- Entry Basis Reference：
 - Trigger Boundary：
 - 条件：
 - Entry Method：Stop / Limit / Market-Close：
@@ -457,23 +499,23 @@ Trade Outcomes
 Trader's Equation：
 ```
 
-执行决定形成时保留当时适用的原始计划字段；首次成交对应这份计划。新事实可以改变当前路径评价和管理动作，却不能覆盖原目标、重选量度端点或把另一 Outcome Horizon 的路径改写成原计划。计划内 Add 发生时只在 Execution State / Plan Delta 追加 Entry Method、价格、数量、Stop、加仓后 Risk Committed 和触发依据；出现原计划外的新 Opportunity、目标、失效或 Stop 时，新增风险才必须作为新 Candidate 评价。只有新计划本身复杂时才要求展开全部模板。
+执行决定形成时保留当时适用的原始计划字段；首次成交对应这份计划。新事实可以改变当前路径评价和管理动作，却不能覆盖原目标、重选量度端点或把另一 Outcome Horizon 的路径改写成原计划。计划内 Add 发生时只在 Execution State / Plan Delta 追加 Entry Basis、Trigger、Entry Method、价格、数量、Stop、加仓后 Risk Committed 和触发依据；出现原计划外的新 Opportunity、目标、失效或 Stop 时，新增风险才必须作为新 Candidate 评价。只有新计划本身复杂时才要求展开全部模板。
 
 ## 十四、Decision 与唯一决定
 
-Market Read、Opportunity Scan 和 Trade Construction 只产生继续所需的对象，或指出下一项现实事件。Decision 的输入是：
+Market Read、Opportunity Scan、Trade Construction 与 Candidate Choice 只产生继续所需的对象，或指出下一项现实事件。Decision 的输入是：
 
 ```text
-Candidate：[COMPLETE / NONE]
+Selected Candidate：[COMPLETE / NONE]
 Next Event：[可观察事件 / NONE]
 Decision Expiry：[时间或替代事件 / N/A]
 ```
 
-Decision 一次只接收一条 Candidate。Candidate 完整时可以得到 `EXECUTE`；没有 Candidate、但存在明确、现实且尚未过期的 Next Event 时得到 `WAIT`；两者都没有时得到 `NO_TRADE`。Decision 只拥有当前新交易表达；实际订单参数、保护激活和提交时账户状态由 Ready to Submit 复核，持仓动作与原计划内 Add 分别由 Open Position 和 Add Gate 处理。
+Decision 一次只接收 Candidate Choice 选中的一条 Candidate。Selected Candidate 完整时可以得到 `EXECUTE`；没有 Candidate、但存在明确、现实且尚未过期的 Next Event 时得到 `WAIT`；两者都没有时得到 `NO_TRADE`。Decision 只拥有当前新交易表达；实际订单参数、保护激活和提交时账户状态由 Ready to Submit 复核，持仓动作与原计划内 Add 分别由 Open Position 和 Add Gate 处理。
 
 ### 执行
 
-双向扫描完成，Context Permission 允许，Activation 已满足或由许可 Trigger 完整执行，Entry / Stop / Targets 可追溯，且概率、Reward、Risk、成本、时间、Size 与管理形成正方程时，完整 Candidate 得到 `EXECUTE`。Decision 冻结原始 Trade Plan 并进入 Ready to Submit，尚未产生订单意图；[执行前复核](execution_management_and_review.md#一执行前复核)确认关键输入仍成立后，才提交计划规定的订单。即时订单要求前置条件已经成立；预挂 Stop / Limit 要求计划明确允许在 Trigger 或成交前工作。提交仍不表示订单已被确认或账户已经成交。
+双向扫描完成，Context Permission 允许，Activation 已满足或由许可 Trigger 完整执行，Entry / Stop / Targets 可追溯，且概率、Reward、Risk、成本、时间、Size 与管理形成正方程时，Candidate Choice 选中的 Candidate 得到 `EXECUTE`。Decision 冻结原始 Trade Plan，形成尚未提交的 Entry Execution Intent 并进入 Ready to Submit；[执行前复核](execution_management_and_review.md#一执行前复核)确认关键输入仍成立后，才提交计划规定的订单。即时订单要求前置条件已经成立；预挂 Stop / Limit 要求计划明确允许在 Trigger 或成交前工作。提交仍不表示订单已被确认或账户已经成交。
 
 ### 等待
 
