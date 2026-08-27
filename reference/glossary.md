@@ -64,7 +64,7 @@ Market Probability 描述 Opportunity objective 在当前条件与 horizon 内�
 - **等待**：Market Read 尚未解决、Opportunity 尚未 Activation，或当前没有值得承担的 Candidate，但存在明确下一事实与 Expiry。
 - **不交易**：机会已失效、风险无法定义、方程无优势或运行约束不允许。
 
-这三个结果是当前决策，不是永久评价。详见[交易决策与计划](../trading_system/decision_and_plan.md#十四唯一决策)。
+这三个结果是当前决策，不是永久评价。详见[交易决策与计划](../trading_system/decision_and_plan.md#十四decision-与唯一决定)。
 
 ## 二、市场状态与运动
 

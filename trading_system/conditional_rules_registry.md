@@ -48,7 +48,7 @@
 
 匹配顺序应用于当前已经实例化的规则。只有目标事件、周期和 Outcome Horizon 相同，更具体条件才替代一般规则。不同目标事件可以同时成立，但不相加、不相乘，也不共同进入一份 Trade Plan。
 
-理由负责更新 Opportunity 支持程度与 Activation；条件规则提供 Market Probability。H2、Double Bottom、Second Entry 等同源名称不各自提供概率。
+理由负责更新 Opportunity 支持程度与 Activation；条件规则提供 Market Probability。H2 / Double Bottom / Second Buy Entry 与镜像的 L2 / Double Top / Second Sell Entry 等同源角色不各自提供概率。
 
 Long / Short Opportunity 分别匹配各自目标。双方目标、Outcome Horizon 或判断时点不同时，其概率不要求互补，也不能用 `1 - P(向上目标事件)` 自动生成向下目标概率。系统先独立匹配 Market Probability；Candidate 再根据 Trigger、Entry、Stop、Targets、管理和成本形成 Candidate Outcome Probability 或诚实区间。
 
@@ -87,10 +87,12 @@ Long / Short Opportunity 分别匹配各自目标。双方目标、Outcome Horiz
 | Tight Channel 第一次逆势尝试 | 先成为 minor reversal、pullback 或测试旧极值 | 约 `70%` | 不是顺势订单胜率 |
 | 清楚倾斜的方向 Channel | 最终先反向突破趋势线并通常区间化 | 约 `75%` | 完整 Channel 生命周期 |
 | 测试已识别 Channel 边界 | 从边界反应 / 测试另一侧，与持续外部突破 | 约 `70 / 30` | 局部边界路径事件 |
-| Channel 向原趋势方向突破外轨 | 最高适用周期约五根内失败 | 约 `75%` | 强跟随出现后按新 breakout 更新 |
+| 清楚倾斜的方向 Channel 沿自身推进方向突破外侧 Channel Line | 在仍清楚承载同一 Channel 的最高相关周期上，约五根内无法保持外部接受并回入 | 约 `75%` | 近水平、主体更像 Range 时不适用；强跟随与外部接受出现后按新 breakout 更新 |
 | Trending Trading Range 形成新区间 | 回测并与前一区间重叠 | 约 `60%` | 描述局部公平区域重叠 |
 
 Rising Channel 当前恢复旧高约 60%，与完整生命周期最终向下突破趋势线约 75% 可以同时成立；它们使用不同 Outcome Horizon，不构成当前多空交易概率冲突。
+
+上述外侧 Channel Line 条目的“最高相关周期”是仍能清楚表达同一 Channel 的最高周期，不是无限向上寻找任意周期；约五根从该周期的越界尝试开始观察，也不是第五根自动反向入场。失败描述的是加速突破没有保持，不自动确认 opposite trend 或一笔反向交易；反向 Candidate 仍需自己的 Activation、Stop、Target 和方程。若强实体、持续跟随和外部接受确认少数成功分支，旧失败匹配立即失效；只有来源条件同时匹配时，才进一步调用第二段、TBTL 或 measured-move 路径。
 
 普通 Flag 的统一 40% 说法因 Flag 范围过宽，不进入运行。实际路径按当前 Trend、Channel、Wedge 或 Range 条件匹配。
 
