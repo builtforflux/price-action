@@ -32,6 +32,7 @@ Flat、Ready、Working、Open、Exiting 和 Closed / Review 是可并行适用�
 提交任何新增风险前重新同步：
 
 - 所选 Opportunity 仍有效，Activation、Invalidation、目标、周期和时间范围未改变；
+- Frame、Session、事件和账户约束仍允许新增风险；`NO_NEW_RISK` 或 Plan invalidation 出现时不提交；
 - Entry Basis、Entry Method、适用的 Trigger Boundary、Planned Protective Stop 与 First / Main Target 仍引用原 Price Map / Active Test；
 - Market / close order 所需的 Entry 前置条件已经发生；或 Trade Plan 明确允许 Stop / Limit 在 Trigger 或成交前预先工作；
 - 以计划订单价格、允许成交范围和当前剩余空间计算的 Planned Stop、Reward、实质相关的 Execution Cost 和 Trader's Equation 仍成立；
@@ -59,7 +60,7 @@ Working Order
 └─ 全部成交 → 按 Order Purpose 与剩余 Exposure 路由
 
 Order Purpose = ENTRY / ADD
-├─ Opportunity 不再 ACTIVE、Entry Validity 结束或方程失效 → 撤单并确认
+├─ Opportunity 不再 ACTIVE、Frame / Account 不再允许新增风险、Entry Validity 结束或方程失效 → 撤单并确认
 ├─ 未成交且仍有效 → 继续等待或按计划取消
 └─ Rejected / Canceled / Expired
    → 关闭该订单；执行意图仍有效则只以扣除累计成交后的剩余计划数量重新进入 Ready，否则按真实状态重新分派
@@ -163,7 +164,7 @@ Stop price 是图表上的保护触发依据，不保证最终 fill。正常高�
 1. 实际仓位、工作订单与 Active Protective Stop 一致吗？
 2. Price Map / Current Move / Active Test 出现了什么新事实？
 3. Context 是 UNCHANGED、UPDATED 还是 REFRAMED？
-4. 所选 Opportunity 是 ACTIVE、ACHIEVED、INVALIDATED、EXPIRED、SUPERSEDED 还是 SEQUENCE_UNKNOWN？
+4. 所选 Opportunity 是 ACTIVE、ACHIEVED、INVALIDATED、EXPIRED、SUPERSEDED 还是 MARKET_SEQUENCE_UNKNOWN？
 5. 若仍 ACTIVE，是 STRENGTHENED、UNCHANGED 还是 WEAKENED？
 6. 竞争 Opportunity 是否存在；尚未建立、仍待确认，还是已经获得接受？
 7. Target、Stop、时间、Add / Cancel Add 或原计划条件发生了吗？
@@ -174,11 +175,12 @@ Stop price 是图表上的保护触发依据，不保证最终 fill。正常高�
 | 所选 Opportunity | 竞争 Opportunity | 当前动作边界 |
 | --- | --- | --- |
 | `ACTIVE + STRENGTHENED / UNCHANGED` | 不存在或尚未获得接受 | 按计划持有；计划内 Add 运行 Add Gate，计划外新增风险构造新 Candidate |
-| `ACTIVE + WEAKENED` | 存在但尚未获得接受 | Hold、Cancel Add，或执行预写减仓 / 目标收缩 |
+| `ACTIVE + WEAKENED` | 不存在或尚未获得接受 | Hold、Cancel Add，或执行预写减仓 / 目标收缩；不进入 Add Gate |
 | `INVALIDATED` | 任意状态 | 主动退出；不必等待最远 Active Stop |
 | 因竞争路径接受而 `INVALIDATED / SUPERSEDED` | 已获得接受并实质否定所选路径 | 先退出原交易；反向交易重新经过完整流程 |
 | `SUPERSEDED` | 新 Context、价格问题或机会取代原路径 | 停止新增风险并退出；新路径只在归零后重新构造交易表达 |
-| `ACHIEVED / EXPIRED / SEQUENCE_UNKNOWN`，或 Target / Stop / Time 条件发生 | 任意状态 | 按 Outcome Criterion 处理并核对实际仓位与保护；顺序未知时不选择有利解释 |
+| `ACHIEVED / EXPIRED / MARKET_SEQUENCE_UNKNOWN` | 任意状态 | 按 Market Outcome Criterion 更新 Opportunity；市场顺序未知时不选择有利解释 |
+| Trade Target、Active Stop、Time Exit 或 `TRADE_SEQUENCE_UNKNOWN` | 任意状态 | 按 Trade Plan 进入退出订单生命周期并核对实际仓位与保护；交易顺序未知时不选择有利解释 |
 
 认知更新不自动产生交易动作。普通波动、单根反色 K 线或计划周期内正常 pullback 可以使局部证据变化，却不自动要求加仓、减仓、移动 Stop 或退出。
 
@@ -198,7 +200,7 @@ Opportunity 增强不自动许可加仓。新增数量仍须通过 Context Permi
 
 - 区分普通 pullback、entry disappointment 和实质 premise 变化；
 - 按预写分支保持、减仓、收缩当前管理目标或 Cancel Add；
-- 未重新形成完整正方程前不新增风险；
+- 当前 `WEAKENED` 更新下不新增风险；只有后续事实使路径恢复为 `STRENGTHENED / UNCHANGED`，并重新形成完整正方程后，才可进入 Add Gate；
 - 不因一根普通反向 K 线自动反向；
 - 不以原 Opportunity 名称否认实际分离关闭、重叠增加或反方接受。
 
@@ -224,7 +226,7 @@ Opportunity 增强不自动许可加仓。新增数量仍须通过 Context Permi
 - 目标到达：按 Outcome Criterion 和计划数量减仓或退出；
 - Active Stop 触发：核对实际成交与剩余仓位；部分成交时继续保护剩余 Exposure，全部成交归零后确认残留订单与保护最终状态，再进入 Closed / Review；
 - Session、最迟退出时间或账户约束触发：按计划减仓或退出；
-- 同一回放 K 线同时包含目标和 Stop 且顺序无法确定：记为 `SEQUENCE_UNKNOWN`，不选择有利结果。
+- 同一回放 K 线同时包含交易目标和 Active Protective Stop 且顺序无法确定：Trade Outcome 记为 `TRADE_SEQUENCE_UNKNOWN`，不选择有利结果。
 
 完整 Stop、完整目标或主动退出使仓位归零并终结当前 Trade Plan 的账户结果时，关闭该计划尚未提交的 Entry / Add Execution Intent，终止剩余 Add Permission，并撤销仍可能增加 Exposure 的 Entry / Add Working Order。撤销确认前继续运行 `Working Order + Closed / Review`，按订单仍可能成交计算最坏暴露；若其间发生新成交，立即按真实 Exposure 重新分派并恢复保护或完成退出，不能假定账户仍为 Flat。同方向仍有市场机会时，也必须以当前价格重新建立 Candidate 与 Decision，不能让旧 Intent 或 Add Order 充当重新入场。
 
@@ -327,19 +329,17 @@ Runner      → 仅在路径增强和延伸目标启用时继续持有
 - `Trade outcome`：实际 Entry 发生后，计划 objective、Stop、主动退出等结果顺序；
 - `Account result`：实际成交、数量、费用、滑点与退出共同产生的 P&L。
 
+`MARKET_SEQUENCE_UNKNOWN` 只表示 Opportunity 的市场目标与市场失效先后不可确认；`TRADE_SEQUENCE_UNKNOWN` 只表示实际交易目标与 Protective Stop / 退出结果先后不可确认。两者可以不同，也不能互相改写 Market Result、Trade Outcome 或 Account Result。
+
 Failed breakout 或 failed H2 不表示某位交易者已经触及 Stop；价格曾提供目标机会也不表示账户实际成交退出。
 
 没有实际成交的候选只能记录为未触发、未成交、过期、等待、不交易或 Opportunity 失效，不能记为交易 success / failure。
 
-## 十二、Trapped 与行为路径
+## 十二、持仓中的行为路径
 
-- `Trapped in`：一方已经实际入场、未先获得其结果目标、仍处于开放亏损并可能被迫退出；
-- `Trapped out`：一方等待更好价格、过早退出或未建立所需仓位，随后行情快速发展；
-- 曾被困并已退出是历史结果，不再属于当前开放 trapped-in 状态。
+[Market Read 的行为路径模型](market_read_and_opportunities.md#行为路径模型)定义 Trapped、Disappointment 与 Pain Trade 的市场语义。持仓管理只消费其对所选或竞争 Opportunity 的更新；行为解释本身不直接产生 Hold、Add、Reduce 或 Exit，也不重复增加概率。
 
-Pain Trade 描述两类潜在反应共同推动低预期方向的行为路径。它只能由可见 Entry / Stop 区域、follow-through 和现实空间支持，不表示系统观察到真实订单身份，也不是新的交易类别或 failure state。
-
-Trapped、disappointment 和预期退出压力若由已经记录的 Entry、failure 或 follow-through 推断，不在这些价格事实之外再次增加证据。后续新发生的 follow-through、回测或退出加速仍各自更新路径一次；行为解释只说明它们为何可能发生，不能重复增加概率。
+图表上的 trapped 推断不能证明其他参与者的实际仓位；本账户的 Actual Fill、Exposure、开放盈亏与退出订单才是账户事实。持仓中即使行为路径增强，仍必须按 Opportunity 生命周期、Trade Plan、Active Protective Stop 和真实账户状态决定动作。
 
 ## 十三、行为纪律作为系统约束
 

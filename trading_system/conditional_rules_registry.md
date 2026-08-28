@@ -48,7 +48,7 @@
 
 匹配顺序应用于当前已经实例化的规则。只有目标事件、周期和 Outcome Horizon 相同，更具体条件才替代一般规则。不同目标事件可以同时成立，但不相加、不相乘，也不共同进入一份 Trade Plan。
 
-理由负责更新 Opportunity 支持程度与 Activation；条件规则提供 Market Probability。H2 / Double Bottom / Second Buy Entry 与镜像的 L2 / Double Top / Second Sell Entry 等同源角色不各自提供概率。
+理由负责更新 Opportunity 支持程度与 Activation；条件规则提供 Market Probability。当 H2 / Double Bottom / Second Buy Entry 或镜像名称实际指向同一恢复链时，它们不各自提供概率；不同周期、Object、区域或恢复链仍分别匹配条件。
 
 Long / Short Opportunity 分别匹配各自目标。双方目标、Outcome Horizon 或判断时点不同时，其概率不要求互补，也不能用 `1 - P(向上目标事件)` 自动生成向下目标概率。系统先独立匹配 Market Probability；Candidate 再根据 Trigger、Entry、Stop、Targets、管理和成本形成 Candidate Outcome Probability 或诚实区间。
 

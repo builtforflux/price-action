@@ -270,7 +270,7 @@ Likely Sequence
 - Up / Correction 可先到 EMA；该区域若出现 bear recovery，再重算 Down / Continuation
 ```
 
-较早的 Long Candidate 把完成的 H2 Signal Bar 作为 Entry Basis，使用其上方 `Buy Stop`；越过边界的 K 线成为 Chart Entry Bar，账户实际成交后才进入 Open Position。Planned Protective Stop 引用局部双底结构并容纳正常波动，First Target 引用 EMA / 4970 区域。直接在支撑内 `Limit Buy` 以该 Region 作为 Entry Basis，是确认更少的另一 Candidate；若两个 Candidate 同时成立，Candidate Choice 只能选择当前一条表达，不能同时保留为隐藏计划。
+较早的 Long Candidate 把完成的 H2 Signal Bar 作为 Entry Basis，使用其上方 `Buy Stop`；越过边界的 K 线成为 Chart Entry Bar，账户实际成交后才进入 Open Position。Planned Protective Stop 引用局部双底结构并容纳正常波动，First Target 引用 EMA / 4970 区域。直接在支撑内 `Limit Buy` 以该 Region 作为 Entry Basis，是确认更少的另一 Candidate；若两个 Candidate 同时成立，Decision 只能选择当前一条表达，不能同时保留为隐藏计划。
 
 ### D. 触发后的分支｜新事实使用新 Candidate
 
@@ -284,7 +284,7 @@ Likely Sequence
 
 ### E. 三种运行模式怎样衔接
 
-1. 大阴线出现前首次读取图表：运行完整 Checklist，得到外层 Bull 但区间化增加的 Market Read，以及 `Long / Continuation`、`Short / Correction` 两侧观察路径；没有 Candidate 时停在 Flat / Observing。
+1. 大阴线出现前首次读取图表：运行完整 Checklist，得到外层 Bull 但区间化增加的 Market Read，以及 `Long / Continuation`、`Short / Correction` 两侧观察路径；没有 Candidate 时由 Decision 输出 Wait 或 No Trade，保持 Flat / Observing。
 2. 大阴线收盘：运行增量问题。Frame 未变，Current Move 与 Active Test 改变，因此只从 Current Move 向后重开；Context Change = `UPDATED` 且 Conditions 加入 `TRANSITION`。两个方向更新后仍缺合适表达，向 Decision 提交 Next Event 与 Decision Expiry，由 Decision 输出 `WAIT`。
 3. 局部第二次测试与 bull signal 完成：再次从 Current Move / Active Test 向后传播。Long / Correction 完成 Activation，才进入 Trade Construction；Short / Continuation 保留为竞争路径，但不为形式对称制造当前 Candidate。
 4. Long Candidate 提交 Decision 并得到 `EXECUTE` 后冻结 Trade Plan，进入 Ready to Submit；执行前复核仍成立才提交 Buy Stop。提交后立即进入订单生命周期；回执未确认时按 `Submitted Unknown` 核对且不重复下单，确认工作后成为 Working Order。图表触发后只按实际成交进入 Open Position，并确认 Active Protective Stop 覆盖真实数量。
@@ -303,7 +303,7 @@ BTC 5 分钟成熟 Trading Range 下沿形成现实 Long / Range Return Opportun
 Risk Limit：2%
 Initial Limit：1%
 Stop Rule：两层共用结构保护 S
-Add Permission：当前 Context Permission 仍允许新增风险；价格进入更低的预定区域 A，且原 Long Opportunity 仍有效；
+Add Permission：所选 Long Opportunity = ACTIVE + STRENGTHENED / UNCHANGED，当前 Context Permission 仍允许新增风险；价格进入更低的预定区域 A；
                 或区域 A 出现拒绝、bull signal / follow-through
 Cancel Add：A 下方形成强 bear breakout 与 follow-through、获得接受、
             目标空间消失、时间过期或保护异常
@@ -388,20 +388,62 @@ Up / Reversal
 
 这个例子验证：事件卡只保证及时重开正确步骤；压力、跟随、接受、位置与交易方程共同决定动作。EMA、50% 和 prior lower high 是独立来源的区域汇合，但“首次测试、EMA touch、bear flag”若描述同一回调链，不重复计票。
 
-## 十、共同闭环
+## 十、端到端人工验收
+
+以下场景只验收现有运行契约是否能由人工完整走通，不增加市场规则、订单状态或记录对象。
+
+### A. Execute、部分成交、保护、退出与 Review
+
+一条完整 Long Candidate 计划 `Buy Stop Size 2`，Planned Stop 和 Target 已引用 Price Map，Decision 输出 `EXECUTE`：
+
+1. Safety、Frame、Market Read、双向 Opportunity、Context Permission 和 Candidate 方程都已有明确判断；任何 `UNCLEAR` 已进入保守 Permission 或概率区间，而不是被跳过；
+2. Decision 冻结 Trade Plan；Ready to Submit 复核 Opportunity、Entry、Stop、Target、Size、成本、风险和成交后保护仍成立，才提交订单；
+3. 经纪商确认 Working 后只记录订单事实，不假定已经成交；Chart Trigger 发生也不等于 Actual Fill；
+4. 首次只成交 `1`：Exposure = `Open(1)`，剩余 `1` 继续 Working；Active Protective Stop 必须覆盖实际 `1`，总风险同时按剩余订单仍可能成交计算；保护无法确认则进入 Safety Exception；
+5. Entry Validity 到期后撤销剩余 `1`；Cancel Pending 期间仍按可能成交处理，确认 Canceled 后才关闭该订单事实，已成交仓位继续 Open Position；
+6. 持仓事件依次更新 Market Read、所选与竞争 Opportunity、Trade Target / Stop / Time 条件和动作；认知变化不直接跳成订单成交；
+7. 计划要求退出后进入 Reduce / Exit 订单生命周期；退出订单 Working 或部分成交期间，剩余 Exposure 继续由 Active Protective Stop 覆盖；
+8. Exposure 归零后，终止该 Trade Plan 的未提交 Intent 与 Add Permission，处理仍可能增加 Exposure 的订单并确认残留保护状态；完成 Closed / Review 交接后返回 Flat / Observing。
+
+验收条件：任何阶段都不能用计划代替订单、用 Trigger 代替成交、用退出请求代替仓位归零，或在残留订单未确认时假定交易已经结束。
+
+### B. 多个完整 Candidate 的消歧与到期
+
+Long 与 Short 各有一条完整且互斥的 Candidate，但当前事实不能明确选择；一个可观察突破事件可以消歧，有效至 Session 时间边界：
+
+1. Trade Construction 把两条完整 Candidate 都提交 Decision，不预选、不评分，也不隐藏其中一条；
+2. Decision 不选 Candidate，保存 `Next Event + Decision Expiry` 并输出 `WAIT`；此时没有 Trade Plan 或可直接提交的订单；
+3. 事件先发生：从最早改变的 Current Move / Active Test 向后重算，两侧 Opportunity 和每条 Candidate 都使用新 Entry、Stop、Target、概率与剩余时间；Decision 只有在当前事实选中一条时才输出 Execute；
+4. Expiry 先发生：旧 Next Event 终止；没有新的现实事件或明确选择时输出 No Trade，不延长旧 Wait，也不复用旧 Candidate。
+
+验收条件：Wait 始终有事件和期限；未来 Execute 来自新判断时点，不来自等待期间保存的隐藏计划。
+
+### C. Frame 未完成、NO_NEW_RISK 与既有账户事实
+
+当前新交易表达遇到 Session / 事件约束或 Frame 边界不足：
+
+1. 有明确解除或补齐事件：不构造 Candidate，Decision 输出 Wait；事件发生或到期后从 Frame 重开；
+2. 没有现实补齐事件：Decision 输出 No Trade；不能用较小仓位、较近 Stop 或临时换周期绕过缺失边界；
+3. `NO_NEW_RISK` 出现时，尚未提交的 Entry / Add Intent 不进入提交；仍可能增加 Exposure 的 Working Order 按 Plan validity 撤销并等待确认；
+4. 已有 Exposure 不因 No Trade 或 `NO_NEW_RISK` 消失，继续运行 Open Position、Working Order、Exiting 和 Protection；只禁止新增风险；
+5. 数据、账户、回执、仓位或保护无法可靠确认时，不使用 Wait / No Trade 掩盖账户异常，直接进入 Safety Exception。
+
+验收条件：市场决定只关闭新的交易表达，不得覆盖真实订单、仓位、保护和退出责任。
+
+### D. 共同闭环
 
 ```text
-Inherited Context + Price Map
-→ Observable Change：由事件导航调用本次相关概念与条件规则，只从最早变化处重开
-→ Current Move：From / Now / Role；Bars / Continuity / Separation / Pullback / Opponent → Bull / Bear Pressure → Control
-→ Active Test：Object / Tested Objective / Phase / Resolution；H/L Trigger 次序 + Double/Wedge/Triangle 几何 + Response；Acceptance / Failure / Next Observation / Test Expiry
-→ Context Update：Updated Context + Context Change
-→ Long / Short Side Scan + Likely Sequence：Objective、Targets、Activation、Invalidation、Market Probability
-→ Context Permission
-→ Trade Construction：Entry Basis + Reference、Trigger Boundary、Entry Method、Planned Stop、Targets、Size 与管理
-→ Candidate Choice：当前多个表达只选择一条；否则等待明确事件或不交易
-→ Decision：Selected Candidate / 明确下一事件 / 两者皆无 → Execute / Wait / No Trade
-→ Chart Entry、Actual Fill、Follow-through、Acceptance、Failure 与账户事件持续更新
+Safety Guard + Frame
+→ Price Map → Current Move → Active Test → Context Update
+→ Long / Short Opportunity → Context Permission → Trade Construction
+→ Decision：Execute / Wait / No Trade
+→ Execute：Trade Plan → Intent → Order → Actual Fill → Exposure → Protection
+→ Hold / Cancel Add / Add / Reduce / Trail / Exit
+→ Exposure = 0 + 残留状态确认 → Closed / Review → Flat / Observing
+
+Wait：Next Event / Expiry → 从最早变化步骤重算
+No Trade：终止当前表达 → 新事实或 Reframe 后重开
+Safety Exception：先恢复可确认账户状态 → 再按真实状态分派
 ```
 
-H2、Double Bottom、Wedge、Flag、ioi、Triangle、Gap、MTR 和 trapped traders 只是示例。任何进入系统的 Brooks 知识都必须改变这条共同过程中的某一部分，或改变条件概率、Candidate、执行管理与复盘；否则只保留为同源视图、Reference 或隔离项，不建立独立路由，也不按名称数量投票。
+H2、Double Bottom、Wedge、Flag、ioi、Triangle、Gap、MTR 和 trapped traders 只是示例，并非穷举。任何进入系统的 Brooks 知识都必须说明 Formation、Role / Owner、Derivation、Lifecycle 与 Boundary / Dedup，并改变共同过程中的相应对象；否则只保留为同源视图、Reference 或隔离项，不建立独立路由，也不按名称数量投票。

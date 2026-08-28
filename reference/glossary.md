@@ -6,7 +6,13 @@
 
 一个术语只回答“正在描述什么”。它不能凭名称提供交易许可。实时顺序始终是：
 
-> 价格事实 → Market Read（继承 Context → 更新 Price Map / Price Process → 确认或重构 Context）→ Opportunity Set → Context Permission + Trade Candidates → Trade Plan → 执行 / 等待 / 不交易
+```text
+价格事实 → Market Read（继承 Context → 更新 Price Map / Price Process → 确认或重构 Context）→ Opportunity Set → Context Permission + Trade Candidates
+→ Decision
+├─ EXECUTE → 冻结 Trade Plan → Intent → Order → Actual Fill → Exposure → Active Protective Stop
+├─ WAIT → 明确 Next Event + Decision Expiry，不冻结 Trade Plan
+└─ NO_TRADE → 终止当前表达，不冻结 Trade Plan
+```
 
 ## 一、判断对象
 
@@ -40,11 +46,11 @@ Price Process 用 `From → Now → Role → Change → Testing → Next` 保存
 
 ### Trade Candidate
 
-在 Context Permission 允许后，于当前判断时点表达某条已 Activation Opportunity 的风险交换，包括 Trigger、Entry、对 Opportunity Invalidation 的引用、Planned Protective Stop、Target、Candidate Outcome Probability、成本、仓位和管理。同一 Opportunity 在 close、follow-through 或回调时点可以生成不同 Candidate，每次都按当前价格重算。
+在 Context Permission 允许后，于当前判断时点表达某条 Activation 已满足，或由明确许可的 Trigger 能完整执行剩余 Activation 的 Opportunity 风险交换，包括 Activation Status、Trigger、Entry、对 Opportunity Invalidation 的引用、Planned Protective Stop、Target、Candidate Outcome Probability、成本、仓位和管理。后一种只适用于计划明确允许预挂条件单、且 Trigger 本身能完成尚缺条件的情况；若仍要求 close、follow-through、回踩守住或 acceptance，单纯越过 Stop Price 不能替代。同一 Opportunity 在 close、follow-through 或回调时点可以生成不同 Candidate，每次都按当前价格重算。
 
 ### Trade Plan
 
-被选 Trade Candidate 的冻结快照，明确 entry、Opportunity invalidation snapshot、protective stop、target、outcome criterion、两种概率、成本、仓位、订单与管理。未被选 Candidate 不保存为并行完整计划。
+Decision 输出 `EXECUTE` 时，对被选 Trade Candidate 形成的冻结快照，明确 Entry、Opportunity Invalidation Snapshot、Planned Protective Stop、成交后保护方式、Target、Outcome Criterion、两种概率、成本、仓位、订单与管理。未被选 Candidate，以及 `WAIT / NO_TRADE`，不保存为并行完整计划。
 
 ### Market Probability / Candidate Outcome Probability
 
@@ -60,11 +66,11 @@ Market Probability 描述 Opportunity objective 在当前条件与 horizon 内�
 
 ### 执行 / 等待 / 不交易
 
-- **执行**：选中 Candidate，Trade Plan、保护、目标和方程同时成立。
-- **等待**：Market Read 尚未解决、Opportunity 尚未 Activation，或当前没有值得承担的 Candidate，但存在明确下一事实与 Expiry。
-- **不交易**：机会已失效、风险无法定义、方程无优势或运行约束不允许。
+- **执行**：Decision 选中完整 Candidate 并冻结 Trade Plan；此时成立的是 Planned Protective Stop 与成交后可建立保护的方案，只有 Actual Fill 后才能按实际 Exposure 确认 Active Protective Stop。
+- **等待**：Decision 未选中 Candidate，但存在明确、现实且尚未过期的 `Next Event + Decision Expiry`；包括 Market Read 尚未解决、Opportunity 尚未 Activation 且没有许可 Trigger 能完整执行剩余 Activation、当前尚无正方程但存在具体的新 Candidate 事件，或多个完整 Candidate 等待消歧。
+- **不交易**：Decision 未选中 Candidate，且没有值得等待的现实事件；包括两侧均被排除、Opportunity 已失效、方程不成立且没有改善事件、多个 Candidate 无法消歧且没有下一事件，或交易者主动不承担当前新增风险且没有下一事件。主动放弃不否定 Candidate，也不改写其概率或方程。
 
-这三个结果是当前决策，不是永久评价。详见[交易决策与计划](../trading_system/decision_and_plan.md#十四decision-与唯一决定)。
+只有需要跨事件持续跟踪的 Wait，才书面保存 Next Event 与 Decision Expiry。这三个结果是当前决策，不是永久评价。详见[交易决策与计划](../trading_system/decision_and_plan.md#十四decision-与唯一决定)。
 
 ## 二、市场状态与运动
 
@@ -154,7 +160,7 @@ H1/H2 是回调中第一次/第二次向上恢复尝试；L1/L2 是第一次/第
 
 ### Double Top / Double Bottom
 
-对同一区域的两次测试。Double Bottom 与 H2 可以是同一底层事件的不同视图：前者强调位置复测，后者强调恢复尝试次序；不能把它们当作两个独立理由。
+对同一区域的两次测试。Double Bottom 与 H2 在同一周期、Object、区域和恢复链上重合时，共享底层价格事实：前者强调结构复测、Neckline 与可能的高度投射，后者强调恢复尝试次序、Signal / Trigger 与 Chart Entry；条件不同则分别评价。
 
 ### Second Signal / Second Entry
 
@@ -242,7 +248,7 @@ Success 与 failure 必须绑定预先声明的 outcome criterion：目标先到
 
 ### Active / Expired / Sequence Unknown
 
-已经形成的 Opportunity 在目标、失效、过期或取代事件均未发生时保持 `ACTIVE`；horizon 结束而目标与失效均未发生时为 `EXPIRED`；目标与失效在同一可观察区间内发生且顺序无法确认时为 `SEQUENCE_UNKNOWN`。尚未形成 Opportunity 的未决 Market Read 不进入这组状态。三者描述不同结果。
+已经形成的 Opportunity 在目标、失效、过期或取代事件均未发生时保持 `ACTIVE`；horizon 结束而目标与失效均未发生时为 `EXPIRED`；市场目标与市场失效在同一可观察区间内发生且顺序无法确认时为 `MARKET_SEQUENCE_UNKNOWN`。实际交易目标与 Protective Stop / 退出结果的先后无法确认时为 `TRADE_SEQUENCE_UNKNOWN`。尚未形成 Opportunity 的未决 Market Read 不进入这些结果状态；市场路径与交易结果不能互相改写。
 
 ### Scalp / Swing / TBTL
 
@@ -250,7 +256,7 @@ Scalp 追求较小目标，通常需要更高胜率；swing 接受正常 pullbac
 
 ### Trapped In / Trapped Out / Pain Trade
 
-Trapped in 指已持有不利仓位的一方；trapped out 指错过行情、可能被迫追价的一方。Pain trade 是这些退出或追价压力可能延伸运动的行为路径推断，仍须由价格接受/失败证据确认。
+Trapped in 推断一方在可见入场机会后没有先获得价格结果、随后可能处于不利路径；trapped out 推断错过行情的一方可能面对追价压力。Pain trade 是两类潜在反应可能延伸运动的行为路径推断，仍须由可见区域、failure、follow-through 与现实空间支持；这些名称不证明实际参与者身份、持仓或盈亏。
 
 ### Fade / Countertrend / Limit Order Market
 
