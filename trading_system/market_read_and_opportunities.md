@@ -18,33 +18,49 @@
 → 反方在另一侧获得接受：旧路径失效，结构重新分类
 ```
 
-Trend、Trading Range、Gap、Breakout、Failed Breakout、H2/L2、Double Bottom/Top、Wedge、Flag 和 MTR 都是这条测试链在不同周期、次序、空间或外层约束中的描述。
+这些知识分别描述价格组织、事件、结构、次序、空间、行为或外层功能，但都通过这条共同测试链进入运行系统。
 
-## 二、概念的形成契约
+## 二、价格行为知识融合契约
 
-系统中的概念必须能够回答：
+所有进入 Market Read 的价格行为知识都使用同一条运行链，不建立 Pattern、Setup 或 Concept 的平行路线。每项知识必须满足五个维度：
 
 ```text
-来源事实是什么？
-在什么周期与观察窗口形成？
-它在当前流程中承担什么职责？
-什么新事实会增强、削弱、失效或重置它？
-它不能单独推出什么？
+1. Formation：由哪些可观察事实形成；使用什么周期与观察窗口？
+2. Role / Owner：在价格组织、位置、过程、结构、次序、外层功能或行为中承担什么职责；改变哪个 Market Read 对象？
+3. Derivation：可以直接形成哪些 Region、Pressure / Test / Context、目标、Rule Match 或 Opportunity；通过共同链最终可能影响哪些 Candidate 或动作？
+4. Lifecycle：什么确认、增强、削弱、失效、替代或重置它？
+5. Boundary / Dedup：它不能单独推出什么；哪些关系同源；什么才算新的独立事实？
 ```
 
-不能从价格事实给出形成条件、更新条件和流程职责的名称，不进入运行系统。包含最终结果的名称必须区分实时候选和事后确认。
+这是价格行为知识的维护与去重契约，不是实盘逐项 Checklist，也不把 Candidate、风险或执行动作的定义移交给 Market Contract；这些下游对象仍由 Decision Contract 与 Execution Contract 唯一定义。
 
-概念之间只使用五种关系：
+不能给出 Formation、Owner 和更新边界的价格行为名称，不进入运行系统。包含最终结果的名称必须区分实时候选和事后确认；不同目标、周期、Outcome Horizon 或判断时点不得因名称相同而合并。
 
-| 关系 | 含义 | 示例 |
+底层事实只登记一次，但可以沿共同链路产生多个不同后果：
+
+```text
+一组 K 线、运动与区域互动事实
+→ Current Move：Pressure / Continuity / Separation
+→ Active Test：结构、次序、Response、Acceptance / Failure
+→ Price Map：结构锚点、Neckline、边界与事前固定投射
+→ Context：正常回调、目标、Control 或状态是否改变
+→ Opportunity：Activation、Invalidation、Market Target 与路径强弱
+→ Candidate：是否采用其中的 Signal、Region、Trigger、Stop 或 Target
+```
+
+这些是同一事实的不同运行后果，不是多个独立理由。汇合判断时，不得把同一来源价格链派生出的名称、Pressure、结构角色、Signal 和目标重新当成多个来源；不同区域、独立后续反应、真实 follow-through 或新的测试才可能增加事实。
+
+概念之间常见以下关系；它们可以同时成立，不是互斥分类：
+
+| 关系 | 保留的差异 | 示例 |
 | --- | --- | --- |
-| 本质归属 | A 是 B 的一种 | Channel 是当前周期 Trend 的阶段 |
-| 同源视图 | 同一事件从不同维度命名 | H2 / Double Bottom 与 L2 / Double Top 分别描述镜像的第二次测试 |
-| 外层角色 | 局部结构在外层路径中的作用 | Rising Channel 同时保留长期 Bear Flag 视角 |
-| 条件演化 | 新事实改变当前解释 | Breakout Attempt → Acceptance → Breakout Phase |
-| 周期展开 | 同一价格在不同尺度呈现不同结构 | 高周期 Breakout Bar 在低周期展开为 Channel / Range |
+| 本质归属 | 阶段与上位状态 | 当前周期被判定为方向 Trend 时，Channel 是其阶段 |
+| 同源但职责不同 | 共用底层事实，分别保留结构、次序、位置、目标或图表角色 | Double Bottom 与 H2 可以重合；前者保留测试结构、锚点和 MM，后者保留恢复次序、Signal / Trigger |
+| 外层角色 | 局部结构在另一周期或路径中的功能 | Rising Channel 同时可以是外层 Bear Flag |
+| 条件演化 | 同一过程在新事实后更新状态和适用规则 | Breakout Attempt → Acceptance 或 Failed Breakout |
+| 周期展开 | 同一价格在不同尺度形成不同结构与目标 | 高周期 Breakout Bar 在低周期展开为 Channel / Range |
 
-同源视图只产生一份证据。外层角色可以同时成立，但内部模型必须分开它们的周期、目标事件与 Outcome Horizon。
+Pattern 是对价格事实之间结构、过程或外层功能关系的压缩描述，不只是几何名称，也不是交易类别。结构若产生持续的运行结果，只把结果落入现有对象：锚点和投射进入 Price Map，当前互动进入 Active Test，目标与失效进入 Opportunity，Signal / Trigger 是否用于承担风险由 Candidate 决定。结构名称不建立并行记录对象。
 
 ## 三、原始价格事实
 
@@ -129,6 +145,8 @@ Price Map
 
 区域在以下任一条件成立时进入当前地图：价格正在互动；它是当前 Trading Timeframe 与 Frame 时间边界内的现实目标或障碍；它会改变正常 Stop、Invalidation、空间或动作；它是当前 Context 必须保留的外层约束。其他历史高低保持休眠，接近或获得新职责时再激活。
 
+结构拥有独立下游用途时，其可见锚点和派生区域也进入同一地图。例如 Double Bottom / Top 可以登记两个测试区域、Neckline 与端点固定后的高度投射；Range、Breakout、Channel、Wedge 或 Leg 关系可以登记相应边界和 measured-move 候选。底层结构仍只使用一次，Opportunity 再为这些 Region 分配 Target、Obstacle、Potential Entry Area 或 Invalidation Reference 角色。
+
 ## 四、Price Process｜先读当前运动，再读活动测试
 
 Price Process 保存前后关系，不把当前 K 线、位置反应或形态从其来源运动中截断。实盘分两步读取，内部仍属于同一连续过程。
@@ -179,7 +197,9 @@ Next Observation：下一项值得观察、并使测试接近接受或失败的�
 Test Expiry：最迟何时当前问题仍有意义
 ```
 
-每个 Active Test 只表达当前真正驱动下一步的一个市场问题，Object、Tested Objective 和当前判断周期共同限定尺度。`ACCEPTED / FAILED` 始终回答该 Tested Objective，不能只写一个没有方向和对象的“接受/失败”。Acceptance / Failure Criterion 定义终局；Next Observation 只指出最近的增量，并在它成为最早流程变化条件时由 Watch、Activation 或 Decision 引用。外层位置由 Object 引用 Price Map；局部第二次测试、双底、双顶或三推进入 Attempt / Response，并可形成恢复 setup 与潜在 Trigger Boundary。课程图表语言可以把定义该边界的完成 K 线称为 signal bar；运行仍先把它作为 Response 事实，Opportunity 决定它是否支持现实路径，Candidate 再决定是否把它用于 Entry Basis。
+每个 Active Test 只表达当前真正驱动下一步的一个市场问题，Object、Tested Objective 和当前判断周期共同限定尺度。`ACCEPTED / FAILED` 始终回答该 Tested Objective，不能只写一个没有方向和对象的“接受/失败”。Acceptance / Failure Criterion 定义终局；Next Observation 只指出最近的增量，并在它成为最早流程变化条件时由 Watch、Activation 或 Decision 引用。外层位置由 Object 引用 Price Map；局部第二次测试、双底、双顶或三推在这里保存其当前结构、Attempt 次序与 Response，并可形成恢复 setup、潜在 Trigger Boundary、Neckline 或其他结构边界。结构端点固定后产生的投射进入 Price Map / Market Targets；课程图表语言可以把定义触发边界的完成 K 线称为 signal bar。Opportunity 决定这组事实是否支持现实路径，Candidate 再决定是否把其中的 K 线、Region、结构边界或确认过程用于 Entry Basis。
+
+Active Test 若识别出新的结构锚点、边界或固定投射，先登记到同一 Price Map。若它改变 Object、Space、Target 或 Invalidation Reference，就从最早受影响步骤重新传播；若没有改变下游判断，则继续进入 Context Update，不建立第二张地图或独立结构对象。
 
 Test Expiry 是当前问题的终止边界，不是第四种 Resolution。到期、被替代或已经解决后终止旧 Test：若新区域或运动已经形成现实问题，从最早变化步骤建立新的 Active Test；若只有明确下一事件则进入 Wait 判断；若没有新问题或值得等待的事件则进入 No Trade。只有另一个价格问题会独立改变目标、正常波动、失效或动作时才建立新的 Active Test，不维护通用主次或嵌套层级。
 
@@ -238,7 +258,7 @@ H1 / H2 / H3 与 L1 / L2 / L3 使用完全镜像的过程语言：
 └─ 旧多头结构已受破坏：MTR Component
 ```
 
-在 Brooks 的功能语言中，Double Bottom 可以重述为 H2 buy setup，Double Top 可以重述为 L2 sell setup；Wedge Bottom 可以重述为 H3，Wedge Top 可以重述为 L3。严格实时标注仍须绑定同一计数窗口：Double Test 可以在 Trigger 前已经形成；H/L 编号只有在相应恢复边界实际被越过后才成为完成的 Trigger。严格 second entry 还要求第一次 chart entry opportunity 已经触发。几何、次序、外层作用和 Trigger 可以描述同一事件，却不重复增加证据。
+在 Brooks 的功能语言中，Double Bottom 常与 H2 buy setup 重合，Double Top 常与 L2 sell setup 重合；Wedge Bottom / Top 也可与 H3 / L3 恢复过程重合。这些不是完全等价的名称：Double Test 保留测试结构、区域、Neckline 与可能的高度投射，H/L 保留恢复尝试次序、Signal Bar、Trigger 和 Chart Entry 关系，Wedge 保留三推、倾斜、推进质量及其外层 Flag / Climax 作用。严格实时标注仍须绑定同一计数窗口：Double Test 可以在 Trigger 前形成；H/L 边界只有被实际越过后才成为完成的 Trigger；严格 second entry 还要求第一次 chart entry opportunity 已经触发。它们可以共用底层事实，但各自不可替代的运行职责必须保留。
 
 Wedge 描述三次可区分的推动或测试；H3/L3 描述第三次恢复触发。Wedge 可以是趋势回调中的 Flag、成熟通道末端的 reversal candidate，或 Trading Range 中没有优势的局部结构。只有观察尺度、倾斜方向、三推、Context、位置和目标满足具体规则时，才能匹配倾斜 Wedge 的方向先验；接近水平的成熟结构仍按 Triangle / Range 条件处理。三推不单独确认 Broad Channel，后者仍要求深而反复的回调、重叠增加和双边逐渐能够获利。Parabolic Wedge 是 Tight Channel 中至少三次 surge 构成的高潮式三推；没有反向接受时，第一笔反向运动通常仍只是 minor correction 或 Range 路径。
 
@@ -356,6 +376,16 @@ Bull / Bear Pressure 分别汇总同一段窗口中的可观察事实：
 同一根 K 线的“大实体、强收盘、顺势 K 线”不能算成三个独立理由。每次更新分别回答两侧是增强、保持、减弱还是尚未建立；一侧减弱不自动等于另一侧建立。Pressure 是事实簇的方向汇总；一侧明显占优才支持 Control，控制足够强时才支持 Always In。Always In 不是必须持仓，也不能替代位置、目标和交易方程。这是观察输出，只有它改变 Opportunity、计划或动作时才记录。
 
 通常需要足够强的反向运动和跟进改变 Always In。单根异常强反转只有在方向、相对强度、重要位置和对旧控制的否定同时清楚时，才可能直接完成切换；普通反色 K 线不够。
+
+### 行为路径模型
+
+Trapped、Disappointment 与 Pain Trade 是由价格路径支持的参与者行为推断，不是可直接观察的账户身份或持仓数量：
+
+- `Trapped in`：图表曾给出一方可见的入场机会，该方向没有先完成其价格结果，随后持续处于不利路径；系统只推断部分参与者可能被困并形成退出压力；
+- `Trapped out`：等待更好价格、过早退出或错过重新参与的一方，随后面对价格加速；系统只推断其追入或放弃等待的潜在压力；
+- `Pain Trade`：上述两类潜在反应共同推动低预期方向的行为路径。
+
+该模型必须由可见 Entry / Stop 区域、failure、follow-through 与现实空间支持，只更新 Opportunity 的 Support、Counterevidence、Activation 或结果路径，不建立独立 setup、状态或概率。若推断来自已经登记的 Entry、failure 或 follow-through，它不再增加证据；后续独立发生的回测、跟随或加速才作为新事实更新一次。实际参与者是否入场、退出或亏损仍不可由图表证明。
 
 ### 从事件到状态转换
 
@@ -550,7 +580,7 @@ Opportunity
 ```text
 NONE / ACTIVATED
 ACTIVE：STRENGTHENED / UNCHANGED / WEAKENED
-ACHIEVED / INVALIDATED / EXPIRED / SUPERSEDED / SEQUENCE_UNKNOWN
+ACHIEVED / INVALIDATED / EXPIRED / SUPERSEDED / MARKET_SEQUENCE_UNKNOWN
 ```
 
 `ACTIVATED` 表示此前 Pending 的 Activation 已完成；增强、保持和削弱只适用于仍 `ACTIVE` 的 Opportunity；其余结果进入生命周期终态或替代状态。空仓时 Path Effect 决定是否进入 Trade Construction，持仓时同一结论与竞争 Opportunity 一起决定 Hold、Add、Reduce、Trail 或 Exit。K 线颜色、漂亮外观或单根反向反应不能越过 Current Move / Active Test 直接指定 Path Effect。
@@ -597,7 +627,7 @@ ACTIVE
 ├─ 市场事实实质否定         → INVALIDATED
 ├─ Outcome Horizon 结束     → EXPIRED
 ├─ 新 Context、价格问题或机会取代 → SUPERSEDED
-└─ 目标与失效顺序无法确认   → SEQUENCE_UNKNOWN
+└─ 目标与失效顺序无法确认   → MARKET_SEQUENCE_UNKNOWN
 ```
 
 增强、保持和削弱是 `ACTIVE` 内一次事件的更新结果；Activation 只表示该机会可以进入 Context Permission 与 Candidate 检查，不等于交易许可，也不改变生命周期。是否可交易由当前 Trigger、Entry、Stop、交易结果概率、Reward、成本、时间和账户条件决定。

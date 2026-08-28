@@ -2,7 +2,7 @@
 
 > **状态：Trading System / Decision Contract**
 
-本页规定怎样应用 Context Permission，把完成双向扫描且具备当前表达资格的 Opportunity 变成 `Trade Candidates`，怎样从多个当前表达中只选择一条，以及怎样由唯一 `Decision` 根据 Selected Candidate 或下一事件输出 `EXECUTE / WAIT / NO_TRADE`。Trade Construction 确定判断时点、Entry Basis、Trigger、Entry Method、Planned Protective Stop、Targets 与 Size；只有 `EXECUTE` 才把 Selected Candidate 冻结为 `Trade Plan`。
+本页规定怎样应用 Context Permission，把完成双向扫描且具备当前表达资格的 Opportunity 变成当前 `Trade Candidates`，再由唯一 `Decision` 比较这些风险表达并输出 `EXECUTE / WAIT / NO_TRADE`。Trade Construction 确定判断时点、Entry Basis、Trigger、Entry Method、Planned Protective Stop、Targets 与 Size；只有 `EXECUTE` 才把 Decision 选中的 Candidate 冻结为 `Trade Plan`。
 
 本页首先是完整的内部决策契约，不是盘中默认表单。交易者必须在承担风险前明确所有会改变风险或动作的输入，但只按[必要记录](overall_flow.md#六必要记录)保存最小决策信息；其余内容可以观察、心中确认或由工具自动计算。
 
@@ -14,8 +14,7 @@ Market Read
 → Opportunity qualification：目标、Activation rule、Invalidation、Outcome Horizon 与市场目标概率完整
 → Context Permission：当前市场是否允许这种表达
 → Trade Construction：为当前允许且可表达的少数机会构造判断时点、Entry Basis、Trigger、Entry Method、Planned Stop、Targets 与 Size
-→ Candidate Choice：多个当前表达只能选择一条；无法选择时提交下一事件或 No Trade 判断
-→ Decision：Selected Candidate / 明确下一事件 / 两者皆无
+→ Decision：比较当前 Candidates；只选择一条，或等待能够解决选择的事件，或不交易
 → Execute / Wait / No Trade
 ```
 
@@ -87,7 +86,7 @@ Context 先决定当前表达的最低证据，而不是事后调整同一个 Pa
 
 这些维度用于检查支持是否完整，不是评分器，也不要求全部出现。以下通常只是一份证据：
 
-- H2、Double Bottom、Second Buy Signal 与 H1 失败来自同一向上恢复链；L2、Double Top、Second Sell Signal 与 L1 失败完全镜像；
+- 当 H2、Double Bottom、Second Buy Signal 与 H1 failure 实际引用同一向上恢复链时，它们只是一份底层证据；L2、Double Top、Second Sell Signal 与 L1 failure 完全镜像。若周期、Object、测试区域或恢复链不同，则分别评价；
 - 同一突破产生的大实体、gap、pressure、control 和 acceptance；
 - 同一突破或失败链产生的 disappointment、trapped / Pain Trade 推断和预期退出压力；
 - Broad Channel 与 Trending Trading Range 描述同一方向移动；
@@ -224,7 +223,7 @@ Structural Invalidation 由 Opportunity 唯一定义，是新价格事实已经�
 
 Invalidation 可以在最远 Protective Stop 触发前要求主动退出。普通反色 K 线、正常 pullback 或短暂失望不自动构成 Invalidation。
 
-Outcome Horizon 结束而目标和失效均未发生时，Opportunity 进入 `EXPIRED`，不记为市场事实否定。若目标和失效在同一观察 K 线内且顺序无法确认，记为 `SEQUENCE_UNKNOWN`；当前问题尚未解决则仍是 `ACTIVE`，两者不同。
+Outcome Horizon 结束而目标和失效均未发生时，Opportunity 进入 `EXPIRED`，不记为市场事实否定。若市场目标和市场失效在同一观察 K 线内且顺序无法确认，记为 `MARKET_SEQUENCE_UNKNOWN`；当前问题尚未解决则仍是 `ACTIVE`，两者不同。
 
 账户预算、成本、Session 持仓限制、基础设施或执行条件可以淘汰当前 Candidate 或使 Trade Plan 失效，却不改变市场目标是否仍可能发生。Plan invalidation 要求停止新增风险、撤销对应工作订单或按计划收缩风险；只有市场事实或 Outcome Horizon 才关闭 Opportunity。
 
@@ -394,22 +393,7 @@ Scalp 与 Swing 不是交易类别，而是同一 Opportunity 的不同目标、
 
 管理方式必须在承担风险前确定。按较低概率大目标进入后改用小 scalp 退出，或把区间内小目标临时改成趋势 swing，都会破坏原交易方程。若预写部分退出与 runner，可分别保存数量和结果条件。
 
-## 十三、Candidate Choice 与完整 Trade Plan
-
-Trade Construction 可以为当前确实可表达的少数 Opportunity 计算 Candidate，但提交 Decision 前必须只选择一条。Candidate Choice 是一次决策门，不新增持久状态、评分表或隐藏计划：
-
-```text
-淘汰不完整、Permission 不允许或方程不成立的 Candidate
-→ 只剩一条：提交 Decision
-→ 多条互斥 Candidate：比较当前 Entry 后的完整风险交换、Context Permission 与现实先后顺序
-   ├─ 当前事实给出明确选择 → 只提交被选 Candidate
-   ├─ 一个现实事件可以解决选择 → Candidate = NONE；提交 Next Event 与 Expiry
-   └─ 无明确选择且无现实下一事件 → Candidate = NONE；提交 No Trade 判断
-```
-
-相同 Objective、周期与 Outcome Horizon 可以比较当前 Market Probability 和完整方程；不同 Objective 或 Horizon 必须分别使用各自 Entry、Stop、Target、时间与管理，不能只比较裸概率或理由数量。若 `Likely Sequence` 表明先修正、后顺势，只选择当前阶段已经可表达的一条，后续阶段到达新判断时点再重算。未选中的 Opportunity 继续按市场事实更新；未选 Candidate 不冻结、不提交，也不在 Wait 中保留为可执行计划。
-
-### 完整 Trade Plan
+## 十三、完整 Trade Plan
 
 完整 Trade Plan 是被选 Candidate 的冻结快照，用于复杂计划、自动化实现和盘后审计，不是每次 scalp 都要在盘中填完的文档。盘中记录负担按复杂度分层：
 
@@ -503,19 +487,36 @@ Trader's Equation：
 
 ## 十四、Decision 与唯一决定
 
-Market Read、Opportunity Scan、Trade Construction 与 Candidate Choice 只产生继续所需的对象，或指出下一项现实事件。Decision 的输入是：
+Market Read、Opportunity Scan 与 Trade Construction 只产生当前继续所需的对象，或指出下一项现实事件。Decision 的输入是：
 
 ```text
-Selected Candidate：[COMPLETE / NONE]
+Current Candidates：[零到少数几条完整风险表达]
 Next Event：[可观察事件 / NONE]
 Decision Expiry：[时间或替代事件 / N/A]
 ```
 
-Decision 一次只接收 Candidate Choice 选中的一条 Candidate。Selected Candidate 完整时可以得到 `EXECUTE`；没有 Candidate、但存在明确、现实且尚未过期的 Next Event 时得到 `WAIT`；两者都没有时得到 `NO_TRADE`。Decision 只拥有当前新交易表达；实际订单参数、保护激活和提交时账户状态由 Ready to Submit 复核，持仓动作与原计划内 Add 分别由 Open Position 和 Add Gate 处理。
+Decision 在当前时点完成比较，不建立独立选择状态、评分表或隐藏计划：
+
+```text
+Trade Construction 只提交完整、Permission 允许且方程为正的 Candidate
+→ 只有一条 Candidate：
+   ├─ 双向扫描与现实先后顺序没有尚待解决的问题 → 选择该 Candidate
+   └─ 已声明的现实事件可以先改变当前表达 → 不选择；保存 Next Event 与 Expiry
+→ 多条互斥 Candidate：比较当前 Entry 后的完整风险交换、Context Permission 与现实先后顺序
+   ├─ 当前事实给出明确选择 → 只选择一条
+   ├─ 一个现实事件可以解决选择 → 不选择 Candidate；保存 Next Event 与 Expiry
+   └─ 无明确选择且无现实下一事件 → 不选择 Candidate
+```
+
+相同 Objective、周期与 Outcome Horizon 可以比较当前 Market Probability 和完整方程；不同 Objective 或 Horizon 必须分别使用各自 Entry、Stop、Target、时间与管理，不能只比较裸概率或理由数量。若 `Likely Sequence` 表明先修正、后顺势，只选择当前阶段已经可表达的一条，后续阶段到达新判断时点再重算。未选中的 Opportunity 继续按市场事实更新；未选 Candidate 不冻结、不提交，也不在 Wait 中保留为可执行计划。
+
+正方程不强迫交易者承担新增风险。交易者可以主动不执行完整 Candidate，但这只是放弃当前风险表达，不否定 Candidate，不改写其概率或方程，也不建立 `PASS` 状态；存在明确、现实且尚未过期的下一事件时输出 `WAIT`，否则输出 `NO_TRADE`。只有该主动放弃需要审计或会改变后续观察时，才按重要 No Trade 保存一句原因。
+
+Decision 选中一条完整 Candidate 时得到 `EXECUTE`；没有被选 Candidate、但存在明确、现实且尚未过期的 Next Event 时得到 `WAIT`；两者都没有时得到 `NO_TRADE`。Decision 只拥有当前新交易表达；实际订单参数、保护激活和提交时账户状态由 Ready to Submit 复核，持仓动作与原计划内 Add 分别由 Open Position 和 Add Gate 处理。
 
 ### 执行
 
-双向扫描完成，Context Permission 允许，Activation 已满足或由许可 Trigger 完整执行，Entry / Stop / Targets 可追溯，且概率、Reward、Risk、成本、时间、Size 与管理形成正方程时，Candidate Choice 选中的 Candidate 得到 `EXECUTE`。Decision 冻结原始 Trade Plan，形成尚未提交的 Entry Execution Intent 并进入 Ready to Submit；[执行前复核](execution_management_and_review.md#一执行前复核)确认关键输入仍成立后，才提交计划规定的订单。即时订单要求前置条件已经成立；预挂 Stop / Limit 要求计划明确允许在 Trigger 或成交前工作。提交仍不表示订单已被确认或账户已经成交。
+双向扫描完成，Context Permission 允许，Activation 已满足或由许可 Trigger 完整执行，Entry / Stop / Targets 可追溯，且概率、Reward、Risk、成本、时间、Size 与管理形成正方程时，Decision 可以选择其中一条 Candidate 并输出 `EXECUTE`。Decision 冻结原始 Trade Plan，形成尚未提交的 Entry Execution Intent 并进入 Ready to Submit；[执行前复核](execution_management_and_review.md#一执行前复核)确认关键输入仍成立后，才提交计划规定的订单。即时订单要求前置条件已经成立；预挂 Stop / Limit 要求计划明确允许在 Trigger 或成交前工作。提交仍不表示订单已被确认或账户已经成交。
 
 ### 等待
 
@@ -525,7 +526,7 @@ Decision 一次只接收 Candidate Choice 选中的一条 Candidate。Selected C
 2. Opportunity 尚未 Activation：等待预先声明的 follow-through、第二次测试或结构破坏；
 3. Opportunity 已 Activation，但当前没有正方程：只有 Decision Expiry 前存在明确、现实的更好价格或新 Candidate 事件时才等待。
 
-Decision 只有在没有 Candidate、但存在 `Next Event + Decision Expiry` 时才输出 Wait。缺少现实下一事件，或空间、时间、风险已经排除当前机会时，输出 No Trade。只在 Wait 需要跨事件持续跟踪时，才保存这两个边界。
+Decision 只有在没有选中 Candidate、但存在 `Next Event + Decision Expiry` 时才输出 Wait；这既包括当前没有 Candidate，也包括多个完整 Candidate 尚不能消歧。没有选中 Candidate 且缺少现实下一事件时输出 No Trade。只在 Wait 需要跨事件持续跟踪时，才保存这两个边界。
 
 等待不保留隐藏的可执行计划。未来事实发生时使用新的判断时点重新计算；已经提交并等待成交的 Stop / Limit order 属于执行状态，不属于等待决定。
 
@@ -533,7 +534,7 @@ Decision 一次只冻结一份 Trade Plan。Breakout Mode 等双向条件先等�
 
 ### 不交易
 
-Market Read 没有现实问题、两侧均被排除、Opportunity 已失效，或现实 Target、剩余时间、风险、成本和执行条件使当前 Outcome Horizon 内既不存在 Candidate 也没有值得等待的事件。以后若出现新的相关市场事件、Active Test 或 Reframe，从最早发生变化的步骤重开，重新建立 Opportunity 与 Trade Plan，不复用旧计划。
+Market Read 没有现实问题、两侧均被排除、Opportunity 已失效、当前 Candidates 无法形成明确选择且没有值得等待的现实事件，或交易者主动不承担当前新增风险时，输出 No Trade。主动不执行不能把完整 Candidate 改写为无效；以后若出现新的相关市场事件、Active Test 或 Reframe，从最早发生变化的步骤重开，重新建立 Opportunity 与 Trade Plan，不复用旧计划。
 
 ### Decision Record 与 Trade Plan
 

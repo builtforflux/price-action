@@ -40,7 +40,7 @@
 → 分开 Market Probability 与 Candidate Outcome Probability
 → 选择 Signal Bar、multi-bar response、Region、close 或确认过程作为 Entry Basis
 → 用当前 Trigger / Entry / Stop / Target 检查 Reward / Risk / Cost / Time
-→ 多个互斥 Candidate 只选择一条；无法选择则等待明确事件或不交易
+→ Decision 比较完整 Candidates：选中一条则执行；没有选中且有明确事件则等待；没有事件则不交易
 → Chart Entry 与账户 Actual Fill 分开确认
 → 执行、保护、持续更新、管理和复盘
 ```
@@ -109,7 +109,7 @@ Pattern、Market Cycle、Context、H/L、Wedge、Double Test、Flag、MTR 等都
 | 重复簇 | 系统处理 |
 | --- | --- |
 | 趋势反转失败与区间突破失败的多种 80% | 保留不同目标和分母，禁止合成无条件 80% |
-| H/L、Double Test、Wedge、Second Entry | 保存次序、空间和触发视图，只形成一份底层证据 |
+| H/L、Double Test、Wedge、Second Entry | 分别保留次序、结构、投射和图表触发职责；仅在同一周期、Object、区域与测试链上共享底层事实 |
 | Tight/Broad Bull 与 Bear Channel | 运行知识使用无方向母版；Reference 保留镜像案例 |
 | Pattern 名称最终回到 Pressure、Breakout 和 Failure | 不建立独立 Pattern 路由 |
 | 结构 Stop、仓位、提前退出和重新入场 | 由一套 Trade Plan 与执行生命周期承载 |
