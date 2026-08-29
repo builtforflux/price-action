@@ -52,7 +52,14 @@ Outcome Horizon 与判定顺序
 
 ## 二、数值来源怎样交给决策
 
-本页只判断数值来源覆盖了什么，不决定当前是否交易。只覆盖市场目标、条件、周期、期限和判断时点的数值，最多形成 Market Probability；只有同一来源还覆盖具体交易的互斥结果、Entry、Stop、Targets、Size、成本与管理，才可能形成 Trade Outcome Probability。前者不能自动推出后者，部分相似也不算完整匹配。
+本页只判断数值来源覆盖了什么，不决定当前是否交易：
+
+| 来源完整覆盖 | 最多形成 |
+| --- | --- |
+| 市场目标、条件、周期、期限和判断时点 | Market Probability |
+| 上述内容，以及具体交易的互斥结果、Entry、Stop、Targets、Size、成本与管理 | Trade Outcome Probability |
+
+Market Probability 不能自动推出 Trade Outcome Probability，部分相似也不算完整匹配。
 
 没有完整匹配时，来源数字只保留为证据或定性支持。当前交易怎样处理不确定性、是否使用交易者方程以及最终选择 TRADE / WAIT / STAND_DOWN，由[交易决策与计划](decision_and_plan.md#四概率与回报判断)唯一规定。
 
