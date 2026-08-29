@@ -1,417 +1,275 @@
 # 执行、持仓与复盘
 
-> **状态：Trading System / Execution Contract**
+> **Owner：实际成交、仓位、保护、费用、稳定结束与结果**
 
-本页负责把被选 Candidate 冻结的 Trade Plan 转成实际订单和账户状态，并在成交后继续更新 Market Read、所选 Opportunity 与现实竞争机会。图表事实、订单事实和账户事实必须分开；计划正确不表示订单已生效，图表触发也不表示账户已成交或受到保护。
-
-本页定义的状态必须真实，但不要求交易者在每次状态转换后手工抄写完整对象。订单、回执、成交和仓位优先使用经纪商或平台的可靠记录；人工只快速核对它们是否一致，并在计划/风险改变或异常时补充最小说明。
-
-执行环境固定保证：杠杆只用于资本效率；账户使用 Cross Margin 或为 Isolated Position 配置足够保证金，使强平边界天然位于 Planned / Active Protective Stop 之外。该条件由账户配置持续保证，不进入每笔交易清单；一旦不再成立即进入 `SAFETY_EXCEPTION`。
-
-## 账户—执行运行图｜按真实状态分派
-
-Flat、Ready、Working、Open、Exiting 和 Closed / Review 是可并行适用的运行入口，不是掩盖并存事实的单一账户枚举。Safety Exception 优先抢占；安全确认后对每项事实独立判断，并运行所有成立的入口：
+本页不设计 Broker 接口，也不建立订单状态机。它只保留人工交易必须持续知道的事实：实际成交了什么、现在持有什么、保护是否真实在场、还有哪些订单可能成交、当前最多可能损失多少，以及交易何时真正结束。
 
 ```text
-数据、连接、回执、仓位或保护无法可靠确认
-→ SAFETY_EXCEPTION
-
-安全确认后：
-├─ 存在实际 Exposure → Open Position
-├─ 存在尚未提交且仍有效的 Entry / Add 执行意图 → Ready to Submit
-├─ 存在 Working / Cancel Pending 订单 → Working Order
-├─ 存在待执行的 Reduce / Exit 动作或相关订单，且仍有 Exposure → Exiting
-├─ 交易或路径刚结束，盘中终结确认 / Review 交接尚未完成 → Closed / Review
-└─ 以上全部不成立，且没有待完成的盘中关闭动作 → Flat / Observing
+TRADE 与计划动作
+→ Broker 订单
+→ 实际成交
+→ 仓位
+→ 活动保护
+→ 持仓管理
+→ 稳定结束
+→ 四类结果
 ```
 
-计划内 Add 可以同时进入 `Open Position + Ready to Submit`；部分成交可以同时进入 `Open Position + Working Order`；退出中可以同时进入 `Open Position + Working Order + Exiting`；仓位归零而残留订单仍待确认时可以同时进入 `Working Order + Closed / Review`。Safety Exception 解除后也按已确认的真实状态重新分派，但异常前的 Entry / Add 意图必须重新通过执行前复核；若 Market Read 已经过期，再从 Frame 重开。
+市场判断和交易计划由上游拥有。成交、盈亏或事后走势不能反向改写原判断。
 
-## 一、执行前复核
+## 一、执行前必须知道的产品事实
 
-提交任何新增风险前重新同步：
+只有会改变下单、风险、费用或结束确认的产品与平台事实需要进入运行：
 
-- 所选 Opportunity 仍有效，Activation、Invalidation、目标、周期和时间范围未改变；
-- Frame、Session、事件和账户约束仍允许新增风险；`NO_NEW_RISK` 或 Plan invalidation 出现时不提交；
-- Entry Basis、Entry Method、适用的 Trigger Boundary、Planned Protective Stop 与 First / Main Target 仍引用原 Price Map / Active Test；
-- Market / close order 所需的 Entry 前置条件已经发生；或 Trade Plan 明确允许 Stop / Limit 在 Trigger 或成交前预先工作；
-- 以计划订单价格、允许成交范围和当前剩余空间计算的 Planned Stop、Reward、实质相关的 Execution Cost 和 Trader's Equation 仍成立；
-- Position Size 与 Risk Limit、现有仓位和全部仍可能增加暴露的订单一致；
-- 本执行意图已有累计成交时，待提交数量只等于原计划数量减去累计成交，并按当前 Exposure、Stop 和 Risk Available 重新确认；剩余为零时关闭意图；
-- 订单方向、类型、价格规则、数量和有效期正确；
-- 成交后 Protective Stop 怎样激活、覆盖实际数量；
-- 回执不明、部分成交、保护不足、连接或平台异常的处理已经明确。
+- 合约或资产、报价单位、tick / pip、每点价值和最小数量；
+- 手续费、合理滑点，以及相关的融资、借券、换汇或隔夜成本；
+- 保证金与杠杆边界；
+- Stop、Limit、Market、部分成交、撤单、改单和 OCO 的实际行为；
+- session、到期、rollover、交易中断和数据或连接异常的处理方式。
 
-Entry 意图的 Market Read、Opportunity、Candidate 方程或订单参数改变时，从最早变化步骤重开，并重新经过 Trade Construction 与 Decision。Add 意图发生这些变化时，关闭旧意图并返回 Open Position / Add Gate；只有计划外的新 Opportunity 才重新建立 Candidate 并提交 Decision。不因订单已经准备好就沿用过期意图。
+这些事实必须在交易前可靠确认。它们可以来自 Broker 文档或账户界面，但无需在方法论中复制成庞大 Profile。不同平台有冲突时，以当前账户真实规则为准，并把来源保留在 Reference 或操作记录中。
 
-## 二、订单生命周期
+## 二、计划、订单与成交
+
+四件事必须分开：
 
 ```text
-冻结的 Entry / Add 执行意图
-→ 提交计划规定的 market / stop / limit order
-├─ 提交状态不明 → 核对账户，不重复下单
-├─ 已确认工作   → 等待触发、成交、取消或过期
-├─ 提交前关键输入改变 → 不提交；Entry 返回 Candidate / Decision，Add 返回 Open Position / Add Gate
-└─ 未提交即到期或主动放弃 → 关闭当前执行意图，按真实账户状态重新分派
-
-Working Order
-├─ 回执不明 → 核对账户，不重复下单
-├─ 部分成交 → 按 Order Purpose 更新实际 Exposure；剩余订单继续 Working
-└─ 全部成交 → 按 Order Purpose 与剩余 Exposure 路由
-
-Order Purpose = ENTRY / ADD
-├─ Opportunity 不再 ACTIVE、Frame / Account 不再允许新增风险、Entry Validity 结束或方程失效 → 撤单并确认
-├─ 未成交且仍有效 → 继续等待或按计划取消
-└─ Rejected / Canceled / Expired
-   → 关闭该订单；执行意图仍有效则只以扣除累计成交后的剩余计划数量重新进入 Ready，否则按真实状态重新分派
-
-Order Purpose = REDUCE / EXIT
-├─ Submitted Unknown / Working / Cancel Pending → 继续核对；原保护覆盖剩余 Exposure
-└─ Rejected / Canceled / Expired 且仍有 Exposure
-   → 进入 Exiting；退出动作仍有效则修复或重新提交
-   → 无法可靠执行或保护不足则进入 SAFETY_EXCEPTION
+计划动作 ≠ Broker 订单
+图表触发 ≠ 实际成交
+订单已接受 ≠ 已成交
+已请求撤单 ≠ 订单已经取消
 ```
 
-订单意图、经纪商确认、图表触发和账户成交是不同事实。撤单请求也不等于订单已经取消；在取消状态得到确认前，仍按可能成交的暴露处理。
+- 计划动作说明准备做什么；
+- Broker Order 是平台收到的具体指令；
+- Actual Fill 是已经成交的价格和数量；
+- 只有 Actual Fill 改变 Position 与实际成本。
 
-Entry / Add 的成交增加 Exposure：部分成交进入 `Open Position + Working Order`，全部成交进入 `Open Position`。Reduce / Exit 的成交减少 Exposure：仍有仓位时继续 `Open Position`，仍有退出订单时并行 `Exiting / Working Order`；仓位归零后先确认残留工作订单与保护的最终状态，再进入 `Closed / Review`。任何订单进入 Rejected、Canceled 或 Expired 后，都关闭该订单事实，再依据剩余 Exposure、其他订单和仍有效的执行意图重新分派。
+订单记录只需支持事后重建事实：时间、方向、数量、类型、价格、有效期、当前 Broker 结果及其成交。无需为“想下单”“订单尝试”和“持仓承诺”各建一套平行生命周期。
 
-没有提交订单的“等待图表确认”属于新的市场事件和决策时点，不保留隐藏的可执行计划。已提交的 Stop / Limit order 则属于 Working Order，并在每个相关事件后复核 Opportunity、有效期、计划成交范围下的风险和取消条件。
+订单状态不确定时，按它仍可能成交处理。撤单、改单或替换在 Broker 确认前，原订单仍属于风险；新旧订单可能同时有效时，按两者最坏组合检查。
 
-Execution State 分别保存以下事实面，而不是用一个枚举掩盖并存事实：
+## 三、实际成交、仓位与保护
+
+### 3.1 实际成交是唯一仓位来源
+
+每次 Fill 都追加记录：
 
 ```text
-Order Purpose：ENTRY / ADD / REDUCE / EXIT
-Order State：Intent / Submitted Unknown / Working / Partial / Filled
-             / Cancel Pending / Canceled / Rejected / Expired
-Exposure：Flat / Open(quantity)
-Protection：Not Required / Pending / Adequate / Deficient
-Risk：Committed / Available
+成交时间
+方向
+数量
+成交价格
+关联订单
+手续费
 ```
 
-部分成交可以同时表现为 `Partial + Open + Pending/Adequate`；撤单中可以同时存在 `Cancel Pending` 与可能新增的实际暴露。`Exiting` 是存在 Reduce / Exit 订单且仍有 Exposure 时的并行检查入口，不是另一种 Exposure。任何状态转换都以经纪商和账户事实确认，不凭订单意图推定。
-
-`Order Purpose` 决定成交后的路由：Entry / Add 的成交增加 Exposure，Reduce / Exit 的成交减少 Exposure；它不建立另一套 Order State。退出请求、触发或订单意图都不等于仓位已经减少。
-
-## 三、成交事实
-
-每次实际成交必须能从可靠账户记录还原以下事实；平台已留存时不手工重抄：
+不得用计划数量、图表触价或订单显示“已接受”代替成交。所有 Fill 汇总后才得到：
 
 ```text
-成交方向：
-成交数量：
-成交价格：
-成交时间：
-Actual fill bar：
-剩余工作数量：
-平均成交价：
-费用与已知滑点：
+当前净数量
+实际平均 Entry
+已实现与未实现结果
+实际费用
 ```
 
-Limit price 被 touch 或 cross 不保证成交；Stop order 触发不保证最终成交价。队列、流动性、跳空、停牌、连接和平台异常都可能造成未成交、部分成交或更差 fill。
+若平台为 hedging 账户，分别核对各方向实际仓位；若为 netting 账户，核对净仓位和成交分配。账户显示与本地记录冲突时，停止新增风险，先以 Broker 成交回报重建仓位。
 
-Chart Entry Bar 只表示 Candidate 的图表 Trigger 已经发生；Actual Fill Bar 才表示账户获得真实仓位，两者可以不同。Entry Bar、follow-through 或 failure 无论账户是否成交都会返回 Current Move / Active Test 更新市场路径；未成交不会改写当时的 Opportunity，只表示没有实际仓位。部分成交则只按实际数量计算账户风险，剩余订单是否继续工作服从原计划和当前 Opportunity。
+### 3.2 部分成交立即形成责任
 
-## 四、实际保护生命周期
+Partial Fill 只按实际数量形成仓位，但该数量必须立即得到保护。剩余入场订单仍可能继续成交，因此同时检查：
+
+- 已成交数量的保护；
+- 未成交余量可能带来的新增仓位；
+- 余量成交后保护是否会自动扩展，不能确定时准备人工补齐。
+
+不能等计划数量全部成交后才开始保护。
+
+### 3.3 活动保护是账户事实
+
+计划 Stop 只有在 Broker 端真实生效后，才是 Active Protective Stop。每次成交、减仓、Add、改单或连接恢复后都核对：
 
 ```text
-实际成交或部分成交
-↓
-核对当前仓位数量与平均价格
-↓
-确认 Active Protective Stop
-├─ 状态可确认且覆盖全部实际数量 → 正常持仓
-└─ 无法确认、数量不足或状态异常 → 保护不足
-                                    → 不新增风险
-                                    → 按预写异常流程恢复保护、减仓或退出
+方向正确
++ 数量覆盖全部实际 Position
++ Stop 位置符合当前有效计划
++ 订单确实在场且可执行
 ```
 
-只在心里记住退出价不等于受到保护。Active Protective Stop 必须是实际在场、状态可确认并覆盖当前仓位的订单或平台保护机制。
+Catastrophe Backup 若存在，必须单独识别；它不能替代正常 Stop，也不能与正常保护重复计算为两份安全。
 
-Stop price 是图表上的保护触发依据，不保证最终 fill。正常高流动性执行可以把预计滑点配置为零；异常流动性、跳空、停牌或平台异常进入 `SAFETY_EXCEPTION`，不在普通计划中反复增加字段。若另有 Catastrophe Backup，必须独立记录价格、数量、最坏损失和撤换条件，不能把它当成正常 Active Stop。
+若保护缺失、不足、方向错误或状态未知：停止新增风险，优先恢复保护、减仓或退出。安全动作高于寻找新机会。
 
-## 五、保留并关联原始计划
+## 四、当前风险与费用
 
-执行决定时已经保留原始 Trade Plan；首次成交只确认实际仓位对应这份计划。此后保留：
-
-- 入场时的 Opportunity、目标事件和 Outcome Horizon；
-- 当时可见的 Support / Already、Activation、Invalidation、Counterevidence 与竞争 Opportunity；
-- 原 Market Probability、Candidate Outcome Probability 和判断时点；
-- 原 Entry、Planned Stop、Targets、数量和管理方式；
-- 原 Outcome Criterion 与 Trader's Equation。
-
-成交后的当前状态与原计划分开维护；只有改变风险、动作或后续复盘的 Delta 才另行保存。不得因最终结果覆盖原始目标、重选 measured-move 端点、借用后来出现的证据，或把另一条 Opportunity 改写成原交易理由。
-
-## 六、持仓中的 Opportunity 更新
-
-持仓管理仍遵守完整 Market Read 与 Opportunity 语义。每根计划观察周期 K 线及其他相关事件只做数秒扫描：先判断认知是否实质改变，再决定是否产生动作或记录。
+### 4.1 交易损失与账户开放风险
 
 ```text
-新市场事实
-→ 继承当前 Context，更新 Price Map、Current Move 与 Active Test
-→ 确认原 Context、标记 Transition 或 Reframe
-→ 同时更新所选 Opportunity、现实竞争机会与 Likely Sequence
-→ 先更新所选 Opportunity 生命周期；仍 Active 时再更新强弱
-→ 单独判断竞争 Opportunity 是否出现、是否获得接受
-→ 按原计划和当前账户状态采取动作
+相对入场的计划损失
+Long  = max(0, 实际 Entry - 当前有效 Stop)
+Short = max(0, 当前有效 Stop - 实际 Entry)
+
+当前账户开放风险
+Long  = max(0, 当前可执行价格 - 当前有效 Stop)
+Short = max(0, 当前有效 Stop - 当前可执行价格)
+
+以上价格距离 × 对应数量 × 每点价值
+  + 预计退出成本
 ```
 
-同一根 K 线只识别一次底层事实：它可以先改变 Pressure / Continuity，再改变 Active Test 和 Opportunity，最后触发账户动作，但不能因分别被称为 entry bar、follow-through、disappointment 或 trapped evidence 而重复计票。K 线颜色本身不直接产生 Hold、Add 或 Exit。
+若不同部分有不同 Entry 或 Stop，分别计算。没有可靠的即时可执行价格时，采用更保守的可得报价。保护越过 Entry 后，相对入场的计划损失可以降至零，但账户仍可能从当前权益回撤到 Stop；Add、放宽 Stop、延长 runner 和账户组合风险因此以当前账户开放风险为主，同时核对相对入场的计划损失。
 
-持仓中的双向检查以所选 Opportunity 和现实竞争 Opportunity 为核心，不因已有仓位省略反方，也不为每根 K 线重建两份 Candidate：
+相对入场的计划损失与决策页冻结的整笔交易风险上限比较；当前账户开放风险与当时的账户及组合约束比较。价格靠近 Stop 使后一个量变小，不会抹掉已经发生的浮亏，也不能让整笔计划损失越过原上限。
+
+这两个量都只在 Active Protective Stop 真实有效且按预期执行时成立。保护缺失或状态未知时，不得用 Planned Stop 宣称风险受限，先按安全异常恢复保护、减仓或退出。费用、滑点、跳空、流动性消失和平台失效仍可能令实际损失更大。
+
+### 4.2 仍可能成交订单的风险
+
+当前账户总风险还包括：
+
+- 尚未终态的 Entry / Add 订单若成交后的风险；
+- 减仓、Target 与 Stop 可能竞态造成的短暂或意外仓位；
+- 撤单、改单、替换尚未确认时的重叠风险；
+- 相关头寸在同一市场冲击中同时受损的风险；
+- 手续费、滑点、隔夜、借券、融资和换汇等相关成本。
+
+保证金占用和 Stop 风险是两件事。保证金充足不能证明风险可接受；极端跳空、停牌、流动性消失或 Stop 滑点意味着实际损失可能超过计划值。
+
+## 五、持仓控制
+
+每次相关市场事实、Fill 或订单结果发生后，依次核对：
 
 ```text
-1. 实际仓位、工作订单与 Active Protective Stop 一致吗？
-2. Price Map / Current Move / Active Test 出现了什么新事实？
-3. Context 是 UNCHANGED、UPDATED 还是 REFRAMED？
-4. 所选 Opportunity 是 ACTIVE、ACHIEVED、INVALIDATED、EXPIRED、SUPERSEDED 还是 MARKET_SEQUENCE_UNKNOWN？
-5. 若仍 ACTIVE，是 STRENGTHENED、UNCHANGED 还是 WEAKENED？
-6. 竞争 Opportunity 是否存在；尚未建立、仍待确认，还是已经获得接受？
-7. Target、Stop、时间、Add / Cancel Add 或原计划条件发生了吗？
-8. 是否形成了能容纳正常波动的新保护锚点？
-9. 当前 Actions：Hold / Cancel Add / Add to Ready / Reduce / Trail Stop / Exit？
+Opportunity 仍有效吗？
+现在是正常 pullback，还是前提已经改变？
+实际 Position、Active Protection 和工作订单是什么？
+当前账户开放风险、相对入场的计划损失与费用是否仍可接受？
 ```
 
-| 所选 Opportunity | 竞争 Opportunity | 当前动作边界 |
-| --- | --- | --- |
-| `ACTIVE + STRENGTHENED / UNCHANGED` | 不存在或尚未获得接受 | 按计划持有；计划内 Add 运行 Add Gate，计划外新增风险构造新 Candidate |
-| `ACTIVE + WEAKENED` | 不存在或尚未获得接受 | Hold、Cancel Add，或执行预写减仓 / 目标收缩；不进入 Add Gate |
-| `INVALIDATED` | 任意状态 | 主动退出；不必等待最远 Active Stop |
-| 因竞争路径接受而 `INVALIDATED / SUPERSEDED` | 已获得接受并实质否定所选路径 | 先退出原交易；反向交易重新经过完整流程 |
-| `SUPERSEDED` | 新 Context、价格问题或机会取代原路径 | 停止新增风险并退出；新路径只在归零后重新构造交易表达 |
-| `ACHIEVED / EXPIRED / MARKET_SEQUENCE_UNKNOWN` | 任意状态 | 按 Market Outcome Criterion 更新 Opportunity；市场顺序未知时不选择有利解释 |
-| Trade Target、Active Stop、Time Exit 或 `TRADE_SEQUENCE_UNKNOWN` | 任意状态 | 按 Trade Plan 进入退出订单生命周期并核对实际仓位与保护；交易顺序未知时不选择有利解释 |
+结果分支：
 
-认知更新不自动产生交易动作。普通波动、单根反色 K 线或计划周期内正常 pullback 可以使局部证据变化，却不自动要求加仓、减仓、移动 Stop 或退出。
+A. 机会、表达与风险边界都未改变
 
-Actions 可以组合：`CANCEL_ADD + HOLD`、`REDUCE + TRAIL_STOP`、`EXIT + CANCEL_ADD` 都是合法输出；组合只表示同一判断要求完成的动作，不允许从决定跳过订单事实。Cancel Add 终止剩余额度并撤销仍可能增加暴露的 Add Order；Reduce / Exit 进入退出订单生命周期；`REDUCE + TRAIL_STOP` 按实际减仓成交更新 Exposure 后，再 amend / replace 唯一 Active Protective Stop 覆盖剩余仓位。只有动作或风险发生变化时保存 Delta。
+→ 持有
 
-若所选 Opportunity、竞争机会、风险、保护、动作和下一条件均未实质改变，只继续观察，不产生逐 K 线记录。
+B. 机会仍有效，新的入场表达完整，增加后整仓风险可接受
 
-### Opportunity 增强
+→ 按决策页的新计划加仓
 
-- 按计划持有；
-- 新 breakout、follow-through 或主要结构支持延伸目标时，按预写条件保留 runner；
-- 新的 major higher low / lower high 或完整结构形成后，可以降低开放风险。
+C. 机会仍有效，但尚未成交的加仓条件已不完整或到期
 
-Opportunity 增强不自动许可加仓。新增数量仍须通过 Context Permission，并有当前 Trigger、Entry、Stop、Target、总风险和正 Trader's Equation。
+→ 取消加仓；原仓位独立继续管理
 
-### Opportunity 仍成立但减弱
+D. 机会尚未失效，但预期响应未出现、压力恶化，或剩余空间与时间不再支持当前表达
 
-- 区分普通 pullback、entry disappointment 和实质 premise 变化；
-- 按预写分支保持、减仓、收缩当前管理目标或 Cancel Add；
-- 当前 `WEAKENED` 更新下不新增风险；只有后续事实使路径恢复为 `STRENGTHENED / UNCHANGED`，并重新形成完整正方程后，才可进入 Add Gate；
-- 不因一根普通反向 K 线自动反向；
-- 不以原 Opportunity 名称否认实际分离关闭、重叠增加或反方接受。
+→ 按事前条件取消加仓、减仓或主动退出；不必等待最远 Stop
 
-### Opportunity 失效
+E. 机会失效或竞争路径已获得接受
 
-- 主动退出，不必等待最远 Active Stop；
-- 仓位归零前 Active Stop 继续有效；
-- 取消同一 Opportunity 下的剩余工作订单和计划加仓；
-- 记录哪个可观察事实触发 Invalidation。
+→ 取消所有新增风险并退出剩余仓位
 
-退出只说明当前风险交换不再成立，不表示原方向永久错误。若原方向后来重新获得接受，必须建立新的 Opportunity、Entry、Stop、Target 和方程。
+F. 目标或期限到达
 
-### 竞争 Opportunity 获得接受
+→ 按原计划减仓或退出；若要延长或启用新目标，先回到新的机会与交易表达
 
-- 先退出原交易；
-- 反方向是否值得承担风险，重新运行完整流程；
-- 原交易者 Stop、旧概率或被困叙述不能直接成为反向交易计划。
+G. 仓位、订单或保护无法可靠确认
 
-反方事实尚未形成完整竞争 Opportunity 时更新所选路径的 `Counterevidence`；形成后独立更新该竞争 Opportunity。只有竞争路径获得足够接受并实质否定所选 Opportunity，才触发 Structural Invalidation。退出原方向后，反方向仍必须以当前价格形成自己的 Opportunity、Candidate 与 Decision。
+→ 停止新增风险，优先恢复保护、减仓或退出
 
-### 目标、Stop 或时间条件发生
+移动保护可与上述动作组合，但普通移动只能向降低开放风险的方向进行。
 
-- 目标到达：按 Outcome Criterion 和计划数量减仓或退出；
-- Active Stop 触发：核对实际成交与剩余仓位；部分成交时继续保护剩余 Exposure，全部成交归零后确认残留订单与保护最终状态，再进入 Closed / Review；
-- Session、最迟退出时间或账户约束触发：按计划减仓或退出；
-- 同一回放 K 线同时包含交易目标和 Active Protective Stop 且顺序无法确定：Trade Outcome 记为 `TRADE_SEQUENCE_UNKNOWN`，不选择有利结果。
+Opportunity 失效时可以主动退出，不必等待最远 Stop。退出或被保护带出不自动禁止同方向再次参与，也不授权自动恢复原仓位；同方向再入和反向交易都必须从当时的双向市场判断与完整交易表达开始。
 
-完整 Stop、完整目标或主动退出使仓位归零并终结当前 Trade Plan 的账户结果时，关闭该计划尚未提交的 Entry / Add Execution Intent，终止剩余 Add Permission，并撤销仍可能增加 Exposure 的 Entry / Add Working Order。撤销确认前继续运行 `Working Order + Closed / Review`，按订单仍可能成交计算最坏暴露；若其间发生新成交，立即按真实 Exposure 重新分派并恢复保护或完成退出，不能假定账户仍为 Flat。同方向仍有市场机会时，也必须以当前价格重新建立 Candidate 与 Decision，不能让旧 Intent 或 Add Order 充当重新入场。
+### 5.1 计划调整怎样落地
 
-### 主动退出与退出订单
+增加数量、延长 runner、启用新 Target、放宽 Stop 或改变管理边界，先由决策页完成新判断和整仓风险检查。
 
-Open Position 输出 `REDUCE / EXIT` 后，使用同一订单生命周期处理真实退出，不从动作直接跳到 Closed：
+无需 Broker 动作的调整，例如只延长持有观察期限，可以在同一次复核中记录并生效，不建立 Pending 状态。
+
+需要改单或新订单的调整，在 Broker 确认前：
 
 ```text
-Reduce / Exit 决定
-→ 提交 Order Purpose = REDUCE / EXIT 的订单
-├─ Submitted Unknown / Working / Cancel Pending
-│  → 核对账户，不重复提交；Active Stop 继续覆盖尚未退出的实际数量
-├─ Rejected / Canceled / Expired
-│  → 若仍有 Exposure，Active Stop 继续覆盖真实数量
-│  → 退出动作仍有效：修复或重新提交；无法可靠执行：SAFETY_EXCEPTION
-│  → 退出动作已被新事实替代：返回 Open Position 重新判断
-├─ Partial
-│  → 更新剩余仓位、平均价格、退出订单与 Active Stop 覆盖；继续 Exiting
-└─ Filled
-   → 若仍有仓位，返回 Open Position
-   → 若仓位归零，确认残留工作订单与保护最终状态，再进入 Closed / Review
+旧计划与旧保护继续有效
+新计划尚未落地
+原保护不能提前撤掉
 ```
 
-退出订单和 Active Stop 可能竞态成交时，先核对真实净仓位；归零前不撤除剩余保护。异常形成反向仓位、保护不足或回执不明时进入 `SAFETY_EXCEPTION`。
+若改单被拒绝、到期或无法确认，就继续旧计划、重新下达安全动作，或降低风险。订单事实已经足够表达这个过程。
 
-## 七、三层退出保护
+## 六、常见执行边界
 
-退出保护只有一张最终在场 Stop，另有两条主动判断路径：
+### 6.1 目标、保护与主动退出竞态
 
-1. **Active Protective Stop**：执行或主动判断失败时限制最坏风险；
-2. **结构 Invalidation**：合理反向结构已经否定原 Opportunity；
-3. **强反向动量 Invalidation**：即使尚无漂亮形态，异常强反向 K 线、连续低重叠反向运动或 Always In 明确切换也可能要求退出。
+任一退出 Fill 后立即重算 Position，并调整或取消另一侧订单。OCO 只在确认平台确实执行了联动后才可信。已经 Flat 但残留 Stop 或 Target 仍可能建立反向仓位。
 
-第二、三项可以重叠，都是 Invalidation 证据，不是另外两张 Stop。普通小反向 K 线和所选管理周期的正常 pullback 不自动触发退出。
+### 6.2 撤单与状态未知
 
-## 八、Trailing 与 Breakeven
+网络中断、请求超时或界面未刷新时，不重复提交相同方向订单来“试试看”。先查询 Broker 的订单与成交；无法确认时按最坏可能仓位管理。
 
-Trailing Stop 只能向降低开放风险方向移动：多头向上，空头向下。一个更近的高低点或价格区域只有同时满足以下条件，才成为新的保护锚点：
+### 6.3 手工退出
 
-1. 新结构已经形成，并与原 Opportunity、Price Map 和 Management Horizon 一致；
-2. 价格已从该结构建立足够分离、follow-through 或成功恢复；
-3. 新 Stop 仍能容纳该周期的正常波动，不落在普通 pullback 内；
-4. 调整降低开放风险，并符合原计划或保存为风险 Delta；
-5. 通过 amend / replace 修改当前 Active Protective Stop；以经纪商 / 交易所确认后的新价格与数量为准。确认前仍按原 Stop 和最坏暴露处理，确认后原保护由修改后的 Stop 直接取代。
+手工或 Market Exit 的成交也必须进入 Fill 记录。计划写了退出、点击了按钮或价格越过退出位，都不能代替真实成交确认。
 
-可用锚点包括：
+### 6.4 数据与账户事实冲突
 
-- 新 breakout 建立的 major higher low / lower high；
-- 完整走势段或回调结构；
-- 原 Opportunity 仍成立时的其他有效失效边界。
+图表价格、Broker 行情和成交回报不一致时：
 
-重要位置本身不自动要求 Trail；任意次要 swing、每根盈利 K 线或固定点数也不形成新保护边界。强反向动量或 Structural Invalidation 可以要求主动退出，无需等待一个适合 Trailing 的新锚点。
+1. 停止新增风险；
+2. 以 Broker 的真实 Order、Fill 和 Position 为账户处置依据；
+3. 恢复保护或退出；
+4. 数据可靠后再重做市场判断。
 
-Breakeven Stop 是把 Active Stop 调整到计划 Entry 或整仓加权平均 Entry 附近的管理选择，也必须通过上述结构与正常波动资格门。它降低名义价格风险，但佣金、滑点、跳空和数量差异意味着账户结果未必为零。Scale-in 后必须使用加权均价，不能机械使用第一笔 Entry 或简单中点。
+## 七、稳定结束
 
-## 九、数量更新
-
-### Scale-in
-
-第一笔 Entry 前确定 Risk Limit、Initial Limit、共同或独立 Stop、Add Permission 与 Cancel Add；未来层在决策事件发生时计算准确 Entry Basis、价格和数量。新增层通过[总流程 Add Gate](overall_flow.md#add-gate是否使用计划内剩余风险)得到 `ADD_TO_READY` 后进入 Ready to Submit，执行阶段再确认两件事：
-
-- 当前 Context Permission、Entry Basis / Trigger、订单方向、Entry Method、价格、数量与有效期正确，加仓后的 Risk Committed 不超过 Risk Limit；
-- 当前保护正常，新层成交后可以修改 Active Protective Stop 覆盖实际总数量。
-
-`Price-improvement scale-in` 在预定更好价格增加数量，只改善 Entry 和均价，不提高 Market Probability；若该价格只是临场看到浮亏后选择，则不属于原计划。`Confirmation scale-in` 依赖新的顺势证据，可以更新 Market Probability 或 Candidate Outcome Probability，但仍增加总数量和回撤暴露。无论哪一种，Opportunity 失效、保护异常或总风险不再合规时都取消剩余层，不强制完成计划数量。
-
-每层按其 Entry 到共同或独立 Stop 的距离计算账户风险；同为账户 `1%` 风险的两层不要求数量相同。尚未下单的保留额度不是实际暴露；已提交并仍可能增加暴露的订单必须计入 Risk Committed。Active Stop 位于盈利区域时，该仓位的 Stop Risk 以零为下限，不用已保护利润抵消新订单风险。Trail 后释放的额度也不自动授权 Add。新层成交后立即修改并确认 Active Protective Stop 覆盖实际总数量，再更新实际仓位、剩余工作订单、Execution Cost 与 Risk Committed / Available。
-
-`CANCEL_ADD` 时，尚无加仓订单则撤销剩余额度的使用资格；已有 Working Add 则撤单并确认，确认前继续计入 Risk Committed。计划内 Add 只在原 Trade Plan 追加 Entry Basis、Trigger、Entry Method、价格、数量、Stop、加仓后 Risk Committed 与触发依据。原计划之外出现新的 Opportunity、目标、失效或 Stop 时，必须建立新的 Candidate；决定 Execute 时冻结新的 Trade Plan，并在提交前把已有仓位、全部工作订单、共同或独立 Stop 及新增层纳入 Risk Limit。它不能事后改写成原计划的 scale-in 层。
-
-### Scale-out
-
-减仓必须来自：
-
-- 已到计划目标；
-- 预写的风险收缩或 runner 分支；
-- Opportunity 实质削弱或 Invalidation；
-- 账户、时间或异常处置。
-
-减仓后更新实际数量、平均价格、Active Stop 覆盖、剩余目标和开放风险。不能因为仓位变小就保留已经失效的 Opportunity。
-
-## 十、Scalp / Swing 管理一致性
-
-Scalp、Swing、部分退出和 runner 都是原 Trade Plan 的目标与持有实现。成交后不得因为害怕回吐把 Swing 临时管成 Scalp，也不得把区间内的 Scalp 变成远端 Trend Swing。
-
-若计划预先分配：
+Position 归零并不自动结束交易。稳定结束要求全部满足：
 
 ```text
-Scalp 部分 → 近端目标与较快退出
-Runner      → 仅在路径增强和延伸目标启用时继续持有
+Broker Position 与本地记录都为零
++ 所有可能改变 Position 的订单已经确认终止
++ 所有 Fill、手续费和账户结果已经核对
 ```
 
-则分别记录数量、Stop、目标和结果。TBTL 只帮助容忍反向 swing 的时间与段数，不覆盖价格目标、Invalidation 或 Session 约束。
+残留 Stop、Target、Add 或替换中的旧订单必须明确取消或确认终态。若对账仍不一致，交易仍处于账户处理阶段，不进入最终复盘。
 
-## 十一、交易结果与价格结果
+## 八、四类结果与复盘
 
-必须分开：
+账户交易稳定结束后分别记录：
 
-- `Move / Pattern result`：某个突破、H2、旧极值测试或其他价格路径是否达到其目标；
-- `Trade outcome`：实际 Entry 发生后，计划 objective、Stop、主动退出等结果顺序；
-- `Account result`：实际成交、数量、费用、滑点与退出共同产生的 P&L。
+1. 交易结束时的市场状态：机会在账户结束时仍有效，或已经实现、失效、到期、被替代、先后无法确认；若仍有效，之后在市场路径终结时补记最终市场结果；
+2. 交易结果：实际成交后怎样退出，包括目标、保护、主动退出、时间退出、scratch、breakeven 和分批结果；
+3. 账户结果：实际数量、成交价、手续费、滑点和持有成本形成的净结果；
+4. 流程结果：市场读取、双向思考、风险、执行与管理是否遵守当时方法和计划。
 
-`MARKET_SEQUENCE_UNKNOWN` 只表示 Opportunity 的市场目标与市场失效先后不可确认；`TRADE_SEQUENCE_UNKNOWN` 只表示实际交易目标与 Protective Stop / 退出结果先后不可确认。两者可以不同，也不能互相改写 Market Result、Trade Outcome 或 Account Result。
+账户稳定结束不必等待机会终结。交易结果、账户结果与流程结果可以在账户稳定结束后完成；最终市场结果只有在机会到达终态后才完成。
 
-Failed breakout 或 failed H2 不表示某位交易者已经触及 Stop；价格曾提供目标机会也不表示账户实际成交退出。
+四者不能互相替代：
 
-没有实际成交的候选只能记录为未触发、未成交、过期、等待、不交易或 Opportunity 失效，不能记为交易 success / failure。
+- 市场走到目标，不证明账户成交或捕获收益；
+- 赚钱不证明市场判断和流程正确；
+- 亏损不自动证明判断错误；
+- 单笔结果不能校准形态概率。
 
-## 十二、持仓中的行为路径
-
-[Market Read 的行为路径模型](market_read_and_opportunities.md#行为路径模型)定义 Trapped、Disappointment 与 Pain Trade 的市场语义。持仓管理只消费其对所选或竞争 Opportunity 的更新；行为解释本身不直接产生 Hold、Add、Reduce 或 Exit，也不重复增加概率。
-
-图表上的 trapped 推断不能证明其他参与者的实际仓位；本账户的 Actual Fill、Exposure、开放盈亏与退出订单才是账户事实。持仓中即使行为路径增强，仍必须按 Opportunity 生命周期、Trade Plan、Active Protective Stop 和真实账户状态决定动作。
-
-## 十三、行为纪律作为系统约束
-
-行为内容只在能改变系统动作时保留：
-
-- 仓位大到使交易者移动 Stop、提前截断赢家或忽略 Invalidation 时，必须降低仓位；
-- FOMO、希望回到 Entry、已有浮盈和已实现盈亏不构成新的价格证据；
-- 沉没亏损不能降低下一条 Opportunity 的资格标准；
-- Mental stop 不替代实际保护；
-- 临场改变周期、目标、Scalp / Swing 或计划加仓属于计划变化，必须重新计算或停止执行；
-- 退出后可以重新入场，因此主动承认当前 Opportunity 失效不等于永久放弃方向。
-
-规则内亏损与规则错误分开：前者是具有合理方程的计划仍然发生失败结果；后者包括坏位置入场、没有保护、移动 Stop、无计划加仓、改变管理周期或拒绝执行 Invalidation。
-
-## 十四、执行事件的必要记录
-
-记录时点由[总流程](overall_flow.md#六必要记录)统一规定。执行阶段分开处理三类信息：
-
-| 类型 | 最小处理 |
-| --- | --- |
-| 普通订单、回执、成交、费用和当时仓位 | 使用经纪商/平台原始记录，只快速核对，不人工重抄 |
-| 修改计划、新增或降低风险、加减仓、移动保护、主动退出 | 在原 Trade Plan 上追加 Delta：时点 + 变化 + 原因 + 确认后的数量/保护 |
-| 状态不明、部分成交、保护不足、意外反向仓位或基础设施异常 | 保存：发现时的最坏暴露 + 处置动作 + 最终确认结果 |
-
-普通持有、订单按原计划继续工作、或无成交的正常到期，若未改变计划、风险或复盘结论，不生成叙事性记录。订单意图、图表 Trigger 和账户事实在语义上仍然分开；保存方式可以分别是计划简记、图表标记和平台记录。
-
-## 十五、交易与路径复盘
-
-复盘在交易或路径结束后进行，不与 5 分钟图上的实时管理争夺注意力。盘中只需确保原计划、必要 Delta、执行事实和终结事实没有丢失。
-
-每笔交易的最小盘后复盘只需：
+最小复盘：
 
 ```text
-关联：原 Trade Plan；未成交路径复盘使用 Decision Record
-结果：Market result + Trade outcome + Account result
-流程：按计划 / 正常不确定 / 系统违规
-关键差异：最多一两项，无则记无
+原位置、路径、测试与双向机会：
+原交易表达与风险：
+实际成交、仓位、保护与费用：
+市场 / 交易 / 账户 / 流程结果：
+最早出现的有效偏差或新知识：
+只应修正方法、执行，还是不应从单笔得出结论：
 ```
 
-只有异常、系统违规、计划多分支、路径顺序不明，或样本要用于规则校准时，才展开下列完整 Review Record：
+## 九、人工盘中核对
+
+平时不维护完整订单状态表。只在提交、成交、部分成交、改单、撤单、保护变化和退出时更新：
 
 ```text
-Review Record
-
-原始判断
-- Opportunity：
-- 原目标事件和 Outcome Criterion：
-- 原 Market Probability / Candidate Outcome Probability：
-- 原 Trade Plan：
-
-执行
-- 订单、回执和实际成交：
-- Active Protective Stop：
-- 部分成交、加减仓和异常：
-
-持仓更新
-- 路径怎样增强、削弱或失效：
-- Stop 与目标怎样按计划调整：
-- 是否遵守原周期和管理方式：
-
-结果
-- 原目标事件是否在时间范围内发生：
-- Market result、Trade outcome 和 Account result：
-- 费用、滑点与 P&L：
-- 偏差来源：价格结果 / 结构 / 目标 / 概率 / 计划 / 风险 / 执行
-- Process result：正常不确定结果还是系统违规：
+实际仓位 / 平均入场价：
+活动保护 / 覆盖数量：
+仍可能成交的订单：
+当前账户开放风险 / 相对入场的计划损失 / 费用：
+下一项管理动作：
 ```
 
-单笔赢家、输家或错过不能证明一条规则正确或错误。概率校准要求条件、目标事件、周期、Outcome Horizon 和判断时点一致的连续样本；样本规则的改变必须进入规则台账，不在复盘中静默修改。
-
-仓位归零后必须先应用本页的 Trade Plan 终结规则，并确认剩余工作订单和保护订单的最终状态，再进入 Closed / Review。盘中终结事实保存、需要深入分析的问题已交给盘后 Review 后，即可返回 Flat / Observing；详细复盘不阻止下一笔交易。关联 Opportunity 若仍为 `ACTIVE` 则继续更新；若已结束则等待新问题；若 Context 已经过期则从 Frame 重开。
-
-## 十六、证据追溯
-
-本页的订单、成交、Stop、管理和结果边界由 [课程概念索引](../reference/course/concept_index.md)、[边界与冲突](../reference/course/boundaries_and_conflicts.md)、[正式来源台账](../reference/official_sources.md)和逐讲课程 30–36、40–52 的相关材料支持。Reference 负责证据与现实限制；本页负责统一执行契约。
+这五项能可靠回答，就足以完成账户生命周期；其余 Broker 字段只作为原始证据保留。

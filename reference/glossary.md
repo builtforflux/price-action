@@ -1,20 +1,27 @@
-# 价格行为术语表
+# 价格行为来源术语与别名表
 
-> **状态：Reference / Non-normative**
+> **状态：Reference / Alias Index / Non-normative**
 
-本表用于检索来源中的术语，不建立独立交易规则。术语怎样进入实时判断，以 [`trading_system/`](../trading_system/README.md) 为准；页码、来源差异与重复证据见[课程概念索引](course/concept_index.md)和[边界与冲突台账](course/boundaries_and_conflicts.md)。
+本表用于检索来源术语、仓库别名和必须保留的概念边界，不建立独立交易规则或处理顺序。当前看盘与交易方法由 [`trading_system/`](../trading_system/README.md) 定义；页码、来源差异与重复证据见[课程概念索引](course/concept_index.md)和[边界与冲突台账](course/boundaries_and_conflicts.md)。
 
-一个术语只回答“正在描述什么”。它不能凭名称提供交易许可。实时顺序始终是：
+一个名称只回答“正在描述哪类事实、视图、判断、结果路径或账户事件”。名称本身不提供交易许可；若同一底层事实同时符合 H2、Double Bottom、Wedge、Flag 或 MTR 等视图，应共享事实而保留各视图不同的解释职责，不能把标签数量当作独立证据数量。
 
-```text
-价格事实 → Market Read（继承 Context → 更新 Price Map / Price Process → 确认或重构 Context）→ Opportunity Set → Context Permission + Trade Candidates
-→ Decision
-├─ EXECUTE → 冻结 Trade Plan → Intent → Order → Actual Fill → Exposure → Active Protective Stop
-├─ WAIT → 明确 Next Event + Decision Expiry，不冻结 Trade Plan
-└─ NO_TRADE → 终止当前表达，不冻结 Trade Plan
-```
+本表偶尔列出当前仓库使用的英文别名，目的只是帮助证据找到可能的消费者。别名不证明该对象必须独立存在，也不要求未来系统继续采用相同名称或分层。
 
-## 一、判断对象
+历史仓库名称只在本页用于检索，不是运行可写值：
+
+| 历史名称 | 当前运行名称 |
+| --- | --- |
+| Market Read | Market Model |
+| Price Process | 到达路径与当前测试 |
+| Opportunity Set | Opportunity Book |
+| Path Effect | Opportunity 更新 |
+| Context Permission | 无独立运行对象；还原为 Opportunity 的支持、反证与 Activation |
+| Candidate Outcome Probability | Trade Outcome Probability |
+| EXECUTE / COMMIT | TRADE |
+| NO_TRADE | STAND_DOWN |
+
+## 一、来源术语与跨层消歧
 
 ### Price Action
 
@@ -22,15 +29,15 @@
 
 ### Context
 
-当前交易周期中支配目标、正常回调和管理方式的价格组织，包括市场状态、控制、时间和相关外层约束。连续观察时先继承上次确认结果，再由当前 Price Process 保持、削弱、标记 Transition 或重构；首次看图无法确认时允许 `Unclear`。位置由 Price Map 保存，眼前运动由 Price Process 保存。
+来源用 Context 表示某个交易周期中影响目标、正常回调和管理方式的价格组织，包括市场状态、控制、位置、时间和相关外层约束。它是条件集合而非单个标签；应绑定观察周期和判断时点。系统怎样保存、继承或重构 Context 由运行契约决定。
 
 ### Price Map
 
-按当前价格上方、下方和距离组织相关价格区域、来源与汇合。Potential Entry Area、Target、Obstacle 或 Invalidation Reference 是区域相对某条 Opportunity 的角色，不是地图自身属性；Invalidation 本身是可观察的市场条件。
+仓库用于指代“按当前价格上方、下方和距离组织相关区域、来源与汇合”的检索别名，不是 Brooks 的固定对象。Potential Entry Area、Target、Obstacle 或 Invalidation Reference 是区域相对某个结果路径或交易表达的角色，不是区域的永久属性；系统可以用任何能保留这一关系的结构消费这些证据。
 
 ### Price Process
 
-Price Process 用 `From → Now → Role → Change → Testing → Next` 保存价格怎样演化到当前区域，包括当前段、暂停或局部平衡，以及它承担 continuation、pullback、range leg 还是 reversal attempt 作用。`Change` 依次观察 K 线质量、连续性与 follow-through、gap / overlap、回调质量和反方尝试结果，再汇总 Buying / Selling Pressure 与 Control。它最终压缩成一句双向问题：此前运动怎样变化、哪个区域正在被测试，以及什么新事实表示接受、拒绝、Activation、失败或过期。
+仓库用于汇集“价格怎样演化到当前区域”的关系别名，包括此前运动、当前段/暂停/局部平衡、所测试区域，以及 continuation、pullback、range leg 或 reversal attempt 等可能角色。K 线质量、连续性、follow-through、gap / overlap、回调质量和反方尝试是可复用证据；具体字段、更新顺序和压缩格式不由 Reference 规定。
 
 ### Pattern
 
@@ -38,39 +45,35 @@ Price Process 用 `From → Now → Role → Change → Testing → Next` 保存
 
 ### Setup
 
-来源材料常用的历史术语。本系统不维护 Setup 家族或 Setup 路由；来源中的 setup 必须被翻译为当前结构、目标事件、触发、失效、概率和方程，才能进入运行流程。
+来源材料常用的历史术语，最低含义是带有 Context、可供考虑入场的 pattern。Setup 不等于完整风险计划；若要被系统消费，仍须能还原为可观察条件、目标事件、参与条件、失效、概率边界和风险交换。Reference 不要求系统维护 Setup 家族或独立路由。
 
 ### Opportunity Set
 
-当前现实 Long / Short 市场结果的集合。每条 Opportunity 都有 Direction、Role、Objective、Market Outcome Criterion、Horizon、去重后的理由链、Activation、Invalidation、价格区域角色、最强矛盾、Market Probability 和 Expiry；不同目标或 horizon 分开表达，机会也可以按“先修正、后延续”顺序成立。
+当前仓库用来指代“现实市场结果假说集合”的别名，例如延续、先修正后延续、区间旋转、突破接受、突破失败或反转过程。不同 objective 或 horizon 不能因方向相同而混成一个概率事件。当前表示方式由 Trading System 定义。
 
-### Trade Candidate
+### Trade Expression / 历史 Trade Candidate
 
-在 Context Permission 允许后，于当前判断时点表达某条 Activation 已满足，或由明确许可的 Trigger 能完整执行剩余 Activation 的 Opportunity 风险交换，包括 Activation Status、Trigger、Entry、对 Opportunity Invalidation 的引用、Planned Protective Stop、Target、Candidate Outcome Probability、成本、仓位和管理。后一种只适用于计划明确允许预挂条件单、且 Trigger 本身能完成尚缺条件的情况；若仍要求 close、follow-through、回踩守住或 acceptance，单纯越过 Stop Price 不能替代。同一 Opportunity 在 close、follow-through 或回调时点可以生成不同 Candidate，每次都按当前价格重算。
+指“在某个判断时点，怎样用 entry、protective stop、target、成本、数量、时间和管理表达一条市场路径”。它与 Opportunity 不同；同一市场路径在 close、follow-through 或回调时点可以有不同表达。`Trade Candidate` 是旧仓库名称，当前方法只使用交易表达，不建立 Candidate 生命周期。
 
 ### Trade Plan
 
-Decision 输出 `EXECUTE` 时，对被选 Trade Candidate 形成的冻结快照，明确 Entry、Opportunity Invalidation Snapshot、Planned Protective Stop、成交后保护方式、Target、Outcome Criterion、两种概率、成本、仓位、订单与管理。未被选 Candidate，以及 `WAIT / NO_TRADE`，不保存为并行完整计划。
+指被 TRADE 选中、供执行和事后核对的交易表达快照。它应与未选择的市场路径或研究草案区分；Reference 不决定怎样交易。
 
-### Market Probability / Candidate Outcome Probability
+### Market Probability / Trade Outcome Probability
 
-Market Probability 描述 Opportunity objective 在当前条件与 horizon 内发生的概率；Candidate Outcome Probability 描述当前 Trigger、Entry、Stop、退出、数量和管理下各交易结果的概率。只有两者评价同一结果事件时才能直接共用。
+Market Probability 描述某个市场 objective 在给定条件与 horizon 内发生的概率；Trade Outcome Probability 描述某组 entry、stop、退出、数量、成本和管理下各交易结果的概率。`Candidate Outcome Probability` 是历史别名。前者不能直接代入交易者方程；只有交易结果、条件、周期、时点、horizon 和完整交易表达一致时，Trade Outcome Probability 才可使用，否则保留定性判断。
 
 ### Evidence Convergence / Two Reasons
 
-市场状态、位置、控制、结构与触发等相对独立证据共同支持一条 Opportunity。来源中的“two reasons”是最低提醒，不是固定打分；同一价格事实的多个同义标签、嵌套计数或重叠形态不得重复计票。
+市场状态、位置、控制、结构与触发等相对独立证据可以共同支持同一个结果路径。来源中的“two reasons”是最低提醒，不是固定打分；同一价格事实的多个同义标签、嵌套计数或重叠形态不得重复计票。
 
-### Evidence Lifecycle
+### Evidence Update
 
 证据会出现、增强、减弱、失效或在结构改变后重置。新主导突破、成熟区间、控制切换或更高周期结构接管后，旧计数和旧倾向不能自动继承。
 
 ### 执行 / 等待 / 不交易
 
-- **执行**：Decision 选中完整 Candidate 并冻结 Trade Plan；此时成立的是 Planned Protective Stop 与成交后可建立保护的方案，只有 Actual Fill 后才能按实际 Exposure 确认 Active Protective Stop。
-- **等待**：Decision 未选中 Candidate，但存在明确、现实且尚未过期的 `Next Event + Decision Expiry`；包括 Market Read 尚未解决、Opportunity 尚未 Activation 且没有许可 Trigger 能完整执行剩余 Activation、当前尚无正方程但存在具体的新 Candidate 事件，或多个完整 Candidate 等待消歧。
-- **不交易**：Decision 未选中 Candidate，且没有值得等待的现实事件；包括两侧均被排除、Opportunity 已失效、方程不成立且没有改善事件、多个 Candidate 无法消歧且没有下一事件，或交易者主动不承担当前新增风险且没有下一事件。主动放弃不否定 Candidate，也不改写其概率或方程。
-
-只有需要跨事件持续跟踪的 Wait，才书面保存 Next Event 与 Decision Expiry。这三个结果是当前决策，不是永久评价。详见[交易决策与计划](../trading_system/decision_and_plan.md#十四decision-与唯一决定)。
+这些是当前系统可能使用的决策结果别名，不是来源术语定义。Reference 只提供会改变行动资格、等待价值或风险边界的证据；各结果的完备条件、持续状态和记录要求由[交易决策与计划](../trading_system/decision_and_plan.md)拥有。主动不承担风险不能反向改写市场事实、概率或来源 Claim。
 
 ## 二、市场状态与运动
 
@@ -126,7 +129,7 @@ Staircase 是突破与后续回调持续重叠的阶梯式趋势；trending trad
 
 ### Magnet / Target
 
-Magnet 是可能吸引测试的区域；target 是当前活动结构生成、并由计划选定的结果事件。目标先于概率和 entry：没有明确目标，就无法定义成功事件、现实 reward 或持有时间。
+Magnet 是可能吸引测试的区域；来源中的 target 可以指结构生成的市场目标，也可以指交易者实际选择的兑现目标，两者不能因价格相同而合并职责。任何概率或 reward Claim 都必须绑定明确的目标事件、horizon 和判断时点；这是一项证据完整性要求，不规定系统对象或运行顺序。
 
 ### Measured Move
 
@@ -198,7 +201,7 @@ MTR 是过程而非形态许可：原趋势先减弱或发生结构破坏，价�
 
 ### Inside / Outside Bar
 
-Inside bar 的高点不高于前高且低点不低于前低。Outside bar 在来源中存在严格越界与允许等高等低两种边界，数据标注必须声明所用定义。
+Inside bar 的高点不高于前高且低点不低于前低。来源之间对 Outside bar 的边界并不一致：课程正文允许高点等于前高且低点等于前低，当前方法默认 `high ≥ 前高`、`low ≤ 前低` 且至少一端严格越过。两端都相等只保留为来源差异，不进入默认定义。数据标注必须声明所用口径。
 
 ### Reversal Bar
 
@@ -224,11 +227,11 @@ Follow-through 是初始运动后的继续延伸；surprise 是明显超出原�
 - **Limit entry**：只在指定价格或更好价格成交，不保证成交或完整成交。
 - **Market / close entry**：以当下可得价格承担风险，成交确定性较高但价格不确定。
 
-订单类型只决定参与方式，不能修复一个没有优势的 Trade Candidate。
+订单类型只改变参与和成交方式，不能把缺少来源支持或风险优势的市场判断变成好交易。
 
 ### Protective Stop / Invalidation
 
-Protective stop 限制账户损失；Structural Invalidation 是证明原 Opportunity 不再成立的价格事实。两者可以接近但职责不同。计划中的 stop、经纪商已确认的 active stop 与灾难备份也必须分开记录。
+Protective stop 用于限制账户损失；Structural Invalidation 指证明原市场结果假说不再成立的价格事实。两者可以接近但职责不同。来源还区分计划中的 stop、经纪商已确认的 active stop 与灾难备份；系统应保留这些职责差异，但具体对象和状态由运行契约拥有。
 
 ### Trailing / Breakeven Stop
 
@@ -248,7 +251,7 @@ Success 与 failure 必须绑定预先声明的 outcome criterion：目标先到
 
 ### Active / Expired / Sequence Unknown
 
-已经形成的 Opportunity 在目标、失效、过期或取代事件均未发生时保持 `ACTIVE`；horizon 结束而目标与失效均未发生时为 `EXPIRED`；市场目标与市场失效在同一可观察区间内发生且顺序无法确认时为 `MARKET_SEQUENCE_UNKNOWN`。实际交易目标与 Protective Stop / 退出结果的先后无法确认时为 `TRADE_SEQUENCE_UNKNOWN`。尚未形成 Opportunity 的未决 Market Read 不进入这些结果状态；市场路径与交易结果不能互相改写。
+这些是历史材料中的结果别名，不是 Brooks 的固定状态机。当前方法用“有效、实现、失效、到期、被替代、先后未知”记录市场路径；交易目标与保护或退出的先后无法确认时，也只记录“先后未知”。市场路径与账户交易结果仍须保持两条证据记录。
 
 ### Scalp / Swing / TBTL
 
@@ -278,10 +281,11 @@ Fade 押注当前尝试不会获接受；countertrend 明确逆当前控制方�
 | `RR` / `TE` | Risk / Reward / Trader's Equation |
 | `TBTL` / `TTR` | Ten Bars, Two Legs / Tight Trading Range |
 
-## 运行入口
+## 方法入口
 
-- 统一循环：[价格行为交易系统总流程](../trading_system/overall_flow.md)
-- 概念关系：[Market Read 与 Opportunity](../trading_system/market_read_and_opportunities.md)
-- 交易构造：[交易决策与计划](../trading_system/decision_and_plan.md)
-- 持仓闭环：[执行、持仓与复盘](../trading_system/execution_management_and_review.md)
-- 条件概率：[条件规则台账](../trading_system/conditional_rules_registry.md)
+以下文件拥有当前运行语义；这些链接只帮助从来源术语定位方法，不表示 Reference 能证明现有对象拆分是唯一设计：
+
+- 市场解释与结果路径：[市场模型与机会](../trading_system/market_read_and_opportunities.md)
+- 风险表达与决策：[交易决策与计划](../trading_system/decision_and_plan.md)
+- 订单、持仓、保护与结果：[执行、持仓与复盘](../trading_system/execution_management_and_review.md)
+- 概率与证据边界：[概率与证据边界](../trading_system/probability_and_evidence_boundaries.md)

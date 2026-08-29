@@ -1,46 +1,51 @@
 # Trading System
 
-本目录是可脱离 `reference/` 独立运行的交易系统。它把 Brooks 价格行为知识组织为一条从市场事实到交易计划、账户执行与复盘的闭环，而不是形态或 Setup 目录。
-
-## 运行入口
-
-从[价格行为交易系统总流程](overall_flow.md)开始：
+本目录是一套人工可运行的价格行为交易方法。重点不是建立对象和状态机，而是完整回答：价格在哪里、怎样来到这里、正在测试什么、上下两侧各可能怎样发展，以及是否存在一笔风险可接受的交易。
 
 ```text
-Safety Guard + Frame
-→ Market Read：继承 Context → Price Map → Current Move → Active Test → Context Update
-→ Long / Short Opportunity Set
-→ Trade Construction：构造当前 Candidates
-→ Decision：比较并只选一条，或等待消歧事件，或不交易
-→ Execution：Intent → Order → Fill → Exposure → Protection
-→ Hold / Add / Reduce / Exit → Review
+事实与观察边界
+→ 位置与到达路径
+→ 当前测试、压力、控制与市场结构
+→ 双向机会
+→ 交易表达
+→ TRADE / WAIT / STAND_DOWN
+→ 成交、仓位与保护
+→ 稳定结束与复盘
 ```
 
-首次看图或 Reframe 运行完整 Checklist；普通新 K 线或相关事件只从最早变化处增量传播；已有订单、仓位或异常时按真实账户状态分派。检查可以是观察、心中确认或工具计算，只有计划、风险、执行或复盘边界改变时才保存必要增量。
+## 从哪里开始
 
-## 文件职责
+1. 先读[统一运行流程](overall_flow.md)，掌握唯一主链和人工更新方式；
+2. 用[市场模型与机会](market_read_and_opportunities.md)完成位置、测试、市场结构与双向路径判断；
+3. 用[交易决策与计划](decision_and_plan.md)把机会变成入场、保护、目标、数量与决定；
+4. 用[执行、持仓与复盘](execution_management_and_review.md)核对真实成交、保护、费用与结束；
+5. 用[端到端场景](worked_examples.md)检查接缝；需要来源和冲突时再进入 [Reference](../reference/README.md)。
 
-| 层次 | 文件 | 唯一职责 |
-| --- | --- | --- |
-| Runtime | [总流程](overall_flow.md) | 运行模式、检查顺序、增量传播、账户入口与必要记录 |
-| Market Contract | [Market Read 与 Opportunity](market_read_and_opportunities.md) | Price Map、Current Move、Active Test、Context、结构目标与双向 Opportunity |
-| Decision Contract | [交易决策与计划](decision_and_plan.md) | Context Permission、Candidate 构造与比较、Decision、Trade Plan 和风险数学 |
-| Execution Contract | [执行、持仓与复盘](execution_management_and_review.md) | 订单、成交、Exposure、Protection、持仓动作、退出与复盘 |
-| Runtime Navigation | [市场决策事件导航](market_decision_events.md) | 从可观察变化定位最早重开步骤，不定义另一套 Pattern 路由 |
-| Rule Registry | [条件规则台账](conditional_rules_registry.md) | 条件概率模板、当前 Rule Match、替代顺序与隔离项 |
-| Acceptance Examples | [完整流程场景测试](worked_examples.md) | 验证共同契约怎样处理不同场景，不建立新规则 |
+## 各页唯一职责
 
-`overall_flow.md` 决定现在看什么和下一步去哪里；三个 Core Contract 唯一定义市场、决策和账户语义；导航、规则与示例只按需展开。
+| 页面 | 只负责什么 |
+| --- | --- |
+| [统一运行流程](overall_flow.md) | 从观察到结束的因果顺序、安全分支与增量更新 |
+| [市场模型与机会](market_read_and_opportunities.md) | 市场事实、位置、到达路径、当前测试、市场结构、目标与双向机会 |
+| [交易决策与计划](decision_and_plan.md) | 入场、保护、目标、概率边界、风险、数量、决定与计划调整 |
+| [执行、持仓与复盘](execution_management_and_review.md) | 实际成交、仓位、活动保护、工作订单、费用、稳定结束与四类结果 |
+| [概率与证据边界](probability_and_evidence_boundaries.md) | 来源条件、数值适用边界与验证要求；不属于普通盘中步骤 |
+| [端到端场景](worked_examples.md) | 用连续场景验收跨页接缝，不定义新规则 |
 
-## 知识怎样融入共同链路
+## 不可跨越的边界
 
-- 底层事实只登记一次；价格组织、过程、几何、次序、外层功能与行为路径分别保留不可替代的职责，但同源名称不重复增加概率（如 H/L、Double Test、Wedge、Flag、Triangle、MTR）。
-- 结构产生的 Region、Neckline、Channel / Range 边界和 measured-move 目标进入 Price Map；当前运动与测试进入 Current Move / Active Test；方向路径进入 Opportunity；Entry、Stop 与交易目标由 Candidate 选择。
-- 不同目标、周期、Outcome Horizon 或判断时点必须分开。条件概率只有完成目标、周期、horizon、时点和适用条件匹配后才能进入当前路径或 Trader's Equation。
-- 图表事实、订单事实和账户事实始终分开；Chart Trigger 不表示账户成交，交易计划也不表示实际 Protection 已生效。
+- 同一事实只登记一次；多个形态名称不能重复增加证据或概率；
+- 位置优先于形状，形状、H/L、Wedge、Flag、Triangle、MTR 等只保留各自不可替代的职责；
+- 市场机会描述可能发生什么，交易表达描述怎样承担风险；
+- 市场目标概率与具体交易结果概率不能互相代用；没有可靠交易结果数值时使用定性判断，不伪造期望证明，也不因此自动禁止人工交易；
+- 计划不等于订单，图表触发不等于实际成交，只有成交改变仓位；
+- 计划保护不等于 Broker 端真实在场的活动保护；
+- 增加数量、延长期限、启用新目标或改变管理边界，都要按当前市场和整仓风险重新判断；
+- 仓位归零后仍要清理残留订单、核对成交与费用，才能稳定结束；
+- 账户结束时记录当时的市场状态；若机会仍有效，之后补记最终市场结果；交易、账户和流程结果分开记录；
+- 凡是盘中会直接用来画位置、形成机会、选保护或投射目标的知识，其最小构造和更新规则必须存在于 Trading System，不要求交易者临场回到 Reference 拼装方法；
+- Reference 保存证据与争议，不直接决定交易。
 
-每类价格行为知识都必须说明 Formation、Role / Owner、Derivation、Lifecycle 和 Boundary / Dedup：从哪些事实形成，改变哪个 Market Read 对象，如何更新和避免同源重复，以及通过共同链可能影响哪些下游对象；Candidate、风险与执行动作仍由各自 Contract 唯一定义。
+## 人工运行原则
 
-## 权威边界
-
-`trading_system/` 定义完整运行语义；[`reference/`](../reference/README.md)保存正式来源、逐讲证据、重复、分母、冲突和翻译边界，不直接许可交易。新增知识只有在改变事实、结构、目标、路径、概率、计划、执行或复盘时才进入本目录；数学、分母、来源或翻译不清的内容保持隔离。
+首次读取或市场结构重构时完整走主链。普通盘中更新只追踪新事实最早改变了哪一环；没有改变下游结论时立即结束更新。完整思考不能遗漏，但不要求反复抄写未变化字段。
