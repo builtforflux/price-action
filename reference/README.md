@@ -6,17 +6,17 @@
 
 ## 权威边界
 
-| Owner | 唯一职责 | 不负责 |
+| 负责文件 | 唯一职责 | 不负责 |
 | --- | --- | --- |
 | [正式来源台账](official_sources.md) | 来源身份、版本语境与指纹、访问状态、稳定 Source ID、原文锚点和来源级冲突 | 课程页界、具体方法或交易决定 |
 | [机器可读课程目录](course/course_catalog.json) | 191 个分讲的物理页界和原始 bookmark 标签（`start_title`） | 原 PDF bookmark 的目标页异常、来源身份或版本语境、逐页视觉核验、课程命题真伪 |
 | [课程覆盖清单](course/coverage_manifest.md) | 每份分析是否存在、逐页视觉验收和局部核验状态 | 重新定义页界或证明原课已被完整复原 |
 | [逐讲课程材料](course/README.md) | 带页码的课程提取、条件化归纳、重复、边界和抽取问题 | 自动成为系统规则 |
 | [边界与冲突](course/boundaries_and_conflicts.md) | 数学、分母、语义、翻译和适用条件冲突 | 静默选择一个版本覆盖其他来源 |
-| [课程知识与方法关系](course/course_to_method_map.md) | 知识层、01–52 证据增量、条件证据及其可能影响的方法环节 | 制定运行规则、对象设计、来源身份或当次交易许可 |
-| [`trading_system/`](../trading_system/README.md) | 市场读取、交易表达、风险、执行和复盘方法 | 改写来源或把仓库综合归因于 Brooks |
+| [课程知识与方法关系](course/course_to_method_map.md) | 知识层、01–52 证据增量、六类场景归并、条件证据及其可能影响的方法环节 | 制定运行规则、对象设计、来源身份或当次交易许可 |
+| [`trading_system/`](../trading_system/README.md) | 市场判断、交易方案、风险、执行和复盘方法 | 改写来源或把仓库综合归因于 Brooks |
 
-`course_catalog.json` 只对分讲页界和 bookmark 标签（`start_title`）承担唯一 Owner 职责；其中 `sources`、指纹和 Source ID 字段只是正式来源台账的机器可读镜像，不取得来源身份或版本语境的权威。目录也不保存原 PDF bookmark 实际指向的目标页。bookmark 目标页与已核页界不一致时，该差异是来源级异常，由正式来源台账保存，并由逐讲记录和覆盖核验提供证据，不能反向改写目录页界。[完整课程索引](course/lesson_index.md)及覆盖清单中的页范围是目录的派生视图；Source ID 含义回到正式来源台账，描述性标题来自逐讲文件。视觉核验状态由覆盖清单独立拥有，不能从页界连续性推断。
+`course_catalog.json` 只负责分讲页界和 bookmark 标签（`start_title`）；其中 `sources`、指纹和 Source ID 字段只是正式来源台账的机器可读镜像，不取得来源身份或版本语境的权威。目录也不保存原 PDF bookmark 实际指向的目标页。bookmark 目标页与已核页界不一致时，该差异是来源级异常，由正式来源台账保存，并由逐讲记录和覆盖核验提供证据，不能反向改写目录页界。[完整课程索引](course/lesson_index.md)及覆盖清单中的页范围是目录的派生视图；Source ID 含义回到正式来源台账，描述性标题来自逐讲文件。视觉核验状态由覆盖清单独立拥有，不能从页界连续性推断。
 
 ## 入口
 
@@ -25,7 +25,7 @@
 | [来源术语与别名速查](glossary.md) | 定位来源术语、同义词和必须保留的跨层区别；不建立平行运行定义 |
 | [正式来源台账](official_sources.md) | 登记 Al Brooks 资料、链接、核验日期、版本和原文锚点 |
 | [01–52 逐讲课程材料](course/README.md) | 保存 191 份逐讲分析、课程目录、覆盖核验、重复矩阵和内容边界 |
-| [课程知识与方法关系](course/course_to_method_map.md) | 说明各类知识可能影响的方法环节，以及证据使用与隔离边界 |
+| [课程知识与方法关系](course/course_to_method_map.md) | 说明各类知识可能影响的方法环节、怎样归入六类共同场景，以及证据使用与隔离边界 |
 
 ## 证据使用顺序
 
