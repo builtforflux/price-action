@@ -36,7 +36,7 @@
 
 ### Price Map
 
-历史仓库用它指代“按当前价格上方、下方和距离组织相关区域、来源与汇合”，它不是 Brooks 的固定对象。Potential Entry Area、Target、Obstacle 或 Invalidation Reference 是区域相对某条市场路径或交易方案的角色，不是区域的永久属性；当前方法把相关事实放在[位置与空间](../trading_system/market.md#35-位置与空间)。
+历史仓库用它指代“按当前价格上方、下方和距离组织相关区域、来源与汇合”，它不是 Brooks 的固定对象。Potential Entry Area、Target、Obstacle 或 Invalidation Reference 是区域相对某条市场路径或交易方案的角色，不是区域的永久属性；当前方法把相关事实放在[重要区域、位置与目标](../trading_system/market.md#35-重要区域位置与目标)。
 
 ### Price Process
 
@@ -76,7 +76,7 @@ Market Probability 描述某个市场 objective 在给定条件与 horizon 内�
 
 ### 交易 / 等待 / 放弃
 
-这些是当前方法的三种决策结果，不是来源术语定义。Reference 只提供会改变行动资格、等待价值或风险边界的证据；各结果的条件和动作由[交易决策](../trading_system/trade.md)拥有。主动不承担风险不能反向改写市场事实、概率或来源 Claim。
+这些是当前方法最终的三种空仓决策结果，不是来源术语定义。Trade 质量接近平衡且存在明确改善事件和期限时等待，否则放弃；质量不值得时放弃。质量较有利时先提交 Account，只有 Account 允许后才成为“交易”。Account 禁止会终止当前表达的提交资格；Trade 只能结束该表达后构造另一份完整表达、等待期限内明确可恢复的条件，或放弃。Reference 只提供会改变行动资格、等待价值或风险边界的证据；各结果的条件和动作由[交易决策](../trading_system/trade.md)拥有。主动不承担风险不能反向改写市场事实、交易质量、概率或来源 Claim。
 
 ## 二、市场状态与运动
 
@@ -128,11 +128,11 @@ Staircase 是突破与后续回调持续重叠的阶梯式趋势；trending trad
 
 ### Support / Resistance
 
-价格可能停顿、测试或反转的区域，不是保证反转的精确线。突破后同一区域可以交换角色。
+价格可能停顿、测试或反转的区域，不是保证反转的精确线。它们与 Magnet、结构目标等可以共享同一底层重要区域；支撑或阻力只是相对当前方向和路径的职责，突破并接受后同一区域可以交换角色。
 
 ### Magnet / Target
 
-Magnet 是可能吸引测试的区域；来源中的 target 可以指结构生成的市场目标，也可以指交易者实际选择的兑现目标，两者不能因价格相同而合并职责。任何概率或 reward Claim 都必须绑定明确的目标事件、horizon 和判断时点；这是一项证据完整性要求，不规定系统对象或运行顺序。
+Magnet 是可能吸引测试的区域；来源中的 target 可以指结构生成的市场结果，也可以指交易者实际选择的兑现价格。两者可以引用同一重要区域，但不能因价格相同而合并职责：Market 负责结果事件，Trade 负责具体数量的兑现。任何概率或 reward Claim 都必须绑定明确的目标事件、horizon 和判断时点；这是一项证据完整性要求，不另建系统对象。
 
 ### Measured Move
 
