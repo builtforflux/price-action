@@ -15,7 +15,7 @@
 | Market Read / Market Model / Market Note | 市场判断 |
 | Price Process | 到达路径与当前测试 |
 | Opportunity Set / Opportunity Book | 多方与空方方向机会（市场路径） |
-| Path Effect / OpportunityImpact / Market Delta | 本根变化 |
+| Path Effect / OpportunityImpact / Market Delta | 本次变化 |
 | Context Permission | 无独立运行对象；还原为市场路径的支持、反证与参与前条件 |
 | Candidate Outcome Probability | 交易结果概率 |
 | Decision Ticket | 交易方案 |
@@ -36,11 +36,11 @@
 
 ### Price Map
 
-历史仓库用它指代“按当前价格上方、下方和距离组织相关区域、来源与汇合”，它不是 Brooks 的固定对象。Potential Entry Area、Target、Obstacle 或 Invalidation Reference 是区域相对某条市场路径或交易方案的角色，不是区域的永久属性；当前方法把相关事实放在[位置与空间](../trading_system/market.md#三位置与空间)。
+历史仓库用它指代“按当前价格上方、下方和距离组织相关区域、来源与汇合”，它不是 Brooks 的固定对象。Potential Entry Area、Target、Obstacle 或 Invalidation Reference 是区域相对某条市场路径或交易方案的角色，不是区域的永久属性；当前方法把相关事实放在[位置与空间](../trading_system/market.md#35-位置与空间)。
 
 ### Price Process
 
-历史仓库用它汇集“价格怎样演化到当前区域”的关系，包括此前运动、当前段、暂停、局部平衡、所测试区域，以及 continuation、pullback、range leg 或 reversal attempt 等可能角色。K 线质量、连续性、follow-through、gap / overlap、回调质量和反方尝试是可复用证据；当前方法称为[到达与当前测试](../trading_system/market.md#四到达与当前测试)。
+历史仓库用它汇集“价格怎样演化到当前区域”的关系，包括此前运动、当前段、暂停、局部平衡、所测试区域，以及 continuation、pullback、range leg 或 reversal attempt 等可能角色。K 线质量、连续性、follow-through、gap / overlap、回调质量和反方尝试是可复用证据；当前方法把它们放入[尝试、预期与实际表现](../trading_system/market.md#36-尝试预期与实际表现)。
 
 ### Pattern
 
@@ -52,7 +52,7 @@
 
 ### Opportunity Set
 
-历史仓库用它指代“现实市场结果假说集合”，例如延续、先修正后延续、区间旋转、突破接受、突破失败或反转过程。不同 objective 或 horizon 不能因方向相同而混成一个概率事件；当前方法把每个方向当前唯一的市场路径显示为[方向机会](../trading_system/market.md#七形成双向方向机会)，不另建 Opportunity 对象。
+历史仓库用它指代“现实市场结果假说集合”，例如延续、先修正后延续、区间旋转、突破接受、突破失败或反转过程。不同 objective 或 horizon 不能因方向相同而混成一个概率事件；当前方法把每个方向当前唯一的市场路径显示为[双向路径](../trading_system/market.md#38-双向路径)，不另建 Opportunity 对象。
 
 ### Trade Expression / 历史 Trade Candidate
 
@@ -204,7 +204,7 @@ MTR 是过程而非形态许可：原趋势先减弱或发生结构破坏，价�
 
 ### Inside / Outside Bar
 
-Inside bar 的高点不高于前高且低点不低于前低。来源之间对 Outside bar 的等高、等低边界并不一致，本页只保留这一来源差异。当前运行口径由[市场判断](../trading_system/market.md#113-常用-k-线术语)统一定义；数据标注必须声明所用口径。
+Inside bar 的高点不高于前高且低点不低于前低。来源之间对 Outside bar 的等高、等低边界并不一致，本页只保留这一来源差异。当前运行口径由[K 线与运动事实](../trading_system/market.md#e-k-线与运动事实)统一定义；数据标注必须声明所用口径。
 
 ### Reversal Bar
 
@@ -265,7 +265,7 @@ Success 与 failure 必须绑定预先声明的 outcome criterion：目标先到
 
 - 这是订单、仓位或财务事实可能不可靠的证据边界，不由 Glossary 决定动作。
 
-当前处置分别由[市场判断](../trading_system/market.md#91-无法判断先后时)、[账户执行](../trading_system/account.md)和[复盘与治理](../trading_system/governance.md)负责。
+当前处置分别由[市场判断](../trading_system/market.md#39-首次建立与路径变化)、[账户执行](../trading_system/account.md)和[复盘与治理](../trading_system/governance.md)负责。
 
 ### Scalp / Swing / TBTL
 
