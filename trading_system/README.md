@@ -4,6 +4,8 @@
 
 运行不依赖 `reference/`，也不承诺固定胜率或盈利能力。
 
+首次实盘使用某个账户或产品前，必须完成 [Account 第五节](account.md#五低频平台检查)的低频平台检查，事前设定具体账户硬限制，并验证 Netting / one-way 持仓模式以及保护、reduce-only、close-position、OCO 等实际平台语义；未完成时不得新增风险。
+
 ## 盘中最小运行卡
 
 ```text
