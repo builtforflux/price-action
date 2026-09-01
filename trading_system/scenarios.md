@@ -656,17 +656,6 @@ MTR、H&S、Double Top/Bottom、Wedge 或第一根逆势 Signal Bar 的名称不
 - 未来反转必须从新的压力和结构破坏重新开始；
 - 第一次 MTR 失败不授权继续摊平或沿用旧证据。
 
-### 结构视图怎样共享事实
-
-- Double Top/Bottom：旧极值第二次测试和 Neckline；
-- H1/H2、L1/L2：恢复或反向尝试次序；
-- Wedge：三次推动；
-- H&S：头部测试、结构破坏和右肩 HL/LH；
-- Final Flag：晚期平衡候选；
-- MTR：完整控制转移过程。
-
-名称重合时只登记一次价格事实，各自保留独有结构职责。
-
 ### 边界
 
 - 初始完成目标候选通常是反向 Swing、内部公平区或两段修正；写回 Market 时只选一个当前完成目标；
@@ -677,62 +666,9 @@ MTR、H&S、Double Top/Bottom、Wedge 或第一根逆势 Signal Bar 的名称不
 
 ## 十、不会独立建立场景的知识
 
-### 结构视图
+结构视图、位置参照、局部信号、目标或时间修饰、交易表达和行为解释都不能单独建立场景。结构、价格事实、位置、时间和行为解释的运行语义由[市场判断](market.md)统一拥有；入场、保护、退出、数量和风险由[交易决策](trade.md)决定，[执行边界](account.md)只检查限制、提交授权动作并核对权威事实。
 
-- H1/H2/H3、L1/L2/L3；
-- Double Top/Bottom、Micro Double Top/Bottom；
-- Wedge、Nested Wedge、Parabolic Wedge；
-- Flag、Final Flag；
-- Triangle、Expanding Triangle；
-- H&S、Round、Cup；
-- ii、iii、ioi、oo；
-- Stairs、Shrinking Stairs；
-- MTR、Spike-and-Channel、Trending Trading Range。
-
-保留几何、次序、Neckline、成熟度或阶段职责，不建立同名流程。
-
-### 位置参照
-
-- EMA、比例区域、趋势线、通道线；
-- 旧高低、主要 Swing、突破点；
-- 重要收盘区域、区间边界和中部；
-- 整数位、缺口和测量目标。
-
-位置只说明测试在哪里发生，不说明结果。
-
-### 局部信号
-
-- Reversal Bar、Signal Bar；
-- Inside/Outside Bar；
-- Second Signal；
-- H/L Trigger；
-- Follow-through Bar。
-
-它们进入事实、压力或参与前条件，不建立场景。
-
-### 目标、期限和时间修饰
-
-- Second Leg、TBTL、Measured Move、Scalp target、Session close；
-- First Pullback、First EMA Test；
-- 趋势早期、中段、晚期；
-- Opening Range、Opening Reversal、Opening BOM；
-- 日中、尾盘和日周月边界。
-
-只有事前固定的 Session 确实改变流动性、目标或期限时才显示。连续交易产品不能把任意日界伪装成天然开盘。
-
-### 交易表达和管理
-
-- Stop、Limit、Market、close entry；
-- Buy/Sell the Close；
-- Scalp、Swing、Scale in/out；
-- 宽保护、紧保护、部分退出、保本和 Market 完成目标以内的 runner；
-- 仓位、杠杆、费用和风险。
-
-其中入场、保护、退出、数量和风险由[交易决策](trade.md)决定；[账户执行](account.md)只检查限制、按方案操作并核对平台权威事实。它们都不能反向改变市场路径。
-
-### 行为解释
-
-Trapped in/out、Pain Trade、Disappointment、机构、算法或“无人愿意买卖”的叙事，只能保留其可由价格验证的触发、失败、跟进、空间和接受事实，不能独立形成路径。
+这些知识只有在改变当前因果问题、合理预期或竞争路径时，才作为候选事实写回 Market；否则只保留为结构视图、证据或隔离项。新名称的归并边界见[复盘与治理](governance.md#新名称怎样归并)。
 
 ## 十一、结束导航
 
