@@ -2,27 +2,11 @@
 
 > **状态：Reference / Alias Index / Non-normative**
 
-本表用于检索来源术语、仓库别名和必须保留的概念边界，不建立独立交易规则或处理顺序。当前看盘与交易方法由 [`trading_system/`](../trading_system/README.md) 定义；页码、来源差异与重复证据见[课程概念索引](course/concept_index.md)和[边界与冲突台账](course/boundaries_and_conflicts.md)。
+本表用于检索来源术语、常用别名和必须保留的概念边界，不建立独立交易规则或处理顺序。当前看盘与交易方法由 [`trading_system/`](../trading_system/README.md) 定义；页码、来源差异与重复证据见[课程概念索引](course/concept_index.md)和[边界与冲突台账](course/boundaries_and_conflicts.md)。
 
 一个名称只回答“正在描述哪类事实、视图、判断、结果路径或账户事件”。名称本身不提供交易许可；若同一底层事实同时符合 H2、Double Bottom、Wedge、Flag 或 MTR 等视图，应共享事实而保留各视图不同的解释职责，不能把标签数量当作独立证据数量。
 
 本表偶尔列出当前仓库使用的英文别名，目的只是帮助证据找到可能的消费者。别名不证明该对象必须独立存在，也不要求未来系统继续采用相同名称或分层。
-
-历史仓库名称只在本页用于检索，不是运行可写值：
-
-| 历史名称 | 当前运行名称 |
-| --- | --- |
-| Market Read / Market Model / Market Note | 市场判断 |
-| Price Process | 到达路径与当前测试 |
-| Opportunity Set / Opportunity Book | 多方与空方方向机会（市场路径） |
-| Path Effect / OpportunityImpact / Market Delta | 本次变化 |
-| Context Permission | 无独立运行对象；还原为市场路径的支持、反证与参与前条件 |
-| Candidate Outcome Probability | 交易结果概率 |
-| Decision Ticket | 交易方案 |
-| Account Card | 账户状态 |
-| EXECUTE / COMMIT / TRADE | 交易 |
-| WAIT | 等待 |
-| NO_TRADE / STAND_DOWN | 放弃 |
 
 ## 一、来源术语与跨层消歧
 
@@ -34,14 +18,6 @@
 
 来源用 Context 表示某个交易周期中影响目标、正常回调和管理方式的价格组织，包括市场状态、控制、位置、时间和相关外层约束。它是条件集合而非单个标签；应绑定观察周期和判断时点。系统怎样保存、继承或重构 Context 由运行契约决定。
 
-### Price Map
-
-历史仓库用它指代“按当前价格上方、下方和距离组织相关区域、来源与汇合”，它不是 Brooks 的固定对象。Potential Entry Area、Target、Obstacle 或 Invalidation Reference 是区域相对某条市场路径或交易方案的角色，不是区域的永久属性；当前方法把相关事实放在[重要区域、位置与目标](../trading_system/market.md#35-重要区域位置与目标)。
-
-### Price Process
-
-历史仓库用它汇集“价格怎样演化到当前区域”的关系，包括此前运动、当前段、暂停、局部平衡、所测试区域，以及 continuation、pullback、range leg 或 reversal attempt 等可能角色。K 线质量、连续性、follow-through、gap / overlap、回调质量和反方尝试是可复用证据；当前方法把它们放入[尝试、预期与实际表现](../trading_system/market.md#36-尝试预期与实际表现)。
-
 ### Pattern
 
 对几何或事件顺序的压缩命名。Pattern 是结构视图，不是交易类别；H2、Double Bottom、Wedge、Flag、Triangle 和 MTR 等名称必须还原为共同的价格事实与结果路径。
@@ -50,21 +26,13 @@
 
 来源材料常用的历史术语，最低含义是带有 Context、可供考虑入场的 pattern。Setup 不等于完整风险计划；若要被系统消费，仍须能还原为可观察条件、目标事件、参与条件、失效、概率边界和风险交换。Reference 不要求系统维护 Setup 家族或独立路由。
 
-### Opportunity Set
-
-历史仓库用它指代“现实市场结果假说集合”，例如延续、先修正后延续、区间旋转、突破接受、突破失败或反转过程。不同 objective 或 horizon 不能因方向相同而混成一个概率事件；当前方法把每个方向当前唯一的市场路径显示为[双向路径](../trading_system/market.md#38-双向路径)，不另建 Opportunity 对象。
-
-### Trade Expression / 历史 Trade Candidate
-
-历史仓库用它指“在某个判断时点，怎样用 entry、protective stop、target、成本、数量、时间和管理参与一条市场路径”。同一市场路径在 close、follow-through 或回调时点可以形成不同方案。当前方法只使用[交易方案](../trading_system/trade.md)，不建立 Expression 或 Candidate 生命周期。
-
 ### Trade Plan
 
 历史材料可把被“交易”选择、供执行和事后核对的参与方式称为 Trade Plan；当前方法直接称为交易方案。它应与未选择的市场路径或研究草案区分；Reference 不决定怎样交易。
 
 ### Market Probability / Trade Outcome Probability
 
-Market Probability 描述某个市场 objective 在给定条件与 horizon 内发生的概率；Trade Outcome Probability 描述某组 entry、stop、退出、数量、成本和管理下各交易结果的概率。`Candidate Outcome Probability` 是历史别名。前者不能直接代入交易者方程。任何数值都必须先由[复盘与治理](../trading_system/governance.md#3-已校准的数值规则)发布且仍然有效，运行页再检查适用口径；当前没有生产级数值概率规则。
+Market Probability 描述某个市场 objective 在给定条件与 horizon 内发生的概率；Trade Outcome Probability 描述某组 entry、stop、退出、数量、成本和管理下各交易结果的概率。前者不能直接代入交易者方程。任何数值都必须先由[复盘与治理](../trading_system/governance.md#3-已校准的数值规则)发布且仍然有效，运行页再检查适用口径；当前没有生产级数值概率规则。
 
 ### Evidence Convergence / Two Reasons
 
@@ -73,10 +41,6 @@ Market Probability 描述某个市场 objective 在给定条件与 horizon 内�
 ### Evidence Update
 
 证据会出现、增强、减弱、失效或在结构改变后重置。新主导突破、成熟区间、控制切换或更高周期结构接管后，旧计数和旧倾向不能自动继承。
-
-### 交易 / 等待 / 放弃
-
-这些是当前方法最终的三种空仓决策结果，不是来源术语定义。Trade 质量接近平衡且存在明确改善事件和期限时等待，否则放弃；质量不值得时放弃。质量较有利时先提交 Account，只有 Account 允许后才成为“交易”。Account 禁止会终止当前表达的提交资格；Trade 只能结束该表达后构造另一份完整表达、等待期限内明确可恢复的条件，或放弃。Reference 只提供会改变行动资格、等待价值或风险边界的证据；各结果的条件和动作由[交易决策](../trading_system/trade.md)拥有。主动不承担风险不能反向改写市场事实、交易质量、概率或来源 Claim。
 
 ## 二、市场状态与运动
 
