@@ -58,7 +58,7 @@ Trend 与 Trading Range 之间连续演化的观察模型。常见路径为 `bre
 
 ### Breakout Attempt / Acceptance
 
-越过重要边界先只是突破尝试。强收盘、follow-through、分离保持、回测守住与反方失败支持接受；快速回到原区域支持 failed breakout。突破事实、接受程度与方向控制必须分开记录。
+越过重要边界先只是突破尝试。强收盘、follow-through（跟随）、分离保持、回测守住与反方失败支持接受；快速回到原区域支持 failed breakout。突破事实、后续跟随、接受结果与方向控制必须分开。
 
 ### Breakout Mode
 
@@ -116,7 +116,7 @@ Overshoot 是短暂越过候选线或边界，undershoot 是未到达便提前�
 
 ### Pressure / Control / Always In
 
-Pressure 比较多空双方通过 K 线连续性、实体与收盘、影线拒绝、突破、gap、跟进和回调产生、保持和重复方向进展的相对能力。一侧减弱不等于另一侧已经增强。Control 是一侧能否持续推动并限制另一侧取得价格结果。Always In 是“若必须持仓，更可能选择哪一侧”的控制摘要，不表示必须持仓，也不替代目标和方程。
+Pressure 是来源对多空相对表现的概括；buying pressure 大于 selling pressure，等价于在同一周期、当前运动、区域和问题中多头当前更占优势。当前方法不保存 buying / selling pressure 两套状态，而是用实体、影线、收盘、分离、回调等事实解释初始行为和后续跟随，再直接给出当前相对优势。Control 在当前方法中称为控制，表示这种优势已经持续到足以组织正常回调、预期和路径。一侧减弱不等于另一侧已经增强。Always In 是清晰控制的来源摘要，不表示必须持仓，也不替代目标和方程。
 
 ### Gap / Separation
 
@@ -172,7 +172,7 @@ Inside bar 的高点不高于前高且低点不低于前低。来源之间对 Ou
 
 ### Reversal Bar
 
-提供反向响应的 K 线。靠近新方向极值的收盘、测试影线与相对较强实体可以增强质量，但外观不能替代结构、位置和后续跟进。
+提供反向响应的 K 线。靠近新方向极值的收盘、测试影线与相对较强实体可以增强初始表达质量，但外观不能替代结构、位置和后续跟随。
 
 ### Signal Bar / Chart Entry Bar / Actual Fill Bar
 
@@ -184,7 +184,7 @@ Signal bar 提供计划触发所需的局部信息；chart entry bar 是声明�
 
 ### Follow-through / Surprise / Disappointment
 
-Follow-through 是初始运动后的继续延伸；surprise 是明显超出原预期的强行为，常增加第二段可能；entry disappointment 只是入场后表现偏弱，不能单独确认路径或交易 failure。
+Follow-through 在当前方法中统一译为“跟随”，指初始行为之后是否继续延伸、保住、回试守住或恢复已经取得的进展，并不要求再出现一根同方向大 K。多次良好跟随可以概括为连续性，但不建立独立运行状态。Surprise 是明显超出原预期的强行为，常增加第二段可能；entry disappointment 只是入场后表现偏弱，不能单独确认路径或交易 failure。
 
 ## 六、订单、风险与结果
 
