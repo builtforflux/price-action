@@ -4,7 +4,7 @@
 
 本表用于检索来源术语、常用别名和必须保留的概念边界，不建立独立交易规则或处理顺序。当前看盘与交易方法由 [`trading_system/`](../trading_system/README.md) 定义；页码、来源差异与重复证据见[课程概念索引](course/concept_index.md)和[边界与冲突台账](course/boundaries_and_conflicts.md)。
 
-一个名称只回答“正在描述哪类事实、视图、判断、结果路径或账户事件”。名称本身不提供交易许可；若同一底层事实同时符合 H2、Double Bottom、Wedge、Flag 或 MTR 等视图，应共享事实而保留各视图不同的解释职责，不能把标签数量当作独立证据数量。
+一个名称只回答“正在描述哪类事实、视图、判断、结果路径或账户事件”。名称本身不提供交易许可；若同一底层事实同时符合 H2、Double Bottom、Wedge、Flag 或 MTR 等视图，应共享事实而保留各视图不同的解释作用，不能把标签数量当作独立证据数量。
 
 本表偶尔列出当前仓库使用的英文别名，目的只是帮助证据找到可能影响的现有结论。别名不证明该对象必须独立存在，也不要求未来系统继续采用相同名称或分层。
 
@@ -16,7 +16,7 @@
 
 ### Context
 
-来源用 Context 表示某个交易周期中影响目标、正常回调和管理方式的价格组织，包括市场状态、控制、位置、时间和相关外层约束。它是条件集合而非单个标签；应绑定观察周期和判断时点。系统怎样保存、继承或重构 Context 由运行契约决定。
+来源用 Context 表示某个交易周期中影响目标、正常回调和管理方式的价格组织，包括市场状态、控制、位置、时间和相关外层约束。它是条件集合而非单个标签；应绑定观察周期和判断时点。系统怎样保存、继承或重判 Context 由当前方法决定。
 
 ### Pattern
 
@@ -92,11 +92,11 @@ Staircase 是突破与后续回调持续重叠的阶梯式趋势；trending trad
 
 ### Support / Resistance
 
-价格可能停顿、测试或反转的区域，不是保证反转的精确线。它们与 Magnet、结构目标等可以共享同一底层重要区域；支撑或阻力只是相对当前方向和路径的职责，突破并接受后同一区域可以交换角色。
+价格可能停顿、测试或反转的区域，不是保证反转的精确线。它们与 Magnet、结构目标等可以共享同一底层重要区域；支撑或阻力只是相对当前方向和路径的作用，突破并接受后同一区域可以交换角色。
 
 ### Magnet / Target
 
-Magnet 是可能吸引测试的区域；来源中的 target 可以指结构生成的市场结果，也可以指交易者实际选择的兑现价格。两者可以引用同一重要区域，但不能因价格相同而合并职责：Market 负责结果事件，Trade 负责具体数量的兑现。任何概率或 reward Claim 都必须绑定明确的目标事件、horizon 和判断时点；这是一项证据完整性要求，不另建系统对象。
+Magnet 是可能吸引测试的区域；来源中的 target 可以指结构生成的市场结果，也可以指交易者实际选择的兑现价格。两者可以引用同一重要区域，但不能因价格相同而合并作用：Market 负责结果事件，Trade 负责具体数量的兑现。任何概率或 reward Claim 都必须绑定明确的目标事件、horizon 和判断时点；这是一项证据完整性要求，不另建系统对象。
 
 ### Measured Move
 
@@ -116,7 +116,7 @@ Overshoot 是短暂越过候选线或边界，undershoot 是未到达便提前�
 
 ### Pressure / Control / Always In
 
-Pressure 是来源对多空相对表现的概括；buying pressure 大于 selling pressure，等价于在同一周期、当前运动、区域和问题中多头当前更占优势。当前方法不保存 buying / selling pressure 两套状态，而是用实体、影线、收盘、分离、回调等事实解释初始行为和后续跟随，再直接给出当前相对优势。Control 在当前方法中称为控制，表示这种优势已经持续到足以组织正常回调、预期和路径。一侧减弱不等于另一侧已经增强。Always In 是清晰控制的来源摘要，不表示必须持仓，也不替代目标和方程。
+Pressure 是来源对多空相对表现的概括；buying pressure 大于 selling pressure，等价于在同一周期、当前运动、区域和问题中多头当前更占优势。当前方法不保存 buying / selling pressure 两套状态，而是用实体、影线、收盘、分离、回调等事实解释初始表现和后续跟随，再直接给出相对优势。Control 在当前方法中称为控制，表示这种优势已经持续到足以组织正常回调、预期和路径。一侧减弱不等于另一侧已经增强。Always In 是清晰控制的来源摘要，不表示必须持仓，也不替代目标和方程。
 
 ### Gap / Separation
 
@@ -184,7 +184,7 @@ Signal bar 提供计划触发所需的局部信息；chart entry bar 是声明�
 
 ### Follow-through / Surprise / Disappointment
 
-Follow-through 在当前方法中统一译为“跟随”，指初始行为之后是否继续延伸、保住、回试守住或恢复已经取得的进展，并不要求再出现一根同方向大 K。多次良好跟随可以概括为连续性，但不建立独立运行状态。Surprise 是明显超出原预期的强行为，常增加第二段可能；entry disappointment 只是入场后表现偏弱，不能单独确认路径或交易 failure。
+Follow-through 在当前方法中统一译为“跟随”，指初始表现之后是否继续延伸、保住、回试守住或恢复已经取得的进展，并不要求再出现一根同方向大 K。多次良好跟随可以概括为连续性，但不建立独立运行状态。Surprise 是明显超出原预期的强表现，常增加第二段可能；entry disappointment 只是入场后表现偏弱，不能单独确认路径或交易 failure。
 
 ## 六、订单、风险与结果
 
@@ -198,11 +198,11 @@ Follow-through 在当前方法中统一译为“跟随”，指初始行为之�
 
 ### Protective Stop / Invalidation
 
-Protective stop 用于限制账户损失；Structural Invalidation 指证明原市场结果假说不再成立的价格事实。两者可以接近但职责不同。来源还区分计划中的 stop、经纪商已确认的 active stop 与灾难备份；系统应保留这些职责差异，但具体对象和状态由运行契约拥有。
+Protective stop 用于限制账户损失；Structural Invalidation 指证明原市场结果假说不再成立的价格事实。两者可以接近但作用不同。来源还区分计划中的 stop、经纪商已确认的 active stop 与灾难备份；当前方法分别称为路径失效、全仓计划止损和平台实际止损。
 
 ### Trailing / Breakeven Stop
 
-Trailing stop 随新确认结构向减少开放风险的方向移动。Breakeven stop 是把保护移到计划 entry 或加权平均 entry 附近；佣金、滑点、跳空和部分成交意味着实际结果未必为零。
+Trailing stop 随新确认结构向减少开放风险的方向移动。Breakeven stop 是把止损移到计划 entry 或加权平均 entry 附近；佣金、滑点、跳空和部分成交意味着实际结果未必为零。
 
 ### Trader's Equation / 40–60 Thinking
 
@@ -214,7 +214,7 @@ Trailing stop 随新确认结构向减少开放风险的方向移动。Breakeven
 
 ### Success / Failure / Scalper's Profit
 
-Success 与 failure 必须绑定预先声明的 outcome criterion：目标先到、stop 先到或 premise 变化主动退出是不同事件。Scalper's profit 只表示价格曾提供合理短线利润机会，不证明账户兑现，也不等于更远 swing 目标成功。
+Success 与 failure 必须绑定预先声明的 outcome criterion：目标先到、stop 先到或 premise 变化主动平仓是不同事件。Scalper's profit 只表示价格曾提供合理短线利润机会，不证明账户兑现，也不等于更远 swing 目标成功。
 
 ### Active / Expired / Sequence Unknown
 
@@ -229,7 +229,7 @@ Success 与 failure 必须绑定预先声明的 outcome criterion：目标先到
 
 - 这是订单、仓位或财务事实可能不可靠的证据边界，不由 Glossary 决定动作。
 
-当前处置分别由[市场判断](../trading_system/market.md#39-首次建立与路径变化)、[账户执行](../trading_system/account.md)和[复盘与治理](../trading_system/governance.md)负责。
+当前处置分别由[市场判断](../trading_system/market.md#38-首次建立与路径变化)、[账户执行](../trading_system/account.md)和[复盘与治理](../trading_system/governance.md)负责。
 
 ### Scalp / Swing / TBTL
 
@@ -261,11 +261,11 @@ Fade 押注当前尝试不会获接受；countertrend 明确逆当前控制方�
 
 ## 方法入口
 
-以下 Owner 拥有当前运行语义；这些链接只帮助从来源术语定位方法，不表示 Reference 能证明现有对象拆分是唯一设计：
+以下页面负责当前运行规则；这些链接只帮助从来源术语定位方法，不表示 Reference 能证明现有对象拆分是唯一设计：
 
 - 市场解释与结果路径：[市场判断](../trading_system/market.md)
-- 风险表达与决策：[交易决策](../trading_system/trade.md)
-- 订单、持仓、保护与结果：[账户执行](../trading_system/account.md)
+- 交易方案与仓位决策：[交易决策](../trading_system/trade.md)
+- 订单、仓位、止损与结果：[账户执行](../trading_system/account.md)
 - 概率与证据边界：[复盘与治理](../trading_system/governance.md)
 
 市场判断另提供一个不拥有运行状态的派生查询视图：[常见市场场景](../trading_system/scenarios.md)。
