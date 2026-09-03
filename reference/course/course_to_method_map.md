@@ -43,9 +43,9 @@
 | 15G | 固定 scalp 目标测试、弱 Setup fade、触价与成交差异 | 产品特定目标只留作证据；可观察测试进入重要区域和路径，参与方式进入交易决策，是否成交进入账户执行 |
 | 16A–F | 通道线构造、候选边界、重画、周期嵌套和区间化 | 位置地图中的趋势线 / 通道线构造与更新；通道状态及多 horizon 关系 |
 | 17A–B | Microchannel、小回调趋势、首次微型趋势线突破和 TTR | 早期首次突破进入回调测试；晚期高潮例外进入异常延伸；低周期只优化执行，固定 K 数留证据 |
-| 18A–F | Range、BLSHS、BOM、LOM、vacuum、成功突破和第二段陷阱 | 区间旋转、突破判断；第二段陷阱进入“预期路径失败”的完整顺序，限价行为只作交易方案证据 |
-| 19A–E | Support / Resistance、magnet、多周期位置和 entry test | 共享重要区域、方向相对作用、目标候选、汇合和测试 |
-| 20A–B | Leg 1 = Leg 2、Range/Breakout height | 结构投射和候选目标 |
+| 18A–F | Range、BLSHS、BOM、LOM、vacuum、成功突破和第二段陷阱 | 区间旋转、突破判断、磁点完成后的重新测试；第二段陷阱进入“预期路径失败”的完整顺序，限价行为只作交易方案证据 |
+| 19A–E | Support / Resistance、magnet、多周期位置和 entry test | 共享重要区域、方向相对作用、目标候选、汇合和测试；目标完成后原磁吸作用消耗，目标区域转为新的当前测试 |
+| 20A–B | Leg 1 = Leg 2、Range/Breakout height | 结构投射和候选目标；目标完成后的更远延伸必须来自事前可见区域并重新建立路径，不能移动旧目标 |
 | 21A–D | Minor/Major reversal、压力、TBTL 和早晚风险时点 | 反转结果路径、条件概率和管理尺度 |
 | 22A–D | 趋势破坏、旧极值测试、HL/LH、再入和重置 | MTR 过程视图、失效和证据重置 |
 | 23A–B | Final Flag 候选、晚段和事后确认 | 实时候选与事后结果消歧 |
@@ -73,8 +73,8 @@
 | 45A–E | Broad Bull Channel、周期嵌套、深回调和失败反转 | 宽通道的趋势/区间双视图 |
 | 46A–E | Broad Bear Channel 镜像 | 与 45 共用无方向知识；镜像案例留证据 |
 | 47A–D | Range、80% attempt、第二段陷阱和限价交易 | 区间路径、突破更新；无分母数字不得运行 |
-| 48A–K | First swing、Opening BOM、first-18、Opening Reversal 和尾盘 | Session/time 事实、成熟度和剩余时间风险；固定阈值留证据 |
-| 49A–E | 整日状态重判、H/L、高潮和第二段 | 动态更新案例，不新增状态类型 |
+| 48A–K | First swing、Opening BOM、first-18、Opening Reversal 和尾盘 | Session/time 事实、成熟度和剩余时间风险；磁点完成后原驱动消失并重新判断继续、反转或平衡；固定阈值留证据 |
+| 49A–E | 整日状态重判、H/L、高潮和第二段 | 动态更新案例；测量目标完成后重新观察跟随，不自动期待第三段，也不新增状态类型 |
 | 50A–E | Scalp、低周期、TICK 和管理 | 管理尺度；TICK 只作特定市场辅助证据 |
 | 51A–D | 错误、mental stop、周期一致和数量风险 | 系统违规、平台实际止损、仓位和行为复盘 |
 | 52A–B | 多层保护、前提变化、再入和 trapped | 持仓止损、出场和结果复盘证据 |
@@ -89,12 +89,14 @@
 
 | 母场景 | 主要课程证据落点 | 归入的常见变体 | 必须保留的区别 |
 | --- | --- | --- | --- |
-| [单边失衡继续扩展](../../trading_system/scenarios.md#四单边失衡继续扩展) | 10–18、37、41、43–44、47–49 | Breakout、Spike、Always In、Tight Channel、Small Pullback Trend、Microchannel、连续顺势收盘、直接延续或小回调后第二段 | 第一根强 K 不等于接受；晚期最大突破可能属于异常延伸 |
+| [单边失衡继续扩展](../../trading_system/scenarios.md#四单边失衡继续扩展) | 10–18、37、41、43–44、47–49 | Breakout、Spike、Always In、Tight Channel、Small Pullback Trend、Microchannel、连续顺势收盘、直接延续或小回调后第二段 | 第一根强 K 不等于接受；跟随减弱、分离关闭和重叠增加先进入单边到平衡的共享过渡；晚期最大突破可能属于异常延伸 |
 | [原趋势中的回调测试与恢复](../../trading_system/scenarios.md#五原趋势中的回调测试与恢复) | 09、11–17、19、21–22、37–39、43–46、49 | First Pullback、H/L 次序、Double Test、Flag、Breakout Pullback、EMA 首次测试、比例区域、趋势线和通道线测试 | 触及、收于均线另一侧和整根穿越不是同一事实；普通回调、转入平衡和结构破坏必须竞争 |
 | [双边结构边缘的反应与轮转](../../trading_system/scenarios.md#六双边结构边缘的反应与轮转) | 12、14、16、18–20、25–28、45–47、49 | Broad Channel、成熟 Range、Failed Breakout、Overshoot、Vacuum Test、Second-leg Trap | Broad Channel 保留倾斜方向和主要 Swing；成熟 Range 以公平区轮转为主；Second-leg Trap 必须保留“建立第二段预期—第二段出现—限制位置跟随不足—重新接受旧区域”的顺序 |
 | [成熟双向平衡的方向决断](../../trading_system/scenarios.md#七成熟双向平衡的方向决断) | 08、12、15、17–18、26–28、47–49 | TTR、Triangle、Expanding Triangle、ii、iii、ioi、大型 H&S、反复测试和无尽回调后的平衡 | 双向平衡不一定几何压缩，也不保证马上突破；TTR 仍有局部控制时先进入单边或回调，控制消失且边界成熟后才进入本场景 |
-| [成熟趋势的异常延伸与修正](../../trading_system/scenarios.md#八成熟趋势的异常延伸与修正) | 11、14–16、21、23–24、29、40、42、49 | Climax 候选、最大趋势 K、MAG、Final Flag、Wedge、Parabolic Wedge、外侧通道加速、Measuring/Exhaustion Gap | 高潮候选仍有继续、修正和平衡三条路径；形态名称不能提前证明反转 |
+| [成熟趋势的异常延伸与修正](../../trading_system/scenarios.md#八成熟趋势的异常延伸与修正) | 11、14–16、21、23–24、29、40、42、49 | Climax 候选、最大趋势 K、MAG、Final Flag、Wedge、Parabolic Wedge、外侧通道加速、Measuring/Exhaustion Gap | 高潮候选先在继续与修正之间判断；修正再由原方向恢复、稳定边界形成或主要结构破坏决定转移；形态名称不能提前证明反转 |
 | [趋势破坏后的控制转移](../../trading_system/scenarios.md#九趋势破坏后的控制转移) | 21–29、38–40、42、49、52 | 趋势线或主要 Swing 破坏、旧极值测试、HL/LH、Double Test、H&S、MTR、失败恢复 | MTR 是过程；首次结果常是区间，只有反向接受才能证明持续控制转移 |
+
+两种共享过渡不增加母场景：单边控制弱化而稳定边界与新控制均未形成时，按事实等待原控制恢复、平衡形成或控制转移；路径目标完成时，先固定旧路径为“实现”，再把目标区域作为新测试，按穿越、回试、拒绝、双边化或结构破坏重新进入上述六类。目标完成只结束旧路径，不完成任何新方向路径。
 
 ### 不属于市场场景的知识
 
