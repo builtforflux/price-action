@@ -36,7 +36,7 @@ Market Probability 描述某个市场 objective 在给定条件与 horizon 内�
 
 ### Evidence Convergence / Two Reasons
 
-市场状态、位置、控制、结构与触发等相对独立证据可以共同支持同一个结果路径。来源中的“two reasons”是最低提醒，不是固定打分；同一价格事实的多个同义标签、嵌套计数或重叠形态不得重复计票。
+市场状态、位置、控制、结构与触发等关系可以共同支持同一个结果路径。即使相关，也应保留各自增加的信息；重复命名不增加证据。来源中的“two reasons”不是固定打分或概率公式，具体归并由 Market 按比较对象、条件与作用判断。
 
 ### Evidence Update
 
