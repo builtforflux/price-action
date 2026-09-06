@@ -231,9 +231,13 @@ Success 与 failure 必须绑定预先声明的 outcome criterion：目标先到
 
 当前处置分别由[市场判断](../trading_system/market.md#38-首次建立与路径变化)、[账户执行](../trading_system/account.md)和[复盘与治理](../trading_system/governance.md)负责。
 
-### Scalp / Swing / TBTL
+### Scalp / Swing
 
-Scalp 追求较小目标，通常需要更高胜率；swing 接受正常 pullback 以换取更大目标。TBTL（Ten Bars, Two Legs）是常见时间与路径预期，不是硬性完成条件或价格目标。
+Scalp 以较小目标为主，通常不打算持有穿越正常回调；Swing 愿意承受正常回调以争取更大运动。两者说明本笔交易的目标与管理打算，按 [Trade](../trading_system/trade.md)确定前提、出场和期限。
+
+### TBTL
+
+TBTL（Ten Bars, Two Legs）描述特定市场运动的时间与结构预期。它可影响 Scalp 或 Swing 的背景判断，但两种交易方式都不自动要求采用它。适用背景、起点与周期选择见 [TBTL 与运动尺度](../trading_system/market.md#tbtl-与运动尺度)。
 
 ### Trapped In / Trapped Out / Pain Trade
 
