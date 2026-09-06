@@ -10,7 +10,7 @@
 | 结构视图 | 区域、Swing、线、测试、越界、回试、重叠、gap、H/L 次序，以及 Trend/Range、Channel、Double Test、Wedge、Flag、Triangle、MTR 等压缩视图 | [市场判断](../../trading_system/market.md) | 可复核价格关系、结构解释与多尺度关系 | 为每个名称建立平行策略流程 |
 | 价格表现 | 初始表现、后续跟随，以及在同一周期、运动、区域和问题中的相对优势 | [市场判断](../../trading_system/market.md) | 比较实际表现与合理预期，再更新测试、控制和路径 | 建立 Pressure 或连续性平行状态、固定 K 线质量评分，或把同一运动的多个名称重复计数 |
 | 状态判断 | 控制、接受/失败、成熟度、合理预期、预期差、转换和不确定性 | [市场判断](../../trading_system/market.md) | 当前状态评估与更新 | 把当前判断当作不可逆事实 |
-| 场景组合视图 | 来源中反复出现的市场组织、区域互动、合理预期、测试和竞争路径组合 | [常见市场场景](../../trading_system/scenarios.md) | 按当前问题形成相关条件路径 | 把唯一场景选择当成交易前提，或建立平行流程 |
+| 背景条件 | 来源中反复出现的市场组织、区域互动、合理预期、测试和竞争路径组合 | [常见市场场景](../../trading_system/scenarios.md) | 明确背景怎样改变正常预期、相关区域和反证，接续市场判断与机会 | 把唯一场景选择当成交易前提，或建立平行流程 |
 | 市场结果路径 | 延续、先修正后延续、区间旋转、突破接受、突破失败、反转过程及共享区域的方向作用 | [市场判断](../../trading_system/market.md) | 形成条件路径；每项被评价的预期有明确结果事件 | 把方向判断等同于可执行方案，或用新目标改写旧结果 |
 | 交易方案知识 | entry、trigger、stop、计划出场价、成本、数量、时间和管理的交换 | [交易决策](../../trading_system/trade.md) | 依据 Market 重要区域及作用制定和比较交易方案 | 混用不同 entry/stop/exit 的概率和回报，复制区域，或自创市场目标 |
 | 决策约束 | 证据独立性、方程、个人/账户边界、等待价值和过期条件 | [交易决策](../../trading_system/trade.md) | 是否建仓或加仓及方案快照 | 由 Reference 直接决定交易 |
@@ -35,8 +35,8 @@
 | 08A–D | Trend/TR bar、反转、内外包、ii、Signal Bar | K 线事实、局部响应和触发证据；不建立单 K 线许可 |
 | 09A–C | Pullback、H/L 次序、高阶计数、重置、多周期及相关管理案例 | 结构次序、恢复尝试和证据重置；Swing 后止损、整段结构止损、再入和逆势平仓只作为 Trade 事前规则候选，不自动由 H/L 名称触发 |
 | 10A–B | 实体、收盘、影线、突破和回调形成 Pressure | 保留本侧方向表达与持续性，以及相对对方的优势；同强和同弱分别解释波动与预期，不另存 Pressure 生命周期 |
-| 11A–D | Session、open/close、完整、body、micro、MA、measuring/exhaustion gaps | 带明确比较对象的分离关系、保持或关闭对初始表现与跟随的影响、目标候选及实时/事后边界 |
-| 12A–C | Trend / Trading Range、Breakout–Channel–Range | 状态连续谱、分层 fallback 和保守处理 |
+| 11A–D | Session、open/close、完整、body、micro、MA、measuring/exhaustion gaps | 带明确比较对象的分离关系、保持或关闭对初始表现与跟随的影响、目标候选及实时/事后边界；[11B](11B.md) 与 [14E](14E.md) 的长期远离 EMA、首次反侧 MAG、原极值测试与后续修正进入[均线首次测试变体](../../trading_system/scenarios.md#长期远离-ema-后的首次测试)，不保证最后一段或新极值 |
+| 12A–C | Trend / Trading Range、Breakout–Channel–Range | 状态连续谱；[12C](12C.md)、[13A](13A.md)、[14D](14D.md) 与 [14E](14E.md) 的不同判断层级进入[结构不清时的保守处理](../../trading_system/market.md#结构不清时的保守处理)，区分顶层方向不清、趋势强弱不清及两个双边状态之间的歧义 |
 | 13A–C | Always In、Trader's Equation、Scalp / Swing | 控制摘要、风险交换和管理尺度 |
 | 14A–E | Trend、Spike–Channel、紧/宽通道、小回调 | 结构状态、正常回调、止损距离与剩余空间 |
 | 15A–F | Breakout attempt、follow-through、surprise、失败和第二段 | 尝试—合理预期—初始表现—跟随—接受/失败证据链和结果路径 |
@@ -45,11 +45,11 @@
 | 17A–B | Microchannel、小回调趋势、首次微型趋势线突破和 TTR | 早期首次突破进入回调测试；晚期高潮例外进入异常延伸；低周期只优化执行，固定 K 数留证据 |
 | 18A–F | Range、BLSHS、BOM、LOM、vacuum、成功突破和第二段陷阱 | 区间旋转、突破判断、磁点完成后的重新测试；第二段陷阱进入“预期路径失败”的完整顺序，限价行为只作交易方案证据 |
 | 19A–E | Support / Resistance、magnet、多周期位置和 entry test | 共享重要区域、方向相对作用、目标候选、汇合和测试；目标完成后原磁吸作用消耗，目标区域转为新的当前测试 |
-| 20A–B | Leg 1 = Leg 2、Range/Breakout height | 结构投射和候选目标；目标完成后的更远延伸必须来自事前可见区域并重新建立路径，不能移动旧目标 |
+| 20A–B | Leg 1 = Leg 2、Range/Breakout height | [20B](20B.md) 的首开至末收实体跨度、完整突破与更大趋势段进入[突破高度投射](../../trading_system/market.md#突破高度与失败后的反向投射)；运行页固定各自的候选构造，反向投射与订单触发分开。小回调不确认失败，近端完成后的更远延伸另记路径；原图起点及视觉核验限制保留在逐讲材料 |
 | 21A–D | Minor/Major reversal、压力、TBTL 和早晚风险时点 | 反转结果路径、条件概率和管理尺度 |
 | 22A–D | 趋势破坏、旧极值测试、HL/LH、再入和重置 | MTR 过程视图、失效和证据重置 |
 | 23A–B | Final Flag 候选、晚段和事后确认 | 实时候选与事后结果消歧 |
-| 24A–E | Wedge、Parabolic Wedge、75/25 与突破后更新 | 三推视图、条件概率时点和少数路径 |
+| 24A–E | Wedge、Parabolic Wedge、75/25 与突破后更新 | 三推视图、条件概率时点和少数路径；[24C](24C.md) 的强突破改变结构后重启推动计数，进入[结构视图](../../trading_system/market.md#a-结构视图怎样共享事实)，保留运动与尺度边界 |
 | 25A–B | Double Test、Neckline、量度与失败链 | 第二次测试、投射和反向结果路径 |
 | 26A–B | Triangle / Expanding Triangle 的成熟度和尺度 | 压缩/突破模式视图；计数口径须保留 |
 | 27A–B | Head and Shoulders 的价格行为还原 | MTR 组件别名，不新增独立运行类别 |
@@ -58,7 +58,7 @@
 | 30A–E | 方程、风险、仓位、心理和计划 | 交易方案、计划损失和账户约束；冲突数学隔离 |
 | 31A–D | Scalp / Swing、目标、概率与成本 | 管理尺度和净交易方程 |
 | 32A–C | Stop / Limit / Market、Bracket/OCO 与成交现实 | 参与时点、停止触发/提前限价/回试限价/市价的选择；Limit 从位置区域到可观察参照、精确价格规则和成交前确认边界的构造；成交不确定性和残余订单对账 |
-| 33A–G | 结构 stop、mental stop、提前退出和风险 | 路径失效、全仓计划止损、平台实际止损和账户计划损失 |
+| 33A–G | 结构 stop、mental stop、提前退出和风险 | 路径失效、全仓计划止损、平台实际止损和账户计划损失；[33C](33C.md)、[33D](33D.md)、[39C](39C.md)、[39D](39D.md) 的强突破确认与 [12B](12B.md) 的未立即创新极值例外进入[主要与次要回调点](../../trading_system/market.md#主要与次要回调点)，由 [Trade 移动止损](../../trading_system/trade.md#34-移动止损)评价是否采用，普通新极值不自动升级参照 |
 | 34A–B | Initial / Actual / Account Risk 和统计问题；[34A](34A.md) p2703–2706、[34B](34B.md) p2714、[36B](36B.md) p2807 | [Trade 出场](../../trading_system/trade.md#35-出场目标与期限)将 Actual Risk 的盘中用途表达为已发生回调的距离投射；初始风险、历史结果和事后统计分别保留，数学冲突隔离 |
 | 35A–C | Scale-in 数学、层数、间距、共同 stop | 加权均价、完整计划后的最大计划损失和数量约束 |
 | 36A–B | 成交后更新、部分退出和目标变化 | 新目标另记市场预期，旧预测按原条件评价；持有、减仓、主动平仓及未来方案更新进入 Trade；原请求和实际成交由 Account 保留 |
@@ -81,20 +81,20 @@
 
 ## 三、场景归并覆盖
 
-以下六类及其“覆盖常见因果问题”的结论属于 **Repository synthesis**，不是课程原生分类，也不证明市场问题已被经验性穷尽。表中的课程范围只负责路由和检索来源。
+以下六个背景入口及其归并属于 **Repository synthesis**，不是课程原生分类，也不证明市场问题已被经验性穷尽。表中的课程范围只负责路由和检索来源。
 
-课程中的形态、Setup 和案例先还原为共同事实，再按当前问题查阅相关主题；主题可以同时适用，运行规则仍由[市场判断](../../trading_system/market.md)负责。
+课程中的形态、Setup 和案例先还原为共同事实，再按当前问题查阅相关主题。回撤、恢复和边界互动的共同判断由[市场判断](../../trading_system/market.md#36-区域互动与预期更新)负责；场景保留背景额外改变的预期、位置与反证。主题可以同时适用，不各自建立一套连续判断流程。
 
 ### 六类共同因果问题
 
-| 母场景 | 主要课程证据落点 | 归入的常见变体 | 必须保留的区别 |
+| 背景入口 | 主要课程证据落点 | 归入的常见变体 | 必须保留的区别 |
 | --- | --- | --- | --- |
-| [单边失衡继续扩展](../../trading_system/scenarios.md#四单边失衡继续扩展) | 10–18、37、41、43–44、47–49 | Breakout、Spike、Always In、Tight Channel、Small Pullback Trend、Microchannel、连续顺势收盘、直接延续或小回调后第二段 | 单根是否足够取决于背景及完成条件；跟随减弱、分离关闭和重叠增加改变恢复与平衡预期；晚期异常延伸再查高潮修正 |
-| [原趋势中的回调测试与恢复](../../trading_system/scenarios.md#五原趋势中的回调测试与恢复) | 09、11–17、19、21–22、37–39、43–46、49 | First Pullback、H/L 次序、Double Test、Flag、Breakout Pullback、EMA 首次测试、比例区域、趋势线和通道线测试 | 触及、收于均线另一侧和整根穿越不是同一事实；普通回调、转入平衡和结构破坏必须竞争 |
-| [双边结构边缘的反应与轮转](../../trading_system/scenarios.md#六双边结构边缘的反应与轮转) | 12、14、16、18–20、25–28、45–47、49 | Broad Channel、成熟 Range、Failed Breakout、Overshoot、Vacuum Test、Second-leg Trap | Broad Channel 保留倾斜方向和主要 Swing；成熟 Range 以公平区轮转为主；Second-leg Trap 必须保留“建立第二段预期—第二段出现—限制位置跟随不足—重新接受旧区域”的顺序 |
-| [成熟双向平衡的方向决断](../../trading_system/scenarios.md#七成熟双向平衡的方向决断) | 08、12、15、17–18、26–28、47–49 | TTR、Triangle、Expanding Triangle、ii、iii、ioi、大型 H&S、反复测试和无尽回调后的平衡 | 双向平衡不一定几何压缩，也不保证马上突破；局部控制与外层平衡分别按对应边界和尺度判断 |
-| [成熟趋势的异常延伸与修正](../../trading_system/scenarios.md#八成熟趋势的异常延伸与修正) | 11、14–16、21、23–24、29、40、42、49 | Climax 候选、最大趋势 K、MAG、Final Flag、Wedge、Parabolic Wedge、外侧通道加速、Measuring/Exhaustion Gap | 高潮候选先在继续与修正之间判断；修正再由原方向恢复、稳定边界形成或主要结构破坏决定转移；形态名称不能提前证明反转 |
-| [旧控制受损后的恢复与反向发展](../../trading_system/scenarios.md#九旧控制受损后的恢复与反向发展) | 21–29、38–40、42、49、52 | 趋势线或主要 Swing 破坏、旧极值测试、HL/LH、Double Test、H&S、MTR、失败恢复 | 早期反向 Swing 可以在旧持续控制仍存在时形成；持续控制转移另看反方延伸与正常回调能力 |
+| [单边失衡继续扩展](../../trading_system/scenarios.md#三单边失衡继续扩展) | 10–18、37、41、43–44、47–49 | Breakout、Spike、Always In、Tight Channel、Small Pullback Trend、Microchannel、连续顺势收盘、直接延续或小回调后第二段 | 单根是否足够取决于背景及完成条件；跟随减弱、分离关闭和重叠增加改变恢复与平衡预期；晚期异常延伸再查高潮修正 |
+| [原趋势中的回调测试与恢复](../../trading_system/scenarios.md#四原趋势中的回调测试与恢复) | 09、11–17、19、21–22、37–39、43–46、49 | First Pullback、H/L 次序、Double Test、Flag、Breakout Pullback、EMA 首次测试、比例区域、趋势线和通道线测试 | 触及、收于均线另一侧和整根穿越不是同一事实；普通回调、转入平衡和结构破坏必须竞争 |
+| [双边结构边缘的反应与轮转](../../trading_system/scenarios.md#五双边结构边缘的反应与轮转) | 12、14、16、18–20、25–28、45–47、49 | Broad Channel、成熟 Range、Failed Breakout、Overshoot、Vacuum Test、Second-leg Trap | Broad Channel 保留倾斜方向和主要 Swing；成熟 Range 以公平区轮转为主；Second-leg Trap 必须保留“建立第二段预期—第二段出现—限制位置跟随不足—重新接受旧区域或反方向恢复”的顺序 |
+| [成熟双向平衡的方向决断](../../trading_system/scenarios.md#六成熟双向平衡的方向决断) | 08、12、15、17–18、26–28、47–49 | TTR、Triangle、Expanding Triangle、ii、iii、ioi、大型 H&S、反复测试和无尽回调后的平衡 | 双向平衡不一定几何压缩，也不保证马上突破；局部控制与外层平衡分别按对应边界和尺度判断 |
+| [成熟趋势的异常延伸与修正](../../trading_system/scenarios.md#七成熟趋势的异常延伸与修正) | 11、14–16、21、23–24、29、40、42、49 | Climax 候选、最大趋势 K、MAG、Final Flag、Wedge、Parabolic Wedge、外侧通道加速、Measuring/Exhaustion Gap | 高潮候选同时比较继续与修正；修正中的原方向恢复、相对平衡与反向发展按[共同判断](../../trading_system/market.md#回撤与恢复怎样改变原判断)更新，稳定边界另用于边缘机会；形态名称不能提前证明反转 |
+| [旧控制受损后的恢复与反向发展](../../trading_system/scenarios.md#八旧控制受损后的恢复与反向发展) | 21–29、38–40、42、49、52 | 趋势线或主要 Swing 破坏、旧极值测试、HL/LH、Double Test、H&S、MTR、失败恢复 | 早期反向 Swing 可以在旧持续控制仍存在时形成；持续控制转移另看反方延伸与正常回调能力 |
 
 单边控制弱化时比较原方向恢复、平衡形成和反方发展。目标完成固定旧结果，目标区域上的新事实仍可支持延伸或反向预期；Market 持续判断，Trade 重评实际仓位。这些关系属于主流程，不另设过渡状态。
 
@@ -111,16 +111,6 @@
 | Stop、Limit、Market、Buy the Close / Sell the Close、Scalp/Swing、加减仓、宽窄止损 | 交易决策或账户执行 | 属于交易方案和仓位管理，不是市场状态 |
 | Limit Order Market | 市场状态证据；具体 Limit 订单另交交易决策 | 双向逆向参与反复有效可以支持平衡解释，但不能直接许可某张 Limit 订单 |
 | 百分比、固定 K 数、ticks/pips、机构或 HFT 叙事 | 证据、研究候选或隔离项 | 缺少当前产品、分母、判断时点、校准或可观察因果 |
-
-### 01–52 的主要去向
-
-- 01–07：共同语言、产品事实、选择边界和纪律；进入事实、账户配置或复盘，不制造市场场景。
-- 08–10：K 线、局部结构和 Pressure；成为六类场景共享的事实、初始表现、跟随与相对优势。
-- 11–18：Gap、Trend/Range、Channel、Breakout 和 Range 行为；主要进入前五类，并提供共同接受/失败语法。
-- 19–29：区域、目标、反转、Wedge、Double Test、Triangle、H&S 和 Climax；进入重要区域图、区域作用以及六类场景，名称本身不进入流程。
-- 30–36：方程、入场、止损、数量、加仓和管理；进入交易决策、账户执行或冲突隔离，不是市场场景。
-- 37–49：六类场景的综合与日内案例；Session 只作为观察边界和期限修正，不形成第七类。
-- 50–52：交易风格、周期一致、指标边界、持仓止损和出场；主要进入交易、账户和复盘，前提变化可改变当前采用的市场预期与未来管理。
 
 以上映射说明各讲已经识别出的主要知识类别具有共同链路中的候选去向。它不能单独证明每条 Claim 的条件、例外、失效和重置都已迁移；该结论仍需由逐条来源锚点、冲突状态与运行规则交接共同证明。覆盖也不表示所有原图已视觉复原，或课程数字已经可用于生产。
 
