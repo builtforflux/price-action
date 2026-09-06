@@ -89,12 +89,12 @@
 
 | 背景入口 | 主要课程证据落点 | 归入的常见变体 | 必须保留的区别 |
 | --- | --- | --- | --- |
-| [单边失衡继续扩展](../../trading_system/scenarios.md#三单边失衡继续扩展) | 10–18、37、41、43–44、47–49 | Breakout、Spike、Always In、Tight Channel、Small Pullback Trend、Microchannel、连续顺势收盘、直接延续或小回调后第二段 | 单根是否足够取决于背景及完成条件；跟随减弱、分离关闭和重叠增加改变恢复与平衡预期；晚期异常延伸再查高潮修正 |
-| [原趋势中的回调测试与恢复](../../trading_system/scenarios.md#四原趋势中的回调测试与恢复) | 09、11–17、19、21–22、37–39、43–46、49 | First Pullback、H/L 次序、Double Test、Flag、Breakout Pullback、EMA 首次测试、比例区域、趋势线和通道线测试 | 触及、收于均线另一侧和整根穿越不是同一事实；普通回调、转入平衡和结构破坏必须竞争 |
-| [双边结构边缘的反应与轮转](../../trading_system/scenarios.md#五双边结构边缘的反应与轮转) | 12、14、16、18–20、25–28、45–47、49 | Broad Channel、成熟 Range、Failed Breakout、Overshoot、Vacuum Test、Second-leg Trap | Broad Channel 保留倾斜方向和主要 Swing；成熟 Range 以公平区轮转为主；第二段接近限制位置时先比较延续与陷阱风险，确认 Second-leg Trap 时保留“建立第二段预期—第二段出现—限制位置跟随不足—重新接受旧区域或反方向恢复”的顺序 |
-| [成熟双向平衡的方向决断](../../trading_system/scenarios.md#六成熟双向平衡的方向决断) | 08、12、15、17–18、26–28、47–49 | TTR、Triangle、Expanding Triangle、ii、iii、ioi、大型 H&S、反复测试和无尽回调后的平衡 | 双向平衡不一定几何压缩，也不保证马上突破；局部控制与外层平衡分别按对应边界和尺度判断 |
-| [成熟趋势的异常延伸与修正](../../trading_system/scenarios.md#七成熟趋势的异常延伸与修正) | 11、14–16、21、23–24、29、40、42、49 | Climax 候选、最大趋势 K、MAG、Final Flag、Wedge、Parabolic Wedge、外侧通道加速、Measuring/Exhaustion Gap | 高潮候选同时比较继续与修正；修正中的原方向恢复、相对平衡与反向发展按[共同判断](../../trading_system/market.md#回撤与恢复怎样改变原判断)更新，稳定边界另用于边缘机会；形态名称不能提前证明反转 |
-| [旧控制受损后的恢复与反向发展](../../trading_system/scenarios.md#八旧控制受损后的恢复与反向发展) | 21–29、38–40、42、49、52 | 趋势线或主要 Swing 破坏、旧极值测试、HL/LH、Double Test、H&S、MTR、失败恢复 | 早期反向 Swing 可以在旧持续控制仍存在时形成；持续控制转移另看反方延伸与正常回调能力 |
+| [趋势继续推进](../../trading_system/scenarios.md#三趋势继续推进) | 10–18、37、41、43–44、47–49 | Breakout、Spike、Always In、Tight Channel、Small Pullback Trend、Microchannel、连续顺势收盘、直接延续或小回调后第二段 | 单根是否足够取决于背景及完成条件；跟随减弱、分离关闭和重叠增加改变恢复与平衡预期；晚期异常延伸再查高潮修正 |
+| [趋势中出现回调](../../trading_system/scenarios.md#四趋势中出现回调) | 09、11–17、19、21–22、37–39、43–46、49 | First Pullback、H/L 次序、Double Test、Flag、Breakout Pullback、EMA 首次测试、比例区域、趋势线和通道线测试 | 触及、收于均线另一侧和整根穿越不是同一事实；普通回调、转入平衡和结构破坏必须竞争 |
+| [价格到达区间或宽通道边缘](../../trading_system/scenarios.md#五价格到达区间或宽通道边缘) | 12、14、16、18–20、25–28、45–47、49 | Broad Channel、成熟 Range、Failed Breakout、Overshoot、Vacuum Test、Second-leg Trap | Broad Channel 保留倾斜方向和主要 Swing；成熟 Range 以公平区轮转为主；第二段接近限制位置时先比较延续与陷阱风险，确认 Second-leg Trap 时保留“建立第二段预期—第二段出现—限制位置跟随不足—重新接受旧区域或反方向恢复”的顺序 |
+| [区间反复测试边界](../../trading_system/scenarios.md#六区间反复测试边界) | 08、12、15、17–18、26–28、47–49 | TTR、Triangle、Expanding Triangle、ii、iii、ioi、大型 H&S、反复测试和无尽回调后的平衡 | 双向平衡不一定几何压缩，也不保证马上突破；局部控制与外层平衡分别按对应边界和尺度判断 |
+| [趋势异常加速或持续过久](../../trading_system/scenarios.md#七趋势异常加速或持续过久) | 11、14–16、21、23–24、29、40、42、49 | Climax 候选、最大趋势 K、MAG、Final Flag、Wedge、Parabolic Wedge、外侧通道加速、Measuring/Exhaustion Gap | 高潮候选同时比较继续与修正；修正中的原方向恢复、相对平衡与反向发展按[共同判断](../../trading_system/market.md#回撤与恢复怎样改变原判断)更新，稳定边界另用于边缘机会；形态名称不能提前证明反转 |
+| [趋势受损后尝试反转](../../trading_system/scenarios.md#八趋势受损后尝试反转) | 21–29、38–40、42、49、52 | 趋势线或主要 Swing 破坏、旧极值测试、HL/LH、Double Test、H&S、MTR、失败恢复 | 早期反向 Swing 可以在旧持续控制仍存在时形成；持续控制转移另看反方延伸与正常回调能力 |
 
 单边控制弱化时比较原方向恢复、平衡形成和反方发展。目标完成固定旧结果，目标区域上的新事实仍可支持延伸或反向预期；Market 持续判断，Trade 重评实际仓位。这些关系属于主流程，不另设过渡状态。
 
@@ -193,8 +193,8 @@ Measuring gap 候选、potential exhaustion 和 climax bar 在结果出现前不
 | 突破或主要反转支持 Swing 时，可参考约十根、两段的时间与结构目标；普通强突破的第二段预期不自动附带此尺度 | [31A p2420、2426–2428](31A.md) | [TBTL 与运动尺度](../../trading_system/market.md#tbtl-与运动尺度) |
 | 强反向微通道可再走第二段，使首次原向恢复失败；外层趋势稍后恢复仍可成立 | [17B p1431–1432](17B.md) | [强回调](../../trading_system/scenarios.md#强回调自身也可能有第二段) |
 | 同一形态按最高相关周期观察；低周期两小段不代替外层修正，时间、段数、价格及 2R 分别评价 | [21D p1851–1854、1862–1863](21D.md)、[29E p2292](29E.md) | [TBTL 与运动尺度](../../trading_system/market.md#tbtl-与运动尺度) |
-| 楔形、Double Test、Final Flag 有足够反向压力与尺度才支持反向 Swing；局部小形态可只产生次要反转 | [24A p1975–1981](24A.md)、[25B p2104](25B.md)、[23B p1959–1969](23B.md) | [反向发展](../../trading_system/scenarios.md#八旧控制受损后的恢复与反向发展)、[Final Flag](../../trading_system/scenarios.md#哪些背景会改变普通回调预期) |
-| 微通道的异常持续可支持横向或反向修正，无须超大 K；首次逆向仍可失败，普通小回调趋势不自动成为高潮 | [42B p383–386](42B.md) | [异常延伸](../../trading_system/scenarios.md#七成熟趋势的异常延伸与修正) |
+| 楔形、Double Test、Final Flag 有足够反向压力与尺度才支持反向 Swing；局部小形态可只产生次要反转 | [24A p1975–1981](24A.md)、[25B p2104](25B.md)、[23B p1959–1969](23B.md) | [反向发展](../../trading_system/scenarios.md#八趋势受损后尝试反转)、[Final Flag](../../trading_system/scenarios.md#哪些背景会改变普通回调预期) |
+| 微通道的异常持续可支持横向或反向修正，无须超大 K；首次逆向仍可失败，普通小回调趋势不自动成为高潮 | [42B p383–386](42B.md) | [异常延伸](../../trading_system/scenarios.md#七趋势异常加速或持续过久) |
 | 顺势通道突破失败后研究内部及对侧；16E 的持续成功分支按新强突破研究顺向 TBTL | [16E p1344–1360](16E.md) | [通道突破](../../trading_system/scenarios.md#通道突破的方向与目标) |
 | 反向破趋势线后，强紧通道可主要横向修正；较弱通道更支持测试通道起点，须与对侧边界及 spike 起点区分 | [14C p952–953](14C.md)、[Al 2021 强弱通道对照](https://www.brookstradingcourse.com/futures-market/market-outlook-2021-sp500-emini/)（`SRC-OUTLOOK-SP500-2021`） | [通道目标](../../trading_system/scenarios.md#通道突破的方向与目标) |
 | 修正后可恢复原趋势；新强突破或新高潮使用新事实，后一次修正不倒记为前次失败 | [29D p2273–2276](29D.md) | [路径变化](../../trading_system/market.md#38-首次建立与路径变化) |
