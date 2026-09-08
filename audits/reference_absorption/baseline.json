@@ -1,0 +1,2016 @@
+{
+  "baseline_commit": "41b3ee968a8ba2af18f9a0754eb2f399fa6e1f95",
+  "scope": "当前工作区，含未提交 trading_system/practice；reference 英文课件思想，中文翻译纠错不作为运行规则",
+  "files": {
+    "practice/README.md": {
+      "sha256": "d9cb06728843097d6df7e939c8f843857bb3fa672870cffa0c1e89446f69be3f",
+      "lines": 282,
+      "review": "other_materials.md"
+    },
+    "reference/README.md": {
+      "sha256": "e697f81f686b3f8ecc90f81814da0625a51ec714ecba7221a805b77f6b9e06ee",
+      "lines": 51,
+      "review": "other_materials.md"
+    },
+    "reference/course/01.md": {
+      "sha256": "007f6e0975c2ee9075e6748798dca388cd509f3d63c053937e21d9f63b70823b",
+      "lines": 96,
+      "review": "lessons/01.md"
+    },
+    "reference/course/02A.md": {
+      "sha256": "e7243f6ca5a04f08354075353ecdade8f0ea620d2bf2759f79d43ffa4aefe0b1",
+      "lines": 102,
+      "review": "lessons/02A.md"
+    },
+    "reference/course/02B.md": {
+      "sha256": "725fe505490e06b5654366e573525582736c26dba799c19ee5b043c1d2f00550",
+      "lines": 98,
+      "review": "lessons/02B.md"
+    },
+    "reference/course/02C.md": {
+      "sha256": "ed49b0284401c07a8b8085491a19236e442bf40aae2097799aaf7bbfdd648f08",
+      "lines": 97,
+      "review": "lessons/02C.md"
+    },
+    "reference/course/02D.md": {
+      "sha256": "9f30fa90538f997533d0d71e3ed4fcfdf2ebd19f28ab96e58faf6ea76ce080e1",
+      "lines": 98,
+      "review": "lessons/02D.md"
+    },
+    "reference/course/03A.md": {
+      "sha256": "20781db0a1c39f21699b2f6568e6217ca170eec292b501a965b3a10aac1e23cc",
+      "lines": 100,
+      "review": "lessons/03A.md"
+    },
+    "reference/course/03B.md": {
+      "sha256": "9decbf577d604db1751fd74aa52aadfdf3fd8e8af6174abe14282e6f21df9930",
+      "lines": 91,
+      "review": "lessons/03B.md"
+    },
+    "reference/course/03C.md": {
+      "sha256": "b013c147c82d2857a2994f03ab52230ba3ca16e61a3022f2113edd8cb445403d",
+      "lines": 90,
+      "review": "lessons/03C.md"
+    },
+    "reference/course/03D.md": {
+      "sha256": "faea9fe9094a8e5e9b57d84be3e3cde17299f8450f699a7e834b3ddaa484ad0a",
+      "lines": 84,
+      "review": "lessons/03D.md"
+    },
+    "reference/course/03E.md": {
+      "sha256": "06508e855b1ca93291521b10773c0ac0db1b892251e034163031a60fd7bf1f8a",
+      "lines": 98,
+      "review": "lessons/03E.md"
+    },
+    "reference/course/04.md": {
+      "sha256": "6a6b0ee741f4acc8d3866febca29177bda0520e3b9979e7f14993cd7b5584f3b",
+      "lines": 88,
+      "review": "lessons/04.md"
+    },
+    "reference/course/05.md": {
+      "sha256": "992d65cbcc796f16e8b3cc9b273ba78639be11fd556f231aec905948f2c31f64",
+      "lines": 122,
+      "review": "lessons/05.md"
+    },
+    "reference/course/06.md": {
+      "sha256": "42ddf8f24659acec78f756be5aa3a8dbb63cebb2baf15f28dc80215d31478ee1",
+      "lines": 110,
+      "review": "lessons/06.md"
+    },
+    "reference/course/07A.md": {
+      "sha256": "2d8c8f79feda99d645874e1ed7dadb1b059c53c396eb2f5055d0795b8990e8f8",
+      "lines": 107,
+      "review": "lessons/07A.md"
+    },
+    "reference/course/07B.md": {
+      "sha256": "ab408128dbd941377f6806e13968590020ddf4a854287d098d8039e1286f01df",
+      "lines": 99,
+      "review": "lessons/07B.md"
+    },
+    "reference/course/08A.md": {
+      "sha256": "0a8eb98364c4a3256c1e206ceb3f26fc5e6f19aee91168a3f2833d47c5c4cae6",
+      "lines": 111,
+      "review": "lessons/08A.md"
+    },
+    "reference/course/08B.md": {
+      "sha256": "af9d8d5e05dbecf84bf8152dc8b271db22871ac6a43ceb67f5d54325989dc499",
+      "lines": 102,
+      "review": "lessons/08B.md"
+    },
+    "reference/course/08C.md": {
+      "sha256": "a4575c7c617995bb60d3e913a7965f01d9c6560089fc65b7598c7535636240bc",
+      "lines": 115,
+      "review": "lessons/08C.md"
+    },
+    "reference/course/08D.md": {
+      "sha256": "4786c9fae4ad114b6db5598959b56ea36c1408b62cdbcf460cb4a3e44351565d",
+      "lines": 116,
+      "review": "lessons/08D.md"
+    },
+    "reference/course/09A.md": {
+      "sha256": "5c5bb3c9ccf847d52000decff98867c8ff790bc4de591757923e48a0ba62704d",
+      "lines": 126,
+      "review": "lessons/09A.md"
+    },
+    "reference/course/09B.md": {
+      "sha256": "1fdfb50e9f74abbc0666007d8e6e59db4019f604cef5a7c0142fb3a9ff7c0729",
+      "lines": 120,
+      "review": "lessons/09B.md"
+    },
+    "reference/course/09C.md": {
+      "sha256": "f1c37202f2c6f46b09952344e0c2ad9d905d6a0b9426bbf05de248158ce52722",
+      "lines": 113,
+      "review": "lessons/09C.md"
+    },
+    "reference/course/10A.md": {
+      "sha256": "2f849493c54d3cff210b332184fa1d203923f3ca9a44f37e9042384b8940f2eb",
+      "lines": 106,
+      "review": "lessons/10A.md"
+    },
+    "reference/course/10B.md": {
+      "sha256": "5eed51062c2f76248a5d9974bff825ef8e85bfc21cbcf41d0136bdf971a1dae8",
+      "lines": 111,
+      "review": "lessons/10B.md"
+    },
+    "reference/course/11A.md": {
+      "sha256": "642b1631ee98d8f7b1aa4c8760af1f9a8e9b5481a65015708139f26cfb8fb746",
+      "lines": 135,
+      "review": "lessons/11A.md"
+    },
+    "reference/course/11B.md": {
+      "sha256": "16bbbaf2a747c2567dced578654125308e6ca4cad037867d23f5232ee3c41539",
+      "lines": 127,
+      "review": "lessons/11B.md"
+    },
+    "reference/course/11C.md": {
+      "sha256": "1230a150962a8ad71c89cafebc70acac3080c844c7f60c78e036710d52252fdc",
+      "lines": 130,
+      "review": "lessons/11C.md"
+    },
+    "reference/course/11D.md": {
+      "sha256": "10cc725f552b49cf398c37e7e2a49782fa25f854ff22ea5dd48bb81472238d74",
+      "lines": 131,
+      "review": "lessons/11D.md"
+    },
+    "reference/course/12A.md": {
+      "sha256": "8c6a867517da27f2580936ffa5457c9e18bb03a476682789e269e738981032ad",
+      "lines": 124,
+      "review": "lessons/12A.md"
+    },
+    "reference/course/12B.md": {
+      "sha256": "66404cf7afe9a14ec861ef6a6b72a09aafe56aa13202de6e4ed32bca9b217ab9",
+      "lines": 144,
+      "review": "lessons/12B.md"
+    },
+    "reference/course/12C.md": {
+      "sha256": "ea5d6840e33790bc3889abeff68e5ecabfc2d6d51b5c86ef67d6982aa955858a",
+      "lines": 152,
+      "review": "lessons/12C.md"
+    },
+    "reference/course/13A.md": {
+      "sha256": "ff113143723fe8d85574243030b5ad983d3e26d93139fd7c2b165343084946d7",
+      "lines": 149,
+      "review": "lessons/13A.md"
+    },
+    "reference/course/13B.md": {
+      "sha256": "4ff39b209ced7b8a527fccdfd37bcb8b5a22bfe7e795047da9c13da7e3dae63e",
+      "lines": 149,
+      "review": "lessons/13B.md"
+    },
+    "reference/course/13C.md": {
+      "sha256": "0a2ad2489afddfc2889e07226c0f8d67850eee07133dcbd1944c597d06016b93",
+      "lines": 116,
+      "review": "lessons/13C.md"
+    },
+    "reference/course/14A.md": {
+      "sha256": "eac482f0685d377b8922e495426ca07833d60c40813b529809d15b6a3e899c4f",
+      "lines": 125,
+      "review": "lessons/14A.md"
+    },
+    "reference/course/14B.md": {
+      "sha256": "8c9335783f78a6714ba6f52c4a113fb3808f49b92c316235f51a5b796d11160c",
+      "lines": 151,
+      "review": "lessons/14B.md"
+    },
+    "reference/course/14C.md": {
+      "sha256": "16cf3e3dd195d43552c72acf0bbffda1d42980fe62b4e8387a15352023ee63d3",
+      "lines": 145,
+      "review": "lessons/14C.md"
+    },
+    "reference/course/14D.md": {
+      "sha256": "dc66d92de5923ce34286dec5698407bcb2d25184e44fe71089938673a9f758f6",
+      "lines": 159,
+      "review": "lessons/14D.md"
+    },
+    "reference/course/14E.md": {
+      "sha256": "45773eb13949d0060bbdb6d4a8b1941dfe3dc50e2dc0f2f3915b5a3c3139cd3c",
+      "lines": 156,
+      "review": "lessons/14E.md"
+    },
+    "reference/course/15A.md": {
+      "sha256": "cdf2e68a762c000e2c2fd7b0c695c4314e6dea78d92182f3b3ef17fc726bf91f",
+      "lines": 135,
+      "review": "lessons/15A.md"
+    },
+    "reference/course/15B.md": {
+      "sha256": "20a771625a22dbd16fcef0b4548c1a93d975c4aa35b749876e129715f0f1f21c",
+      "lines": 145,
+      "review": "lessons/15B.md"
+    },
+    "reference/course/15C.md": {
+      "sha256": "98ec6f6a4c50c7ba4d02db8ef4fcf88b3f1c749f9dab3ff1390175d60021eaab",
+      "lines": 133,
+      "review": "lessons/15C.md"
+    },
+    "reference/course/15D.md": {
+      "sha256": "3a7eaebb01d933799a61fe51a47b24a120da48e1ca401a899c238844df27bf3c",
+      "lines": 158,
+      "review": "lessons/15D.md"
+    },
+    "reference/course/15E.md": {
+      "sha256": "4e453c908d7174939929caec5dd291980411324d76897b0540457ef15f23f022",
+      "lines": 111,
+      "review": "lessons/15E.md"
+    },
+    "reference/course/15F.md": {
+      "sha256": "d8d5c7e85927fb57188b732f85eba252b931e476eafe39a8e6d77254dca5d9ac",
+      "lines": 134,
+      "review": "lessons/15F.md"
+    },
+    "reference/course/15G.md": {
+      "sha256": "c9e56946ff6d9c780666de9042cc2e71f9b0d5b38b06657452a7c807331b1bfc",
+      "lines": 131,
+      "review": "lessons/15G.md"
+    },
+    "reference/course/16A.md": {
+      "sha256": "c539490aa581db047c1b3b5a343dfba0199d32a6309d96309358ec7928cc3328",
+      "lines": 169,
+      "review": "lessons/16A.md"
+    },
+    "reference/course/16B.md": {
+      "sha256": "6c67fffba6d2c1cc7460f5b208d0b0db627ba1c1ce4022fe43c597a09e54f53e",
+      "lines": 167,
+      "review": "lessons/16B.md"
+    },
+    "reference/course/16C.md": {
+      "sha256": "bf7297ea68a61ddd2c2de66cb64e9e6190f207609083ce69cbed2027d557843d",
+      "lines": 144,
+      "review": "lessons/16C.md"
+    },
+    "reference/course/16D.md": {
+      "sha256": "53d0cec05afcb7592115bf577e675fce19a3a22f6a08351d00bbeea37b06cd21",
+      "lines": 68,
+      "review": "lessons/16D.md"
+    },
+    "reference/course/16E.md": {
+      "sha256": "9d1ef3f36fa97f81990a089511f2b0d0d0f97b429a856313278c5a0a0ae5de65",
+      "lines": 72,
+      "review": "lessons/16E.md"
+    },
+    "reference/course/16F.md": {
+      "sha256": "b85e476f1eecd062a19abacf35c9062cb51308ac8ddaddf7101eec37244f2a36",
+      "lines": 74,
+      "review": "lessons/16F.md"
+    },
+    "reference/course/17A.md": {
+      "sha256": "4328d496ecc851053cc4779426be39305d66e238406ad1b8087618e4378be3d7",
+      "lines": 70,
+      "review": "lessons/17A.md"
+    },
+    "reference/course/17B.md": {
+      "sha256": "ee5b25f28ad92ad8f3cd0b6a3d3a99063f73ce6cb3a6cee7e056d31cc4ca25ec",
+      "lines": 82,
+      "review": "lessons/17B.md"
+    },
+    "reference/course/18A.md": {
+      "sha256": "13e890962f7adefd55b8d820bcd729523eb96ff2ff20adcdf90e63ca3125a8a0",
+      "lines": 81,
+      "review": "lessons/18A.md"
+    },
+    "reference/course/18B.md": {
+      "sha256": "d8700bb746027de05f6eb8ce1be658ccb1a15a7fae13f374e833acc0b1fbdef9",
+      "lines": 75,
+      "review": "lessons/18B.md"
+    },
+    "reference/course/18C.md": {
+      "sha256": "919dac298fd5528a4ae32aee63246e6b0cbdce27077e370cb9513f2e0fa00e90",
+      "lines": 88,
+      "review": "lessons/18C.md"
+    },
+    "reference/course/18D.md": {
+      "sha256": "2debed02762808cc1592da7f1d3ff23f20fd899e8fcd7829a4e31d26ac5eeb38",
+      "lines": 72,
+      "review": "lessons/18D.md"
+    },
+    "reference/course/18E.md": {
+      "sha256": "d4621a3ff0a461230526ee3ef9ab9bb83dd5b412b499b54773850a17c156ee68",
+      "lines": 76,
+      "review": "lessons/18E.md"
+    },
+    "reference/course/18F.md": {
+      "sha256": "6fdb37178a5fd2d17ba186a72c4e21a5f1bbea1d5a36334fd28b526243dadf3d",
+      "lines": 75,
+      "review": "lessons/18F.md"
+    },
+    "reference/course/19A.md": {
+      "sha256": "9327ce0fa9f74b52c43a94c2d3e798a26be4c69db8bb73529bbd6facdd8b6934",
+      "lines": 83,
+      "review": "lessons/19A.md"
+    },
+    "reference/course/19B.md": {
+      "sha256": "071a6d607de269315e15174df59b72a17019c01f9570881999675f92ea5e99e4",
+      "lines": 76,
+      "review": "lessons/19B.md"
+    },
+    "reference/course/19C.md": {
+      "sha256": "1e9f3b6f1566139c681c80d41f69fc14ad05c5de0e5fbc9338c6ae5aa141360f",
+      "lines": 70,
+      "review": "lessons/19C.md"
+    },
+    "reference/course/19D.md": {
+      "sha256": "ad4c6cf9aa8daa51f8518dd7b80fede6604a529c41232b294b3f6761dce7852f",
+      "lines": 68,
+      "review": "lessons/19D.md"
+    },
+    "reference/course/19E.md": {
+      "sha256": "061a97c29deec20b0046979f06df75a6da3761c051115c553f1aec74e08823cd",
+      "lines": 76,
+      "review": "lessons/19E.md"
+    },
+    "reference/course/20A.md": {
+      "sha256": "b3435f568e51c9e4d3eefd57e02003da1aca83a498369d2da4dbe8e276782db6",
+      "lines": 79,
+      "review": "lessons/20A.md"
+    },
+    "reference/course/20B.md": {
+      "sha256": "43ca90eaee84f7cb6f2f4c5c306a0f96d77909db0a7b381c44fd71a85960ee8d",
+      "lines": 75,
+      "review": "lessons/20B.md"
+    },
+    "reference/course/21A.md": {
+      "sha256": "d67643036921dfbdd403a4922ba8f96de70c065488ee44b39b7cac99efddfdb7",
+      "lines": 74,
+      "review": "lessons/21A.md"
+    },
+    "reference/course/21B.md": {
+      "sha256": "c383654283c9fe4822803428a2c195b563cb5316bbf74f5f2d754a9c50a37242",
+      "lines": 69,
+      "review": "lessons/21B.md"
+    },
+    "reference/course/21C.md": {
+      "sha256": "86b72eb8b872dec2388cad6abed16a5cd86ed4b41124547faf76b366c137734a",
+      "lines": 73,
+      "review": "lessons/21C.md"
+    },
+    "reference/course/21D.md": {
+      "sha256": "4953587baa734af553f5b2bed0b4c503b65f38fd2258c34021a47bef6a2e37d1",
+      "lines": 75,
+      "review": "lessons/21D.md"
+    },
+    "reference/course/22A.md": {
+      "sha256": "656fb83da7fea406dd23f7d91eed6bf70173267cc7f034ca4d31b8f793be6ffa",
+      "lines": 77,
+      "review": "lessons/22A.md"
+    },
+    "reference/course/22B.md": {
+      "sha256": "a6b72842f6e9c9da079990627a2c722eea9eace41cb29207d778c565d9b59e23",
+      "lines": 67,
+      "review": "lessons/22B.md"
+    },
+    "reference/course/22C.md": {
+      "sha256": "8652c388786a299df8dcd673b877eef16fa94d55b71bc5e9aaea0e3848914354",
+      "lines": 72,
+      "review": "lessons/22C.md"
+    },
+    "reference/course/22D.md": {
+      "sha256": "e2359eb147bba038d2be3b79ba4c79aa1fa2b01f15c614633f18f34521a15f1e",
+      "lines": 77,
+      "review": "lessons/22D.md"
+    },
+    "reference/course/23A.md": {
+      "sha256": "ab97df165934125927820f92b888d3e973da89acb5b77ba8d0aa7f75be22d449",
+      "lines": 65,
+      "review": "lessons/23A.md"
+    },
+    "reference/course/23B.md": {
+      "sha256": "66f5dc85fc9db31fb763754ec0338b97c7479d62f0c8f4460a657c746d26d200",
+      "lines": 69,
+      "review": "lessons/23B.md"
+    },
+    "reference/course/24A.md": {
+      "sha256": "07fe6d93ad53734cd3d9818bbbf8005f8c5b63d0652341be420d619a8ac54abb",
+      "lines": 76,
+      "review": "lessons/24A.md"
+    },
+    "reference/course/24B.md": {
+      "sha256": "d0955b7f8104820ce824c87357cae3e954fbf6406835021c63c59f2e827bfb74",
+      "lines": 83,
+      "review": "lessons/24B.md"
+    },
+    "reference/course/24C.md": {
+      "sha256": "64a6d8d136207e0a4cd9115918ac2495f623b7928755b9e4dfe2ce953eaf6499",
+      "lines": 73,
+      "review": "lessons/24C.md"
+    },
+    "reference/course/24D.md": {
+      "sha256": "de62a319d630cf4c37fd4d1015f2b3d65db3aab7abb42d2a9738563fc82b98d4",
+      "lines": 85,
+      "review": "lessons/24D.md"
+    },
+    "reference/course/24E.md": {
+      "sha256": "f9b62dc9a2233e58b24b315fb1dd763a6815cdc7d4d7430a34ac9b0ecdaa844a",
+      "lines": 69,
+      "review": "lessons/24E.md"
+    },
+    "reference/course/25A.md": {
+      "sha256": "9bac60858e9b1aaf90924261bfa1a870c2599e19644a1f4c31530920f81dcb70",
+      "lines": 80,
+      "review": "lessons/25A.md"
+    },
+    "reference/course/25B.md": {
+      "sha256": "d0ecf6691562a0e5150e87a58c40b716db92aaceecce18a7dea38e72fbe857d6",
+      "lines": 76,
+      "review": "lessons/25B.md"
+    },
+    "reference/course/26A.md": {
+      "sha256": "15b40e10149ac402ddac01a19abf7d7ec13f838f710cf66e16a97888781cb372",
+      "lines": 80,
+      "review": "lessons/26A.md"
+    },
+    "reference/course/26B.md": {
+      "sha256": "4c2074528fc18d853ad5a6e8230792c97ba527b6d71423ffa9b3d35138467a95",
+      "lines": 76,
+      "review": "lessons/26B.md"
+    },
+    "reference/course/27A.md": {
+      "sha256": "53cc72ea2f6642dcd58f25653bb3b35899064146d3f0ba5ea5f2d819f57ce9dc",
+      "lines": 75,
+      "review": "lessons/27A.md"
+    },
+    "reference/course/27B.md": {
+      "sha256": "895c73d3347bd1301eae4deb23628152eca5b0347c09d666e6fa98a30aa589bf",
+      "lines": 72,
+      "review": "lessons/27B.md"
+    },
+    "reference/course/28.md": {
+      "sha256": "69e26951f31aeac8efd0a40e1fac91c660067655ef9d7c55bcf559fe3bfcc9c4",
+      "lines": 71,
+      "review": "lessons/28.md"
+    },
+    "reference/course/29A.md": {
+      "sha256": "70cdddc0e0504d3855aa375d1ada1563d18ad1cae6fb8a3042390f11ed01a8c7",
+      "lines": 80,
+      "review": "lessons/29A.md"
+    },
+    "reference/course/29B.md": {
+      "sha256": "0c2e7be1cb9791a38cc6d12cda1da3548bdcc0f184e001e7979803242f13cc03",
+      "lines": 71,
+      "review": "lessons/29B.md"
+    },
+    "reference/course/29C.md": {
+      "sha256": "f437a3406231cfe04ec6413c78c8b4bcca8126e3c2c9988e8d33b213e2c614d2",
+      "lines": 80,
+      "review": "lessons/29C.md"
+    },
+    "reference/course/29D.md": {
+      "sha256": "8cc80c1fd1e049aad3b648cc3d9020c4e9ac1f1c2c7a91d042ed9f8eb8e92a24",
+      "lines": 72,
+      "review": "lessons/29D.md"
+    },
+    "reference/course/29E.md": {
+      "sha256": "8cfd20c5d7660b61c9b91e8172c0053d123540a2fed0d47f641d8c91484265f5",
+      "lines": 74,
+      "review": "lessons/29E.md"
+    },
+    "reference/course/30A.md": {
+      "sha256": "0f14cac30cc363996bbeccca76cf4aa70a686e47f46e53592aa0bcabe3d64b94",
+      "lines": 79,
+      "review": "lessons/30A.md"
+    },
+    "reference/course/30B.md": {
+      "sha256": "1dc471d445a776474f30cfc2a3523ea32985026fbdfabe88973fb7b24c889134",
+      "lines": 86,
+      "review": "lessons/30B.md"
+    },
+    "reference/course/30C.md": {
+      "sha256": "d5603e8eeb66722cfbee196446f2862d8c11598a14240fbf0ee86b286c6f42eb",
+      "lines": 82,
+      "review": "lessons/30C.md"
+    },
+    "reference/course/30D.md": {
+      "sha256": "688d5c8bf57f0b506087c34581600fd3de4461dfa73ead5f296b66cc8375d946",
+      "lines": 76,
+      "review": "lessons/30D.md"
+    },
+    "reference/course/30E.md": {
+      "sha256": "5e107591b59dbdd3079955744f7c544270dc24eb7e5a2a2f32b823146bc46104",
+      "lines": 83,
+      "review": "lessons/30E.md"
+    },
+    "reference/course/31A.md": {
+      "sha256": "29d664c57a212d95f993b0569133bb4859f0872394236486d8fe66ec36c759cb",
+      "lines": 81,
+      "review": "lessons/31A.md"
+    },
+    "reference/course/31B.md": {
+      "sha256": "86ba5cab2d9537a3edd777286e89772d027a85c254533cff9bb0741c9c0af4ff",
+      "lines": 76,
+      "review": "lessons/31B.md"
+    },
+    "reference/course/31C.md": {
+      "sha256": "16155ffedc97b636e81e880db3b988bc3d6a3ffab48e79aaac705799a4eddeea",
+      "lines": 79,
+      "review": "lessons/31C.md"
+    },
+    "reference/course/31D.md": {
+      "sha256": "3f52db615344f3c1b516a7c1eda0276983441e6ff4e55e96655a9e3787d744a9",
+      "lines": 76,
+      "review": "lessons/31D.md"
+    },
+    "reference/course/32A.md": {
+      "sha256": "9619f9294684af6eb07334b709bb08526139cf70c148980bf3efc5e2d7b490a2",
+      "lines": 85,
+      "review": "lessons/32A.md"
+    },
+    "reference/course/32B.md": {
+      "sha256": "bc7c79af8096d799aa34ee0551165c2b1ab41e564edc10d3e78b056e1af4bf5d",
+      "lines": 76,
+      "review": "lessons/32B.md"
+    },
+    "reference/course/32C.md": {
+      "sha256": "42339b381dd08a39dae11f2f0da8a9498861fd312211b30845dfe27e1969fffb",
+      "lines": 78,
+      "review": "lessons/32C.md"
+    },
+    "reference/course/33A.md": {
+      "sha256": "6646fae1c0aa6676e2bba130dc16774aab8782ecdd719ed17d179a52e0a9fc19",
+      "lines": 80,
+      "review": "lessons/33A.md"
+    },
+    "reference/course/33B.md": {
+      "sha256": "7e268ddf030a8edc2983046e1082c6ca3e477343f9c13904b97c4c5b4e9510d4",
+      "lines": 76,
+      "review": "lessons/33B.md"
+    },
+    "reference/course/33C.md": {
+      "sha256": "e1df9dcca92ec829df4bca72f50b72f4ee986a6503c481df00e5e6b1ae1acc64",
+      "lines": 84,
+      "review": "lessons/33C.md"
+    },
+    "reference/course/33D.md": {
+      "sha256": "4ca50da4a6c78ec6d6dd732dbaa759e34530749b85b49331357caa8fe9f88c4d",
+      "lines": 80,
+      "review": "lessons/33D.md"
+    },
+    "reference/course/33E.md": {
+      "sha256": "3db671029fa3b7de15543b52f73ae55971f4c04dfaca259a6ffe17579d28f929",
+      "lines": 78,
+      "review": "lessons/33E.md"
+    },
+    "reference/course/33F.md": {
+      "sha256": "20fe3a01f50cdf266d68f4c5d981ed19c05a1628d057fba5c5c5c4ac13b1cdf5",
+      "lines": 83,
+      "review": "lessons/33F.md"
+    },
+    "reference/course/33G.md": {
+      "sha256": "aeb97468ef6eb52f7e79ca621a807584f1a97d24a6a9df6ac6b683543ee5420a",
+      "lines": 77,
+      "review": "lessons/33G.md"
+    },
+    "reference/course/34A.md": {
+      "sha256": "6b0e5a283d6e28d8a4b7dbbf7ad05ae3264549a23f0f5a639eaf3b0553c16f29",
+      "lines": 73,
+      "review": "lessons/34A.md"
+    },
+    "reference/course/34B.md": {
+      "sha256": "420dad8682698d0aa60c4a048913fbb6b2d0ca871b4a3a3dee2fc157a4820364",
+      "lines": 74,
+      "review": "lessons/34B.md"
+    },
+    "reference/course/35A.md": {
+      "sha256": "c62edcecc021f4583c4f0bf9c4f32bbe87de76b8260fc3920a67f4e1beb200fc",
+      "lines": 81,
+      "review": "lessons/35A.md"
+    },
+    "reference/course/35B.md": {
+      "sha256": "61eca3ee2a7a36ff288d2b2b160644fd5ae74b751d3e6da8f2996811d150b3d0",
+      "lines": 75,
+      "review": "lessons/35B.md"
+    },
+    "reference/course/35C.md": {
+      "sha256": "6c5c55591f014bb916df6ce83ecb0eed29a29ed7c06b9c2d277346539ab5e022",
+      "lines": 78,
+      "review": "lessons/35C.md"
+    },
+    "reference/course/36A.md": {
+      "sha256": "9db5e8d60847657cefc22c54d017c72a15536dd86d9428e1a6c9741d819f167f",
+      "lines": 69,
+      "review": "lessons/36A.md"
+    },
+    "reference/course/36B.md": {
+      "sha256": "d07661ba0c57e2447971bbf3c5c5ab0f683f0083ff061acaf88e9d707cd43a44",
+      "lines": 76,
+      "review": "lessons/36B.md"
+    },
+    "reference/course/37A.md": {
+      "sha256": "ccef2cad013e62795eadd907a5c89a7b0905ba72ef6067eda8d581e0cbd3ee7b",
+      "lines": 72,
+      "review": "lessons/37A.md"
+    },
+    "reference/course/37B.md": {
+      "sha256": "3ec72556c1dc1c37433a0a847d52e6b15a8084b2a235dc097acb95e6a9def461",
+      "lines": 95,
+      "review": "lessons/37B.md"
+    },
+    "reference/course/38A.md": {
+      "sha256": "7f196f9369425feed218c85dee47f4fce9f2339ed9ae94723d46ecab840369ce",
+      "lines": 77,
+      "review": "lessons/38A.md"
+    },
+    "reference/course/38B.md": {
+      "sha256": "dbd7f88efeb97147753736bf8bc0575b91add532bd1c2ad8ac4c3ed7990a4706",
+      "lines": 73,
+      "review": "lessons/38B.md"
+    },
+    "reference/course/38C.md": {
+      "sha256": "b6c90f0cc0116cb506a09a4fa404103963dddb19087298de050a62ef916d34ce",
+      "lines": 72,
+      "review": "lessons/38C.md"
+    },
+    "reference/course/38D.md": {
+      "sha256": "38dfa5105b1cfbe36fda4ca7753023d4ff43a1457b0facca957e8240df041b50",
+      "lines": 73,
+      "review": "lessons/38D.md"
+    },
+    "reference/course/39A.md": {
+      "sha256": "66a7147c89b734947edefeb18477139e61df9cba3877e3bd103ddd0b27c98cd9",
+      "lines": 73,
+      "review": "lessons/39A.md"
+    },
+    "reference/course/39B.md": {
+      "sha256": "0248d48cec81821cd2818a893758113000f3cdfd9b746c6b1b0c85ab2a475441",
+      "lines": 73,
+      "review": "lessons/39B.md"
+    },
+    "reference/course/39C.md": {
+      "sha256": "b51f120e6e8cf995b7e63f4c13bb16e4eacc013a1049425ae5b59138ac80823b",
+      "lines": 75,
+      "review": "lessons/39C.md"
+    },
+    "reference/course/39D.md": {
+      "sha256": "4cc521279fcd60d5c256b3377fb070a1f37a066a893e039df924c4a7ad6349e6",
+      "lines": 78,
+      "review": "lessons/39D.md"
+    },
+    "reference/course/40A.md": {
+      "sha256": "3eb8389ce278f2de06b959d3cfac4bb33c705a6257b18f8bbd6b7b4ff7b67424",
+      "lines": 78,
+      "review": "lessons/40A.md"
+    },
+    "reference/course/40B.md": {
+      "sha256": "b3e3f702e64d4fc06e49bc4b15d574486cdbe64c4927370cce0bbc6ac4f1f914",
+      "lines": 74,
+      "review": "lessons/40B.md"
+    },
+    "reference/course/40C.md": {
+      "sha256": "c21089ea4bd4218918a8121adb08f79d22d63aab743a545a7b7663bdc14eef73",
+      "lines": 66,
+      "review": "lessons/40C.md"
+    },
+    "reference/course/40D.md": {
+      "sha256": "ac93a33581952c26a6ea42ae40fe9a54b51215b5df30178428f7a4b3419d0d0d",
+      "lines": 69,
+      "review": "lessons/40D.md"
+    },
+    "reference/course/40E.md": {
+      "sha256": "6edcc93710b9f394db2c56951888d594fb4e75e452c1fe46ddf22eae7078d6c7",
+      "lines": 76,
+      "review": "lessons/40E.md"
+    },
+    "reference/course/41A.md": {
+      "sha256": "b35e54f42b8209234fd14055dfd290e02e3e8d50e64f13043e902d2b1fbbdcfd",
+      "lines": 80,
+      "review": "lessons/41A.md"
+    },
+    "reference/course/41B.md": {
+      "sha256": "a40274968be2a7dbdd127b5236b75e842a7115c8ae399b7c14c779717627ef3b",
+      "lines": 86,
+      "review": "lessons/41B.md"
+    },
+    "reference/course/41C.md": {
+      "sha256": "9e071c46f855261bccaec0c93328f3aaae74cf5a0db36148e0852639e960d5a5",
+      "lines": 77,
+      "review": "lessons/41C.md"
+    },
+    "reference/course/41D.md": {
+      "sha256": "29ab7b041183d984ea3957b181a0a3b02e0b8cbfdf63bcd4fe29254407611fcf",
+      "lines": 73,
+      "review": "lessons/41D.md"
+    },
+    "reference/course/42A.md": {
+      "sha256": "5a2265519594110aa826a8ab3bd99e54ac7cd64e300b16667adb214f52b41ea3",
+      "lines": 81,
+      "review": "lessons/42A.md"
+    },
+    "reference/course/42B.md": {
+      "sha256": "6bd5172eb43fbde54f699b76291cd935a7974566de4bada2fa301dbf07d2d8ae",
+      "lines": 85,
+      "review": "lessons/42B.md"
+    },
+    "reference/course/42C.md": {
+      "sha256": "77288330be818be42940caed1b07a8a7330d07e27c05f60db7d15660f5df7d77",
+      "lines": 77,
+      "review": "lessons/42C.md"
+    },
+    "reference/course/43A.md": {
+      "sha256": "5824e5736131f7e98eb6819ddc7e6d9c00674c1d27e762beec633370ade66a53",
+      "lines": 72,
+      "review": "lessons/43A.md"
+    },
+    "reference/course/43B.md": {
+      "sha256": "c9578d29530d4b171d0feeee0252fe6a5304b8d05487bc94d74371af6cc46469",
+      "lines": 65,
+      "review": "lessons/43B.md"
+    },
+    "reference/course/43C.md": {
+      "sha256": "92752a04baa07e63c40dfbf3ddf7d4fcfb14d9597f0ee2ebf26db3ccaff142c5",
+      "lines": 74,
+      "review": "lessons/43C.md"
+    },
+    "reference/course/43D.md": {
+      "sha256": "5486c3fc402dd3eeaaa5c67836553c3a7aacf8957978d8230378c23f5906198e",
+      "lines": 83,
+      "review": "lessons/43D.md"
+    },
+    "reference/course/44A.md": {
+      "sha256": "b145bbb3096490fb18f0f39a5f7c7039c354e4ff3155561ac8ec538e89bf965b",
+      "lines": 77,
+      "review": "lessons/44A.md"
+    },
+    "reference/course/44B.md": {
+      "sha256": "c771d77a491801f42e2a62f9717d56a57e0b0d0ad85366e423227968428ec2ce",
+      "lines": 69,
+      "review": "lessons/44B.md"
+    },
+    "reference/course/44C.md": {
+      "sha256": "ac5b5fa8235cf16b69b17d6734562b1f3b162501c6e932bec50f5a7788cf39ae",
+      "lines": 71,
+      "review": "lessons/44C.md"
+    },
+    "reference/course/44D.md": {
+      "sha256": "4239263d2bd64daab339492ab6d619eb0ad96c5aa39a6d6f0019c6f471685dae",
+      "lines": 83,
+      "review": "lessons/44D.md"
+    },
+    "reference/course/45A.md": {
+      "sha256": "fbc7b93073641ea9e275290904f8a76beee38f045fae67d1be08fe31518f39a5",
+      "lines": 75,
+      "review": "lessons/45A.md"
+    },
+    "reference/course/45B.md": {
+      "sha256": "03bcf1a3569984e6eb76cf309d408d624319eed92ef13bfc1333869952ef3098",
+      "lines": 64,
+      "review": "lessons/45B.md"
+    },
+    "reference/course/45C.md": {
+      "sha256": "971beb4ff09e1430fbd3ecc61c497f4b82d058d3816de8b42aa8b877bd6d1278",
+      "lines": 81,
+      "review": "lessons/45C.md"
+    },
+    "reference/course/45D.md": {
+      "sha256": "f840694a4322d25d686447e82401e1bdb33a2b8e0dbbb687aad9eb2df4c0d1b9",
+      "lines": 83,
+      "review": "lessons/45D.md"
+    },
+    "reference/course/45E.md": {
+      "sha256": "19b43d73084385767d3478a1cdf9e8b3c67b95d0a43b51f3d0e27ebcf23347cd",
+      "lines": 81,
+      "review": "lessons/45E.md"
+    },
+    "reference/course/46A.md": {
+      "sha256": "954a1712291eca1318bddb9c0c16aec6e3a2a2b148b3930e6c944f4f2f3c381b",
+      "lines": 78,
+      "review": "lessons/46A.md"
+    },
+    "reference/course/46B.md": {
+      "sha256": "4be05233f2bdb192897c56a72ef0594efb803679f7e7dd793f1edc43015bd104",
+      "lines": 71,
+      "review": "lessons/46B.md"
+    },
+    "reference/course/46C.md": {
+      "sha256": "e71eaeaa3045e302bd53fb573f871993cef427eb420fc8c85f50b46b5b096d3c",
+      "lines": 70,
+      "review": "lessons/46C.md"
+    },
+    "reference/course/46D.md": {
+      "sha256": "0066cb01a425b68a5942b8cff70094b6db0c8c04fb8e2998231c4c24e5e5f25f",
+      "lines": 80,
+      "review": "lessons/46D.md"
+    },
+    "reference/course/46E.md": {
+      "sha256": "96528aed47a5547f8c4019787352e1a5dc2ba661c72b1865a618a89234a03b42",
+      "lines": 86,
+      "review": "lessons/46E.md"
+    },
+    "reference/course/47A.md": {
+      "sha256": "9e33323af5f2584832864211f628386a136af1d093d9d0fd86b9ff16d84aaa18",
+      "lines": 80,
+      "review": "lessons/47A.md"
+    },
+    "reference/course/47B.md": {
+      "sha256": "6653663ec5e53c301fd399c77147a87729ec25c2a527aab6f22c7e37adc9b620",
+      "lines": 76,
+      "review": "lessons/47B.md"
+    },
+    "reference/course/47C.md": {
+      "sha256": "a5d6bd1651b228d83142e14448119c6aebeee098baebe78a0e015378ba37108e",
+      "lines": 79,
+      "review": "lessons/47C.md"
+    },
+    "reference/course/47D.md": {
+      "sha256": "7f9ba1a8d0c7a37ee42f199c9d068e30a9b494b6f9f330a87e05df3a558bf83e",
+      "lines": 80,
+      "review": "lessons/47D.md"
+    },
+    "reference/course/48A.md": {
+      "sha256": "2c8ce8f6aef897e736ad34beb07367f0060ccb37bc8e4a845ac000e68ab55eec",
+      "lines": 83,
+      "review": "lessons/48A.md"
+    },
+    "reference/course/48B.md": {
+      "sha256": "8b5cef02779a1ce617ca35b44624652361abdda15f3f2be18bda324a7e08501d",
+      "lines": 80,
+      "review": "lessons/48B.md"
+    },
+    "reference/course/48C.md": {
+      "sha256": "d8369d4a6423578fee9db71fb480f721177e1ee47485afbb529e7d7e493f2b4b",
+      "lines": 80,
+      "review": "lessons/48C.md"
+    },
+    "reference/course/48D.md": {
+      "sha256": "68276a4380076c03a676e0537c5632460a6bc9519593d90d087b8f01da0ed10d",
+      "lines": 87,
+      "review": "lessons/48D.md"
+    },
+    "reference/course/48E.md": {
+      "sha256": "4c9f2845ff16ed394db46f28b539a602189d7d726c5b2d3f1e2c25ed463bcb86",
+      "lines": 75,
+      "review": "lessons/48E.md"
+    },
+    "reference/course/48F.md": {
+      "sha256": "19e69b827b09245407dac1dd4295707d5f59c4b4d0af667594c04aeb584b120f",
+      "lines": 78,
+      "review": "lessons/48F.md"
+    },
+    "reference/course/48G.md": {
+      "sha256": "a22b17da4ebd66148cae586de6b6038ebb5b0aee15e6779b81bbec63a7758238",
+      "lines": 86,
+      "review": "lessons/48G.md"
+    },
+    "reference/course/48H.md": {
+      "sha256": "9ec935114842d288417f3d17bf54d11b33efa3769b30c56bc478f5da9cbb41b1",
+      "lines": 81,
+      "review": "lessons/48H.md"
+    },
+    "reference/course/48I.md": {
+      "sha256": "8fb1489095b36e979e1a1ddac7e3fa91ae7ed2641d1c57c746c39b32d47636ae",
+      "lines": 77,
+      "review": "lessons/48I.md"
+    },
+    "reference/course/48J.md": {
+      "sha256": "e2fe0cfe71ce141ee10f0f6a631bb0b68e7c5b6f64fec3f87a636072a54c9c8e",
+      "lines": 76,
+      "review": "lessons/48J.md"
+    },
+    "reference/course/48K.md": {
+      "sha256": "a0957bbf90bb5252ce429763fe6abf4bed6ae384b638ef148da1a96fa6671aa9",
+      "lines": 77,
+      "review": "lessons/48K.md"
+    },
+    "reference/course/49A.md": {
+      "sha256": "f862ed4a965d56432fc0bc15fe69f0ad79538812115466920da1dd9f911b5431",
+      "lines": 86,
+      "review": "lessons/49A.md"
+    },
+    "reference/course/49B.md": {
+      "sha256": "a0314bacb8ce1b09fb670efab6038b24e243b0122fd207df4422595a9e6421df",
+      "lines": 87,
+      "review": "lessons/49B.md"
+    },
+    "reference/course/49C.md": {
+      "sha256": "6a5e8aa00cdf6ec0f723fcfca15e9db35c13f7b815ebabacc226e5e03ec6375f",
+      "lines": 92,
+      "review": "lessons/49C.md"
+    },
+    "reference/course/49D.md": {
+      "sha256": "b70a33ea251d0f878c0d94efc2be5ea53138f9df72f1b26a5f92730b6ea5b2cb",
+      "lines": 92,
+      "review": "lessons/49D.md"
+    },
+    "reference/course/49E.md": {
+      "sha256": "1e7f6694217cb9c9a3e24a6c6d40734d9d12b047848ba77c9ed8273c806bc864",
+      "lines": 90,
+      "review": "lessons/49E.md"
+    },
+    "reference/course/50A.md": {
+      "sha256": "b0a90842fc5e31c7ec1e639a8193988bd67fb27c3880972da0aa3e922a872f1d",
+      "lines": 85,
+      "review": "lessons/50A.md"
+    },
+    "reference/course/50B.md": {
+      "sha256": "f9bef9b90c1bc10b4272af8d5d24cea746fe550f699ae4bca600071e2889c2c5",
+      "lines": 76,
+      "review": "lessons/50B.md"
+    },
+    "reference/course/50C.md": {
+      "sha256": "89f2c74eb3d6d72e0372a88c3960b60931e2b5fecb2a31b5f41bdc256b24f32f",
+      "lines": 82,
+      "review": "lessons/50C.md"
+    },
+    "reference/course/50D.md": {
+      "sha256": "03589dba7a639d5360ff0a4eade3710acf3a18c72bd48b4ff9569cbf46ed05dd",
+      "lines": 81,
+      "review": "lessons/50D.md"
+    },
+    "reference/course/50E.md": {
+      "sha256": "8b93dfc62561a616f9ccdc88cec2d801ab3a015b10c8d371a205fb1d214edd4b",
+      "lines": 80,
+      "review": "lessons/50E.md"
+    },
+    "reference/course/51A.md": {
+      "sha256": "1723e6eae456ddf97cc3817bae17be7b9781c450dc2db1460547139439b03bc5",
+      "lines": 77,
+      "review": "lessons/51A.md"
+    },
+    "reference/course/51B.md": {
+      "sha256": "2bb0c1e7d10c33067f5d9d9b82b202301c1ec109e490848489070547aefd457e",
+      "lines": 80,
+      "review": "lessons/51B.md"
+    },
+    "reference/course/51C.md": {
+      "sha256": "a65ecef0a0f6f7eed83ddc6498d420c04c1e80816594507770d8c903fc80f0ef",
+      "lines": 79,
+      "review": "lessons/51C.md"
+    },
+    "reference/course/51D.md": {
+      "sha256": "94bf013abd78a784ea641338b85f9462df2638ad89488bc4129783c1f792f514",
+      "lines": 88,
+      "review": "lessons/51D.md"
+    },
+    "reference/course/52A.md": {
+      "sha256": "356945d7244e1f353a6d86512cb44660e6974fee3d08555df1da8d5a745a7c52",
+      "lines": 86,
+      "review": "lessons/52A.md"
+    },
+    "reference/course/52B.md": {
+      "sha256": "6681119319fa8ef3a760d3e1620715ff4568a14f221e5e29114825f45a2a40a8",
+      "lines": 83,
+      "review": "lessons/52B.md"
+    },
+    "reference/course/README.md": {
+      "sha256": "fcfbe002c8f37ef27651086a70b38aae6727b3b1672718d0e692cb758be2b9e1",
+      "lines": 43,
+      "review": "other_materials.md"
+    },
+    "reference/course/boundaries_and_conflicts.md": {
+      "sha256": "27128adcae6539c1cb9c51a29429c76bb48a103194d7d93a64000e370455dd78",
+      "lines": 222,
+      "review": "other_materials.md"
+    },
+    "reference/course/concept_index.md": {
+      "sha256": "928a770a3c2b80e329ef023fac93fd30051bc14c8ce59adf50329f480946dbd3",
+      "lines": 98,
+      "review": "other_materials.md"
+    },
+    "reference/course/course_catalog.json": {
+      "sha256": "48099a413aef2c6dc7e99a1e97ff76221174871dc8b6a6822b2a5275bf2166f9",
+      "lines": 1361,
+      "review": "other_materials.md"
+    },
+    "reference/course/course_to_method_map.md": {
+      "sha256": "849e5e7c373e3e70af6dc35fdc381c16f1c11adb05371a63bae59eecb47d51c6",
+      "lines": 245,
+      "review": "other_materials.md"
+    },
+    "reference/course/coverage_manifest.md": {
+      "sha256": "d09dcbb9c7c868b02f0e08bf9daa3329ce155a2e440112e1862b9172d07d0437",
+      "lines": 211,
+      "review": "other_materials.md"
+    },
+    "reference/course/lesson_index.md": {
+      "sha256": "8dc94cfdc972a2233bcd5332f2a2507381ab7acbe4ed47c82fed6ff2d524412e",
+      "lines": 471,
+      "review": "other_materials.md"
+    },
+    "reference/course/repetition_matrix.md": {
+      "sha256": "80242d9b876bdfd769b528555253725936d6341f16e0917b90ae8568128769c9",
+      "lines": 59,
+      "review": "other_materials.md"
+    },
+    "reference/course/visual_review/01.md": {
+      "sha256": "8ec0a3e238cc1378064ee90610ceee1e982a86ac209cc9422c1ec3a7d7d64db7",
+      "lines": 42,
+      "review": "lessons/01.md"
+    },
+    "reference/course/visual_review/02A.md": {
+      "sha256": "4937b67a317448de88455c294fd6b7552fac30fb0168ea22646f64a467d0dbe2",
+      "lines": 45,
+      "review": "lessons/02A.md"
+    },
+    "reference/course/visual_review/02B.md": {
+      "sha256": "edef8e35e4ced40d4d920eb8f9e4831cb2ba702e71c5fd119e1081ae70310a83",
+      "lines": 36,
+      "review": "lessons/02B.md"
+    },
+    "reference/course/visual_review/02C.md": {
+      "sha256": "741dae19c906e35e5b17c80ab785427b5393260280eeef4d319b7503262da502",
+      "lines": 39,
+      "review": "lessons/02C.md"
+    },
+    "reference/course/visual_review/02D.md": {
+      "sha256": "a36800e7ed95810eccbfc9f6576e5b7ae0016eb62d50b0706ff2ebc23f06d489",
+      "lines": 40,
+      "review": "lessons/02D.md"
+    },
+    "reference/course/visual_review/03A.md": {
+      "sha256": "62eada47df6e1e89401d4902d2480fc6f86d23f6101757632d25fe460d55eedc",
+      "lines": 37,
+      "review": "lessons/03A.md"
+    },
+    "reference/course/visual_review/03B.md": {
+      "sha256": "1d7cdf1de1da8aa241dd377d9f103acf795970bc3ef127f686f211c41dd57e87",
+      "lines": 35,
+      "review": "lessons/03B.md"
+    },
+    "reference/course/visual_review/03C.md": {
+      "sha256": "06dc375c0c6a4c01b8c0919c45f4b990f25eb92ec470e743800cb85d5d4b19f6",
+      "lines": 38,
+      "review": "lessons/03C.md"
+    },
+    "reference/course/visual_review/03D.md": {
+      "sha256": "9c46533d0fee3ad767e425dfbc5f42952a8750cf3fdbf935639b8410644a9a15",
+      "lines": 26,
+      "review": "lessons/03D.md"
+    },
+    "reference/course/visual_review/03E.md": {
+      "sha256": "3a08abc43e4c56375713f5a3104cdbeb83d4f3cf951bdc89aca5c0752c627500",
+      "lines": 29,
+      "review": "lessons/03E.md"
+    },
+    "reference/course/visual_review/04.md": {
+      "sha256": "e8d10d002f7ac7a224eedfffbd5c9f6b81bf173c9fd47c6a915902e52a8e262c",
+      "lines": 24,
+      "review": "lessons/04.md"
+    },
+    "reference/course/visual_review/05.md": {
+      "sha256": "7d3ab3179a139e8f04d07df62aefe951dd8c4c7bdc344879433859b606e56898",
+      "lines": 46,
+      "review": "lessons/05.md"
+    },
+    "reference/course/visual_review/06.md": {
+      "sha256": "407eae5b23cd5826334f32b597692361f05460b8780785a0a0b995bea646cb2d",
+      "lines": 35,
+      "review": "lessons/06.md"
+    },
+    "reference/course/visual_review/07A.md": {
+      "sha256": "5b99dd0b1e3ec6e2508cedab5b99dcf692ad0968c1a9e9fe6fc9876a0082d35f",
+      "lines": 44,
+      "review": "lessons/07A.md"
+    },
+    "reference/course/visual_review/07B.md": {
+      "sha256": "75fafedd2e88e500652620e41df673ba1e2757dce763fc043241199c45eaef98",
+      "lines": 39,
+      "review": "lessons/07B.md"
+    },
+    "reference/course/visual_review/08A.md": {
+      "sha256": "d7645c06e1784ede44ffe2f863dcf3d8b0d27aef5732a90addea9258a6f28442",
+      "lines": 38,
+      "review": "lessons/08A.md"
+    },
+    "reference/course/visual_review/08B.md": {
+      "sha256": "24a3b6ad7897775c432ac7c498792d5919ca4588c2cfe94c74838fdc7db312c9",
+      "lines": 32,
+      "review": "lessons/08B.md"
+    },
+    "reference/course/visual_review/08C.md": {
+      "sha256": "dff6439949c83f94cc47575210e401b8444b5c53a9b03b1f96ea265906935fee",
+      "lines": 39,
+      "review": "lessons/08C.md"
+    },
+    "reference/course/visual_review/08D.md": {
+      "sha256": "abbb7f3fd04455900371c3716c1620e7b72dd218a3a79c2d799ea93d593f90a2",
+      "lines": 44,
+      "review": "lessons/08D.md"
+    },
+    "reference/course/visual_review/09A.md": {
+      "sha256": "41c6828052c0247fcb25312b1cad7df076774aec0b088de7f40e24a35f11096d",
+      "lines": 41,
+      "review": "lessons/09A.md"
+    },
+    "reference/course/visual_review/09B.md": {
+      "sha256": "8df6e9ebc2335472d197b4c73cf7279d19d91ca6e1a8a4583e4d729fa781cd10",
+      "lines": 38,
+      "review": "lessons/09B.md"
+    },
+    "reference/course/visual_review/09C.md": {
+      "sha256": "482511779dd6ba61119546f107bb4f5227aa45157dbbb1d039612dbee56acecb",
+      "lines": 33,
+      "review": "lessons/09C.md"
+    },
+    "reference/course/visual_review/10A.md": {
+      "sha256": "38821b8da06e847e848a657de8beea3d591e00f093580b4ab9735613ffdbb23e",
+      "lines": 36,
+      "review": "lessons/10A.md"
+    },
+    "reference/course/visual_review/10B.md": {
+      "sha256": "529d59fd03ccb375f1504d19eca927ee285888303109b148a977e34bc1feff03",
+      "lines": 27,
+      "review": "lessons/10B.md"
+    },
+    "reference/course/visual_review/11A.md": {
+      "sha256": "d9312d9aacd379c87b8bc60127cf14947e22be6c39a8f66f9380a764a440f2e0",
+      "lines": 29,
+      "review": "lessons/11A.md"
+    },
+    "reference/course/visual_review/11B.md": {
+      "sha256": "f65d1fd12be59249aaf38bc1319d3fe6b7370386f675cbd1e4cd6b4e07638f9f",
+      "lines": 32,
+      "review": "lessons/11B.md"
+    },
+    "reference/course/visual_review/11C.md": {
+      "sha256": "992a14c71e01f4b86830e8881a6ebdfee61440e5b284da4f12967989ffdf7711",
+      "lines": 29,
+      "review": "lessons/11C.md"
+    },
+    "reference/course/visual_review/11D.md": {
+      "sha256": "dd29e537311c6abda9758035a5b7bbdf4dcd487b37d9d984c69e1327bc3e3e9f",
+      "lines": 27,
+      "review": "lessons/11D.md"
+    },
+    "reference/course/visual_review/12A.md": {
+      "sha256": "2c7f34a4890db0a672fcadf98f9c0f5377db37ae80b4d269a86dc62062328b74",
+      "lines": 39,
+      "review": "lessons/12A.md"
+    },
+    "reference/course/visual_review/12B.md": {
+      "sha256": "f67b5820dd29bb2658dcdc0c6fae5d2ceaa2ed600621495dbfbdaa28791eadd5",
+      "lines": 39,
+      "review": "lessons/12B.md"
+    },
+    "reference/course/visual_review/12C.md": {
+      "sha256": "28fb823e6e21e9ae685f384bd1e88e3f08a633e80d9bc836362fc381fe465690",
+      "lines": 33,
+      "review": "lessons/12C.md"
+    },
+    "reference/course/visual_review/13A.md": {
+      "sha256": "0020fbb8517e40121ba0e43f6132536487e7e53ad0e5d5bf70331bb9ecef69ce",
+      "lines": 40,
+      "review": "lessons/13A.md"
+    },
+    "reference/course/visual_review/13B.md": {
+      "sha256": "d2e4ff7ee0898fc129e6f4ae51da2a76fa5857dd73eb3a64a35c41f06428e957",
+      "lines": 34,
+      "review": "lessons/13B.md"
+    },
+    "reference/course/visual_review/13C.md": {
+      "sha256": "4f3f620b711a7f9f6f9e7d9c7e4ecedb62bdea9f01dd3e3648bd44c3ec0d764f",
+      "lines": 24,
+      "review": "lessons/13C.md"
+    },
+    "reference/course/visual_review/14A.md": {
+      "sha256": "94ce865c880d56af3456d9cabd4c0949963f6460b9459d241a87261bc2f9f8f4",
+      "lines": 37,
+      "review": "lessons/14A.md"
+    },
+    "reference/course/visual_review/14B.md": {
+      "sha256": "f5283b47a19dbf850050b15d1d6cdf86b51a0a6e9aba3c4131b3c98608a87292",
+      "lines": 39,
+      "review": "lessons/14B.md"
+    },
+    "reference/course/visual_review/14C.md": {
+      "sha256": "0ca65019ab1c836015cb6f12818bc77f15ca3bac0890df3207a0648f5ef0e081",
+      "lines": 41,
+      "review": "lessons/14C.md"
+    },
+    "reference/course/visual_review/14D.md": {
+      "sha256": "a4fe40614c95eef4efafc49af65ad383b0b3ccdea8240b60c876a3d5df5e9ad6",
+      "lines": 39,
+      "review": "lessons/14D.md"
+    },
+    "reference/course/visual_review/14E.md": {
+      "sha256": "4c2d9a31541b610b4fa10e1240e65591c8b45a85d770a26cbdcd576754831b13",
+      "lines": 39,
+      "review": "lessons/14E.md"
+    },
+    "reference/course/visual_review/15A.md": {
+      "sha256": "52ad5104cfc6778ff4d2e845c026dcd1d39070e230ba13593a7760caa304fb19",
+      "lines": 38,
+      "review": "lessons/15A.md"
+    },
+    "reference/course/visual_review/15B.md": {
+      "sha256": "e151412f568cbde1a81902d5aa70b429d6e6141c4ae0864b3fd8f010172fac07",
+      "lines": 40,
+      "review": "lessons/15B.md"
+    },
+    "reference/course/visual_review/15C.md": {
+      "sha256": "1a9f29e220c89c41083408861c5bfb1aa2d4c7be59390a133b686073d7305997",
+      "lines": 45,
+      "review": "lessons/15C.md"
+    },
+    "reference/course/visual_review/15D.md": {
+      "sha256": "ee1d7fb0ec9f64c326c8c543564c76d0f39d36e1bbd3d3e45b3e47d368f16afa",
+      "lines": 38,
+      "review": "lessons/15D.md"
+    },
+    "reference/course/visual_review/15E.md": {
+      "sha256": "63cdac483f32f19a708a844d87ea3c13c6efe6cb77a579c0044a2c3b62e2bea9",
+      "lines": 26,
+      "review": "lessons/15E.md"
+    },
+    "reference/course/visual_review/15F.md": {
+      "sha256": "470bd84dce8e3023146a351a9ca9f9c4403dabd542bd535e8cbae94bdb0b5dc4",
+      "lines": 28,
+      "review": "lessons/15F.md"
+    },
+    "reference/course/visual_review/15G.md": {
+      "sha256": "f0cbac9f8e9d1a0c7a7700d7a21929658870b8847a1a4ca59b2de3aaae55918b",
+      "lines": 31,
+      "review": "lessons/15G.md"
+    },
+    "reference/course/visual_review/16A.md": {
+      "sha256": "e7e93e8cf30a88776a6885b6ae70e69a2d0ce27c90c243a40e91b5407f5431f6",
+      "lines": 48,
+      "review": "lessons/16A.md"
+    },
+    "reference/course/visual_review/16B.md": {
+      "sha256": "96ac21c2e34818f2da2760a6c4911f00756ad2d5bbf61144310f4455ae37e963",
+      "lines": 47,
+      "review": "lessons/16B.md"
+    },
+    "reference/course/visual_review/16C.md": {
+      "sha256": "462e08c6f5baad14aabb093bd5c015b92d3f72bad570706de694237138b00646",
+      "lines": 39,
+      "review": "lessons/16C.md"
+    },
+    "reference/course/visual_review/16D.md": {
+      "sha256": "5dfadb6c6852702a1be241ab4d1b88e41e2c307cf3a89455b4b255e5b61f6eab",
+      "lines": 44,
+      "review": "lessons/16D.md"
+    },
+    "reference/course/visual_review/16E.md": {
+      "sha256": "2ac40d15584c5dbd9d7b0800084da470e8e012d8f586babd6ac5a5a3c1816adc",
+      "lines": 46,
+      "review": "lessons/16E.md"
+    },
+    "reference/course/visual_review/16F.md": {
+      "sha256": "bdfd2011eadc04bd7bd4079bf89c27eb01bd5f30c905ceca21258b917b22c154",
+      "lines": 39,
+      "review": "lessons/16F.md"
+    },
+    "reference/course/visual_review/17A.md": {
+      "sha256": "74b162e4e926486afeb548540f4fe83292c9c5bee5fb576b50a06b660f123966",
+      "lines": 30,
+      "review": "lessons/17A.md"
+    },
+    "reference/course/visual_review/17B.md": {
+      "sha256": "6d28542cd1355431f76dac3df26db625911fb01b08d53360f0aa6de8aa8feea9",
+      "lines": 38,
+      "review": "lessons/17B.md"
+    },
+    "reference/course/visual_review/18A.md": {
+      "sha256": "bccc27d33711e7fc754250c074c72004b556e2083a51f4e72d1c0d8ce4025e05",
+      "lines": 41,
+      "review": "lessons/18A.md"
+    },
+    "reference/course/visual_review/18B.md": {
+      "sha256": "cbc9cad2449a58e2583cef54f99f3e4245f5b40e35bd7275724f371522b0b822",
+      "lines": 34,
+      "review": "lessons/18B.md"
+    },
+    "reference/course/visual_review/18C.md": {
+      "sha256": "3114ca2eae263555f3e00b859f72612ef67706a34543310f72a795719c9ddfc2",
+      "lines": 50,
+      "review": "lessons/18C.md"
+    },
+    "reference/course/visual_review/18D.md": {
+      "sha256": "1a2c5efa4961ab89e75b35d01cdb35c233d90866edb6bdf71ac506e155a3b782",
+      "lines": 33,
+      "review": "lessons/18D.md"
+    },
+    "reference/course/visual_review/18E.md": {
+      "sha256": "e69620c08b500ce38d9f3018dda62d7f5d1199d9824ccbb37ee1c8429fed2bb5",
+      "lines": 39,
+      "review": "lessons/18E.md"
+    },
+    "reference/course/visual_review/18F.md": {
+      "sha256": "b7e747e7c8e3d23ae4f3decb9a9c20ca8936742e9f2feddab27836148b713acf",
+      "lines": 34,
+      "review": "lessons/18F.md"
+    },
+    "reference/course/visual_review/19A.md": {
+      "sha256": "a6e5c5530b6d1c6488f725503f541e7a7d3c60bf86e8999254c4ba19aaba8ae5",
+      "lines": 40,
+      "review": "lessons/19A.md"
+    },
+    "reference/course/visual_review/19B.md": {
+      "sha256": "a3c865ec4d2bc631685a271f594d6d3ba57ea49bb0f2ad619304855f00024414",
+      "lines": 30,
+      "review": "lessons/19B.md"
+    },
+    "reference/course/visual_review/19C.md": {
+      "sha256": "686cdd67f5b1dfb5a9da1fd287a9339d35483fcc328624a2aed5d0a116d37dc3",
+      "lines": 28,
+      "review": "lessons/19C.md"
+    },
+    "reference/course/visual_review/19D.md": {
+      "sha256": "7fc1a7325abd88c0f6de2aff4cd26d919abbc5ba57f7b56207e3c3a9e04e44e8",
+      "lines": 31,
+      "review": "lessons/19D.md"
+    },
+    "reference/course/visual_review/19E.md": {
+      "sha256": "4e0ea142dfcdba0fea90c034f7f95756b93b54a4d69fd5f4266560092c50fc1e",
+      "lines": 32,
+      "review": "lessons/19E.md"
+    },
+    "reference/course/visual_review/20A.md": {
+      "sha256": "84cd44e199786bc37f749751a604f1bb80ebd276ab0a4d92ec9438e3b0bc2caa",
+      "lines": 33,
+      "review": "lessons/20A.md"
+    },
+    "reference/course/visual_review/20B.md": {
+      "sha256": "97032916b3ee4dd56f3d6d0ad17a8d10d002b8016723ed398faf6fad40ef3a37",
+      "lines": 35,
+      "review": "lessons/20B.md"
+    },
+    "reference/course/visual_review/21A.md": {
+      "sha256": "a28d42389a7e1bc59f22c3e060840e70dde2de78c7cb51bce016e3eeb5a20494",
+      "lines": 37,
+      "review": "lessons/21A.md"
+    },
+    "reference/course/visual_review/21B.md": {
+      "sha256": "2c9569f5d48d004cd6fd23487da58bbc92f48bfe3bb8ae686c757af4acb218d0",
+      "lines": 32,
+      "review": "lessons/21B.md"
+    },
+    "reference/course/visual_review/21C.md": {
+      "sha256": "259c1a30ef1332f462e5ca945c57f30449fc9de6ef4faf84bfeb678667b1e4cc",
+      "lines": 33,
+      "review": "lessons/21C.md"
+    },
+    "reference/course/visual_review/21D.md": {
+      "sha256": "01399c8875c9bb09b709deba3a3935489eb48f2d4d9263cdd0b05bcd797b6a7a",
+      "lines": 35,
+      "review": "lessons/21D.md"
+    },
+    "reference/course/visual_review/22A.md": {
+      "sha256": "bbc220a669625c881f3deb476d20e994cfcde8875b48a32a9829b49597045d62",
+      "lines": 34,
+      "review": "lessons/22A.md"
+    },
+    "reference/course/visual_review/22B.md": {
+      "sha256": "651bb36159f81e659e942cea497f807400f3a7ecfc9b5982fef0f6707cf0a9ad",
+      "lines": 21,
+      "review": "lessons/22B.md"
+    },
+    "reference/course/visual_review/22C.md": {
+      "sha256": "fa8a00aa351e8cc7fd2288c8ee76ad0eb2d35967583508650ac72be3598c9b05",
+      "lines": 25,
+      "review": "lessons/22C.md"
+    },
+    "reference/course/visual_review/22D.md": {
+      "sha256": "8d76951414a8080366829d9351f6175d88d362cb39dd6c04702a6e88fff56a21",
+      "lines": 36,
+      "review": "lessons/22D.md"
+    },
+    "reference/course/visual_review/23A.md": {
+      "sha256": "5c602ba00d4203cf42a82e2a0e12e478d244775e08e2606c216504221236230e",
+      "lines": 23,
+      "review": "lessons/23A.md"
+    },
+    "reference/course/visual_review/23B.md": {
+      "sha256": "cab46a0f9ce8809208775ffd36ddd025eeae44f2fca25f7500c79ed9f12f068c",
+      "lines": 25,
+      "review": "lessons/23B.md"
+    },
+    "reference/course/visual_review/24A.md": {
+      "sha256": "a31cf3af235048afe1927f1378c828275b9ab9c5d0884eab57e6b5648d085cc5",
+      "lines": 27,
+      "review": "lessons/24A.md"
+    },
+    "reference/course/visual_review/24B.md": {
+      "sha256": "0cc4da5709854de2d9aa8214e6fa431db1d93b09f11fd242ae3aa42b765805d6",
+      "lines": 35,
+      "review": "lessons/24B.md"
+    },
+    "reference/course/visual_review/24C.md": {
+      "sha256": "e6419212bc831b97c2cee89ad30022f33b9d81dfd742c5c3338a0754087c96cd",
+      "lines": 32,
+      "review": "lessons/24C.md"
+    },
+    "reference/course/visual_review/24D.md": {
+      "sha256": "554e0117feaaf831d5fbd74184c812c706965b0e338b509019eb8a9bd763f0fd",
+      "lines": 37,
+      "review": "lessons/24D.md"
+    },
+    "reference/course/visual_review/24E.md": {
+      "sha256": "b1da72262476e04f33bbd182086bea2aa66324e741d50d6e458faedf0c7e6201",
+      "lines": 24,
+      "review": "lessons/24E.md"
+    },
+    "reference/course/visual_review/25A.md": {
+      "sha256": "7d0bd6ee435a1eb1cbf04046d261b12308cc8de17a189f8d4d7247a9ac2f3271",
+      "lines": 34,
+      "review": "lessons/25A.md"
+    },
+    "reference/course/visual_review/25B.md": {
+      "sha256": "cc84fd28acdb5838bb4e6e00a1c47776ed8b27f344017d5055872c84a2dfd410",
+      "lines": 27,
+      "review": "lessons/25B.md"
+    },
+    "reference/course/visual_review/26A.md": {
+      "sha256": "b19e4b94571d33bf1f1c55492cc01a9fb12f7cdfd73d4bbf26d3a6e6d651f9f4",
+      "lines": 33,
+      "review": "lessons/26A.md"
+    },
+    "reference/course/visual_review/26B.md": {
+      "sha256": "c102db12f97bf9a6922dab9ec2ff97fe2187d4f0dcd175467834c0b968b3186f",
+      "lines": 27,
+      "review": "lessons/26B.md"
+    },
+    "reference/course/visual_review/27A.md": {
+      "sha256": "b82ceec2339b9d2ac33589551e56431d199d6bd81cf8bf10842dd71897106f0e",
+      "lines": 30,
+      "review": "lessons/27A.md"
+    },
+    "reference/course/visual_review/27B.md": {
+      "sha256": "d668c0ecaf1758217bf66a4cca8f5e3fef3334ad4de7e389dc28626c30724222",
+      "lines": 26,
+      "review": "lessons/27B.md"
+    },
+    "reference/course/visual_review/28.md": {
+      "sha256": "6ede507b863c3f59ed92d06d1511575d874a41f4bc5feb37353a1631726f22a6",
+      "lines": 25,
+      "review": "lessons/28.md"
+    },
+    "reference/course/visual_review/29A.md": {
+      "sha256": "c1772cceea1f91771bf3a14c65231d499de985660e5d5cbddb26f0dc4cae4653",
+      "lines": 29,
+      "review": "lessons/29A.md"
+    },
+    "reference/course/visual_review/29B.md": {
+      "sha256": "df14643eea1bc5360afbe639a1bc0d7a19f110055905ec0f778e48b77c0d7d95",
+      "lines": 24,
+      "review": "lessons/29B.md"
+    },
+    "reference/course/visual_review/29C.md": {
+      "sha256": "86b67e9826a32ef76cf46ad10f1406a78fab1b47d0b66026e162dfd33f996539",
+      "lines": 34,
+      "review": "lessons/29C.md"
+    },
+    "reference/course/visual_review/29D.md": {
+      "sha256": "ba284d1cdbb03a5b7ad2fd23ac53beabc50a1a30b2890aae5cb522266c48f65d",
+      "lines": 27,
+      "review": "lessons/29D.md"
+    },
+    "reference/course/visual_review/29E.md": {
+      "sha256": "601cee2732dce6cc11b24110a5ccd71e077a4481f3fa42bf4ea075a70e939430",
+      "lines": 26,
+      "review": "lessons/29E.md"
+    },
+    "reference/course/visual_review/30A.md": {
+      "sha256": "25887b0d14dc154b87918e1e92c98a828598f6027f486ebfa4f91b07bc519885",
+      "lines": 32,
+      "review": "lessons/30A.md"
+    },
+    "reference/course/visual_review/30B.md": {
+      "sha256": "24264e84ae5b6ecc7af58934e448858ad4afd10191538b12253a5834e75d47df",
+      "lines": 33,
+      "review": "lessons/30B.md"
+    },
+    "reference/course/visual_review/30C.md": {
+      "sha256": "a8f34a3ba0d41d3c67a06ddf5a8316ea975ed6d96cc4bd4e285ea5255a252fa8",
+      "lines": 34,
+      "review": "lessons/30C.md"
+    },
+    "reference/course/visual_review/30D.md": {
+      "sha256": "aa965c79605b72bfd401f7563ac4aeaf60ca13aea14f6357e67fd31c709e3725",
+      "lines": 35,
+      "review": "lessons/30D.md"
+    },
+    "reference/course/visual_review/30E.md": {
+      "sha256": "1f243e40d61cd18245698b8d385a7d4b756fb9b1cb26d32f47849fac1c4a7664",
+      "lines": 35,
+      "review": "lessons/30E.md"
+    },
+    "reference/course/visual_review/31A.md": {
+      "sha256": "a1b7dabd2ffe49d1cdca403614b58e0f7271d4b6da29f9a541f1d40e846e2cb7",
+      "lines": 27,
+      "review": "lessons/31A.md"
+    },
+    "reference/course/visual_review/31B.md": {
+      "sha256": "1640e3fdd6fe50c466db3139c4e0902206b1214a4094fb8402e409be89e738f0",
+      "lines": 26,
+      "review": "lessons/31B.md"
+    },
+    "reference/course/visual_review/31C.md": {
+      "sha256": "16660586e64703947588d20168aeabd1442d63dc492b2b2c30513fc835ab8837",
+      "lines": 35,
+      "review": "lessons/31C.md"
+    },
+    "reference/course/visual_review/31D.md": {
+      "sha256": "ac66320ac8eb58b3004adffb3aa7c16c57722cd9b6aa7a41d5bb7d16c7c57cd5",
+      "lines": 34,
+      "review": "lessons/31D.md"
+    },
+    "reference/course/visual_review/32A.md": {
+      "sha256": "2f1834fb498ee3875c5517287952b51913f22ca43afd4b8b44e2d2873125e5b3",
+      "lines": 37,
+      "review": "lessons/32A.md"
+    },
+    "reference/course/visual_review/32B.md": {
+      "sha256": "3356c8a718219bf91cb4c8fdb6e33beaacc6059f4c830281f1862c5c431a9d13",
+      "lines": 27,
+      "review": "lessons/32B.md"
+    },
+    "reference/course/visual_review/32C.md": {
+      "sha256": "b2a7517054ebb12ef80320ecac50267e75eb902fc2c00c0e9e2f8d0d517f7806",
+      "lines": 29,
+      "review": "lessons/32C.md"
+    },
+    "reference/course/visual_review/33A.md": {
+      "sha256": "8bfbe54995cd6270214da0b0c23fa1796d33cce5d3f6bb034c6118b08437c5db",
+      "lines": 33,
+      "review": "lessons/33A.md"
+    },
+    "reference/course/visual_review/33B.md": {
+      "sha256": "6087d35ec40118386ce6d70f4e2d4acca46f92e10c33ce4d6859494efb6c3157",
+      "lines": 24,
+      "review": "lessons/33B.md"
+    },
+    "reference/course/visual_review/33C.md": {
+      "sha256": "bbc6cd07974f53c9a27ef8057057feab075ae36ff7f5e095bafe902de0ae7ee2",
+      "lines": 31,
+      "review": "lessons/33C.md"
+    },
+    "reference/course/visual_review/33D.md": {
+      "sha256": "4863ab45443f825fc05547df9caba72cbb866f25ba6d4548057db7d70c2e2a3d",
+      "lines": 32,
+      "review": "lessons/33D.md"
+    },
+    "reference/course/visual_review/33E.md": {
+      "sha256": "b47a08eb1f691110d7c263662569ba0d9021707de9af3a45352eb6668d3247ba",
+      "lines": 24,
+      "review": "lessons/33E.md"
+    },
+    "reference/course/visual_review/33F.md": {
+      "sha256": "3dd968deef64ba604c166a7ccfe286d5d7025cca4c17b53843d56e937cbcf4a9",
+      "lines": 27,
+      "review": "lessons/33F.md"
+    },
+    "reference/course/visual_review/33G.md": {
+      "sha256": "002f9d7adf622c5ac7044af40c79af8c6b52fd05e13e52d3fdd0f8aa3b139a58",
+      "lines": 30,
+      "review": "lessons/33G.md"
+    },
+    "reference/course/visual_review/34A.md": {
+      "sha256": "ad880231e6f28153fe87f14e0d451ec998a14207461c356528de480ab78f3414",
+      "lines": 28,
+      "review": "lessons/34A.md"
+    },
+    "reference/course/visual_review/34B.md": {
+      "sha256": "9707fc777ba9089edf3d8ced3afe56f563d5971704dec8e2486c3d7ef237ad64",
+      "lines": 31,
+      "review": "lessons/34B.md"
+    },
+    "reference/course/visual_review/35A.md": {
+      "sha256": "527aab338ebd58900c46ef23c5090a2ea99e6b794a27b53e53fcc14b8cf28e50",
+      "lines": 31,
+      "review": "lessons/35A.md"
+    },
+    "reference/course/visual_review/35B.md": {
+      "sha256": "e6c65bdfd3c92242abbdc3e3e24e0877306f890519465de52004c7b717e4e4f0",
+      "lines": 24,
+      "review": "lessons/35B.md"
+    },
+    "reference/course/visual_review/35C.md": {
+      "sha256": "481f22f95999dd04fa88e5040fb7a00d84af45c48692c16c93a21c04fa9ccce0",
+      "lines": 29,
+      "review": "lessons/35C.md"
+    },
+    "reference/course/visual_review/36A.md": {
+      "sha256": "5fb7820549e0df6d060438dabb1583858637df9edc51b0c3c7f246b7ea4a1c16",
+      "lines": 24,
+      "review": "lessons/36A.md"
+    },
+    "reference/course/visual_review/36B.md": {
+      "sha256": "a47fe1ee04331dbf9bbc7ff7f8228e811773459c5ed52b654afd7baced73d12d",
+      "lines": 29,
+      "review": "lessons/36B.md"
+    },
+    "reference/course/visual_review/37A.md": {
+      "sha256": "e3c9523d9455632fe786f356de9adb76fba1aed25921abc1f7b03c0111bd1acc",
+      "lines": 26,
+      "review": "lessons/37A.md"
+    },
+    "reference/course/visual_review/37B.md": {
+      "sha256": "9d016dd1d136311a803bea1ea770d936f9bab58cefc113502a7f2a12d3737b3a",
+      "lines": 40,
+      "review": "lessons/37B.md"
+    },
+    "reference/course/visual_review/38A.md": {
+      "sha256": "ce2678fa26d28b077f71dc6687328b757ab3ddf6a88295493324d3f247fd7d9d",
+      "lines": 26,
+      "review": "lessons/38A.md"
+    },
+    "reference/course/visual_review/38B.md": {
+      "sha256": "2199c7eb2b4e7f029b294c7db92c9f0bc1aab06e8910742cafb6e1cbc81d5696",
+      "lines": 25,
+      "review": "lessons/38B.md"
+    },
+    "reference/course/visual_review/38C.md": {
+      "sha256": "3f015047a2a8e0ff983f0643901b42b69dffd006faf81842f10c434da17b49b3",
+      "lines": 23,
+      "review": "lessons/38C.md"
+    },
+    "reference/course/visual_review/38D.md": {
+      "sha256": "51e918cc15bcdf50ce5911c4d2b4ea870ec13c0f8c17feed5f66aa1bd264249a",
+      "lines": 24,
+      "review": "lessons/38D.md"
+    },
+    "reference/course/visual_review/39A.md": {
+      "sha256": "51cf3c3b268c69604cba098ced795e4331a34fe655c58987e03915820a0e7ca3",
+      "lines": 25,
+      "review": "lessons/39A.md"
+    },
+    "reference/course/visual_review/39B.md": {
+      "sha256": "1d18402932a6181519133142fb839cbf71307d637a5fb014dbbec72410ab3400",
+      "lines": 26,
+      "review": "lessons/39B.md"
+    },
+    "reference/course/visual_review/39C.md": {
+      "sha256": "0028c5bdd35d09fb17bf55c3703f13fa8155f1916635148fffbfba46d043b0f6",
+      "lines": 25,
+      "review": "lessons/39C.md"
+    },
+    "reference/course/visual_review/39D.md": {
+      "sha256": "58d2d8e57a93916c2c16e537212248dd9167b95004b7571ccc7eaff2e0413a03",
+      "lines": 28,
+      "review": "lessons/39D.md"
+    },
+    "reference/course/visual_review/40A.md": {
+      "sha256": "50ea459f1d280dae61ab8352bb68f0c9686d0845d4038994236e817c1fd1b274",
+      "lines": 27,
+      "review": "lessons/40A.md"
+    },
+    "reference/course/visual_review/40B.md": {
+      "sha256": "1253693ba701711245a5286b5ee6d4474d0fed18878dc0ec79f5b00cefb6a203",
+      "lines": 29,
+      "review": "lessons/40B.md"
+    },
+    "reference/course/visual_review/40C.md": {
+      "sha256": "441e7440da93be048ec49af71ae063ce38b684196ac201155476236472a7dc44",
+      "lines": 25,
+      "review": "lessons/40C.md"
+    },
+    "reference/course/visual_review/40D.md": {
+      "sha256": "bdaef054cec636a74eb8b9fad2bbbc3c8403036b8a444ded3b70545f25f5b6e3",
+      "lines": 27,
+      "review": "lessons/40D.md"
+    },
+    "reference/course/visual_review/40E.md": {
+      "sha256": "e7f0cedab312cf421259e59e158e8d066f8248ef732fecb4f0921e8491eff473",
+      "lines": 32,
+      "review": "lessons/40E.md"
+    },
+    "reference/course/visual_review/41A.md": {
+      "sha256": "85915b562d9a036a4c85fbaa5a080080ba3f574e9ed7548008432f0c58ad9c75",
+      "lines": 35,
+      "review": "lessons/41A.md"
+    },
+    "reference/course/visual_review/41B.md": {
+      "sha256": "1defaa61eb6cd83b06fc86445fc9fa2889b3ef0c74318a0d0ec16036fc620008",
+      "lines": 38,
+      "review": "lessons/41B.md"
+    },
+    "reference/course/visual_review/41C.md": {
+      "sha256": "c997fbaa376405fa0d80c68c26a5d8ac090b41af158a638be6d7dc2871d37da6",
+      "lines": 29,
+      "review": "lessons/41C.md"
+    },
+    "reference/course/visual_review/41D.md": {
+      "sha256": "18348d7165bda5089888a151cace98f03dce5e6fbc679fc8fe79024bef2be7cc",
+      "lines": 27,
+      "review": "lessons/41D.md"
+    },
+    "reference/course/visual_review/42A.md": {
+      "sha256": "5fccaabb4a564e1ff73819fac89aeec4ed12ed95e54c02bb434add683327a559",
+      "lines": 33,
+      "review": "lessons/42A.md"
+    },
+    "reference/course/visual_review/42B.md": {
+      "sha256": "ff1bd10cd3b18e5c6e602add802e6370819f84697c9fcb6945d384f7311841df",
+      "lines": 30,
+      "review": "lessons/42B.md"
+    },
+    "reference/course/visual_review/42C.md": {
+      "sha256": "28964d3817c2aee698b1781fb8f4cda343c99760431ee9decf39ff389f01638f",
+      "lines": 26,
+      "review": "lessons/42C.md"
+    },
+    "reference/course/visual_review/43A.md": {
+      "sha256": "77730a2baac3b9670d4de84ac20c99da7770f693b5e135ace16723e879a9abeb",
+      "lines": 34,
+      "review": "lessons/43A.md"
+    },
+    "reference/course/visual_review/43B.md": {
+      "sha256": "c40308f8769ab04fed0d726d3ded705b51b98eff4e85de9a434edb3770f9a03f",
+      "lines": 23,
+      "review": "lessons/43B.md"
+    },
+    "reference/course/visual_review/43C.md": {
+      "sha256": "6cb0b8160562d790f04fce31d6ee61ddccf2736d90cc62bd85aea148a5cd4a01",
+      "lines": 33,
+      "review": "lessons/43C.md"
+    },
+    "reference/course/visual_review/43D.md": {
+      "sha256": "23a669a5dec7979c3e74b7ec4c22edf2b489f79495b0725c4088d4173dd47afb",
+      "lines": 35,
+      "review": "lessons/43D.md"
+    },
+    "reference/course/visual_review/44A.md": {
+      "sha256": "193e434136cee21204f9ec7674f7c5c22eab569f5fd5adbca13bdca518975229",
+      "lines": 36,
+      "review": "lessons/44A.md"
+    },
+    "reference/course/visual_review/44B.md": {
+      "sha256": "d51a3e93ab0a2af5b37a3e6c727d0c1eb5991a291b3abe483ddd936603dfb2ab",
+      "lines": 25,
+      "review": "lessons/44B.md"
+    },
+    "reference/course/visual_review/44C.md": {
+      "sha256": "162cb82a514eb34242ef10c3907e956d6badd85c01430a682ce34c60b2a7af3b",
+      "lines": 30,
+      "review": "lessons/44C.md"
+    },
+    "reference/course/visual_review/44D.md": {
+      "sha256": "11c7fd32c9f8140d8b1c02337c007d8ac045dc8ac767f34aa9efff9f707fbb1a",
+      "lines": 34,
+      "review": "lessons/44D.md"
+    },
+    "reference/course/visual_review/45A.md": {
+      "sha256": "eac593320443d8a0fad07bf386f9358151884ed5e1918f02bc724901762b6890",
+      "lines": 33,
+      "review": "lessons/45A.md"
+    },
+    "reference/course/visual_review/45B.md": {
+      "sha256": "57eff8c0981889416f2d846f5f8aeb2d01757156aaaee3e3c161d49a972a1021",
+      "lines": 24,
+      "review": "lessons/45B.md"
+    },
+    "reference/course/visual_review/45C.md": {
+      "sha256": "f9a259c9482278f76a9437ff38d9b66a6369211ee1cbf3a78c170404b922a35a",
+      "lines": 35,
+      "review": "lessons/45C.md"
+    },
+    "reference/course/visual_review/45D.md": {
+      "sha256": "3e84fc5f0e36f2bef335cedd673129b3a09573256cdcb730013b84fb6e957a54",
+      "lines": 35,
+      "review": "lessons/45D.md"
+    },
+    "reference/course/visual_review/45E.md": {
+      "sha256": "629c0ca7530d4aa64ef8d88f7eb053497fb12e1e62f871c2df2b85e62e0daca4",
+      "lines": 33,
+      "review": "lessons/45E.md"
+    },
+    "reference/course/visual_review/46A.md": {
+      "sha256": "79853b25732cc4c5aa85b89eeda6ff8e5f7bf961a4bbde5efe31accd7b82299f",
+      "lines": 37,
+      "review": "lessons/46A.md"
+    },
+    "reference/course/visual_review/46B.md": {
+      "sha256": "0118edbbb362eec0d4d66c2d33bb3959223bf98a27b07d57e60bbbe8d9c2faf3",
+      "lines": 29,
+      "review": "lessons/46B.md"
+    },
+    "reference/course/visual_review/46C.md": {
+      "sha256": "533cd74b1e13f9c807a35c861305daee4877ad83c9f5ddaeae506a05248acc16",
+      "lines": 26,
+      "review": "lessons/46C.md"
+    },
+    "reference/course/visual_review/46D.md": {
+      "sha256": "30341f5b28c0fe4809fbb9038b8dbed71288a11b6dc636540baae0de0bedac90",
+      "lines": 35,
+      "review": "lessons/46D.md"
+    },
+    "reference/course/visual_review/46E.md": {
+      "sha256": "60682f5d641e42e23f46b25c17fd9094daa0cf3197252699457e97af1b36db9e",
+      "lines": 33,
+      "review": "lessons/46E.md"
+    },
+    "reference/course/visual_review/47A.md": {
+      "sha256": "82aef6f5f5a110f361415c4ca005cab368d9ade3615175c55bd2b3daa9fab4fa",
+      "lines": 30,
+      "review": "lessons/47A.md"
+    },
+    "reference/course/visual_review/47B.md": {
+      "sha256": "5921da7abb4d469cb3521b1e830f7e5dc433a15a922cc650def6fa000ad4ee4c",
+      "lines": 35,
+      "review": "lessons/47B.md"
+    },
+    "reference/course/visual_review/47C.md": {
+      "sha256": "db486ce72f234f27aafa037282aa7b888713353a32b8ddcfef76bea9067f76ed",
+      "lines": 38,
+      "review": "lessons/47C.md"
+    },
+    "reference/course/visual_review/47D.md": {
+      "sha256": "036657b27697da910f62991a9c446e8dd0c4435265281cd3f61c5c0c3ae2fa6a",
+      "lines": 31,
+      "review": "lessons/47D.md"
+    },
+    "reference/course/visual_review/48A.md": {
+      "sha256": "1754bb94132599f497abadc375ca45f9e12288a9d9a9823b244dffe660edb751",
+      "lines": 29,
+      "review": "lessons/48A.md"
+    },
+    "reference/course/visual_review/48B.md": {
+      "sha256": "f0ad199d59deecba2ac13f548bb3f0d76b479e47f0b8f1b532b2162901448630",
+      "lines": 26,
+      "review": "lessons/48B.md"
+    },
+    "reference/course/visual_review/48C.md": {
+      "sha256": "769752be808f8dce9766befd09e1444170634603d9ff7470c2d2cce0e3cd3330",
+      "lines": 24,
+      "review": "lessons/48C.md"
+    },
+    "reference/course/visual_review/48D.md": {
+      "sha256": "1e6914f33eca77bd17ea3c8544e7406c3bac158dabf4a06a7a0ea4941bcc40ad",
+      "lines": 34,
+      "review": "lessons/48D.md"
+    },
+    "reference/course/visual_review/48E.md": {
+      "sha256": "1449a8fd1d518f4850b99d2262624e32b8cb619a6da867418b65242a82caa1f4",
+      "lines": 28,
+      "review": "lessons/48E.md"
+    },
+    "reference/course/visual_review/48F.md": {
+      "sha256": "cdd10bdb4464b91277c18a0f45d134257010fbc6c09d6515a705cfb98c1d955f",
+      "lines": 27,
+      "review": "lessons/48F.md"
+    },
+    "reference/course/visual_review/48G.md": {
+      "sha256": "68a37156da453064478b01bab7040304bf4be861ed3059cad32d9314b9166492",
+      "lines": 29,
+      "review": "lessons/48G.md"
+    },
+    "reference/course/visual_review/48H.md": {
+      "sha256": "cf50d746b128ce0d8a3bf6f856f95a03acf2b5d9c1df02ea5c52266e8d870e6e",
+      "lines": 26,
+      "review": "lessons/48H.md"
+    },
+    "reference/course/visual_review/48I.md": {
+      "sha256": "76cf89d7f63b83a6a676d2e26e2eec7d525abc3fb7af45b8e12f17a6be66aaa4",
+      "lines": 22,
+      "review": "lessons/48I.md"
+    },
+    "reference/course/visual_review/48J.md": {
+      "sha256": "41eb177a9a39c3b55094113a47d71b64bdb5f828dfcbff81b39e44613d46976f",
+      "lines": 20,
+      "review": "lessons/48J.md"
+    },
+    "reference/course/visual_review/48K.md": {
+      "sha256": "6d6de202b89dc0438e0188fcca55026d8f395e9fee7c341c93fdbeda71bfd4b6",
+      "lines": 24,
+      "review": "lessons/48K.md"
+    },
+    "reference/course/visual_review/49A.md": {
+      "sha256": "4d8cc4a86938888a37b20ce83d099be9b648b11416dfbb5b12675c1323118576",
+      "lines": 32,
+      "review": "lessons/49A.md"
+    },
+    "reference/course/visual_review/49B.md": {
+      "sha256": "359ba6b37b6941ac62fecab4e9847026d892ef267107136d871bf324e1d220b0",
+      "lines": 36,
+      "review": "lessons/49B.md"
+    },
+    "reference/course/visual_review/49C.md": {
+      "sha256": "1a110446d44c5d84382ddfa72e6a4edb6c49eaa9b7b6599294d8aacda4c397d7",
+      "lines": 35,
+      "review": "lessons/49C.md"
+    },
+    "reference/course/visual_review/49D.md": {
+      "sha256": "fc689196995b8cd1dda0ea12cf43156726c0d838512e7f384151eadd1a0e1df0",
+      "lines": 33,
+      "review": "lessons/49D.md"
+    },
+    "reference/course/visual_review/49E.md": {
+      "sha256": "9c49be6670afa4489132d4e9d73a5653660e0c4f5264921656b8c539264dcca1",
+      "lines": 36,
+      "review": "lessons/49E.md"
+    },
+    "reference/course/visual_review/50A.md": {
+      "sha256": "d172a5f33f3338360af7707daacaaf4e769740a96504a49bb471601ccce29ff5",
+      "lines": 29,
+      "review": "lessons/50A.md"
+    },
+    "reference/course/visual_review/50B.md": {
+      "sha256": "53de6277d0ce46723350073e6d1221f18a8075935077b990b8601aaf393f189a",
+      "lines": 24,
+      "review": "lessons/50B.md"
+    },
+    "reference/course/visual_review/50C.md": {
+      "sha256": "0b49db23767fcea35d4766f25dd12473365d9cf3d02a2fd771a4026842cbe5f6",
+      "lines": 30,
+      "review": "lessons/50C.md"
+    },
+    "reference/course/visual_review/50D.md": {
+      "sha256": "a6acc35c17ce57441a133763491074836079acaa6f4b7b9aa937e32e7dbc0964",
+      "lines": 28,
+      "review": "lessons/50D.md"
+    },
+    "reference/course/visual_review/50E.md": {
+      "sha256": "825045df5aa3e797d5a47f1ce65557e09326b0f95b5f3001694e162849f90629",
+      "lines": 30,
+      "review": "lessons/50E.md"
+    },
+    "reference/course/visual_review/51A.md": {
+      "sha256": "561d0b27f68107821b973314f05d05f48b13a7a57072b6837217d14edb4ba1d7",
+      "lines": 25,
+      "review": "lessons/51A.md"
+    },
+    "reference/course/visual_review/51B.md": {
+      "sha256": "85a90c813e91f6fddf8db90c2453fbff23e8c2612d76d8fb67dfbad7afbd6473",
+      "lines": 29,
+      "review": "lessons/51B.md"
+    },
+    "reference/course/visual_review/51C.md": {
+      "sha256": "43b01101f33980d9084d562f792fa723a375a2a13ccb6431a363279e37d02d67",
+      "lines": 28,
+      "review": "lessons/51C.md"
+    },
+    "reference/course/visual_review/51D.md": {
+      "sha256": "804d4581d7cc32a67cf6386dea198fe7ddca9f51e4d38af3e07518e5d5aa1664",
+      "lines": 29,
+      "review": "lessons/51D.md"
+    },
+    "reference/course/visual_review/52A.md": {
+      "sha256": "dd4c8e8e2524776556dd4c48b8242f94b914e0fd5d6d0d3439bf1ec72211b744",
+      "lines": 31,
+      "review": "lessons/52A.md"
+    },
+    "reference/course/visual_review/52B.md": {
+      "sha256": "578068c21df7743530dd5d89ba3d138225882fe0baf53a6fb858f3138f6d1c52",
+      "lines": 33,
+      "review": "lessons/52B.md"
+    },
+    "reference/course/visual_review/completion_audit.md": {
+      "sha256": "a8f02aed49afead512d47989bbbea9eacb96b1a96c523b83f7114e770e42e565",
+      "lines": 53,
+      "review": "other_materials.md"
+    },
+    "reference/glossary.md": {
+      "sha256": "6c7e7c5df2b7be703638056ad25ee618b2824d89532583b004d5c4a80b310fe0",
+      "lines": 275,
+      "review": "other_materials.md"
+    },
+    "reference/official_sources.md": {
+      "sha256": "3627928c593446720c3067bd045cf6bd8f47551a089c037eee8a528ae73cc016",
+      "lines": 187,
+      "review": "other_materials.md"
+    },
+    "trading_system/README.md": {
+      "sha256": "bf90c904b58795629e039715d88e99a6d0824af91bd1ead4d410d249161d42a4",
+      "lines": 87,
+      "review": "other_materials.md"
+    },
+    "trading_system/account.md": {
+      "sha256": "0130eb6fb5c92c67ec2a550aee482615f02f1c1f256ad5295d08136a51ac77da",
+      "lines": 128,
+      "review": "other_materials.md"
+    },
+    "trading_system/examples.md": {
+      "sha256": "16f3c2d65b4dee2ffaf9d6bd3145bed03229b4abeae6088e6dabc8c3798a9fc5",
+      "lines": 557,
+      "review": "other_materials.md"
+    },
+    "trading_system/governance.md": {
+      "sha256": "8a8cea4668c42f9d0a34808242d1fd8cc5d68310acc82d71dd7e17a40d5c336f",
+      "lines": 266,
+      "review": "other_materials.md"
+    },
+    "trading_system/market.md": {
+      "sha256": "4fb4775d0dc9e967f8eff55ce9556d05a6bb5db4046fcbe119ed8f14dfb3c339",
+      "lines": 681,
+      "review": "other_materials.md"
+    },
+    "trading_system/scenarios.md": {
+      "sha256": "5a3fc035d9b565ee25381d2d22421ee9858b007338e48f75c83ee3e8b89eb57a",
+      "lines": 177,
+      "review": "other_materials.md"
+    },
+    "trading_system/trade.md": {
+      "sha256": "28069040ba746621f37d64c58c104c5e77e2b84dc27d74858f8d68a514e641f8",
+      "lines": 281,
+      "review": "other_materials.md"
+    }
+  }
+}
