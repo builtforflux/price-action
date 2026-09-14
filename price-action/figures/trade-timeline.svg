@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="1248" viewBox="0 0 1240 1248" role="img" aria-labelledby="title desc">
+<title id="title">一笔交易：证据、路径与仓位同步更新</title><desc id="desc">一条条件依次成立的多头交易示例。各列仅使用该时点已知证据。首仓、持有、按计划加仓、阶段减仓、最终清仓与空仓重评对齐在同一时间轴。原路径观察期限t3与持仓期限t5分开；首仓前固定风险预算4及回吐额度4。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#8A99A7"/></marker></defs>
+<style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif} .future{fill:none;stroke-width:3;stroke-dasharray:8 6;stroke-linecap:round;stroke-linejoin:round}.history{fill:none;stroke:#334A5F;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}</style>
+<rect x="0" y="0" width="1240" height="1248" fill="#F7F9FC" stroke="none" rx="0"/>
+<text x="32" y="45" fill="#172C40" font-size="26" font-weight="700" text-anchor="start">一笔交易：证据、路径与仓位同步更新</text>
+<text x="32" y="78" fill="#5C6B79" font-size="16" font-weight="400" text-anchor="start">条件依次成立的多头示例 · 每点每单位盈亏 1 · 成本 0 · 各列使用当时可见证据</text>
+<rect x="32" y="101" width="1176" height="104" fill="#EAF0F7" stroke="none" rx="8"/>
+<text x="50" y="128" fill="#172C40" font-size="16" font-weight="600" text-anchor="start">整笔预算 4 · 首仓额度 2 · 回吐额度 4</text>
+<text x="50" y="156" fill="#172C40" font-size="16" font-weight="400" text-anchor="start">首仓 100 × 0.5；后层候选 104 × 0.5</text>
+<text x="50" y="184" fill="#172C40" font-size="16" font-weight="400" text-anchor="start">最多 2 笔，后层按新增条件核验</text>
+<text x="457" y="128" fill="#172C40" font-size="16" font-weight="600" text-anchor="start">原预测：第二段测试 106</text>
+<text x="457" y="156" fill="#172C40" font-size="16" font-weight="400" text-anchor="start">原路径观察期限：t₃</text>
+<text x="457" y="184" fill="#172C40" font-size="16" font-weight="400" text-anchor="start">允许普通回调，观察顺势恢复</text>
+<text x="839" y="128" fill="#172C40" font-size="16" font-weight="600" text-anchor="start">阶段退出 106 · 最终退出 110</text>
+<text x="839" y="156" fill="#172C40" font-size="16" font-weight="400" text-anchor="start">持仓期限：t₅</text>
+<text x="839" y="184" fill="#172C40" font-size="16" font-weight="400" text-anchor="start">止损随新确认结构调整</text>
+<line x1="435" y1="115" x2="435" y2="191" stroke="#C1CFDD" stroke-width="1.3"/>
+<line x1="816" y1="115" x2="816" y2="191" stroke="#C1CFDD" stroke-width="1.3"/>
+<rect x="128" y="227" width="1080" height="339" fill="white" stroke="#CAD4DE" rx="8"/>
+<line x1="144" y1="542" x2="1194" y2="542" stroke="#CAD4DE" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="115" y="547" fill="#5C6B79" font-size="14" font-weight="400" text-anchor="end">96</text>
+<line x1="144" y1="474" x2="1194" y2="474" stroke="#CAD4DE" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="115" y="479" fill="#5C6B79" font-size="14" font-weight="400" text-anchor="end">100</text>
+<line x1="144" y1="406" x2="1194" y2="406" stroke="#CAD4DE" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="115" y="411" fill="#5C6B79" font-size="14" font-weight="400" text-anchor="end">104</text>
+<line x1="144" y1="372" x2="1194" y2="372" stroke="#CAD4DE" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="115" y="377" fill="#5C6B79" font-size="14" font-weight="400" text-anchor="end">106</text>
+<line x1="144" y1="304" x2="1194" y2="304" stroke="#CAD4DE" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="115" y="309" fill="#5C6B79" font-size="14" font-weight="400" text-anchor="end">110</text>
+<line x1="218" y1="244" x2="218" y2="564" stroke="#CAD4DE" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="218" y="242" fill="#5C6B79" font-size="14" font-weight="600" text-anchor="middle">t0</text>
+<line x1="398" y1="244" x2="398" y2="564" stroke="#CAD4DE" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="398" y="242" fill="#5C6B79" font-size="14" font-weight="600" text-anchor="middle">t1</text>
+<line x1="578" y1="244" x2="578" y2="564" stroke="#CAD4DE" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="578" y="242" fill="#5C6B79" font-size="14" font-weight="600" text-anchor="middle">t2</text>
+<line x1="758" y1="244" x2="758" y2="564" stroke="#CAD4DE" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="758" y="242" fill="#5C6B79" font-size="14" font-weight="600" text-anchor="middle">t3</text>
+<line x1="938" y1="244" x2="938" y2="564" stroke="#CAD4DE" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="938" y="242" fill="#5C6B79" font-size="14" font-weight="600" text-anchor="middle">t4</text>
+<line x1="1118" y1="244" x2="1118" y2="564" stroke="#CAD4DE" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="1118" y="242" fill="#5C6B79" font-size="14" font-weight="600" text-anchor="middle">t5</text>
+<line x1="758" y1="244" x2="758" y2="564" stroke="#365DB4" stroke-width="1.4" stroke-dasharray="4 4"/>
+<line x1="1118" y1="244" x2="1118" y2="564" stroke="#B44D32" stroke-width="1.4" stroke-dasharray="4 4"/>
+<path d="M147,516.5 L180,491 L198,499.5 L218,474 L275,423 L333,440 L398,457 L461,414.5 L522,423 L578,406 L628,380.5 L683,389 L758,372 L814,329.5 L864,346.5 L938,304 L1008,329.5 L1055,324.40000000000003 L1118,355" class="history" stroke="#172C40"/>
+<path d="M1118,355 L1153,334.59999999999997 L1190,314.19999999999993" class="future" stroke="#087F78"/>
+<path d="M1118,355 L1153,372 L1190,390.69999999999993" class="future" stroke="#B44D32"/>
+<circle cx="218" cy="474" r="4" fill="white" stroke="#172C40" stroke-width="2"/>
+<circle cx="398" cy="457" r="4" fill="white" stroke="#172C40" stroke-width="2"/>
+<circle cx="578" cy="406" r="4" fill="white" stroke="#172C40" stroke-width="2"/>
+<circle cx="758" cy="372" r="4" fill="white" stroke="#172C40" stroke-width="2"/>
+<circle cx="938" cy="304" r="4" fill="white" stroke="#172C40" stroke-width="2"/>
+<circle cx="1118" cy="355" r="4" fill="white" stroke="#172C40" stroke-width="2"/>
+<path d="M218,542 L578,542 L578,440 L758,440 L758,406 L938,406" fill="none" stroke="#B44D32" stroke-width="2"/>
+<text x="235" y="532" fill="#B44D32" font-size="13" font-weight="400" text-anchor="start">有效止损 96</text>
+<text x="592" y="462" fill="#B44D32" font-size="13" font-weight="400" text-anchor="start">102</text>
+<text x="785" y="428" fill="#B44D32" font-size="13" font-weight="400" text-anchor="start">104</text>
+<line x1="476" y1="472" x2="522" y2="423" stroke="#087F78" stroke-width="1"/>
+<text x="476" y="467" fill="#087F78" font-size="15" font-weight="600" text-anchor="start">HL 103</text>
+<line x1="648" y1="442" x2="683" y2="389" stroke="#087F78" stroke-width="1"/>
+<text x="648" y="437" fill="#087F78" font-size="15" font-weight="600" text-anchor="start">HL 105</text>
+<text x="747" y="270" fill="#365DB4" font-size="14" font-weight="600" text-anchor="end">观察期限 t₃</text>
+<text x="1189" y="547" fill="#B44D32" font-size="14" font-weight="600" text-anchor="end">原持仓期限 t₅</text>
+<text x="945" y="289" fill="#087F78" font-size="14" font-weight="600" text-anchor="start">最终目标</text>
+<line x1="128" y1="578" x2="1208" y2="578" stroke="#CAD4DE" stroke-width="1.3" marker-end="url(#arrow)"/>
+<text x="218" y="605" fill="#172C40" font-size="17" font-weight="700" text-anchor="middle">t₀ 首仓</text>
+<text x="398" y="605" fill="#172C40" font-size="17" font-weight="700" text-anchor="middle">t₁ 持有</text>
+<text x="578" y="605" fill="#172C40" font-size="17" font-weight="700" text-anchor="middle">t₂ 按计划加仓</text>
+<text x="758" y="605" fill="#172C40" font-size="17" font-weight="700" text-anchor="middle">t₃ 阶段减仓</text>
+<text x="938" y="605" fill="#172C40" font-size="17" font-weight="700" text-anchor="middle">t₄ 清仓</text>
+<text x="1118" y="605" fill="#172C40" font-size="17" font-weight="700" text-anchor="middle">t₅ 空仓重评</text>
+<text x="32" y="656" fill="#172C40" font-size="17" font-weight="700" text-anchor="start">新证据</text>
+<rect x="128" y="625" width="1080" height="99" fill="white" stroke="#CAD4DE" rx="0"/>
+<text x="218" y="658" fill="#172C40" font-size="15" font-weight="600" text-anchor="middle">上破获跟随</text>
+<text x="218" y="686" fill="#172C40" font-size="15" font-weight="400" text-anchor="middle">入场条件具备</text>
+<line x1="308" y1="625" x2="308" y2="724" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="398" y="658" fill="#172C40" font-size="15" font-weight="600" text-anchor="middle">普通回调</text>
+<text x="398" y="686" fill="#172C40" font-size="15" font-weight="400" text-anchor="middle">主要结构保持</text>
+<line x1="488" y1="625" x2="488" y2="724" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="578" y="658" fill="#172C40" font-size="15" font-weight="600" text-anchor="middle">同向恢复获跟随</text>
+<text x="578" y="686" fill="#172C40" font-size="15" font-weight="400" text-anchor="middle">新 HL 103 确认</text>
+<line x1="668" y1="625" x2="668" y2="724" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="758" y="658" fill="#172C40" font-size="15" font-weight="600" text-anchor="middle">到达 106</text>
+<text x="758" y="686" fill="#172C40" font-size="15" font-weight="400" text-anchor="middle">新 HL 105 确认</text>
+<line x1="848" y1="625" x2="848" y2="724" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="938" y="658" fill="#172C40" font-size="15" font-weight="600" text-anchor="middle">到达 110</text>
+<text x="938" y="686" fill="#172C40" font-size="15" font-weight="400" text-anchor="middle">最终退出目标</text>
+<line x1="1028" y1="625" x2="1028" y2="724" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="1118" y="658" fill="#172C40" font-size="15" font-weight="600" text-anchor="middle">清仓后新事实</text>
+<text x="1118" y="686" fill="#172C40" font-size="15" font-weight="400" text-anchor="middle">新路径待验证</text>
+<text x="32" y="755" fill="#172C40" font-size="17" font-weight="700" text-anchor="start">路径记录</text>
+<rect x="128" y="724" width="1080" height="99" fill="white" stroke="#CAD4DE" rx="0"/>
+<text x="218" y="757" fill="#172C40" font-size="15" font-weight="600" text-anchor="middle">跟踪第二段</text>
+<text x="218" y="785" fill="#172C40" font-size="15" font-weight="400" text-anchor="middle">目标 106 · 至 t₃</text>
+<line x1="308" y1="724" x2="308" y2="823" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="398" y="757" fill="#172C40" font-size="15" font-weight="600" text-anchor="middle">允许回调内</text>
+<text x="398" y="785" fill="#172C40" font-size="15" font-weight="400" text-anchor="middle">原路径保持</text>
+<line x1="488" y1="724" x2="488" y2="823" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="578" y="757" fill="#172C40" font-size="15" font-weight="600" text-anchor="middle">恢复证据增强</text>
+<text x="578" y="785" fill="#172C40" font-size="15" font-weight="400" text-anchor="middle">继续跟踪 106</text>
+<line x1="668" y1="724" x2="668" y2="823" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="758" y="757" fill="#172C40" font-size="15" font-weight="600" text-anchor="middle">原预测完成</text>
+<text x="758" y="785" fill="#172C40" font-size="15" font-weight="400" text-anchor="middle">后续：110 · 至 t₅</text>
+<line x1="848" y1="724" x2="848" y2="823" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="938" y="757" fill="#172C40" font-size="15" font-weight="600" text-anchor="middle">原判断记录保留</text>
+<text x="938" y="785" fill="#172C40" font-size="15" font-weight="400" text-anchor="middle">本笔结束</text>
+<line x1="1028" y1="724" x2="1028" y2="823" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="1118" y="757" fill="#172C40" font-size="15" font-weight="600" text-anchor="middle">另定目标与期限</text>
+<text x="1118" y="785" fill="#172C40" font-size="15" font-weight="400" text-anchor="middle">独立信号待验证</text>
+<text x="32" y="854" fill="#172C40" font-size="17" font-weight="700" text-anchor="start">仓位动作</text>
+<rect x="128" y="823" width="1080" height="121" fill="white" stroke="#CAD4DE" rx="0"/>
+<text x="218" y="856" fill="#087F78" font-size="15" font-weight="600" text-anchor="middle">100 首仓 0.5</text>
+<text x="218" y="884" fill="#087F78" font-size="15" font-weight="400" text-anchor="middle">有效止损 96</text>
+<line x1="308" y1="823" x2="308" y2="944" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="398" y="856" fill="#172C40" font-size="15" font-weight="600" text-anchor="middle">持有 0.5</text>
+<text x="398" y="884" fill="#172C40" font-size="15" font-weight="400" text-anchor="middle">沿用止损 96</text>
+<line x1="488" y1="823" x2="488" y2="944" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="578" y="856" fill="#087F78" font-size="15" font-weight="600" text-anchor="middle">新止损 102 生效</text>
+<text x="578" y="884" fill="#087F78" font-size="15" font-weight="400" text-anchor="middle">加仓前核验 0 ≥ −4</text>
+<text x="578" y="912" fill="#087F78" font-size="15" font-weight="400" text-anchor="middle">104 按计划加 0.5</text>
+<line x1="668" y1="823" x2="668" y2="944" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="758" y="856" fill="#087F78" font-size="15" font-weight="600" text-anchor="middle">106 退出后层 0.5</text>
+<text x="758" y="884" fill="#087F78" font-size="15" font-weight="400" text-anchor="middle">余仓止损 104</text>
+<line x1="848" y1="823" x2="848" y2="944" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="938" y="856" fill="#087F78" font-size="15" font-weight="600" text-anchor="middle">110 退出余仓 0.5</text>
+<text x="938" y="884" fill="#087F78" font-size="15" font-weight="400" text-anchor="middle">余量归零</text>
+<line x1="1028" y1="823" x2="1028" y2="944" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="1118" y="856" fill="#172C40" font-size="15" font-weight="600" text-anchor="middle">重定计划与预算</text>
+<text x="1118" y="884" fill="#172C40" font-size="15" font-weight="400" text-anchor="middle">重新核验入场</text>
+<rect x="128" y="944" width="1080" height="42" fill="#EEF5F3" stroke="#CAD4DE" rx="0"/>
+<text x="32" y="972" fill="#5C6B79" font-size="14" font-weight="600" text-anchor="start">实际余仓</text>
+<text x="218" y="972" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">0.5</text>
+<line x1="308" y1="944" x2="308" y2="986" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="398" y="972" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">0.5</text>
+<line x1="488" y1="944" x2="488" y2="986" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="578" y="972" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">1</text>
+<line x1="668" y1="944" x2="668" y2="986" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="758" y="972" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">0.5</text>
+<line x1="848" y1="944" x2="848" y2="986" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="938" y="972" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">0</text>
+<line x1="1028" y1="944" x2="1028" y2="986" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="1118" y="972" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">0</text>
+<rect x="128" y="986" width="1080" height="42" fill="white" stroke="#CAD4DE" rx="0"/>
+<text x="32" y="1014" fill="#5C6B79" font-size="14" font-weight="600" text-anchor="start">已实现盈亏</text>
+<text x="218" y="1014" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">0</text>
+<line x1="308" y1="986" x2="308" y2="1028" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="398" y="1014" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">0</text>
+<line x1="488" y1="986" x2="488" y2="1028" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="578" y="1014" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">0</text>
+<line x1="668" y1="986" x2="668" y2="1028" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="758" y="1014" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">+1</text>
+<line x1="848" y1="986" x2="848" y2="1028" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="938" y="1014" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">+6</text>
+<line x1="1028" y1="986" x2="1028" y2="1028" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="1118" y="1014" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">前笔已结</text>
+<rect x="128" y="1028" width="1080" height="42" fill="#EEF5F3" stroke="#CAD4DE" rx="0"/>
+<text x="32" y="1056" fill="#5C6B79" font-size="14" font-weight="600" text-anchor="start">整笔止损结果</text>
+<text x="218" y="1056" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">−2</text>
+<line x1="308" y1="1028" x2="308" y2="1070" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="398" y="1056" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">−2</text>
+<line x1="488" y1="1028" x2="488" y2="1070" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="578" y="1056" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">0</text>
+<line x1="668" y1="1028" x2="668" y2="1070" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="758" y="1056" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">+3</text>
+<line x1="848" y1="1028" x2="848" y2="1070" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="938" y="1056" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">+6（实际）</text>
+<line x1="1028" y1="1028" x2="1028" y2="1070" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="1118" y="1056" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">保留原结果</text>
+<rect x="128" y="1070" width="1080" height="42" fill="white" stroke="#CAD4DE" rx="0"/>
+<text x="32" y="1098" fill="#5C6B79" font-size="14" font-weight="600" text-anchor="start">当前回吐风险</text>
+<text x="218" y="1098" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">2</text>
+<line x1="308" y1="1070" x2="308" y2="1112" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="398" y="1098" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">2.5</text>
+<line x1="488" y1="1070" x2="488" y2="1112" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="578" y="1098" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">2</text>
+<line x1="668" y1="1070" x2="668" y2="1112" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="758" y="1098" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">1</text>
+<line x1="848" y1="1070" x2="848" y2="1112" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="938" y="1098" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">0</text>
+<line x1="1028" y1="1070" x2="1028" y2="1112" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="1118" y="1098" fill="#172C40" font-size="16" font-weight="600" text-anchor="middle">0</text>
+<text x="32" y="1153" fill="#172C40" font-size="17" font-weight="600" text-anchor="start">加仓与调整前核对原预算；成交后核算实际余仓、已实现盈亏、有效止损与回吐风险。</text>
+<text x="32" y="1190" fill="#5C6B79" font-size="16" font-weight="400" text-anchor="start">清仓触发：保护止损 / 持有前提失效 / 最终退出目标 / 持仓期限到。</text>
+<text x="32" y="1222" fill="#5C6B79" font-size="16" font-weight="400" text-anchor="start">原判断、后续判断与新交易分别记录；清仓后按新依据重定入场、止损、数量与目标。</text>
+</svg>

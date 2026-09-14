@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="962" viewBox="0 0 1120 962" role="img" aria-labelledby="title desc">
+<title id="title">突破后的两次检验</title><desc id="desc">上破后先检验突破进展；突破失败后在同一原突破区回测，受阻或收复产生不同路径。所有虚线均为候选后续。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#8A99A7"/></marker></defs>
+<style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif} .future{fill:none;stroke-width:3;stroke-dasharray:8 6;stroke-linecap:round;stroke-linejoin:round}.history{fill:none;stroke:#334A5F;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}</style>
+<rect x="0" y="0" width="1120" height="962" fill="#F7F9FC" stroke="none" rx="0"/>
+<text x="32" y="45" fill="#172C40" font-size="26" font-weight="700" text-anchor="start">突破后的两次检验</text>
+<text x="32" y="76" fill="#5C6B79" font-size="16" font-weight="400" text-anchor="start">上破为例 · 上行表示价格上涨 · 同组共用已知走势与判断时点</text>
+<rect x="32" y="103" width="516" height="340" fill="white" stroke="#CAD4DE" rx="10"/>
+<text x="52" y="133" fill="#087F78" font-size="19" font-weight="700" text-anchor="start">① 上破后的检验：界外保持</text>
+<line x1="65" y1="296" x2="528" y2="296" stroke="#365DB4" stroke-width="1.3" stroke-dasharray="4 4"/>
+<text x="68" y="289" fill="#365DB4" font-size="13" font-weight="400" text-anchor="start">原区间上沿</text>
+<line x1="65" y1="381" x2="531" y2="381" stroke="#CAD4DE" stroke-width="1.3" marker-end="url(#arrow)"/>
+<text x="532" y="397" fill="#5C6B79" font-size="12" font-weight="400" text-anchor="end">时间</text>
+<line x1="265" y1="183" x2="265" y2="381" stroke="#5C6B79" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="265" y="179" fill="#5C6B79" font-size="13" font-weight="600" text-anchor="middle">t₀</text>
+<path d="M68,354 L105,316 L138,346 L176,307 L214,335 L265,252" class="history" stroke="#172C40"/>
+<path d="M265,252 L295,226 L332,216 L370,279 L403,274 L455,222 L525,195" class="future" stroke="#087F78"/>
+<circle cx="265" cy="252" r="4" fill="white" stroke="#172C40" stroke-width="2"/>
+<line x1="347" y1="338" x2="370" y2="279" stroke="#087F78" stroke-width="1"/>
+<text x="347" y="333" fill="#087F78" font-size="15" font-weight="600" text-anchor="start">界外守住</text>
+<line x1="429" y1="197" x2="455" y2="222" stroke="#087F78" stroke-width="1"/>
+<text x="429" y="192" fill="#087F78" font-size="15" font-weight="600" text-anchor="start">顺势恢复</text>
+<text x="52" y="407" fill="#5C6B79" font-size="15" font-weight="400" text-anchor="start">证据：同向跟随 · 界外守住 · 顺势恢复</text>
+<text x="52" y="431" fill="#087F78" font-size="16" font-weight="700" text-anchor="start">判断：跟踪突破方向第二段</text>
+<rect x="572" y="103" width="516" height="340" fill="white" stroke="#CAD4DE" rx="10"/>
+<text x="592" y="133" fill="#B44D32" font-size="19" font-weight="700" text-anchor="start">① 上破后的检验：深度回入</text>
+<line x1="605" y1="296" x2="1068" y2="296" stroke="#365DB4" stroke-width="1.3" stroke-dasharray="4 4"/>
+<text x="608" y="289" fill="#365DB4" font-size="13" font-weight="400" text-anchor="start">原区间上沿</text>
+<line x1="605" y1="381" x2="1071" y2="381" stroke="#CAD4DE" stroke-width="1.3" marker-end="url(#arrow)"/>
+<text x="1072" y="397" fill="#5C6B79" font-size="12" font-weight="400" text-anchor="end">时间</text>
+<line x1="805" y1="183" x2="805" y2="381" stroke="#5C6B79" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="805" y="179" fill="#5C6B79" font-size="13" font-weight="600" text-anchor="middle">t₀</text>
+<path d="M608,354 L645,316 L678,346 L716,307 L754,335 L805,252" class="history" stroke="#172C40"/>
+<path d="M805,252 L834,278 L866,318 L895,349 L929,335 L969,366 L997,353 L1063,377" class="future" stroke="#B44D32"/>
+<circle cx="805" cy="252" r="4" fill="white" stroke="#172C40" stroke-width="2"/>
+<line x1="818" y1="371" x2="869" y2="321" stroke="#B44D32" stroke-width="1"/>
+<text x="818" y="366" fill="#B44D32" font-size="15" font-weight="600" text-anchor="start">深度回入</text>
+<line x1="935" y1="316" x2="970" y2="366" stroke="#B44D32" stroke-width="1"/>
+<text x="935" y="311" fill="#B44D32" font-size="15" font-weight="600" text-anchor="start">反向跟随</text>
+<text x="592" y="407" fill="#5C6B79" font-size="15" font-weight="400" text-anchor="start">证据：深度回入 · 反向大实体与跟随</text>
+<text x="592" y="431" fill="#B44D32" font-size="16" font-weight="700" text-anchor="start">判断：突破失败，重评区间与反转</text>
+<line x1="830" y1="443" x2="830" y2="475" stroke="#5C6B79" stroke-width="1.3"/>
+<line x1="290" y1="502" x2="830" y2="502" stroke="#5C6B79" stroke-width="1.3"/>
+<line x1="830" y1="475" x2="560" y2="475" stroke="#5C6B79" stroke-width="1.3"/>
+<line x1="560" y1="475" x2="560" y2="502" stroke="#5C6B79" stroke-width="1.3"/>
+<rect x="364" y="482" width="392" height="34" fill="#F7F9FC" stroke="none" rx="0"/>
+<text x="560" y="504" fill="#172C40" font-size="18" font-weight="600" text-anchor="middle">突破失败后，若回测原突破区域</text>
+<line x1="290" y1="502" x2="290" y2="532" stroke="#5C6B79" stroke-width="1.3" marker-end="url(#arrow)"/>
+<line x1="830" y1="502" x2="830" y2="532" stroke="#5C6B79" stroke-width="1.3" marker-end="url(#arrow)"/>
+<rect x="32" y="544" width="516" height="340" fill="white" stroke="#CAD4DE" rx="10"/>
+<text x="52" y="574" fill="#B44D32" font-size="19" font-weight="700" text-anchor="start">② 失败后回测：原突破区阻挡恢复</text>
+<line x1="65" y1="737" x2="528" y2="737" stroke="#365DB4" stroke-width="1.3" stroke-dasharray="4 4"/>
+<text x="68" y="730" fill="#365DB4" font-size="13" font-weight="400" text-anchor="start">原区间上沿</text>
+<line x1="65" y1="822" x2="531" y2="822" stroke="#CAD4DE" stroke-width="1.3" marker-end="url(#arrow)"/>
+<text x="532" y="838" fill="#5C6B79" font-size="12" font-weight="400" text-anchor="end">时间</text>
+<line x1="265" y1="624" x2="265" y2="822" stroke="#5C6B79" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="265" y="620" fill="#5C6B79" font-size="13" font-weight="600" text-anchor="middle">t₁</text>
+<path d="M68,791 L107,757 L141,778 L176,692 L211,790 L241,756 L265,741" class="history" stroke="#172C40"/>
+<path d="M265,741 L296,745 L328,781 L358,771 L400,802 L435,791 L524,819" class="future" stroke="#B44D32"/>
+<circle cx="265" cy="741" r="4" fill="white" stroke="#172C40" stroke-width="2"/>
+<line x1="297" y1="714" x2="296" y2="745" stroke="#B44D32" stroke-width="1"/>
+<text x="297" y="709" fill="#B44D32" font-size="15" font-weight="600" text-anchor="start">受阻</text>
+<line x1="405" y1="761" x2="435" y2="791" stroke="#B44D32" stroke-width="1"/>
+<text x="405" y="756" fill="#B44D32" font-size="15" font-weight="600" text-anchor="start">反向跟随</text>
+<text x="52" y="848" fill="#5C6B79" font-size="15" font-weight="400" text-anchor="start">证据：回测受阻 · 反向跟随</text>
+<text x="52" y="872" fill="#B44D32" font-size="16" font-weight="700" text-anchor="start">判断：支撑转阻力，沿原突破反方向延续</text>
+<rect x="572" y="544" width="516" height="340" fill="white" stroke="#CAD4DE" rx="10"/>
+<text x="592" y="574" fill="#087F78" font-size="19" font-weight="700" text-anchor="start">② 失败后回测：收复原突破区</text>
+<line x1="605" y1="737" x2="1068" y2="737" stroke="#365DB4" stroke-width="1.3" stroke-dasharray="4 4"/>
+<text x="608" y="730" fill="#365DB4" font-size="13" font-weight="400" text-anchor="start">原区间上沿</text>
+<line x1="605" y1="822" x2="1071" y2="822" stroke="#CAD4DE" stroke-width="1.3" marker-end="url(#arrow)"/>
+<text x="1072" y="838" fill="#5C6B79" font-size="12" font-weight="400" text-anchor="end">时间</text>
+<line x1="805" y1="624" x2="805" y2="822" stroke="#5C6B79" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="805" y="620" fill="#5C6B79" font-size="13" font-weight="600" text-anchor="middle">t₁</text>
+<path d="M608,791 L647,757 L681,778 L716,692 L751,790 L781,756 L805,741" class="history" stroke="#172C40"/>
+<path d="M805,741 L834,701 L863,669 L908,718 L944,715 L998,665 L1064,639" class="future" stroke="#087F78"/>
+<circle cx="805" cy="741" r="4" fill="white" stroke="#172C40" stroke-width="2"/>
+<line x1="832" y1="653" x2="836" y2="699" stroke="#087F78" stroke-width="1"/>
+<text x="832" y="648" fill="#087F78" font-size="15" font-weight="600" text-anchor="start">收复</text>
+<line x1="899" y1="780" x2="908" y2="718" stroke="#087F78" stroke-width="1"/>
+<text x="899" y="775" fill="#087F78" font-size="15" font-weight="600" text-anchor="start">回测守住</text>
+<text x="592" y="848" fill="#5C6B79" font-size="15" font-weight="400" text-anchor="start">证据：收复 · 回测守住 · 原方向推进</text>
+<text x="592" y="872" fill="#087F78" font-size="16" font-weight="700" text-anchor="start">判断：原突破方向恢复</text>
+<line x1="34" y1="923" x2="79" y2="923" stroke="#172C40" stroke-width="3"/>
+<text x="88" y="928" fill="#5C6B79" font-size="14" font-weight="400" text-anchor="start">已知示意走势</text>
+<line x1="238" y1="923" x2="283" y2="923" stroke="#087F78" stroke-width="3" stroke-dasharray="8 6"/>
+<text x="292" y="928" fill="#5C6B79" font-size="14" font-weight="400" text-anchor="start">候选后续</text>
+<line x1="420" y1="913" x2="420" y2="933" stroke="#5C6B79" stroke-width="1.3" stroke-dasharray="3 4"/>
+<text x="432" y="928" fill="#5C6B79" font-size="14" font-weight="400" text-anchor="start">判断时点</text>
+<text x="586" y="928" fill="#5C6B79" font-size="14" font-weight="400" text-anchor="start">候选证据成立 → 对应判断</text>
+</svg>

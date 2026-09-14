@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="1180" viewBox="0 0 1120 1180" role="img" aria-labelledby="title desc">
+<title id="title">回调怎样改变控制权</title><desc id="desc">三种候选后续共用多头通道与首次明显回调的已知走势。主要HL保持且顺势恢复支持恢复；持续双向收回支持平衡；反向突破主要HL并跟随、保留支持反向控制增强。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#8A99A7"/></marker></defs>
+<style>text{font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif} .future{fill:none;stroke-width:3;stroke-dasharray:8 6;stroke-linecap:round;stroke-linejoin:round}.history{fill:none;stroke:#334A5F;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}</style>
+<rect x="0" y="0" width="1120" height="1180" fill="#F7F9FC" stroke="none" rx="0"/>
+<text x="32" y="45" fill="#172C40" font-size="26" font-weight="700" text-anchor="start">回调怎样改变控制权</text>
+<text x="32" y="76" fill="#5C6B79" font-size="16" font-weight="400" text-anchor="start">同一多头回调 · 同一主要 HL 与原趋势极值 · 逐项增加证据</text>
+<rect x="32" y="103" width="1056" height="318" fill="white" stroke="#CAD4DE" rx="10"/>
+<text x="52" y="133" fill="#087F78" font-size="19" font-weight="700" text-anchor="start">① 主要 HL 保持，顺势恢复</text>
+<line x1="64" y1="201" x2="637" y2="201" stroke="#CAD4DE" stroke-width="1.3" stroke-dasharray="4 4"/>
+<text x="68" y="194" fill="#5C6B79" font-size="13" font-weight="400" text-anchor="start">原趋势极值</text>
+<line x1="64" y1="302" x2="637" y2="302" stroke="#365DB4" stroke-width="1.3" stroke-dasharray="4 4"/>
+<text x="68" y="295" fill="#365DB4" font-size="13" font-weight="400" text-anchor="start">主要 HL</text>
+<line x1="327" y1="172" x2="327" y2="400" stroke="#5C6B79" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="327" y="166" fill="#5C6B79" font-size="13" font-weight="600" text-anchor="middle">t₀</text>
+<line x1="64" y1="409" x2="644" y2="409" stroke="#CAD4DE" stroke-width="1.3" marker-end="url(#arrow)"/>
+<text x="645" y="403" fill="#5C6B79" font-size="12" font-weight="400" text-anchor="end">时间</text>
+<path d="M70,362 L109,309 L140,335 L178,257 L223,302 L280,201 L327,258" class="history" stroke="#172C40"/>
+<path d="M327,258 L366,276 L408,226 L451,202 L489,237 L537,194 L614,171" class="future" stroke="#087F78"/>
+<circle cx="327" cy="258" r="4" fill="white" stroke="#172C40" stroke-width="2"/>
+<line x1="343" y1="327" x2="366" y2="276" stroke="#087F78" stroke-width="1"/>
+<text x="343" y="322" fill="#087F78" font-size="15" font-weight="600" text-anchor="start">回调守住</text>
+<line x1="483" y1="287" x2="491" y2="234" stroke="#087F78" stroke-width="1"/>
+<text x="483" y="282" fill="#087F78" font-size="15" font-weight="600" text-anchor="start">顺势恢复</text>
+<line x1="682" y1="156" x2="682" y2="397" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="711" y="190" fill="#087F78" font-size="23" font-weight="700" text-anchor="start">恢复证据增强</text>
+<text x="711" y="231" fill="#172C40" font-size="17" font-weight="400" text-anchor="start">主要 HL 保持</text>
+<text x="711" y="261" fill="#172C40" font-size="17" font-weight="400" text-anchor="start">顺势实体与跟随增强</text>
+<text x="711" y="319" fill="#087F78" font-size="16" font-weight="600" text-anchor="start">跟踪第二段、原趋势极值测试</text>
+<text x="711" y="363" fill="#5C6B79" font-size="16" font-weight="400" text-anchor="start">原波段前提保持 → 持有</text>
+<rect x="32" y="443" width="1056" height="318" fill="white" stroke="#CAD4DE" rx="10"/>
+<text x="52" y="473" fill="#365DB4" font-size="19" font-weight="700" text-anchor="start">② 恢复受阻，双向推进反复被收回</text>
+<line x1="64" y1="541" x2="637" y2="541" stroke="#CAD4DE" stroke-width="1.3" stroke-dasharray="4 4"/>
+<text x="68" y="534" fill="#5C6B79" font-size="13" font-weight="400" text-anchor="start">原趋势极值</text>
+<line x1="64" y1="642" x2="637" y2="642" stroke="#365DB4" stroke-width="1.3" stroke-dasharray="4 4"/>
+<text x="68" y="635" fill="#365DB4" font-size="13" font-weight="400" text-anchor="start">主要 HL</text>
+<line x1="327" y1="512" x2="327" y2="740" stroke="#5C6B79" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="327" y="506" fill="#5C6B79" font-size="13" font-weight="600" text-anchor="middle">t₀</text>
+<line x1="64" y1="749" x2="644" y2="749" stroke="#CAD4DE" stroke-width="1.3" marker-end="url(#arrow)"/>
+<text x="645" y="743" fill="#5C6B79" font-size="12" font-weight="400" text-anchor="end">时间</text>
+<path d="M70,702 L109,649 L140,675 L178,597 L223,642 L280,541 L327,598" class="history" stroke="#172C40"/>
+<path d="M327,598 L364,631 L401,579 L439,633 L479,588 L521,635 L566,594 L614,630" class="future" stroke="#365DB4"/>
+<circle cx="327" cy="598" r="4" fill="white" stroke="#172C40" stroke-width="2"/>
+<line x1="359" y1="547" x2="401" y2="579" stroke="#365DB4" stroke-width="1"/>
+<text x="359" y="542" fill="#365DB4" font-size="15" font-weight="600" text-anchor="start">恢复受阻</text>
+<line x1="509" y1="699" x2="520" y2="635" stroke="#365DB4" stroke-width="1"/>
+<text x="509" y="694" fill="#365DB4" font-size="15" font-weight="600" text-anchor="start">双向重叠</text>
+<line x1="682" y1="496" x2="682" y2="737" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="711" y="530" fill="#365DB4" font-size="23" font-weight="700" text-anchor="start">双边平衡</text>
+<text x="711" y="571" fill="#172C40" font-size="17" font-weight="400" text-anchor="start">回调加深、重叠持续</text>
+<text x="711" y="601" fill="#172C40" font-size="17" font-weight="400" text-anchor="start">两侧推进反复被收回</text>
+<text x="711" y="659" fill="#365DB4" font-size="16" font-weight="600" text-anchor="start">按区间重评目标与数量</text>
+<text x="711" y="703" fill="#5C6B79" font-size="16" font-weight="400" text-anchor="start">主要 HL 保持，控制权已变化</text>
+<rect x="32" y="783" width="1056" height="318" fill="white" stroke="#CAD4DE" rx="10"/>
+<text x="52" y="813" fill="#B44D32" font-size="19" font-weight="700" text-anchor="start">③ 主要 HL 下破，反向跟随与保留</text>
+<line x1="64" y1="881" x2="637" y2="881" stroke="#CAD4DE" stroke-width="1.3" stroke-dasharray="4 4"/>
+<text x="68" y="874" fill="#5C6B79" font-size="13" font-weight="400" text-anchor="start">原趋势极值</text>
+<line x1="64" y1="982" x2="637" y2="982" stroke="#365DB4" stroke-width="1.3" stroke-dasharray="4 4"/>
+<text x="68" y="975" fill="#365DB4" font-size="13" font-weight="400" text-anchor="start">主要 HL</text>
+<line x1="327" y1="852" x2="327" y2="1080" stroke="#5C6B79" stroke-width="1.3" stroke-dasharray="3 5"/>
+<text x="327" y="846" fill="#5C6B79" font-size="13" font-weight="600" text-anchor="middle">t₀</text>
+<line x1="64" y1="1089" x2="644" y2="1089" stroke="#CAD4DE" stroke-width="1.3" marker-end="url(#arrow)"/>
+<text x="645" y="1083" fill="#5C6B79" font-size="12" font-weight="400" text-anchor="end">时间</text>
+<path d="M70,1042 L109,989 L140,1015 L178,937 L223,982 L280,881 L327,938" class="history" stroke="#172C40"/>
+<path d="M327,938 L363,968 L392,1011 L417,1033 L454,1004 L490,1052 L528,1031 L614,1075" class="future" stroke="#B44D32"/>
+<circle cx="327" cy="938" r="4" fill="white" stroke="#172C40" stroke-width="2"/>
+<line x1="329" y1="1059" x2="392" y2="1011" stroke="#B44D32" stroke-width="1"/>
+<text x="329" y="1054" fill="#B44D32" font-size="15" font-weight="600" text-anchor="start">下破 HL</text>
+<line x1="461" y1="970" x2="454" y2="1004" stroke="#B44D32" stroke-width="1"/>
+<text x="461" y="965" fill="#B44D32" font-size="15" font-weight="600" text-anchor="start">回测受阻</text>
+<line x1="682" y1="836" x2="682" y2="1077" stroke="#CAD4DE" stroke-width="1.3"/>
+<text x="711" y="870" fill="#B44D32" font-size="23" font-weight="700" text-anchor="start">反方向控制增强</text>
+<text x="711" y="911" fill="#172C40" font-size="17" font-weight="400" text-anchor="start">主要 HL 下破</text>
+<text x="711" y="941" fill="#172C40" font-size="17" font-weight="400" text-anchor="start">反向跟随、突破进展保留</text>
+<text x="711" y="999" fill="#B44D32" font-size="16" font-weight="600" text-anchor="start">反向窄通道形成 → 新趋势</text>
+<text x="711" y="1043" fill="#5C6B79" font-size="16" font-weight="400" text-anchor="start">持有前提失效 → 清仓</text>
+<line x1="34" y1="1144" x2="79" y2="1144" stroke="#172C40" stroke-width="3"/>
+<text x="88" y="1149" fill="#5C6B79" font-size="14" font-weight="400" text-anchor="start">已知示意走势</text>
+<line x1="238" y1="1144" x2="283" y2="1144" stroke="#087F78" stroke-width="3" stroke-dasharray="8 6"/>
+<text x="292" y="1149" fill="#5C6B79" font-size="14" font-weight="400" text-anchor="start">候选后续</text>
+<line x1="420" y1="1134" x2="420" y2="1154" stroke="#5C6B79" stroke-width="1.3" stroke-dasharray="3 4"/>
+<text x="432" y="1149" fill="#5C6B79" font-size="14" font-weight="400" text-anchor="start">判断时点</text>
+<text x="586" y="1149" fill="#5C6B79" font-size="14" font-weight="400" text-anchor="start">候选证据成立 → 对应判断</text>
+</svg>
