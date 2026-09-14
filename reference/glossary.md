@@ -1,8 +1,10 @@
 # 价格行为来源术语与别名表
 
+> 当前方法以 [price-action](../price-action/README.md) 为准。本文涉及旧系统的职责、采用状态及章节对应仅保留为历史记录，不代表当前方法；来源证据仍可查阅。
+
 > **状态：Reference / Alias Index / Non-normative**
 
-本表用于检索来源术语、常用别名和必须保留的概念边界，不建立独立交易规则或处理顺序。当前看盘与交易方法由 [`trading_system/`](../trading_system/README.md) 定义；页码、来源差异与重复证据见[课程概念索引](course/concept_index.md)和[边界与冲突台账](course/boundaries_and_conflicts.md)。
+本表用于检索来源术语、常用别名和必须保留的概念边界，不建立独立交易规则或处理顺序。当前看盘与交易方法由 `trading_system/`（旧系统） 定义；页码、来源差异与重复证据见[课程概念索引](course/concept_index.md)和[边界与冲突台账](course/boundaries_and_conflicts.md)。
 
 一个名称只回答“正在描述哪类事实、视图、判断、结果路径或账户事件”。名称本身不提供交易许可；若同一底层事实同时符合 H2、Double Bottom、Wedge、Flag 或 MTR 等视图，应共享事实而保留各视图不同的解释作用，不能把标签数量当作独立证据数量。
 
@@ -32,7 +34,7 @@
 
 ### Market Probability / Trade Outcome Probability
 
-Market Probability 描述某个市场 objective 在给定条件与 horizon 内发生的概率；Trade Outcome Probability 描述某组 entry、stop、退出、数量、成本和管理下各交易结果的概率。前者不能直接代入交易者方程。任何数值都必须先由[复盘与治理](../trading_system/governance.md#3-已校准的数值规则)发布且仍然有效，运行页再检查适用口径；当前没有生产级数值概率规则。
+Market Probability 描述某个市场 objective 在给定条件与 horizon 内发生的概率；Trade Outcome Probability 描述某组 entry、stop、退出、数量、成本和管理下各交易结果的概率。前者不能直接代入交易者方程。任何数值都必须先由复盘与治理（旧系统）发布且仍然有效，运行页再检查适用口径；当前没有生产级数值概率规则。
 
 ### Evidence Convergence / Two Reasons
 
@@ -112,7 +114,7 @@ Test 表示价格接近、触及或重新访问参照区域；reaction 是测试
 
 ### Overshoot / Undershoot
 
-Overshoot 是短暂越过候选线或边界，undershoot 是未到达便提前反转。轻微越线或未触线不自动使结构失效；线的保留、重画与作用变化按[趋势线与通道线](../trading_system/market.md#g-趋势线与通道线)判断。
+Overshoot 是短暂越过候选线或边界，undershoot 是未到达便提前反转。轻微越线或未触线不自动使结构失效；线的保留、重画与作用变化按趋势线与通道线（旧系统）判断。
 
 ### Pressure / Control / Always In
 
@@ -158,7 +160,7 @@ MTR 是过程而非形态许可：原趋势先减弱或发生结构破坏，价�
 
 ### Pattern Evolution
 
-形态名称随新价格扩展、失败或被更大结构吸收。不得用最终形态回填当时不可见的信息；只更新受影响的判断，目标与路径按[首次建立与路径变化](../trading_system/market.md#38-首次建立与路径变化)处理。
+形态名称随新价格扩展、失败或被更大结构吸收。不得用最终形态回填当时不可见的信息；只更新受影响的判断，目标与路径按首次建立与路径变化（旧系统）处理。
 
 ## 五、K 线与触发
 
@@ -168,7 +170,7 @@ MTR 是过程而非形态许可：原趋势先减弱或发生结构破坏，价�
 
 ### Inside / Outside Bar
 
-Inside bar 的高点不高于前高且低点不低于前低。来源之间对 Outside bar 的等高、等低边界并不一致，本页只保留这一来源差异。当前运行口径由[K 线与运动事实](../trading_system/market.md#e-k-线与运动事实)统一定义；数据标注必须声明所用口径。
+Inside bar 的高点不高于前高且低点不低于前低。来源之间对 Outside bar 的等高、等低边界并不一致，本页只保留这一来源差异。当前运行口径由K 线与运动事实（旧系统）统一定义；数据标注必须声明所用口径。
 
 ### Reversal Bar
 
@@ -229,15 +231,15 @@ Success 与 failure 必须绑定预先声明的 outcome criterion：目标先到
 
 - 这是订单、仓位或财务事实可能不可靠的证据边界，不由 Glossary 决定动作。
 
-当前处置分别由[市场判断](../trading_system/market.md#38-首次建立与路径变化)、[账户执行](../trading_system/account.md)和[复盘与治理](../trading_system/governance.md)负责。
+当前处置分别由市场判断（旧系统）、账户执行（旧系统）和复盘与治理（旧系统）负责。
 
 ### Scalp / Swing
 
-Scalp 以较小目标为主，通常不打算持有穿越正常回调；Swing 愿意承受正常回调以争取更大运动。两者说明本笔交易的目标与管理打算，按 [Trade](../trading_system/trade.md)确定前提、出场和期限。
+Scalp 以较小目标为主，通常不打算持有穿越正常回调；Swing 愿意承受正常回调以争取更大运动。两者说明本笔交易的目标与管理打算，按 Trade（旧系统）确定前提、出场和期限。
 
 ### TBTL
 
-TBTL（Ten Bars, Two Legs）描述特定市场运动的时间与结构预期。它可影响 Scalp 或 Swing 的背景判断，但两种交易方式都不自动要求采用它。适用背景、起点与周期选择见 [TBTL 与运动尺度](../trading_system/market.md#tbtl-与运动尺度)。
+TBTL（Ten Bars, Two Legs）描述特定市场运动的时间与结构预期。它可影响 Scalp 或 Swing 的背景判断，但两种交易方式都不自动要求采用它。适用背景、起点与周期选择见 TBTL 与运动尺度（旧系统）。
 
 ### Trapped In / Trapped Out / Pain Trade
 
@@ -267,9 +269,9 @@ Fade 押注当前尝试不会获接受；countertrend 明确逆当前控制方�
 
 以下页面负责当前运行规则；这些链接只帮助从来源术语定位方法，不表示 Reference 能证明现有对象拆分是唯一设计：
 
-- 市场解释与结果路径：[市场判断](../trading_system/market.md)
-- 交易方案与仓位决策：[交易决策](../trading_system/trade.md)
-- 订单、仓位、止损与结果：[账户执行](../trading_system/account.md)
-- 概率与证据边界：[复盘与治理](../trading_system/governance.md)
+- 市场解释与结果路径：市场判断（旧系统）
+- 交易方案与仓位决策：交易决策（旧系统）
+- 订单、仓位、止损与结果：账户执行（旧系统）
+- 概率与证据边界：复盘与治理（旧系统）
 
-市场判断另提供一个不拥有运行状态的派生查询视图：[常见市场场景](../trading_system/scenarios.md)。
+市场判断另提供一个不拥有运行状态的派生查询视图：常见市场场景（旧系统）。

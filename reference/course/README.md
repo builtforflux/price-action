@@ -1,8 +1,10 @@
 # Al Brooks Trading Course 01–52
 
+> 当前方法以 [price-action](../../price-action/README.md) 为准。本文涉及旧系统的职责、采用状态及章节对应仅保留为历史记录，不代表当前方法；来源证据仍可查阅。
+
 本目录按课程编号保存 01–52 的逐讲 Markdown 材料分析。带 A、B、C 等后缀的文件对应同一课程编号下的原始分讲；编号文件共 191 份，按名称自然排序形成完整课程顺序。
 
-这里保存课程证据地图和仓库分析。术语定义和缩写回到[核心术语表](../glossary.md)及其[常用缩写](../glossary.md#常用缩写)，来源身份、版本语境与指纹回到[正式来源台账](../official_sources.md)，分讲页界和 bookmark 标签回到[机器可读课程目录](course_catalog.json)。目录中的来源与指纹字段只是台账的机器可读镜像。本目录不规定看盘、决策、订单或账户流程；运行语义由 [`trading_system/`](../../trading_system/README.md) 独立拥有。
+这里保存课程证据地图和仓库分析。术语定义和缩写回到[核心术语表](../glossary.md)及其[常用缩写](../glossary.md#常用缩写)，来源身份、版本语境与指纹回到[正式来源台账](../official_sources.md)，分讲页界和 bookmark 标签回到[机器可读课程目录](course_catalog.json)。目录中的来源与指纹字段只是台账的机器可读镜像。本目录不规定看盘、决策、订单或账户流程；运行语义由 `trading_system/`（旧系统） 独立拥有。
 
 ## 怎样阅读和核对
 
